@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8awgl1yjjv1m"]
+
+[ext_resource type="Script" uid="uid://dhl5gxums6bns" path="res://Code/crafting_menu.gd" id="1_3jc74"]
+[ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="1_a5gec"]
+[ext_resource type="Texture2D" uid="uid://b2hkcwwq10cut" path="res://icon.png" id="1_vcv5h"]
+[ext_resource type="Script" uid="uid://c6wangdtwc4m7" path="res://addons/gloot/core/item_slot.gd" id="2_b32eb"]
+[ext_resource type="JSON" path="res://itemki.json" id="3_b32eb"]
+[ext_resource type="StyleBox" uid="uid://bwn282pi02xeg" path="res://Shaders/CtrlItemSlot - temp texture.tres" id="4_p5b66"]
+[ext_resource type="JSON" path="res://craftable_items.json" id="8_i5jpu"]
+[ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="8_m1xk0"]
+
+[node name="Crafting" type="Control" node_paths=PackedStringArray("Ingredients", "ResultSlot", "ResultInv")]
+layout_mode = 3
+anchor_left = 0.33
+anchor_top = 0.33
+anchor_right = 0.636
+anchor_bottom = 0.657
+offset_left = -256.6
+offset_top = -84.4
+offset_right = 294.52
+offset_bottom = 90.56
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3jc74")
+Ingredients = [NodePath("Container/GridContainer/CtrlItemSlot/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot2/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot3/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot4/ItemSlot")]
+ResultSlot = NodePath("Container/ResultItem/ItemSlot")
+ResultInv = NodePath("Container/ResultItem/Inventory")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 349.12
+offset_top = 123.68
+offset_right = 799.12
+offset_bottom = 419.68
+texture = ExtResource("1_vcv5h")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -108.0
+offset_right = 207.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Container"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 40
+columns = 2
+
+[node name="CtrlItemSlot" type="Control" parent="Container/GridContainer" node_paths=PackedStringArray("item_slot")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_a5gec")
+item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 2
+slot_style = ExtResource("4_p5b66")
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="ItemSlot" type="Node" parent="Container/GridContainer/CtrlItemSlot"]
+script = ExtResource("2_b32eb")
+protoset = ExtResource("3_b32eb")
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="CtrlItemSlot2" type="Control" parent="Container/GridContainer" node_paths=PackedStringArray("item_slot")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_a5gec")
+item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 2
+slot_style = ExtResource("4_p5b66")
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="ItemSlot" type="Node" parent="Container/GridContainer/CtrlItemSlot2"]
+script = ExtResource("2_b32eb")
+protoset = ExtResource("3_b32eb")
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="CtrlItemSlot3" type="Control" parent="Container/GridContainer" node_paths=PackedStringArray("item_slot")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_a5gec")
+item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 2
+slot_style = ExtResource("4_p5b66")
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="ItemSlot" type="Node" parent="Container/GridContainer/CtrlItemSlot3"]
+script = ExtResource("2_b32eb")
+protoset = ExtResource("3_b32eb")
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="CtrlItemSlot4" type="Control" parent="Container/GridContainer" node_paths=PackedStringArray("item_slot")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("1_a5gec")
+item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 2
+slot_style = ExtResource("4_p5b66")
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="ItemSlot" type="Node" parent="Container/GridContainer/CtrlItemSlot4"]
+script = ExtResource("2_b32eb")
+protoset = ExtResource("3_b32eb")
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="ResultItem" type="Control" parent="Container" node_paths=PackedStringArray("item_slot")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_a5gec")
+item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 2
+slot_style = ExtResource("4_p5b66")
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="ItemSlot" type="Node" parent="Container/ResultItem"]
+script = ExtResource("2_b32eb")
+protoset = ExtResource("3_b32eb")
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="Inventory" type="Node" parent="Container/ResultItem"]
+script = ExtResource("8_m1xk0")
+protoset = ExtResource("8_i5jpu")
+_serialized_format = {}
+metadata/_custom_type_script = "uid://5hfig5q3x8it"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://tquyr1n8iaqe"
+path="res://.godot/imported/Pan_Staszek.dialogue-c364a71b5dafb2b0a54211a0371c9595.tres"
+
+[deps]
+
+source_file="res://Dialogues/Pan_Staszek.dialogue"
+dest_files=["res://.godot/imported/Pan_Staszek.dialogue-c364a71b5dafb2b0a54211a0371c9595.tres"]
+
+[params]
+
+defaults=true

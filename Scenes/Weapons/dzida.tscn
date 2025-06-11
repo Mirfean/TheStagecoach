@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjespasntba54"]
+
+[ext_resource type="Script" uid="uid://bkrpu25bvldyr" path="res://Code/weapon_melee.gd" id="1_ye0n0"]
+[ext_resource type="Resource" uid="uid://b0ifbx8b2s8ur" path="res://Resources/Weapons/dzida.tres" id="2_lismn"]
+[ext_resource type="Texture2D" uid="uid://brtp8ltiplnh6" path="res://Assets/Sprites/Weapons/dzida.png" id="3_pab3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcoia"]
+size = Vector2(7.00001, 6.49999)
+
+[sub_resource type="Animation" id="Animation_6qiu2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wcoia"]
+resource_name = "attack"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.266667),
+"transitions": PackedFloat32Array(1, 0.287175, 1),
+"update": 0,
+"values": [Vector2(5, 0), Vector2(10, 0), Vector2(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lwvwe"]
+resource_name = "return"
+length = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, 0), Vector2(5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwvwe"]
+_data = {
+&"RESET": SubResource("Animation_6qiu2"),
+&"attack": SubResource("Animation_wcoia"),
+&"return": SubResource("Animation_lwvwe")
+}
+
+[node name="Dzida" type="Area2D" node_paths=PackedStringArray("collider", "sprite", "animation") groups=["melee"]]
+collision_layer = 4
+collision_mask = 32
+script = ExtResource("1_ye0n0")
+collider = NodePath("CollisionShape2D")
+data = ExtResource("2_lismn")
+sprite = NodePath("Sprite2D")
+animation = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_pab3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.74999, -0.500006)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_wcoia")
+debug_color = Color(0.983894, 0, 0.204116, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lwvwe")
+}
+
+[node name="Firerate" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

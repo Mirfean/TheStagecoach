@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdso68oxgp3jg"]
+
+[ext_resource type="Script" uid="uid://d14bu245fs0rm" path="res://Code/weapon_range.gd" id="1_dc1tx"]
+[ext_resource type="PackedScene" uid="uid://3onltamw2gfl" path="res://Scenes/Weapons/bullet.tscn" id="2_0xmjj"]
+[ext_resource type="Resource" uid="uid://c3lidxjtnqshw" path="res://Resources/Weapons/default_gun.tres" id="3_3r1xi"]
+[ext_resource type="Texture2D" uid="uid://ce1ecl40ovuiw" path="res://Assets/Sprites/Weapons/giwera.png" id="4_ux73q"]
+[ext_resource type="Texture2D" uid="uid://c2yevcixs8ack" path="res://Assets/Sprites/aim.png" id="5_0xmjj"]
+
+[node name="giwera" type="Area2D" node_paths=PackedStringArray("shoot_point", "sprite")]
+scale = Vector2(0.33, 0.33)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_dc1tx")
+shoot_point = NodePath("Shoot_point")
+bullet = ExtResource("2_0xmjj")
+data = ExtResource("3_3r1xi")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_ux73q")
+
+[node name="Shoot_point" type="Node2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(6.931, -4.005)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_0xmjj")
+
+[node name="Firerate" type="Timer" parent="."]
+
+[connection signal="timeout" from="Firerate" to="." method="_on_firerate_timeout"]

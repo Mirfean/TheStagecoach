@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw3yavdu3xykm"]
+
+[ext_resource type="Script" uid="uid://tnehprw0kwgd" path="res://Code/Dialoguer.gd" id="1_4lggq"]
+[ext_resource type="Resource" uid="uid://budmt2pl1vhnw" path="res://Dialogues/first_dialogue.dialogue" id="2_olakb"]
+[ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="3_iihvf"]
+[ext_resource type="Texture2D" uid="uid://d16rkqlsls63f" path="res://Assets/Sprites/Pan Mietek.png" id="4_olakb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olakb"]
+radius = 23.0217
+
+[node name="Dialoguer" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider")]
+collision_layer = 512
+collision_mask = 8
+script = ExtResource("1_4lggq")
+dialogue_resource = ExtResource("2_olakb")
+outline_shader = ExtResource("3_iihvf")
+active_sprite = NodePath("Sprite2D")
+collider = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://tnehprw0kwgd"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_olakb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_olakb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

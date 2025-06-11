@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="data_WeaponRange" load_steps=2 format=3 uid="uid://c3lidxjtnqshw"]
+
+[ext_resource type="Script" uid="uid://dyhri2qy077jc" path="res://Resources/_Scripts_/data_WeaponRange.gd" id="1_pgjkc"]
+
+[resource]
+script = ExtResource("1_pgjkc")
+minSpread = 50.0
+maxSpread = 90.0
+minAim = 5.0
+maxAim = 30.0
+fireRate = 0.3
+bulletPerShot = 1
+ammoPerMagazine = 7.0
+id = 1
+weapon_type = 2
+nameW = "giwera"
+damage = 10
+weapon = "res://Scenes/Weapons/giwera.tscn"
+metadata/_custom_type_script = "uid://dyhri2qy077jc"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponBundle" load_steps=7 format=3 uid="uid://ceh8etk6ifpr1"]
+
+[ext_resource type="Script" uid="uid://bd76e1oy0i06j" path="res://Resources/_Scripts_/WeaponsBundle.gd" id="1_fw7ah"]
+[ext_resource type="Script" uid="uid://dmavi023kf6bs" path="res://Resources/_Scripts_/_Weapon_.gd" id="2_h2y3w"]
+[ext_resource type="Resource" uid="uid://c3lidxjtnqshw" path="res://Resources/Weapons/default_gun.tres" id="3_y1ssn"]
+[ext_resource type="Resource" uid="uid://b0ifbx8b2s8ur" path="res://Resources/Weapons/dzida.tres" id="4_qreyy"]
+[ext_resource type="Resource" uid="uid://c5dq2omakgsbt" path="res://Resources/Weapons/sword.tres" id="5_js23m"]
+[ext_resource type="Resource" uid="uid://ddbs081nggh0k" path="res://Resources/Weapons/Fists.tres" id="6_qreyy"]
+
+[resource]
+script = ExtResource("1_fw7ah")
+weapons = Array[ExtResource("2_h2y3w")]([ExtResource("6_qreyy"), ExtResource("3_y1ssn"), ExtResource("4_qreyy"), ExtResource("5_js23m")])
+metadata/_custom_type_script = "uid://bd76e1oy0i06j"

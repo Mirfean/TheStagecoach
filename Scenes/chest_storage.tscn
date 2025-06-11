@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bii57cxervek3"]
+
+[ext_resource type="Script" uid="uid://b1sx4ueqmdt6m" path="res://Code/chest_inventory.gd" id="1_8lx2g"]
+[ext_resource type="Texture2D" uid="uid://b3evrsel4w8us" path="res://Assets/Sprites/chest_open.png" id="2_g0era"]
+[ext_resource type="Script" uid="uid://d0pfc3q6sof8y" path="res://addons/gloot/ui/ctrl_inventory_grid.gd" id="3_oindd"]
+[ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="4_lotyf"]
+[ext_resource type="JSON" path="res://itemki.json" id="5_xofy6"]
+[ext_resource type="Script" uid="uid://b8hbvp4kl88cn" path="res://addons/gloot/core/constraints/grid_constraint.gd" id="6_pb7e1"]
+
+[node name="chest_storage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -535.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8lx2g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 50.0
+offset_right = 678.0
+offset_bottom = 573.0
+texture = ExtResource("2_g0era")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 154.0
+offset_right = 604.0
+offset_bottom = 477.0
+
+[node name="ChestInventoryGrid" type="Control" parent="PanelContainer" node_paths=PackedStringArray("inventory")]
+layout_mode = 2
+script = ExtResource("3_oindd")
+inventory = NodePath("../../Inventory")
+metadata/_custom_type_script = "uid://d0pfc3q6sof8y"
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("4_lotyf")
+protoset = ExtResource("5_xofy6")
+_serialized_format = {}
+metadata/_custom_type_script = "uid://5hfig5q3x8it"
+
+[node name="GridConstraint" type="Node" parent="Inventory"]
+script = ExtResource("6_pb7e1")
+size = Vector2i(16, 10)
+metadata/_custom_type_script = "uid://b8hbvp4kl88cn"
+
+[node name="@Node@21853" type="Node" parent="Inventory"]
+script = ExtResource("6_pb7e1")
+size = Vector2i(16, 10)
+
+[node name="info_text" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -474.0
+offset_right = -434.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.469
+anchor_top = 0.068
+anchor_right = 0.495
+anchor_bottom = 0.1
+offset_left = -0.565002
+offset_top = -0.440002
+offset_right = 0.424927
+toggle_mode = true
+text = "X"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

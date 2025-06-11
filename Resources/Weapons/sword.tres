@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="data_WeaponMelee" load_steps=2 format=3 uid="uid://c5dq2omakgsbt"]
+
+[ext_resource type="Script" uid="uid://bvuwijlef4v13" path="res://Resources/_Scripts_/data_WeaponMelee.gd" id="1_f0lm3"]
+
+[resource]
+script = ExtResource("1_f0lm3")
+attackSpeed = 0.0
+id = 3
+weapon_type = 1
+nameW = "sword"
+damage = 8
+weapon = "res://Scenes/Weapons/sword.tscn"
+metadata/_custom_type_script = "uid://bvuwijlef4v13"

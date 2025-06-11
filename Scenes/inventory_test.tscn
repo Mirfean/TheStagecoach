@@ -1,0 +1,286 @@
+[gd_scene load_steps=18 format=3 uid="uid://dlboo47k71a4p"]
+
+[ext_resource type="Texture2D" uid="uid://d257cy0rhthua" path="res://Assets/Sprites/plecak.png" id="1_noe12"]
+[ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="1_p0e2e"]
+[ext_resource type="Script" uid="uid://g46ar027d5u" path="res://Code/user_inventory.gd" id="1_sp5yn"]
+[ext_resource type="JSON" path="res://itemki.json" id="2_7o7xd"]
+[ext_resource type="Script" uid="uid://d0pfc3q6sof8y" path="res://addons/gloot/ui/ctrl_inventory_grid.gd" id="2_eqq7b"]
+[ext_resource type="Resource" uid="uid://ceh8etk6ifpr1" path="res://Resources/weapons_bundle.tres" id="2_k5wjf"]
+[ext_resource type="Texture2D" uid="uid://c3xi7ubiq67d0" path="res://Assets/Sprites/split.png" id="4_v12fy"]
+[ext_resource type="Script" uid="uid://b8hbvp4kl88cn" path="res://addons/gloot/core/constraints/grid_constraint.gd" id="5_eqq7b"]
+[ext_resource type="Script" uid="uid://ba5wmjtc5l8i3" path="res://addons/gloot/core/constraints/weight_constraint.gd" id="8_d7eb8"]
+[ext_resource type="Texture2D" uid="uid://b2hkcwwq10cut" path="res://icon.png" id="9_rewsn"]
+[ext_resource type="Texture2D" uid="uid://gu0byt11fnbe" path="res://Assets/Sprites/default_ludek.png" id="10_se88s"]
+[ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="11_m7alf"]
+[ext_resource type="Script" uid="uid://c6wangdtwc4m7" path="res://addons/gloot/core/item_slot.gd" id="12_k5wjf"]
+[ext_resource type="Texture2D" uid="uid://ctxln85k2p4vt" path="res://Assets/Sprites/aim_smol.png" id="13_f87gc"]
+
+[sub_resource type="Gradient" id="Gradient_m7alf"]
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(0.662745, 0.839216, 0, 1, 0.592157, 0.713726, 0.34902, 1, 0.498039, 0.462745, 0.027451, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k5wjf"]
+gradient = SubResource("Gradient_m7alf")
+fill_from = Vector2(0.346154, 0.636752)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f87gc"]
+texture = SubResource("GradientTexture2D_k5wjf")
+
+[node name="user_inventory" type="Control"]
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sp5yn")
+weapon_bundle = ExtResource("2_k5wjf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.419608)
+layout_mode = 0
+offset_left = 73.0
+offset_top = 398.0
+offset_right = 553.0
+offset_bottom = 1038.0
+texture = ExtResource("1_noe12")
+
+[node name="Main panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 543.0
+offset_right = 432.0
+offset_bottom = 927.0
+
+[node name="mainBackpackGrid" type="Control" parent="Main panel" node_paths=PackedStringArray("inventory")]
+custom_minimum_size = Vector2(256, 384)
+layout_mode = 2
+script = ExtResource("2_eqq7b")
+inventory = NodePath("../../Main kieszen")
+metadata/_custom_type_script = "uid://d0pfc3q6sof8y"
+
+[node name="SplitMain" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 275.0
+offset_top = 949.0
+offset_right = 326.0
+offset_bottom = 1002.0
+icon = ExtResource("4_v12fy")
+expand_icon = true
+
+[node name="Lewy panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 787.0
+offset_right = 153.0
+offset_bottom = 915.0
+
+[node name="leftBackpackGrid" type="Control" parent="Lewy panel" node_paths=PackedStringArray("inventory")]
+custom_minimum_size = Vector2(64, 128)
+layout_mode = 2
+script = ExtResource("2_eqq7b")
+inventory = NodePath("../../Lewa kieszonka")
+metadata/_custom_type_script = "uid://d0pfc3q6sof8y"
+
+[node name="SplitLeft" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 97.0
+offset_top = 947.0
+offset_right = 149.0
+offset_bottom = 1000.0
+icon = ExtResource("4_v12fy")
+expand_icon = true
+
+[node name="Prawy panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 787.0
+offset_right = 518.0
+offset_bottom = 915.0
+
+[node name="rightBackpackGrid" type="Control" parent="Prawy panel" node_paths=PackedStringArray("inventory")]
+custom_minimum_size = Vector2(64, 128)
+layout_mode = 2
+script = ExtResource("2_eqq7b")
+inventory = NodePath("../../Prawa kieszonka")
+metadata/_custom_type_script = "uid://d0pfc3q6sof8y"
+
+[node name="SplitRight" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 461.0
+offset_top = 947.0
+offset_right = 515.0
+offset_bottom = 1001.0
+icon = ExtResource("4_v12fy")
+expand_icon = true
+
+[node name="Main kieszen" type="Node" parent="." node_paths=PackedStringArray("grid_constraint")]
+script = ExtResource("1_p0e2e")
+grid_constraint = NodePath("GridConstraintMiddle")
+protoset = ExtResource("2_7o7xd")
+_serialized_format = {
+"constraints": {
+"res://addons/gloot/core/constraints/grid_constraint.gd": {
+"data": {
+"item_positions": {},
+"size": "Vector2i(8, 12)"
+},
+"name": &"GridConstraintMiddle"
+},
+"res://addons/gloot/core/constraints/weight_constraint.gd": {
+"data": {
+"capacity": 40.0
+},
+"name": &"WeightConstraint"
+}
+},
+"node_name": "Main kieszen",
+"protoset": "res://itemki.json"
+}
+metadata/_custom_type_script = "uid://5hfig5q3x8it"
+
+[node name="GridConstraintMiddle" type="Node" parent="Main kieszen"]
+script = ExtResource("5_eqq7b")
+size = Vector2i(8, 12)
+
+[node name="WeightConstraint" type="Node" parent="Main kieszen"]
+script = ExtResource("8_d7eb8")
+capacity = 40.0
+metadata/_custom_type_script = "uid://ba5wmjtc5l8i3"
+
+[node name="Lewa kieszonka" type="Node" parent="." node_paths=PackedStringArray("grid_constraint")]
+script = ExtResource("1_p0e2e")
+grid_constraint = NodePath("GridConstraintLeft")
+protoset = ExtResource("2_7o7xd")
+_serialized_format = {}
+metadata/_custom_type_script = "uid://5hfig5q3x8it"
+
+[node name="GridConstraintLeft" type="Node" parent="Lewa kieszonka"]
+script = ExtResource("5_eqq7b")
+size = Vector2i(2, 4)
+
+[node name="Prawa kieszonka" type="Node" parent="." node_paths=PackedStringArray("grid_constraint")]
+script = ExtResource("1_p0e2e")
+grid_constraint = NodePath("GridConstraintRight")
+protoset = ExtResource("2_7o7xd")
+_serialized_format = {}
+metadata/_custom_type_script = "uid://5hfig5q3x8it"
+
+[node name="GridConstraintRight" type="Node" parent="Prawa kieszonka"]
+script = ExtResource("5_eqq7b")
+size = Vector2i(2, 4)
+
+[node name="info_text" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 394.0
+offset_right = 61.0
+offset_bottom = 417.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.014
+anchor_right = 0.6
+anchor_bottom = 0.423
+offset_left = -0.320002
+offset_top = -0.120001
+offset_bottom = 0.160004
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+modulate = Color(0, 0, 0, 0.509804)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 160.0
+offset_right = 178.0
+offset_bottom = 238.0
+texture = ExtResource("13_f87gc")
+
+[node name="TextureRect4" type="TextureRect" parent="Panel"]
+modulate = Color(0, 0, 0, 0.509804)
+layout_mode = 0
+offset_left = 377.0
+offset_top = 160.0
+offset_right = 455.0
+offset_bottom = 238.0
+texture = ExtResource("13_f87gc")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0.0941176)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 580.0
+offset_bottom = 459.0
+texture = ExtResource("9_rewsn")
+
+[node name="TextureRect3" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 548.0
+offset_bottom = 426.0
+texture = ExtResource("10_se88s")
+
+[node name="Armor_slot" type="Control" parent="Panel" node_paths=PackedStringArray("item_slot")]
+visible = false
+anchors_preset = 0
+offset_left = 249.0
+offset_top = 179.0
+offset_right = 329.0
+offset_bottom = 259.0
+script = ExtResource("11_m7alf")
+item_slot = NodePath("../../Armor")
+icon_stretch_mode = 4
+slot_style = SubResource("StyleBoxTexture_f87gc")
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="Weapon_left_hand" type="Control" parent="Panel" node_paths=PackedStringArray("item_slot")]
+anchors_preset = 0
+offset_left = 375.0
+offset_top = 159.0
+offset_right = 455.0
+offset_bottom = 239.0
+script = ExtResource("11_m7alf")
+item_slot = NodePath("../../WeaponLeft")
+icon_stretch_mode = 0
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="Weapon_right_hand" type="Control" parent="Panel" node_paths=PackedStringArray("item_slot")]
+anchors_preset = 0
+offset_left = 99.0
+offset_top = 159.0
+offset_right = 179.0
+offset_bottom = 239.0
+script = ExtResource("11_m7alf")
+item_slot = NodePath("../../WeaponRight")
+icon_stretch_mode = 4
+metadata/_custom_type_script = "uid://trghhrgo3fax"
+
+[node name="Armor" type="Node" parent="."]
+script = ExtResource("12_k5wjf")
+protoset = ExtResource("2_7o7xd")
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="WeaponLeft" type="Node" parent="."]
+script = ExtResource("12_k5wjf")
+protoset = ExtResource("2_7o7xd")
+slot_type = 1
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="WeaponRight" type="Node" parent="."]
+script = ExtResource("12_k5wjf")
+protoset = ExtResource("2_7o7xd")
+slot_type = 1
+metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[connection signal="cleared" from="WeaponLeft" to="." method="_on_weapon_left_cleared"]
+[connection signal="item_equipped" from="WeaponLeft" to="." method="_on_weapon_left_item_equipped"]
+[connection signal="cleared" from="WeaponRight" to="." method="_on_weapon_right_cleared"]
+[connection signal="item_equipped" from="WeaponRight" to="." method="_on_weapon_right_item_equipped"]

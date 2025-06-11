@@ -1,0 +1,93 @@
+{
+	"pistol_bullets_10pack": {
+		"stack_size": 10.0,
+		"max_stack_size": 80.0,
+		"type": "ammo"
+	},
+	"BIG_DUCK": {
+		"name": "Big Duck",
+		"size": "Vector2i(4, 4)",
+		"image": "res://Assets/Sprites/kaczka.png",
+		"max_stack_size": 5.0,
+		"description": "A big duck, sexy one."
+	},
+	"Dzida": {
+		"ID": 2.0,
+		"name": "Dzida",
+		"description": "Old, primitive spear made from sanctuary rod",
+		"size": "Vector2i(2, 8)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/Weapons/dzida.png"
+	},
+	"Kamyczek": {
+		"description": "A small pebble",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"image": "res://Assets/Sprites/Items/kamyczek.png"
+	},
+	"default_giwera": {
+		"ID": 1.0,
+		"description": "A basic gun",
+		"size": "Vector2i(3, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/Weapons/giwera.png"
+	},
+	"Ser": {
+		"name": "Ser",
+		"description": "A piece of cheese",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"image": "res://Assets/Sprites/Items/Ser.png"
+	},
+	"Pomidorek": {
+		"name": "Pomidorek",
+		"description": "A small tomato, with enough work it can evolve into a ketchup",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"image": "res://Assets/Sprites/Items/Pomidorek.png"
+	},
+	"Chlebek": {
+		"name": "Chlebek",
+		"description": "A piece of bread, chrupiący type",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 4.0,
+		"image": "res://Assets/Sprites/Items/Chlebek.png"
+	},
+
+	"Kaczka_al_dente":{
+		"name": "Kaczka al dente",
+		"description": "Kaczka prawie do zjedzenia xD",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"image": "res://Assets/Sprites/Items/Kaczka_al_dente.png",
+		"craft": {
+			"BIG_DUCK": 1.0,
+			"Kamyczek": 1.0
+		}
+
+	},
+
+	"Kanapka": {
+		"name": "Kanapka",
+		"description": "A sandwich for a hungry Staszek",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"image": "res://Assets/Sprites/Items/Kanapka.png",
+		"craft": {
+			"Ser": 1.0,
+			"Pomidorek": 1.0,
+			"Chlebek": 2.0
+		}
+	}
+
+}

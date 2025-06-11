@@ -1,0 +1,282 @@
+[gd_scene load_steps=21 format=3 uid="uid://bjn2hakow4wkb"]
+
+[ext_resource type="Script" uid="uid://dkrjom5t1umoj" path="res://Code/enemy_basic.gd" id="1_f4si1"]
+[ext_resource type="Script" uid="uid://xctp8wkajc87" path="res://Code/States/StateMachine.gd" id="1_jokqx"]
+[ext_resource type="Texture2D" uid="uid://d4hgvsqcwh6d1" path="res://Assets/Sprites/foes.png" id="1_swwnm"]
+[ext_resource type="Script" uid="uid://5c0v82tjv1sy" path="res://Code/States/EnemyIdle.gd" id="2_aiwxb"]
+[ext_resource type="Script" uid="uid://d20eaj5amcli4" path="res://Code/States/EnemyFollow.gd" id="3_paq7w"]
+[ext_resource type="Script" uid="uid://bifajxbpuuhj1" path="res://Code/States/EnemyAttack.gd" id="5_5gljc"]
+[ext_resource type="Script" uid="uid://c3ky3ao3alvkg" path="res://Code/States/EnemySearch.gd" id="7_vblni"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiwxb"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(0, 0, 40, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paq7w"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(40, 0, 40, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4si1"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(80, 0, 40, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gljc"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(120, 0, 40, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vblni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiwxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paq7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4si1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gljc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gljc"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e388w"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swwnm"]
+radius = 71.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4o34"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_vblni"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackCollision/AttackCol:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00471192, 0.1, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.566667, 0.933333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.763589, 0.746668, 1, 1), Color(0.512133, 0.391642, 1, 1), Color(0.763589, 0.746668, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5gljc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackCollision/AttackCol:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f4si1"]
+resource_name = "get_hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.753605, 0.0115358, 0.304715, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gljc"]
+_data = {
+&"Attack": SubResource("Animation_vblni"),
+&"RESET": SubResource("Animation_5gljc"),
+&"get_hit": SubResource("Animation_f4si1")
+}
+
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "vision_ray") groups=["enemy"]]
+z_index = 3
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_f4si1")
+vision_distance = 75.0
+attack_cooldown = 2.0
+stateMachine = NodePath("StateMachine")
+health = 30
+vision_ray = NodePath("VisionLine")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_vblni")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_5gljc")
+debug_color = Color(0.751745, 0.0010918, 0.849417, 0.42)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
+script = ExtResource("1_jokqx")
+initialState = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_character", "vision_ray", "nav_agent", "timer")]
+script = ExtResource("2_aiwxb")
+enemy_character = NodePath("../..")
+vision_ray = NodePath("../../VisionLine")
+vision_distance = 50.0
+nav_agent = NodePath("../../NavigationAgent2D")
+timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://5c0v82tjv1sy"
+
+[node name="Timer" type="Timer" parent="StateMachine/Idle"]
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_character", "vision_ray", "nav_agent", "timer")]
+script = ExtResource("3_paq7w")
+attack_distance = 10.0
+reset_time = 0.33
+enemy_character = NodePath("../..")
+move_speed = 50.0
+vision_ray = NodePath("../../VisionLine")
+vision_distance = 75.0
+nav_agent = NodePath("../../NavigationAgent2D")
+timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://d20eaj5amcli4"
+
+[node name="Timer" type="Timer" parent="StateMachine/Follow"]
+wait_time = 0.33
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("damage_collision", "animation_player", "enemy_character", "vision_ray", "nav_agent", "timer")]
+script = ExtResource("5_5gljc")
+cooldown_after = 1.0
+damage = 10
+damage_collision = NodePath("../../HitboxArea/Hitbox")
+animation_player = NodePath("../../AnimationPlayer")
+enemy_character = NodePath("../..")
+move_speed = 80.0
+vision_ray = NodePath("../../VisionLine")
+vision_distance = 25.0
+nav_agent = NodePath("../../NavigationAgent2D")
+timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://bifajxbpuuhj1"
+
+[node name="Timer" type="Timer" parent="StateMachine/Attack"]
+one_shot = true
+
+[node name="Search" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_character", "vision_ray", "nav_agent", "timer")]
+script = ExtResource("7_vblni")
+waiting_time = 2.0
+enemy_character = NodePath("../..")
+move_speed = 30.0
+vision_ray = NodePath("../../VisionLine")
+vision_distance = 100.0
+nav_agent = NodePath("../../NavigationAgent2D")
+timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://c3ky3ao3alvkg"
+
+[node name="Timer" type="Timer" parent="StateMachine/Search"]
+
+[node name="HitboxArea" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 32
+collision_mask = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" groups=["enemy"]]
+texture_filter = 1
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_e388w")
+debug_color = Color(2.31028e-06, 0.86516, 0.745434, 0.42)
+
+[node name="Sight" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -13)
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_swwnm")
+
+[node name="AttackCollision" type="Area2D" parent="."]
+position = Vector2(0, -13)
+collision_layer = 4096
+collision_mask = 8
+
+[node name="AttackCol" type="CollisionShape2D" parent="AttackCollision"]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_r4o34")
+debug_color = Color(0.976211, 0, 0.413582, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5gljc")
+}
+
+[node name="VisionLine" type="RayCast2D" parent="."]
+collision_mask = 67
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 20.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="timeout" from="StateMachine/Idle/Timer" to="StateMachine/Idle" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Follow/Timer" to="StateMachine/Follow" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Attack/Timer" to="StateMachine/Attack" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Search/Timer" to="StateMachine/Search" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]
+[connection signal="body_entered" from="AttackCollision" to="StateMachine/Attack" method="_on_attack_collision_body_entered"]
+[connection signal="draw" from="VisionLine" to="VisionLine" method="_on_draw"]

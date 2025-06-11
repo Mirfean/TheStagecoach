@@ -1,0 +1,1 @@
+Usunąłem dwie linijki z constraint managera -> wpisać "MOJE" i znajdę
