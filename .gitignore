@@ -1,0 +1,33 @@
+# Godot default generated files
+.godot/
+export.cfg
+export_presets.cfg
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
+*.apk
+*.ipa
+*.x86
+*.x86_64
+*.arm
+*.arm64
+*.pck
+*.zip
+*.tar.gz
+
+# Assets
+# If you have specific assets that are too large or should not be versioned, list them here
+# For example:
+# assets/large_video.mp4
+
+# Editor specific files
+# .vscode/  # Uncomment if you don't want to share VS Code settings
+# .idea/    # Uncomment if you use IntelliJ/PyCharm/etc.
+
+# Temporary files
+*~
+*.bak
+*.tmp
