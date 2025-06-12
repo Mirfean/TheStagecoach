@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://beani83f2qc6m"]
+[gd_scene load_steps=23 format=4 uid="uid://beani83f2qc6m"]
 
 [ext_resource type="Script" uid="uid://6a1krboy2ci3" path="res://Code/_game_manager.gd" id="1_d2752"]
 [ext_resource type="Texture2D" uid="uid://dbk84xlc05tmy" path="res://Assets/TileMaps/tilemap_V2.png" id="1_n4yxp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bblo7i4i8oqiw" path="res://Assets/Asset_Pack_Chryst/Wall_01/CharacterScale_export_dir1.png" id="3_rvgqc"]
 [ext_resource type="PackedScene" uid="uid://bjn2hakow4wkb" path="res://Scenes/slime.tscn" id="4_vgerr"]
 [ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="5_qfkbf"]
+[ext_resource type="Texture2D" uid="uid://c0v3ob36ouqor" path="res://Assets/Sprites/FREE Textures Of Light/64x64/64x64 textures (108).png" id="6_8rn85"]
 [ext_resource type="PackedScene" uid="uid://b8awgl1yjjv1m" path="res://Scenes/Crafting_menu.tscn" id="8_xou3p"]
 [ext_resource type="PackedScene" uid="uid://dlboo47k71a4p" path="res://Scenes/inventory_test.tscn" id="8_yhxqo"]
 [ext_resource type="PackedScene" uid="uid://bii57cxervek3" path="res://Scenes/chest_storage.tscn" id="9_xghmt"]
@@ -7304,6 +7305,7 @@ texture_region_size = Vector2i(8, 8)
 
 [sub_resource type="TileSet" id="TileSet_larwr"]
 tile_size = Vector2i(8, 8)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 8
 physics_layer_1/collision_layer = 257
@@ -7313,6 +7315,12 @@ sources/9 = SubResource("TileSetAtlasSource_rvgqc")
 [sub_resource type="Theme" id="Theme_lbo1c"]
 
 [node name="devtest" type="Node2D"]
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="Debug" type="DirectionalLight2D" parent="Lights"]
+editor_only = true
+color = Color(0.517184, 0.517184, 0.517184, 1)
 
 [node name="Ysort" type="Node2D" parent="."]
 
@@ -7355,7 +7363,7 @@ navigation_enabled = false
 
 [node name="player Z3" parent="Ysort" node_paths=PackedStringArray("inventory") instance=ExtResource("2_vnw6p")]
 position = Vector2(-526, 472)
-inventory = NodePath("../../Inventory/PanelContainer/user_inventory")
+inventory = NodePath("../../Inventory/user_inventory")
 weapon_data = ExtResource("10_uh8jm")
 
 [node name="Camera2D" type="Camera2D" parent="Ysort/player Z3"]
@@ -7363,25 +7371,11 @@ zoom = Vector2(8, 8)
 process_callback = 0
 position_smoothing_enabled = true
 
+[node name="PointLight2D" type="PointLight2D" parent="Ysort/player Z3"]
+position = Vector2(0, -6)
+texture = ExtResource("6_8rn85")
+
 [node name="Inventory" type="CanvasLayer" parent="."]
-
-[node name="PanelContainer" type="PanelContainer" parent="Inventory"]
-self_modulate = Color(0, 0, 1, 0.415686)
-anchors_preset = -1
-anchor_top = 0.031
-anchor_right = 0.398
-anchor_bottom = 1.0
-offset_left = 21.0
-offset_top = 0.519997
-offset_right = 0.839966
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="user_inventory" parent="Inventory/PanelContainer" node_paths=PackedStringArray("Player") instance=ExtResource("8_yhxqo")]
-layout_mode = 2
-size_flags_horizontal = 2
-Player = NodePath("../../../Ysort/player Z3")
 
 [node name="PanelContainer2" type="PanelContainer" parent="Inventory"]
 anchors_preset = -1
@@ -7408,6 +7402,9 @@ offset_bottom = 514.0
 
 [node name="Crafting" parent="Inventory/PanelContainer3" instance=ExtResource("8_xou3p")]
 layout_mode = 2
+
+[node name="user_inventory" parent="Inventory" node_paths=PackedStringArray("Player") instance=ExtResource("8_yhxqo")]
+Player = NodePath("../../Ysort/player Z3")
 
 [node name="Managers" type="Node" parent="."]
 
@@ -7454,7 +7451,10 @@ position = Vector2(-112, 144)
 position = Vector2(-763, 359)
 
 [node name="Chest4" parent="BackgroundItems/Chests" instance=ExtResource("3_2lock")]
-position = Vector2(-677, 364)
+position = Vector2(-506, 463)
+Items = {
+"Dzida": 1
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -7513,3 +7513,8 @@ position = Vector2(-228, 11)
 [node name="Dialoguer2" parent="." instance=ExtResource("14_ev6ro")]
 position = Vector2(-326, 412)
 dialogue_resource = ExtResource("15_uh8jm")
+
+[node name="ItemHolder" type="Node2D" parent="." groups=["SpawnItemHolder"]]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0475577, 0.0475576, 0.0475576, 1)

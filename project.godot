@@ -52,6 +52,7 @@ bullet=""
 melee=""
 InventoryManager=""
 "Game Manager"=""
+SpawnItemHolder=""
 
 [input]
 

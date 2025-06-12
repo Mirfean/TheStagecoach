@@ -55,21 +55,12 @@ func _ready() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_BEGIN:
 		var drag_data_from_viewport = get_viewport().gui_get_drag_data()
-		# Krok 1: Sprawdź, czy zwrócone dane to obiekt, którego się spodziewasz
-		# (czyli ten 'item', który zwraca Twoja _get_drag_data)
 		if typeof(drag_data_from_viewport) == TYPE_OBJECT:
 			if drag_data_from_viewport == item:
 				modulate = drag_tint
-		# Krok 2: OBSŁUŻ przypadek, gdy dane są słownikiem (czyli pochodzą z innego źródła drag-and-drop)
 		elif typeof(drag_data_from_viewport) == TYPE_DICTIONARY:
-			# W tym miejscu musisz ZGADZĄĆ, co ten słownik zawiera.
-			# Zazwyczaj słowniki drag-and-drop zawierają klucz identyfikujący przedmiot.
-			# Przykład: Jeśli słownik ma klucz "item_ref" i przechowuje tam obiekt itemu:
 			if drag_data_from_viewport.has("item_ref") and drag_data_from_viewport["item_ref"] == item:
 				modulate = drag_tint
-			# LUB jeśli słownik ma klucz "item_id" i porównujesz ID:
-			# if drag_data_from_viewport.has("item_id") and drag_data_from_viewport["item_id"] == item.id:
-			#     modulate = drag_tint
 			pass # Jeśli nie chcesz nic robić z danymi, które nie są Twoim 'itemem', możesz tu zostawić 'pass' lub dodać więcej logiki
 		elif what == NOTIFICATION_DRAG_END:
 			modulate = _initial_modulate

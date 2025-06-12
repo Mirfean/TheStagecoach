@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlboo47k71a4p"]
+[gd_scene load_steps=19 format=3 uid="uid://dlboo47k71a4p"]
 
 [ext_resource type="Texture2D" uid="uid://d257cy0rhthua" path="res://Assets/Sprites/plecak.png" id="1_noe12"]
 [ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="1_p0e2e"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="11_m7alf"]
 [ext_resource type="Script" uid="uid://c6wangdtwc4m7" path="res://addons/gloot/core/item_slot.gd" id="12_k5wjf"]
 [ext_resource type="Texture2D" uid="uid://ctxln85k2p4vt" path="res://Assets/Sprites/aim_smol.png" id="13_f87gc"]
+[ext_resource type="Script" uid="uid://qyly6uslhhrs" path="res://Code/drop_area.gd" id="15_jon5c"]
 
 [sub_resource type="Gradient" id="Gradient_m7alf"]
 offsets = PackedFloat32Array(0, 0.4, 1)
@@ -54,7 +55,6 @@ offset_right = 432.0
 offset_bottom = 927.0
 
 [node name="mainBackpackGrid" type="Control" parent="Main panel" node_paths=PackedStringArray("inventory")]
-custom_minimum_size = Vector2(256, 384)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../Main kieszen")
@@ -78,7 +78,6 @@ offset_right = 153.0
 offset_bottom = 915.0
 
 [node name="leftBackpackGrid" type="Control" parent="Lewy panel" node_paths=PackedStringArray("inventory")]
-custom_minimum_size = Vector2(64, 128)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../Lewa kieszonka")
@@ -102,7 +101,6 @@ offset_right = 518.0
 offset_bottom = 915.0
 
 [node name="rightBackpackGrid" type="Control" parent="Prawy panel" node_paths=PackedStringArray("inventory")]
-custom_minimum_size = Vector2(64, 128)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../Prawa kieszonka")
@@ -279,6 +277,19 @@ script = ExtResource("12_k5wjf")
 protoset = ExtResource("2_7o7xd")
 slot_type = 1
 metadata/_custom_type_script = "uid://c6wangdtwc4m7"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.496
+anchor_right = 0.697
+anchor_bottom = 0.686
+offset_left = -3.0
+offset_top = 0.319946
+offset_right = 1.88
+offset_bottom = 0.119934
+script = ExtResource("15_jon5c")
 
 [connection signal="cleared" from="WeaponLeft" to="." method="_on_weapon_left_cleared"]
 [connection signal="item_equipped" from="WeaponLeft" to="." method="_on_weapon_left_item_equipped"]

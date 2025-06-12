@@ -59,6 +59,7 @@ func clear_items():
 	inventory.clear()
 
 func spawn_new_items(items: Dictionary, first_time: bool):
+	clear_items()
 	print("spawning")
 	var new_item
 	if first_time:
