@@ -6,6 +6,7 @@ var item_prefab : PackedScene = load("res://Scenes/pickable_item.tscn")
 
 
 func _ready() -> void:
+	self.add_to_group("GameManager")
 	player_char = get_tree().get_first_node_in_group("player")
 	Inventory_manager.game_manager = self
 

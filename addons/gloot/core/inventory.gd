@@ -258,6 +258,11 @@ func get_item_with_prototype_id(prototype_id: String) -> InventoryItem:
 			
 	return null
 
+func get_item_with_title(prototype_title : String) -> InventoryItem:
+	for item in get_items():
+		if item.get_prototype().get_prototype_id() == prototype_title or item.get_title() == prototype_title:
+			return item
+	return null
 
 ## Returns an array of all the items with the given prototype ID.
 func get_items_with_prototype_id(prototype_id: String) -> Array[InventoryItem]:

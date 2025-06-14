@@ -19,6 +19,7 @@ const info_offset: Vector2 = Vector2(50, 0)
 
 var inventories : Array[CtrlInventoryGrid]
 var current_selected_inventory: CtrlInventoryGrid
+var inv_list : Array[Inventory]
 
 signal weapon_left_change
 signal weapon_right_change
@@ -157,7 +158,18 @@ func set_weapon_to_hand(hand_id : int, itemSlot : CtrlItemSlot):
 
 func _on_weapon_left_cleared(item: InventoryItem) -> void:
 	set_weapon_to_hand(0, weapon_left_hand)
-		
 
 func _on_weapon_right_cleared(item: InventoryItem) -> void:
 	set_weapon_to_hand(1, weapon_right_hand)
+
+func find_item(item : String, amount : int) -> InventoryItem:
+	print("dupa")
+	for inv in inventories:
+		if inv.get_item_with_title(item):
+			return inv.get_item_with_title(item)
+	return null
+
+func remove_item(inv_item: InventoryItem, amount : int):
+	print("dupa 2")
+	#inv.get_item_with_title(item).set_property("stack_size")
+	#TODO odjąć ilość, sprawdzić czy tyle w ogóle jest 

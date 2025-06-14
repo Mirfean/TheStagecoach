@@ -2,6 +2,7 @@ extends Node
 class_name InventoryManager
 
 @export var game_manager : GameManager
+@export var dialogue_mm : Dialogue_MiddleMan
 
 @export var user_inv : user_inventory
 @export var chest_ui : chest_storage
@@ -14,6 +15,9 @@ var spawn_item_father : Node2D
 
 signal Close_Chest
 signal Craft_Items_Change
+
+func _ready() -> void:
+	self.add_to_group("InventoryManager")
 	
 func set_chest_ui(cs: chest_storage):
 	chest_ui = cs
@@ -63,13 +67,18 @@ func spawn_item_on_ground(item_name : String) -> bool:
 	new_item.set_values(item_info)
 	return true
 	
-
-	
 func get_sprite_from_protoset(object_ID: String) -> String:
 	return user_inv.main_kieszen.get_prototree().get_prototype(object_ID).get_property("image")
 	#return user_inv.main_kieszen.get_property_from_prototree(object_name, "image")
 
-	
 func add_item_to_main() -> bool:
 	print("add")
 	return true
+
+func check_eq_for(item : String, amount : int, remove : bool = false):
+	if user_inv.find_item(item, amount):
+		if remove:
+			user_inv.remove_item(item, amount)
+		return true
+	else:
+		return false

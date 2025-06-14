@@ -21,6 +21,7 @@ config/icon="uid://c0ygaqdyn0tn5"
 Game_Manager="*res://Code/_game_manager.gd"
 Inventory_manager="*res://Code/_inventory_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+DMM="*res://Code/Dialogue_MiddleMan.gd"
 
 [dialogue_manager]
 
@@ -53,6 +54,7 @@ melee=""
 InventoryManager=""
 "Game Manager"=""
 SpawnItemHolder=""
+DialogueMM=""
 
 [input]
 
