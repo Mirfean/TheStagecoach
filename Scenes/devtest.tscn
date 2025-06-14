@@ -7518,7 +7518,7 @@ position = Vector2(-519, 192)
 position = Vector2(-228, 11)
 
 [node name="Dialoguer2" parent="." instance=ExtResource("14_ev6ro")]
-position = Vector2(-326, 412)
+position = Vector2(-512, 480)
 dialogue_resource = ExtResource("15_uh8jm")
 
 [node name="ItemHolder" type="Node2D" parent="." groups=["SpawnItemHolder"]]

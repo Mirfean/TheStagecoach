@@ -31,5 +31,6 @@ func get_string(key: String):
 func set_string(key: String, value : String):
 	var_string[key] = value
 
-func check_inventory(item_name : String, amount : int = 1):
-	Inventory_manager.get
+func check_inventory(item_name : String, amount : int = 1, remove : bool = false) -> bool:
+	print("siema")
+	return inv_mag.check_eq_for(item_name, amount, remove)

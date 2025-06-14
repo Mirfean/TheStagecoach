@@ -17,7 +17,7 @@ const info_offset: Vector2 = Vector2(50, 0)
 @onready var weapon_left_hand: CtrlItemSlot = $Panel/Weapon_left_hand
 @onready var weapon_right_hand: CtrlItemSlot = $Panel/Weapon_right_hand
 
-var inventories : Array[CtrlInventoryGrid]
+var inv_grids : Array[CtrlInventoryGrid]
 var current_selected_inventory: CtrlInventoryGrid
 var inv_list : Array[Inventory]
 
@@ -46,9 +46,13 @@ func _ready() -> void:
 	%SplitMain.pressed.connect(_on_btn_split.bind(main_backpack_grid))
 	%SplitRight.pressed.connect(_on_btn_split.bind(right_backpack_grid))
 	
-	inventories.append(main_backpack_grid)
-	inventories.append(left_backpack_grid)
-	inventories.append(right_backpack_grid)
+	inv_grids.append(main_backpack_grid)
+	inv_grids.append(left_backpack_grid)
+	inv_grids.append(right_backpack_grid)
+	
+	inv_list.append(main_kieszen)
+	inv_list.append(lewa_kieszonka)
+	inv_list.append(prawa_kieszonka)
 	
 	activation()
 
@@ -117,7 +121,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	
 func _item_selected(invItem: InventoryItem):
 	print(invItem.get_inventory().name)
-	for x in inventories:
+	for x in inv_grids:
 		if x.inventory.name == invItem.get_inventory().name:
 			current_selected_inventory = x
 			continue
@@ -162,14 +166,24 @@ func _on_weapon_left_cleared(item: InventoryItem) -> void:
 func _on_weapon_right_cleared(item: InventoryItem) -> void:
 	set_weapon_to_hand(1, weapon_right_hand)
 
-func find_item(item : String, amount : int) -> InventoryItem:
+func find_item(item : String, amount : int = 1) -> InventoryItem:
 	print("dupa")
-	for inv in inventories:
-		if inv.get_item_with_title(item):
-			return inv.get_item_with_title(item)
+	for inv in inv_list:
+		var current_item = inv.get_item_with_title(item)
+		if current_item:
+			if current_item.get_property("stack_size") >= amount:
+				return inv.get_item_with_title(item)
+			else:
+				print("za mało...")
 	return null
 
 func remove_item(inv_item: InventoryItem, amount : int):
 	print("dupa 2")
-	#inv.get_item_with_title(item).set_property("stack_size")
-	#TODO odjąć ilość, sprawdzić czy tyle w ogóle jest 
+	var current_amount = inv_item.get_property("stack_size")
+	if current_amount > amount:
+		inv_item.set_property("stack_size", current_amount - amount)
+	elif current_amount == amount:
+		var inv = inv_item.get_inventory()
+		inv.remove_item(inv_item)
+	else:
+		print_debug("We shouldn't be there...")

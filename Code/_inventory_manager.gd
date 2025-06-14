@@ -76,9 +76,10 @@ func add_item_to_main() -> bool:
 	return true
 
 func check_eq_for(item : String, amount : int, remove : bool = false):
-	if user_inv.find_item(item, amount):
+	var inv_item = user_inv.find_item(item, amount)
+	if inv_item:
 		if remove:
-			user_inv.remove_item(item, amount)
+			user_inv.remove_item(inv_item, amount)
 		return true
 	else:
 		return false
