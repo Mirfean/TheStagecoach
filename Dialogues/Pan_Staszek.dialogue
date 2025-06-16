@@ -3,7 +3,7 @@
 Papryk: Dzień dobry Panu, jak mija letni wieczór?
 Pan Staszek: Niech będzie pochwalony! A proszę Pana [speed=0.1] powolutku... [/speed] 
 Pan Staszek : No, my tu [wave] gadu gadu [/wave] a ja bym se zjod [u][b][color=red][hint=Rodzaj dania, prosta potrawa przyrządzana na bazie cienkich kromek białego lub razowego chleba, ewentualnie rozkrojonej bułki. \n Kanapki smaruje się masłem, okłada wędlinami, pieczenią wieprzową, kiełbasą, szynką lub serem, \n spożywa również z jajkiem na twardo, plasterkiem ogórka lub rybą, z dodatkiem warzyw do wyboru oraz sosów itp.]kanapkę[/hint][/color][/b][/u].
-if DMM.check_inventory("Dzida")
+if DMM.check_inventory("Dzida", 1, true)
 	Pan Staszek: Ale piękna dzida :>
 if DMM.check_inventory("Kaczka al dente")
 	Pan Staszek: I ładna kaczuszka

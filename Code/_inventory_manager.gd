@@ -44,17 +44,16 @@ func close_current_chest():
 	current_chest = null
 
 	
-func add_item_from_ground(item_name : String) -> bool:
-	print_debug("Pickup ", item_name)
-	var new_item = user_inv.main_kieszen.create_and_add_item(item_name)
-	for x in new_item.get_properties():
-		print(x)
+func add_item_from_ground(item : pickable_item) -> bool:
+	print_debug("Pickup ", item.item_name)
+	var new_item = user_inv.main_kieszen.create_and_add_item(item.item_id_name)
 	if new_item != null:
+		new_item.set_stack_size(item.item_amount)
 		return true
 	return false
 	
 func spawn_item_on_ground(item_name : String) -> bool:
-	print_debug("Pickup ", item_name)
+	print_debug("Put down ", item_name)
 	var item_info = user_inv.main_kieszen.get_item_with_prototype_id(item_name)
 	if item_info == null:
 		return false

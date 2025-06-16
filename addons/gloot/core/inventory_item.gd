@@ -323,7 +323,6 @@ func get_texture() -> Texture2D:
 			return texture
 	return null
 
-
 ## Helper function for retrieving the item title. It checks the name item property and uses it as the title, if
 ## available. Otherwise, prototype_id is returned as title.
 func get_title() -> String:
@@ -333,6 +332,9 @@ func get_title() -> String:
 	if is_instance_valid(_prototype):
 		return _prototype.get_prototype_id()
 	return ""
+
+func get_proto_id() -> String:
+	return _prototype.get_prototype_id()
 
 func get_description() -> String:
 	var description = get_property(_KEY_DESCRIPTION)
