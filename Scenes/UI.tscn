@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://kqibovcl70w2"]
+
+[ext_resource type="PackedScene" uid="uid://dlboo47k71a4p" path="res://Scenes/inventory_test.tscn" id="1_dewlx"]
+[ext_resource type="PackedScene" uid="uid://b8awgl1yjjv1m" path="res://Scenes/Crafting_menu.tscn" id="2_hfhsn"]
+[ext_resource type="PackedScene" uid="uid://bii57cxervek3" path="res://Scenes/chest_storage.tscn" id="3_qwshj"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panels" type="HBoxContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Character" type="PanelContainer" parent="Panels"]
+self_modulate = Color(0.956863, 0, 0.968627, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panels/Character"]
+layout_mode = 2
+
+[node name="user_inventory" parent="Panels/Character/HBoxContainer" instance=ExtResource("1_dewlx")]
+layout_mode = 2
+
+[node name="Crafting" type="PanelContainer" parent="Panels"]
+layout_mode = 2
+
+[node name="Crafting" parent="Panels/Crafting" instance=ExtResource("2_hfhsn")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Chest" type="PanelContainer" parent="Panels"]
+self_modulate = Color(1, 1, 1, 0.0470588)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VFlowContainer" parent="Panels/Chest"]
+layout_mode = 2
+alignment = 2
+reverse_fill = true
+
+[node name="chest_storage" parent="Panels/Chest/VBoxContainer" instance=ExtResource("3_qwshj")]
+custom_minimum_size = Vector2(666, 500)
+layout_mode = 2
+size_flags_vertical = 6

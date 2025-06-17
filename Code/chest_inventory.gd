@@ -3,9 +3,9 @@ class_name chest_storage
 
 const info_offset: Vector2 = Vector2(50, 0)
 
-@onready var main_backpack_grid: CtrlInventoryGrid = $PanelContainer/ChestInventoryGrid
-@onready var inventory: Inventory = $Inventory
-@onready var grid_constraint: GridConstraint = $Inventory/GridConstraint
+@onready var main_backpack_grid: CtrlInventoryGrid = $PanelContainer/TextureRect/PanelContainer/ChestInventoryGrid
+@onready var inventory: Inventory = $PanelContainer/Inventory
+@onready var grid_constraint: GridConstraint = $PanelContainer/Inventory/GridConstraint
 
 @export var ItemsList: Dictionary
 

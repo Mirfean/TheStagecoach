@@ -1,0 +1,2 @@
+extends Interactable_object
+class_name Crafting_table

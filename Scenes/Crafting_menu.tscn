@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8awgl1yjjv1m"]
+[gd_scene load_steps=8 format=3 uid="uid://b8awgl1yjjv1m"]
 
 [ext_resource type="Script" uid="uid://dhl5gxums6bns" path="res://Code/crafting_menu.gd" id="1_3jc74"]
 [ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="1_a5gec"]
-[ext_resource type="Texture2D" uid="uid://b2hkcwwq10cut" path="res://icon.png" id="1_vcv5h"]
 [ext_resource type="Script" uid="uid://c6wangdtwc4m7" path="res://addons/gloot/core/item_slot.gd" id="2_b32eb"]
 [ext_resource type="JSON" path="res://itemki.json" id="3_b32eb"]
 [ext_resource type="StyleBox" uid="uid://bwn282pi02xeg" path="res://Shaders/CtrlItemSlot - temp texture.tres" id="4_p5b66"]
@@ -11,43 +10,30 @@
 
 [node name="Crafting" type="Control" node_paths=PackedStringArray("Ingredients", "ResultSlot", "ResultInv")]
 layout_mode = 3
-anchor_left = 0.196
-anchor_top = 0.252
-anchor_right = 0.426
-anchor_bottom = 0.553
-offset_left = 0.680023
-offset_top = -0.159973
-offset_right = -0.920044
-offset_bottom = -0.240051
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -321.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 script = ExtResource("1_3jc74")
 Ingredients = [NodePath("Container/GridContainer/CtrlItemSlot/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot2/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot3/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot4/ItemSlot")]
 ResultSlot = NodePath("Container/ResultItem/ItemSlot")
 ResultInv = NodePath("Container/ResultItem/Inventory")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 349.12
-offset_top = 123.68
-offset_right = 799.12
-offset_bottom = 419.68
-texture = ExtResource("1_vcv5h")
-
 [node name="Container" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.084
-anchor_top = 0.168
-anchor_right = 0.97
-anchor_bottom = 0.906
-offset_left = 0.0399704
-offset_top = -0.100033
-offset_right = 0.200012
-offset_bottom = 0.0500183
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -195.0
+offset_top = -240.0
+offset_right = 195.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/separation = 50
 alignment = 1
 
@@ -134,16 +120,29 @@ metadata/_custom_type_script = "uid://5hfig5q3x8it"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Container/ResultItem"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = -42.5
-offset_right = 101.0
-offset_bottom = 0.27
+offset_left = 1.04742
+offset_top = -48.9348
+offset_right = 101.047
+offset_bottom = -6.16483
 text = "Result"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Container/ResultItem"]
+layout_mode = 0
+offset_left = 21.0474
+offset_top = 112.065
+offset_right = 81.0474
+offset_bottom = 143.065
+text = "Create"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 162.0
-offset_right = 218.0
-offset_bottom = 204.77
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 899.0
+offset_top = 155.0
+offset_right = -921.0
+offset_bottom = -123.23
 text = "Ingredients"

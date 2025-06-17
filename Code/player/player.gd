@@ -35,6 +35,7 @@ var health := 50
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Inventory_manager.player_char = self
+	inventory = get_tree().get_first_node_in_group("Inventory")
 	aimer.visible = false
 	set_weapon()
 

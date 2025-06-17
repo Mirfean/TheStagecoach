@@ -6,13 +6,13 @@ const info_offset: Vector2 = Vector2(50, 0)
 @export var Player : player
 @export var weapon_bundle : WeaponBundle
 
-@onready var main_backpack_grid: CtrlInventoryGrid = $"Main panel/mainBackpackGrid"
-@onready var left_backpack_grid: CtrlInventoryGrid = $"Lewy panel/leftBackpackGrid"
-@onready var right_backpack_grid: CtrlInventoryGrid = $"Prawy panel/rightBackpackGrid"
+@onready var main_backpack_grid: CtrlInventoryGrid = $"Backpack/Main panel/mainBackpackGrid"
+@onready var left_backpack_grid: CtrlInventoryGrid = $"Backpack/Lewy panel/leftBackpackGrid"
+@onready var right_backpack_grid: CtrlInventoryGrid = $"Backpack/Prawy panel/rightBackpackGrid"
 
-@onready var main_kieszen: Inventory = $"Main kieszen"
-@onready var lewa_kieszonka: Inventory = $"Lewa kieszonka"
-@onready var prawa_kieszonka: Inventory = $"Prawa kieszonka"
+@onready var main_kieszen: Inventory = $"Inventories/Main kieszen"
+@onready var lewa_kieszonka: Inventory = $"Inventories/Lewa kieszonka"
+@onready var prawa_kieszonka: Inventory = $"Inventories/Prawa kieszonka"
 
 @onready var weapon_left_hand: CtrlItemSlot = $Panel/Weapon_left_hand
 @onready var weapon_right_hand: CtrlItemSlot = $Panel/Weapon_right_hand

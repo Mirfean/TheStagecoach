@@ -12,6 +12,7 @@ func _ready() -> void:
 	self.add_to_group("DialogueMM")
 	inv_mag = Inventory_manager
 	game_mag = Game_Manager
+	Inventory_manager.dialogue_mm = self
 	
 func get_bool(key: String):
 	return var_bool.get_or_add(key)
