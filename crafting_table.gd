@@ -9,7 +9,7 @@ func Interact():
 	
 func start_craft():
 	Inventory_manager.open_crafting()
-	print("craft")
+	print_debug("craft")
 
 func _on_body_entered(body: Node2D) -> void:
 	super._on_body_entered(body)

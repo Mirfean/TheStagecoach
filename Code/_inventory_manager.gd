@@ -71,9 +71,9 @@ func get_sprite_from_protoset(object_ID: String) -> String:
 	#return user_inv.main_kieszen.get_property_from_prototree(object_name, "image")
 
 func add_item_to_main(item : InventoryItem) -> bool:
-	var new_item = user_inv.main_kieszen.create_and_add_item(item.item_id_name)
+	var new_item = user_inv.main_kieszen.create_and_add_item(item.get_proto_id())
 	if new_item != null:
-		new_item.set_stack_size(item.item_amount)
+		new_item.set_stack_size(item.get_stack_size())
 		return true
 	return false
 

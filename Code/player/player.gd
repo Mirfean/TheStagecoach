@@ -45,13 +45,17 @@ func _process(delta: float) -> void:
 	pass
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ChangeWeapon") and stateMachine.currentState.name == "Default":
-		set_weapon((weapon_index+1)%weapons.size())
-	if event.is_action_pressed("Interaction") and stateMachine.currentState.name == "Default":
-		if closest_interaction != null:
-			closest_interaction.Interact()
-	if event.is_action_pressed("Inventory") and stateMachine.currentState.name != "Menu":
-		inventory.activation()
+	if stateMachine.currentState.name == "Default":
+		if event.is_action_pressed("ChangeWeapon"):
+			set_weapon((weapon_index+1)%weapons.size())
+		if event.is_action_pressed("Interaction"):
+			if closest_interaction != null:
+				closest_interaction.Interact()
+		if event.is_action_pressed("Inventory"):
+			if stateMachine.currentState.name == "Inventory":
+				Inventory_manager.closeInvUI()
+			else:
+				inventory.activate()
 	if event.is_action_pressed("Close") and stateMachine.currentState.name == "Inventory":
 		Inventory_manager.closeInvUI()
 	#if event.is_action_pressed("TestButton") and stateMachine.currentState.name == "Default":

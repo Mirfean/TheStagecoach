@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8awgl1yjjv1m"]
+[gd_scene load_steps=9 format=3 uid="uid://b8awgl1yjjv1m"]
 
 [ext_resource type="Script" uid="uid://dhl5gxums6bns" path="res://Code/crafting_menu.gd" id="1_3jc74"]
 [ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="1_a5gec"]
@@ -7,20 +7,24 @@
 [ext_resource type="StyleBox" uid="uid://bwn282pi02xeg" path="res://Shaders/CtrlItemSlot - temp texture.tres" id="4_p5b66"]
 [ext_resource type="JSON" path="res://craftable_items.json" id="8_i5jpu"]
 [ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="8_m1xk0"]
+[ext_resource type="Texture2D" uid="uid://c0ygaqdyn0tn5" path="res://Assets/Sprites/icon.png" id="8_y0gf8"]
 
-[node name="Crafting" type="Control" node_paths=PackedStringArray("Ingredients", "ResultSlot", "ResultInv")]
+[node name="Crafting" type="Control" node_paths=PackedStringArray("Ingredients", "ResultSlot", "ResultInv", "craft")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -321.0
+offset_top = -320.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 script = ExtResource("1_3jc74")
 Ingredients = [NodePath("Container/GridContainer/CtrlItemSlot/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot2/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot3/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot4/ItemSlot")]
-ResultSlot = NodePath("Container/ResultItem/ItemSlot")
-ResultInv = NodePath("Container/ResultItem/Inventory")
+ResultSlot = NodePath("Container/VBoxContainer/ResultItem/ItemSlot")
+ResultInv = NodePath("Container/VBoxContainer/ResultItem/Inventory")
+craft = NodePath("Container/VBoxContainer/Craft")
 
 [node name="Container" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -49,6 +53,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_a5gec")
 item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 5
 slot_style = ExtResource("4_p5b66")
 metadata/_custom_type_script = "uid://trghhrgo3fax"
 
@@ -62,6 +67,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_a5gec")
 item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 5
 slot_style = ExtResource("4_p5b66")
 metadata/_custom_type_script = "uid://trghhrgo3fax"
 
@@ -75,6 +81,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_a5gec")
 item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 5
 slot_style = ExtResource("4_p5b66")
 metadata/_custom_type_script = "uid://trghhrgo3fax"
 
@@ -88,6 +95,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_a5gec")
 item_slot = NodePath("ItemSlot")
+icon_stretch_mode = 5
 slot_style = ExtResource("4_p5b66")
 metadata/_custom_type_script = "uid://trghhrgo3fax"
 
@@ -96,7 +104,10 @@ script = ExtResource("2_b32eb")
 protoset = ExtResource("3_b32eb")
 metadata/_custom_type_script = "uid://c6wangdtwc4m7"
 
-[node name="ResultItem" type="Control" parent="Container" node_paths=PackedStringArray("item_slot")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="ResultItem" type="Control" parent="Container/VBoxContainer" node_paths=PackedStringArray("item_slot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -104,22 +115,22 @@ size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("1_a5gec")
 item_slot = NodePath("ItemSlot")
-icon_stretch_mode = 2
+icon_stretch_mode = 5
 slot_style = ExtResource("4_p5b66")
 metadata/_custom_type_script = "uid://trghhrgo3fax"
 
-[node name="ItemSlot" type="Node" parent="Container/ResultItem"]
+[node name="ItemSlot" type="Node" parent="Container/VBoxContainer/ResultItem"]
 script = ExtResource("2_b32eb")
 protoset = ExtResource("3_b32eb")
 metadata/_custom_type_script = "uid://c6wangdtwc4m7"
 
-[node name="Inventory" type="Node" parent="Container/ResultItem"]
+[node name="Inventory" type="Node" parent="Container/VBoxContainer/ResultItem"]
 script = ExtResource("8_m1xk0")
 protoset = ExtResource("8_i5jpu")
 _serialized_format = {}
 metadata/_custom_type_script = "uid://5hfig5q3x8it"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Container/ResultItem"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/VBoxContainer/ResultItem"]
 layout_mode = 0
 offset_left = 1.04742
 offset_top = -48.9348
@@ -129,28 +140,13 @@ text = "Result"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Craft" type="Button" parent="Container/ResultItem"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.21
-anchor_top = 1.121
-anchor_right = 0.81
-anchor_bottom = 1.431
-offset_left = 0.0473995
-offset_top = -0.0350037
-offset_right = 0.0473938
-offset_bottom = -0.0350037
-text = "Create"
+[node name="Craft" type="Button" parent="Container/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+text = "Craft"
+icon = ExtResource("8_y0gf8")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 33.0
-offset_right = -988.0
-offset_bottom = -245.23
-text = "Ingredients"
-
-[connection signal="pressed" from="Container/ResultItem/Craft" to="." method="_on_craft_pressed"]
+[connection signal="mouse_entered" from="Container/VBoxContainer/Craft" to="." method="_on_craft_mouse_entered"]
+[connection signal="pressed" from="Container/VBoxContainer/Craft" to="." method="_on_craft_pressed"]

@@ -16,5 +16,4 @@ func _drop_data(at_position: Vector2, data) -> void:
 		print_debug("Womp womp... ", item.get_title(), " ", item.get_proto_id())
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	return true
 	return data is InventoryItem
