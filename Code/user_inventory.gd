@@ -14,8 +14,8 @@ const info_offset: Vector2 = Vector2(50, 0)
 @onready var lewa_kieszonka: Inventory = $"Inventories/Lewa kieszonka"
 @onready var prawa_kieszonka: Inventory = $"Inventories/Prawa kieszonka"
 
-@onready var weapon_left_hand: CtrlItemSlot = $Panel/Weapon_left_hand
-@onready var weapon_right_hand: CtrlItemSlot = $Panel/Weapon_right_hand
+@onready var weapon_left_hand: CtrlItemSlot = $CharacterEQ/Weapon_left_hand
+@onready var weapon_right_hand: CtrlItemSlot = $CharacterEQ/Weapon_right_hand
 
 var inv_grids : Array[CtrlInventoryGrid]
 var current_selected_inventory: CtrlInventoryGrid
@@ -75,11 +75,13 @@ func activate():
 	self.visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_parent().visible = true
+	Player.open_inventory_state()
 	
 func disactivate():
 	self.visible = false
 	process_mode = PROCESS_MODE_DISABLED
 	get_parent().visible = false
+	Player.close_inventory_state()
 
 func _on_item_mouse_exited(_item: InventoryItem) -> void:
 	%info_text.hide()

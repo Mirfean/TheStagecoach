@@ -23,7 +23,7 @@ func _ready() -> void:
 		active_sprite = opened
 		closed.visible = false
 		opened.visible = true
-	default_material = active_sprite.material
+	
 
 
 #func _input(event: InputEvent) -> void:

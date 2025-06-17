@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bii57cxervek3"]
+[gd_scene load_steps=8 format=3 uid="uid://bii57cxervek3"]
 
 [ext_resource type="Script" uid="uid://b1sx4ueqmdt6m" path="res://Code/chest_inventory.gd" id="1_8lx2g"]
 [ext_resource type="Texture2D" uid="uid://b3evrsel4w8us" path="res://Assets/Sprites/chest_open.png" id="2_g0era"]
+[ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="3_g0era"]
 [ext_resource type="Script" uid="uid://d0pfc3q6sof8y" path="res://addons/gloot/ui/ctrl_inventory_grid.gd" id="3_oindd"]
 [ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="4_lotyf"]
 [ext_resource type="JSON" path="res://itemki.json" id="5_xofy6"]
@@ -52,7 +53,7 @@ offset_right = 590.0
 offset_bottom = 427.0
 
 [node name="ChestInventoryGrid" type="Control" parent="PanelContainer/TextureRect/PanelContainer" node_paths=PackedStringArray("inventory")]
-custom_minimum_size = Vector2(512, 320)
+material = ExtResource("3_g0era")
 layout_mode = 2
 script = ExtResource("3_oindd")
 inventory = NodePath("../../../Inventory")

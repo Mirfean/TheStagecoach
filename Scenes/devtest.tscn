@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://beani83f2qc6m"]
+[gd_scene load_steps=23 format=4 uid="uid://beani83f2qc6m"]
 
 [ext_resource type="Script" uid="uid://6a1krboy2ci3" path="res://Code/_game_manager.gd" id="1_d2752"]
 [ext_resource type="Texture2D" uid="uid://dbk84xlc05tmy" path="res://Assets/TileMaps/tilemap_V2.png" id="1_n4yxp"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dw3yavdu3xykm" path="res://Scenes/dialoguer.tscn" id="14_ev6ro"]
 [ext_resource type="Resource" uid="uid://tquyr1n8iaqe" path="res://Dialogues/Pan_Staszek.dialogue" id="15_uh8jm"]
 [ext_resource type="PackedScene" uid="uid://kqibovcl70w2" path="res://Scenes/UI.tscn" id="15_xou3p"]
+[ext_resource type="PackedScene" uid="uid://c2tmq8c4gjgwf" path="res://Scenes/crafting_table.tscn" id="16_8rn85"]
 [ext_resource type="PackedScene" uid="uid://dm4eawfdrbllc" path="res://Scenes/pickable_item.tscn" id="16_xou3p"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2iyog"]
@@ -7394,7 +7395,7 @@ position = Vector2(-780, 645)
 item_name = "default_giwera"
 
 [node name="pickable_item2" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
-position = Vector2(-548, 474)
+position = Vector2(-539, 493)
 item_name = "Dzida"
 
 [node name="pickable_item3" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
@@ -7495,3 +7496,7 @@ dialogue_resource = ExtResource("15_uh8jm")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+
+[node name="Crafting_table" parent="." instance=ExtResource("16_8rn85")]
+position = Vector2(-550, 461)
+scale = Vector2(0.7, 0.7)

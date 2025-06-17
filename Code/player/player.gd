@@ -52,6 +52,8 @@ func _input(event: InputEvent) -> void:
 			closest_interaction.Interact()
 	if event.is_action_pressed("Inventory") and stateMachine.currentState.name != "Menu":
 		inventory.activation()
+	if event.is_action_pressed("Close") and stateMachine.currentState.name == "Inventory":
+		Inventory_manager.closeInvUI()
 	#if event.is_action_pressed("TestButton") and stateMachine.currentState.name == "Default":
 		#DialogueManager.show_dialogue_balloon(load("res://Scenes/balloon.tscn"), "start")
 
@@ -117,6 +119,16 @@ func remove_this_closest(object : Interactable_object):
 	if closest_interaction == object:
 		closest_interaction.off_highlight()
 		closest_interaction = null
+		
+func open_inventory_state():
+	print("Inventory")
+	if stateMachine.currentState.name == "Default":
+		stateMachine.on_child_transition(stateMachine.currentState, "Inventory")
+	
+func close_inventory_state():
+	print("Close Inventory")
+	if stateMachine.currentState.name == "Inventory":
+		stateMachine.on_child_transition(stateMachine.currentState, "Default")
 	
 func getDamage(damage: int):
 	if dead:

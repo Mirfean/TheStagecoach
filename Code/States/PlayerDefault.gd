@@ -17,6 +17,9 @@ func Enter():
 #func Exit():
 	#DialogueManager.dialogue_started.disconnect(start_dialogue)
 
+func OpenInventory():
+	Transitioned.emit(self, "Inventory")
+
 func InputState(event : InputEvent):
 	if event.is_action_pressed("Aim"):
 		Transitioned.emit(self, "Aim")
