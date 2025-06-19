@@ -21,11 +21,11 @@ func set_values(inv_item : InventoryItem):
 
 func _ready() -> void:
 	if item_id_name != "":
-		var imagePath = Inventory_manager.get_sprite_from_protoset(item_name)
+		var imagePath = Inventory_manager.get_sprite_from_protoset(item_id_name)
 		active_sprite.texture = load(imagePath)
 		print("spawn item")
 	elif item_name != "":
-		var imagePath = Inventory_manager.get_sprite_from_protoset(item_name)
+		var imagePath = Inventory_manager.get_sprite_from_protoset(item_id_name)
 		active_sprite.texture = load(imagePath)
 		print("spawn item")
 

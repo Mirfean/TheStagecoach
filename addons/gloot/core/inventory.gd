@@ -196,7 +196,7 @@ func _add_item_unsafe(item: InventoryItem):
 
 ## Checks if the given item can be added to the inventory.
 func can_add_item(item: InventoryItem) -> bool:
-	if item == null || has_item(item):
+	if item == null:
 		return false
 		
 	if !_constraint_manager.has_space_for(item):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://beani83f2qc6m"]
+[gd_scene load_steps=24 format=4 uid="uid://beani83f2qc6m"]
 
 [ext_resource type="Script" uid="uid://6a1krboy2ci3" path="res://Code/_game_manager.gd" id="1_d2752"]
 [ext_resource type="Texture2D" uid="uid://dbk84xlc05tmy" path="res://Assets/TileMaps/tilemap_V2.png" id="1_n4yxp"]
 [ext_resource type="TileSet" uid="uid://dyq0un67wtd88" path="res://Tilemaps/Ground.tres" id="1_n5vn0"]
 [ext_resource type="PackedScene" uid="uid://157h3ftf0pbo" path="res://Scenes/player.tscn" id="2_vnw6p"]
 [ext_resource type="PackedScene" uid="uid://7afng5y6tlyw" path="res://Scenes/chest.tscn" id="3_2lock"]
+[ext_resource type="LabelSettings" uid="uid://bm0e0yauhm63n" path="res://Shaders/LabelSettings/stack_size_theme.tres" id="3_8rn85"]
 [ext_resource type="Texture2D" uid="uid://bblo7i4i8oqiw" path="res://Assets/Asset_Pack_Chryst/Wall_01/CharacterScale_export_dir1.png" id="3_rvgqc"]
 [ext_resource type="PackedScene" uid="uid://bjn2hakow4wkb" path="res://Scenes/slime.tscn" id="4_vgerr"]
 [ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="5_qfkbf"]
@@ -7341,6 +7342,7 @@ Attack - LMB
 Inventory - I
 Change weapon - Q
 Interact - SPACE"
+label_settings = ExtResource("3_8rn85")
 uppercase = true
 
 [node name="Ysort" type="Node2D" parent="."]
@@ -7384,7 +7386,7 @@ tile_set = ExtResource("1_n5vn0")
 navigation_enabled = false
 
 [node name="player Z3" parent="Ysort" instance=ExtResource("2_vnw6p")]
-position = Vector2(-526, 472)
+position = Vector2(-136, 509)
 weapon_data = ExtResource("10_uh8jm")
 
 [node name="Camera2D" type="Camera2D" parent="Ysort/player Z3"]
@@ -7409,14 +7411,18 @@ script = ExtResource("1_d2752")
 
 [node name="pickable_item" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
 position = Vector2(-780, 645)
+item_id_name = "default_giwera"
 item_name = "default_giwera"
 
 [node name="pickable_item2" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
-position = Vector2(-539, 493)
-item_name = "Dzida"
+position = Vector2(-198, 479)
+item_id_name = "BIG_DUCK"
+item_name = "Big Duck"
+item_amount = 23
 
 [node name="pickable_item3" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
 position = Vector2(-510, 617)
+item_id_name = "Kamyczek"
 item_name = "Kamyczek"
 
 [node name="Door" parent="BackgroundItems" instance=ExtResource("13_2iyog")]
@@ -7432,9 +7438,9 @@ collision_layer = 1
 [node name="Chests" type="Node" parent="BackgroundItems"]
 
 [node name="Chest" parent="BackgroundItems/Chests" instance=ExtResource("3_2lock")]
-position = Vector2(-528, 439)
+position = Vector2(-103, 469)
 Items = {
-"BIG_DUCK": 2,
+"BIG_DUCK": 3,
 "Kamyczek": 3
 }
 
@@ -7445,7 +7451,7 @@ position = Vector2(-112, 144)
 position = Vector2(-763, 359)
 
 [node name="Chest4" parent="BackgroundItems/Chests" instance=ExtResource("3_2lock")]
-position = Vector2(-506, 463)
+position = Vector2(-176, 524)
 Items = {
 "Dzida": 1,
 "default_giwera": 1
@@ -7493,5 +7499,5 @@ dialogue_resource = ExtResource("15_uh8jm")
 color = Color(0.0475577, 0.0475576, 0.0475576, 1)
 
 [node name="Crafting_table" parent="." instance=ExtResource("16_8rn85")]
-position = Vector2(-550, 461)
+position = Vector2(-95, 527)
 scale = Vector2(0.7, 0.7)

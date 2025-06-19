@@ -58,8 +58,8 @@ func _ready() -> void:
 
 func _on_item_mouse_entered(item: InventoryItem) -> void:
 	%info_text.show()
-	%info_text.text = item.get_title() + "\n" + item.get_description()
-
+	%info_text.text = item.get_title() + "\n" + str(item.get_stack_size()) + " / " + str(item.get_max_stack_size()) + "\n" + item.get_description()
+	
 func activation():
 	print(process_mode)
 	if process_mode == Node.PROCESS_MODE_DISABLED:
@@ -129,8 +129,48 @@ func _item_selected(invItem: InventoryItem):
 			continue
 		x.deselect_inventory_items()
 
-func spawn_new_item_inventoryItem(item : InventoryItem):
-	main_kieszen.create_and_add_item(item.get_title())
+func spawn_new_item_inventoryItem(item : InventoryItem, stack : int = -1):
+	if main_kieszen.has_item(item):
+		var current_amount = main_kieszen.get_item_with_prototype_id(item.get_proto_id()).get_stack_size()
+		var to_add = item.get_stack_size()
+		if current_amount + to_add <= item.get_max_stack_size():
+			main_kieszen.get_item_with_prototype_id(item.get_proto_id()).set_stack_size(current_amount + to_add)
+		else:
+			var stacks = (current_amount + to_add) - item.get_max_stack_size()
+			while stacks > 0:
+				var new_item = main_kieszen.create_and_add_item(item.get_proto_id())
+				new_item.set_stack_size(clamp(stacks, 1, item.get_max_stack_size()))
+				stacks -= item.get_max_stack_size()
+			#dodać by dodawało itemy aż liczba będzie mniejsza niż max_stack_size
+	
+	else:
+		var new_item = main_kieszen.create_and_add_item(item.get_proto_id())
+		if new_item:
+			new_item.set_stack_size(item.get_stack_size())
+			
+func spawn_new_item_inventory(item_name : String, stack_size : int) -> int:
+	var new_item = main_kieszen.create_item(item_name)
+	var max_stack = new_item.get_max_stack_size()
+	if not new_item:
+		return stack_size
+	if main_kieszen.has_item(new_item):
+		var max_to_stack = new_item.get_max_stack_size() - stack_size
+		if stack_size <= max_to_stack:
+			new_item.set_stack_size(stack_size + main_kieszen.get_item_with_prototype_id(item_name).get_stack_size())
+			return 0
+		else:
+			main_kieszen.create_and_add_item2(item_name, new_item.get_max_stack_size())
+			stack_size -= max_to_stack
+
+	while stack_size > 0:
+		if main_kieszen.can_add_item(new_item):
+			var current_stack = clamp(1, new_item.get_max_stack_size(), stack_size)
+			main_kieszen.create_and_add_item2(item_name, current_stack)
+			stack_size -= current_stack
+		else:
+			break
+	return stack_size
+
 	
 func spawn_new_item_name(itemTitle : String, amount : int = 1):
 	main_kieszen.create_and_add_item(itemTitle, amount)
