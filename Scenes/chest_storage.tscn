@@ -54,7 +54,6 @@ offset_bottom = 427.0
 
 [node name="ChestInventoryGrid" type="Control" parent="PanelContainer/TextureRect/PanelContainer" node_paths=PackedStringArray("inventory")]
 material = ExtResource("3_g0era")
-custom_minimum_size = Vector2(512, 320)
 layout_mode = 2
 script = ExtResource("3_oindd")
 inventory = NodePath("../../../Inventory")

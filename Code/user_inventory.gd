@@ -153,8 +153,8 @@ func spawn_new_item_inventory(item_name : String, stack_size : int) -> int:
 	var max_stack = new_item.get_max_stack_size()
 	if not new_item:
 		return stack_size
-	if main_kieszen.has_item(new_item):
-		var max_to_stack = new_item.get_max_stack_size() - stack_size
+	if main_kieszen.get_item_with_prototype_id(item_name):
+		var max_to_stack = new_item.get_max_stack_size() - clamp(stack_size, 1, new_item.get_max_stack_size())
 		if stack_size <= max_to_stack:
 			new_item.set_stack_size(stack_size + main_kieszen.get_item_with_prototype_id(item_name).get_stack_size())
 			return 0
