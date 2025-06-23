@@ -1,30 +1,36 @@
 extends Interactable_object
 class_name pickable_item
 
-@export var item_display_name : String
+@export var item_id_name : String
+@export var item_description : String
 @export var item_name : String
 @export var item_amount : int = 1
 
 
-func _init(name : String = "", amount : int = 1, display : String = ""):
-	item_name = name
+func _init(item_name_param : String = "", amount : int = 1, display : String = ""):
+	item_name = item_name_param
 	item_amount = amount
-	item_display_name = display
+	item_description = display
 	
 func set_values(inv_item : InventoryItem):
-	item_display_name = inv_item.get_description()
+	item_id_name = inv_item.get_proto_id()
+	item_description = inv_item.get_description()
 	item_name = inv_item.get_title()
 	item_amount = inv_item.get_stack_size()
 	active_sprite.texture = load(inv_item.get_property("image"))
 
 func _ready() -> void:
-	if item_name != "":
-		var imagePath = Inventory_manager.get_sprite_from_protoset(item_name)
+	if item_id_name != "":
+		var imagePath = Inventory_manager.get_sprite_from_protoset(item_id_name)
+		active_sprite.texture = load(imagePath)
+		print("spawn item")
+	elif item_name != "":
+		var imagePath = Inventory_manager.get_sprite_from_protoset(item_id_name)
 		active_sprite.texture = load(imagePath)
 		print("spawn item")
 
 func Interact():
-	if Inventory_manager.add_item_from_ground(item_name):
+	if Inventory_manager.add_item_from_ground(self):
 		pick_up()
 		return
 	print_debug("Not enought space!")

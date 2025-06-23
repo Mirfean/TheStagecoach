@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://157h3ftf0pbo"]
+[gd_scene load_steps=39 format=3 uid="uid://157h3ftf0pbo"]
 
 [ext_resource type="Script" uid="uid://cplueg4pmwhpg" path="res://Code/player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dq44a5ir83w4g" path="res://Assets/Snoblin/Assets/Prototype_Character/Prototype_Character_Blue.png" id="1_v0iea"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b1j48q08b8k42" path="res://Code/States/PlayerDefault.gd" id="7_8erm5"]
 [ext_resource type="Script" uid="uid://3oy8gkpj2f5o" path="res://Code/States/PlayerAim.gd" id="8_8erm5"]
 [ext_resource type="Script" uid="uid://dyc6mg0ar5dp5" path="res://Code/States/PlayerDialogue.gd" id="14_7dp3o"]
+[ext_resource type="Script" uid="uid://bly2ia073lag6" path="res://Code/PlayerInventory.gd" id="15_h4iuc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ukyrk"]
 radius = 12.0416
@@ -293,6 +294,11 @@ metadata/_custom_type_script = "uid://3oy8gkpj2f5o"
 script = ExtResource("14_7dp3o")
 my_player = NodePath("../..")
 metadata/_custom_type_script = "uid://dyc6mg0ar5dp5"
+
+[node name="Inventory" type="Node" parent="StateMachine" node_paths=PackedStringArray("my_player")]
+script = ExtResource("15_h4iuc")
+my_player = NodePath("../..")
+metadata/_custom_type_script = "uid://bduin25p5hfdx"
 
 [node name="WeaponHolder" type="Node2D" parent="."]
 position = Vector2(0, -7)

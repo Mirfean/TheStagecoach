@@ -35,6 +35,7 @@ var health := 50
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Inventory_manager.player_char = self
+	inventory = get_tree().get_first_node_in_group("Inventory")
 	aimer.visible = false
 	set_weapon()
 
@@ -44,13 +45,19 @@ func _process(delta: float) -> void:
 	pass
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ChangeWeapon") and stateMachine.currentState.name == "Default":
-		set_weapon((weapon_index+1)%weapons.size())
-	if event.is_action_pressed("Interaction") and stateMachine.currentState.name == "Default":
-		if closest_interaction != null:
-			closest_interaction.Interact()
-	if event.is_action_pressed("Inventory") and stateMachine.currentState.name != "Menu":
-		inventory.activation()
+	if stateMachine.currentState.name == "Default":
+		if event.is_action_pressed("ChangeWeapon"):
+			set_weapon((weapon_index+1)%weapons.size())
+		if event.is_action_pressed("Interaction"):
+			if closest_interaction != null:
+				closest_interaction.Interact()
+		if event.is_action_pressed("Inventory"):
+			if stateMachine.currentState.name == "Inventory":
+				Inventory_manager.closeInvUI()
+			else:
+				inventory.activate()
+	if event.is_action_pressed("Close") and stateMachine.currentState.name == "Inventory":
+		Inventory_manager.closeInvUI()
 	#if event.is_action_pressed("TestButton") and stateMachine.currentState.name == "Default":
 		#DialogueManager.show_dialogue_balloon(load("res://Scenes/balloon.tscn"), "start")
 
@@ -116,6 +123,16 @@ func remove_this_closest(object : Interactable_object):
 	if closest_interaction == object:
 		closest_interaction.off_highlight()
 		closest_interaction = null
+		
+func open_inventory_state():
+	print("Inventory")
+	if stateMachine.currentState.name == "Default":
+		stateMachine.on_child_transition(stateMachine.currentState, "Inventory")
+	
+func close_inventory_state():
+	print("Close Inventory")
+	if stateMachine.currentState.name == "Inventory":
+		stateMachine.on_child_transition(stateMachine.currentState, "Default")
 	
 func getDamage(damage: int):
 	if dead:

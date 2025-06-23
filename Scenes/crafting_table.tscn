@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2tmq8c4gjgwf"]
+
+[ext_resource type="Script" uid="uid://uk3opbvho5ap" path="res://crafting_table.gd" id="1_gmvgx"]
+[ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="2_ey48p"]
+[ext_resource type="Texture2D" uid="uid://c4jyjniwf4b3k" path="res://Assets/Sprites/Crafting table.png" id="2_qqxv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey48p"]
+size = Vector2(38, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fdv1"]
+size = Vector2(34, 17)
+
+[node name="Crafting_table" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider")]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_gmvgx")
+outline_shader = ExtResource("2_ey48p")
+active_sprite = NodePath("Sprite2D")
+collider = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://btuogr22l0ivv"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_qqxv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_ey48p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_2fdv1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

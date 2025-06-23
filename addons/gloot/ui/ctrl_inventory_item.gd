@@ -8,6 +8,7 @@ extends CtrlInventoryItemBase
 ## size).
 
 const OUTLINE_MATERIAL = preload("res://Shaders/outline_inventory_item.tres")
+const STACK_SIZE_THEME = preload("res://Shaders/LabelSettings/stack_size_theme.tres")
 
 const _Utils = preload("res://addons/gloot/core/utils.gd")
 
@@ -49,9 +50,11 @@ func _ready() -> void:
 	_texture_rect.material = OUTLINE_MATERIAL
 
 	_stack_size_label = Label.new()
+	_stack_size_label.label_settings = STACK_SIZE_THEME
 	_stack_size_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_stack_size_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_stack_size_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	
 
 	add_child(_texture_rect)
 	add_child(_stack_size_label)

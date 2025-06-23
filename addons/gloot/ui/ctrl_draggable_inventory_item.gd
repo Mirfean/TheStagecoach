@@ -96,6 +96,7 @@ func _create_preview() -> Control:
 	preview.item = item
 	preview.size = size
 	preview.icon_stretch_mode = icon_stretch_mode
+	preview.z_index = 5
 	return preview
 
 

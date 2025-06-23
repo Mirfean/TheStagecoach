@@ -4,8 +4,10 @@ class_name GameManager
 var player_char : player
 var item_prefab : PackedScene = load("res://Scenes/pickable_item.tscn")
 
+const info_offset: Vector2 = Vector2(50, 0)
 
 func _ready() -> void:
+	self.add_to_group("GameManager")
 	player_char = get_tree().get_first_node_in_group("player")
 	Inventory_manager.game_manager = self
 

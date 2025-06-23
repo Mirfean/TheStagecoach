@@ -6,19 +6,20 @@ const info_offset: Vector2 = Vector2(50, 0)
 @export var Player : player
 @export var weapon_bundle : WeaponBundle
 
-@onready var main_backpack_grid: CtrlInventoryGrid = $"Main panel/mainBackpackGrid"
-@onready var left_backpack_grid: CtrlInventoryGrid = $"Lewy panel/leftBackpackGrid"
-@onready var right_backpack_grid: CtrlInventoryGrid = $"Prawy panel/rightBackpackGrid"
+@onready var main_backpack_grid: CtrlInventoryGrid = $"Backpack/Main panel/mainBackpackGrid"
+@onready var left_backpack_grid: CtrlInventoryGrid = $"Backpack/Lewy panel/leftBackpackGrid"
+@onready var right_backpack_grid: CtrlInventoryGrid = $"Backpack/Prawy panel/rightBackpackGrid"
 
-@onready var main_kieszen: Inventory = $"Main kieszen"
-@onready var lewa_kieszonka: Inventory = $"Lewa kieszonka"
-@onready var prawa_kieszonka: Inventory = $"Prawa kieszonka"
+@onready var main_kieszen: Inventory = $"Inventories/Main kieszen"
+@onready var lewa_kieszonka: Inventory = $"Inventories/Lewa kieszonka"
+@onready var prawa_kieszonka: Inventory = $"Inventories/Prawa kieszonka"
 
-@onready var weapon_left_hand: CtrlItemSlot = $Panel/Weapon_left_hand
-@onready var weapon_right_hand: CtrlItemSlot = $Panel/Weapon_right_hand
+@onready var weapon_left_hand: CtrlItemSlot = $CharacterEQ/Weapon_left_hand
+@onready var weapon_right_hand: CtrlItemSlot = $CharacterEQ/Weapon_right_hand
 
-var inventories : Array[CtrlInventoryGrid]
+var inv_grids : Array[CtrlInventoryGrid]
 var current_selected_inventory: CtrlInventoryGrid
+var inv_list : Array[Inventory]
 
 signal weapon_left_change
 signal weapon_right_change
@@ -45,16 +46,20 @@ func _ready() -> void:
 	%SplitMain.pressed.connect(_on_btn_split.bind(main_backpack_grid))
 	%SplitRight.pressed.connect(_on_btn_split.bind(right_backpack_grid))
 	
-	inventories.append(main_backpack_grid)
-	inventories.append(left_backpack_grid)
-	inventories.append(right_backpack_grid)
+	inv_grids.append(main_backpack_grid)
+	inv_grids.append(left_backpack_grid)
+	inv_grids.append(right_backpack_grid)
+	
+	inv_list.append(main_kieszen)
+	inv_list.append(lewa_kieszonka)
+	inv_list.append(prawa_kieszonka)
 	
 	activation()
 
 func _on_item_mouse_entered(item: InventoryItem) -> void:
 	%info_text.show()
-	%info_text.text = item.get_title() + "\n" + item.get_description()
-
+	%info_text.text = item.get_title() + "\n" + str(item.get_stack_size()) + " / " + str(item.get_max_stack_size()) + "\n" + item.get_description()
+	
 func activation():
 	print(process_mode)
 	if process_mode == Node.PROCESS_MODE_DISABLED:
@@ -70,11 +75,13 @@ func activate():
 	self.visible = true
 	process_mode = Node.PROCESS_MODE_INHERIT
 	get_parent().visible = true
+	Player.open_inventory_state()
 	
 func disactivate():
 	self.visible = false
 	process_mode = PROCESS_MODE_DISABLED
 	get_parent().visible = false
+	Player.close_inventory_state()
 
 func _on_item_mouse_exited(_item: InventoryItem) -> void:
 	%info_text.hide()
@@ -116,14 +123,58 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	
 func _item_selected(invItem: InventoryItem):
 	print(invItem.get_inventory().name)
-	for x in inventories:
+	for x in inv_grids:
 		if x.inventory.name == invItem.get_inventory().name:
 			current_selected_inventory = x
 			continue
 		x.deselect_inventory_items()
 
-func spawn_new_item_inventoryItem(item : InventoryItem):
-	main_kieszen.create_and_add_item(item.get_title())
+func spawn_new_item_inventoryItem(item : InventoryItem, stack : int = -1):
+	if main_kieszen.has_item(item):
+		var current_amount = main_kieszen.get_item_with_prototype_id(item.get_proto_id()).get_stack_size()
+		var to_add = item.get_stack_size()
+		if current_amount + to_add <= item.get_max_stack_size():
+			main_kieszen.get_item_with_prototype_id(item.get_proto_id()).set_stack_size(current_amount + to_add)
+		else:
+			var stacks = (current_amount + to_add) - item.get_max_stack_size()
+			while stacks > 0:
+				var new_item = main_kieszen.create_and_add_item(item.get_proto_id())
+				new_item.set_stack_size(clamp(stacks, 1, item.get_max_stack_size()))
+				stacks -= item.get_max_stack_size()
+			#dodać by dodawało itemy aż liczba będzie mniejsza niż max_stack_size
+	
+	else:
+		var new_item = main_kieszen.create_and_add_item(item.get_proto_id())
+		if new_item:
+			new_item.set_stack_size(item.get_stack_size())
+			
+func spawn_new_item_inventory(item_name : String, stack_size : int) -> int:
+	var new_item = main_kieszen.create_item(item_name)
+	var max_stack = new_item.get_max_stack_size()
+	if not new_item:
+		return stack_size
+	#Checking if that item already exists in inventory
+	var item_in_eq = main_kieszen.get_item_with_prototype_id(item_name)
+	if item_in_eq:
+		var current_stack = item_in_eq.get_stack_size()
+		#var max_to_stack = new_item.get_max_stack_size() - clamp(stack_size, 1, item_in_eq.get_stack_size())
+		var max_to_stack = new_item.get_max_stack_size() - item_in_eq.get_stack_size()
+		if stack_size <= max_to_stack:
+			item_in_eq.set_stack_size(stack_size + item_in_eq.get_stack_size())
+			return 0
+		else:
+			item_in_eq.set_stack_size(item_in_eq.get_max_stack_size())
+			stack_size -= max_to_stack
+	#Adding new stacks of picked item
+	while stack_size > 0:
+		if main_kieszen.can_add_item(new_item):
+			var current_stack = clamp(stack_size, 1, new_item.get_max_stack_size())
+			main_kieszen.create_and_add_item2(item_name, current_stack)
+			stack_size -= current_stack
+		else:
+			break
+	return stack_size
+
 	
 func spawn_new_item_name(itemTitle : String, amount : int = 1):
 	main_kieszen.create_and_add_item(itemTitle, amount)
@@ -157,7 +208,56 @@ func set_weapon_to_hand(hand_id : int, itemSlot : CtrlItemSlot):
 
 func _on_weapon_left_cleared(item: InventoryItem) -> void:
 	set_weapon_to_hand(0, weapon_left_hand)
-		
 
 func _on_weapon_right_cleared(item: InventoryItem) -> void:
 	set_weapon_to_hand(1, weapon_right_hand)
+
+func find_item(item : String, amount : int = 1) -> InventoryItem:
+	print("dupa")
+	var found_amount = 0
+	for inv in inv_list:
+		var current_item = inv.get_item_with_title(item)
+		if current_item:
+			if found_amount + current_item.get_property("stack_size") >= amount:
+				return inv.get_item_with_title(item)
+			else:
+				print("za mało...")
+				found_amount += current_item.get_property("stack_size")
+	return null
+
+func find_item_amount(item_name : String, amount : int = 1) -> bool:
+	var current_found = 0
+	for inv in inv_list:
+		var items_in_inv = inv.get_items_with_prototype_id(item_name)
+		for item in items_in_inv:
+			current_found += item.get_property("stack_size")
+	if current_found >= amount:
+		return true
+	return false
+	
+func remove_item_amount(item_name : String, amount : int = 1):
+	var to_remove = amount
+	for inv in inv_list:
+		if to_remove <= 0:
+			return
+		var items_in_inv = inv.get_items_with_prototype_id(item_name)
+		for item in items_in_inv:
+			if to_remove <= 0:
+				return
+			if item.get_stack_size() >= to_remove:
+				remove_item(item, to_remove)
+				return
+			else:
+				to_remove -= item.get_stack_size()
+				remove_item(item, item.get_stack_size())
+
+func remove_item(inv_item: InventoryItem, amount : int):
+	var current_amount = inv_item.get_property("stack_size")
+	if current_amount > amount:
+		inv_item.set_property("stack_size", current_amount - amount)
+	elif current_amount == amount:
+		var inv = inv_item.get_inventory()
+		inv.remove_item(inv_item)
+	else:
+		print_debug("We shouldn't be there...")
+		
