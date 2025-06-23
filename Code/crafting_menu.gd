@@ -95,7 +95,7 @@ func remove_after_crafted(item : InventoryItem):
 func craft_item():
 	if not ResultSlot.get_item():
 		return
-	if Inventory_manager.add_item_to_main(ResultSlot.get_item()):
+	if Inventory_manager.add_InventoryItem_to_main(ResultSlot.get_item()):
 		remove_after_crafted(ResultSlot.get_item())
 	else:
 		print_debug("Womp...")

@@ -214,17 +214,44 @@ func _on_weapon_right_cleared(item: InventoryItem) -> void:
 
 func find_item(item : String, amount : int = 1) -> InventoryItem:
 	print("dupa")
+	var found_amount = 0
 	for inv in inv_list:
 		var current_item = inv.get_item_with_title(item)
 		if current_item:
-			if current_item.get_property("stack_size") >= amount:
+			if found_amount + current_item.get_property("stack_size") >= amount:
 				return inv.get_item_with_title(item)
 			else:
 				print("za mało...")
+				found_amount += current_item.get_property("stack_size")
 	return null
 
+func find_item_amount(item_name : String, amount : int = 1) -> bool:
+	var current_found = 0
+	for inv in inv_list:
+		var items_in_inv = inv.get_items_with_prototype_id(item_name)
+		for item in items_in_inv:
+			current_found += item.get_property("stack_size")
+	if current_found >= amount:
+		return true
+	return false
+	
+func remove_item_amount(item_name : String, amount : int = 1):
+	var to_remove = amount
+	for inv in inv_list:
+		if to_remove <= 0:
+			return
+		var items_in_inv = inv.get_items_with_prototype_id(item_name)
+		for item in items_in_inv:
+			if to_remove <= 0:
+				return
+			if item.get_stack_size() >= to_remove:
+				remove_item(item, to_remove)
+				return
+			else:
+				to_remove -= item.get_stack_size()
+				remove_item(item, item.get_stack_size())
+
 func remove_item(inv_item: InventoryItem, amount : int):
-	print("dupa 2")
 	var current_amount = inv_item.get_property("stack_size")
 	if current_amount > amount:
 		inv_item.set_property("stack_size", current_amount - amount)
@@ -233,3 +260,4 @@ func remove_item(inv_item: InventoryItem, amount : int):
 		inv.remove_item(inv_item)
 	else:
 		print_debug("We shouldn't be there...")
+		

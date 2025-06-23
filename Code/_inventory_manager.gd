@@ -43,17 +43,24 @@ func close_current_chest():
 	user_inv.disactivate()
 	current_chest = null
 
-	
-func add_item_from_ground(item : pickable_item) -> bool:
-	print_debug("Pickup ", item.item_name)
-	var new_item = user_inv.main_kieszen.create_item(item.item_id_name)
+# ADDING ITEMS
+####################################################################
+func add_item_to_inventory(item_name : String, amount : int = 1):
+	var new_item = user_inv.main_kieszen.create_item(item_name)
 	if not new_item:
 		return false	
-	var stack_remaining = user_inv.spawn_new_item_inventory(new_item.get_proto_id(), item.item_amount)
+	var stack_remaining = user_inv.spawn_new_item_inventory(new_item.get_proto_id(), amount)
 	if stack_remaining > 0:
-		spawn_item_on_ground(item.item_id_name, stack_remaining)
+		spawn_item_on_ground(item_name, stack_remaining)
 	return true
 	
+func add_item_from_ground(item : pickable_item) -> bool:
+	return add_item_to_inventory(item.item_id_name, item.item_amount)
+	
+func add_InventoryItem_to_main(item : InventoryItem) -> bool:
+	return add_item_to_inventory(item.get_proto_id(), item.get_stack_size())
+####################################################################
+
 func spawn_item_on_ground(item_name : String, amount : int) -> bool:
 	print_debug("Put down ", item_name)
 	var item_info = user_inv.main_kieszen.create_item(item_name)
@@ -68,23 +75,16 @@ func spawn_item_on_ground(item_name : String, amount : int) -> bool:
 	new_item.set_values(item_info)
 	new_item.item_amount = amount
 	return true
-	
+
 func get_sprite_from_protoset(object_ID: String) -> String:
 	return user_inv.main_kieszen.get_prototree().get_prototype(object_ID).get_property("image")
 	#return user_inv.main_kieszen.get_property_from_prototree(object_name, "image")
 
-func add_item_to_main(item : InventoryItem) -> bool:
-	var new_item = user_inv.main_kieszen.create_and_add_item(item.get_proto_id())
-	if new_item != null:
-		new_item.set_stack_size(item.get_stack_size())
-		return true
-	return false
-
-func check_eq_for(item : String, amount : int, remove : bool = false):
-	var inv_item = user_inv.find_item(item, amount)
+func check_eq_for(item : String, remove : bool = false, amount : int = 1) -> bool:
+	var inv_item = user_inv.find_item_amount(item, amount)
 	if inv_item:
 		if remove:
-			user_inv.remove_item(inv_item, amount)
+			user_inv.remove_item_amount(item, amount)
 		return true
 	else:
 		return false

@@ -1,13 +1,18 @@
 ~ start
 =>< Kanapka
+if DMM.check_inventory("BIG_DUCK", true, 5)
+	Pan Staszek: Dzięki za darmową kaczkę
+	do DMM.receive_item("Ser")
+if not DMM.check_inventory("Kamyczek", true, 2)
+	Pan Staszek: A gdzie kurwa kamyczki
 Papryk: Dzień dobry Panu, jak mija letni wieczór?
 Pan Staszek: Niech będzie pochwalony! A proszę Pana [speed=0.1] powolutku... [/speed] 
 Pan Staszek : No, my tu [wave] gadu gadu [/wave] a ja bym se zjod [u][b][color=red][hint=Rodzaj dania, prosta potrawa przyrządzana na bazie cienkich kromek białego lub razowego chleba, ewentualnie rozkrojonej bułki. \n Kanapki smaruje się masłem, okłada wędlinami, pieczenią wieprzową, kiełbasą, szynką lub serem, \n spożywa również z jajkiem na twardo, plasterkiem ogórka lub rybą, z dodatkiem warzyw do wyboru oraz sosów itp.]kanapkę[/hint][/color][/b][/u].
-if DMM.check_inventory("Dzida", 1, true)
+if DMM.check_inventory("Dzida")
 	Pan Staszek: Ale piękna dzida :>
 if DMM.check_inventory("Kaczka al dente")
 	Pan Staszek: I ładna kaczuszka
-if DMM.check_inventory("Kanapka", 1, true)
+if DMM.check_inventory("Kanapka", true)
 	do DMM.set_bool("Kanapka_oddana", true)
 	Pan Staszek: O cholera, ale dobra kanapeczka!!!
 => END

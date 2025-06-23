@@ -1,7 +1,6 @@
 extends Node
 class_name Dialogue_MiddleMan
 
-var inv_mag : InventoryManager
 var game_mag : GameManager
 
 var var_bool : Dictionary
@@ -10,7 +9,6 @@ var var_string : Dictionary
 
 func _ready() -> void:
 	self.add_to_group("DialogueMM")
-	inv_mag = Inventory_manager
 	game_mag = Game_Manager
 	Inventory_manager.dialogue_mm = self
 	
@@ -32,6 +30,9 @@ func get_string(key: String):
 func set_string(key: String, value : String):
 	var_string[key] = value
 
-func check_inventory(item_name : String, amount : int = 1, remove : bool = false) -> bool:
+func check_inventory(item_name : String,remove : bool = false, amount : int = 1) -> bool:
 	print("siema")
-	return inv_mag.check_eq_for(item_name, amount, remove)
+	return Inventory_manager.check_eq_for(item_name, remove, amount)
+
+func receive_item(item_name : String, amount : int = 1):
+	Inventory_manager.add_item_to_inventory(item_name, amount)
