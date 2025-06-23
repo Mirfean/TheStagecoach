@@ -7,8 +7,8 @@ class_name pickable_item
 @export var item_amount : int = 1
 
 
-func _init(name : String = "", amount : int = 1, display : String = ""):
-	item_name = name
+func _init(item_name_param : String = "", amount : int = 1, display : String = ""):
+	item_name = item_name_param
 	item_amount = amount
 	item_description = display
 	

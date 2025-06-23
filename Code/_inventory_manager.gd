@@ -47,17 +47,16 @@ func close_current_chest():
 func add_item_from_ground(item : pickable_item) -> bool:
 	print_debug("Pickup ", item.item_name)
 	var new_item = user_inv.main_kieszen.create_item(item.item_id_name)
+	if not new_item:
+		return false	
 	var stack_remaining = user_inv.spawn_new_item_inventory(new_item.get_proto_id(), item.item_amount)
 	if stack_remaining > 0:
-		spawn_item_on_ground(item.item_name, stack_remaining)
-	if new_item != null:
-		new_item.set_stack_size(item.item_amount)
-		return true
-	return false
+		spawn_item_on_ground(item.item_id_name, stack_remaining)
+	return true
 	
 func spawn_item_on_ground(item_name : String, amount : int) -> bool:
 	print_debug("Put down ", item_name)
-	var item_info = user_inv.main_kieszen.get_item_with_prototype_id(item_name)
+	var item_info = user_inv.main_kieszen.create_item(item_name)
 	if item_info == null:
 		return false
 	if not spawn_item_father:
