@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://157h3ftf0pbo"]
+[gd_scene load_steps=43 format=3 uid="uid://157h3ftf0pbo"]
 
 [ext_resource type="Script" uid="uid://cplueg4pmwhpg" path="res://Code/player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dq44a5ir83w4g" path="res://Assets/Snoblin/Assets/Prototype_Character/Prototype_Character_Blue.png" id="1_v0iea"]
@@ -43,6 +43,14 @@ region = Rect2(32, 320, 32, 32)
 atlas = ExtResource("1_v0iea")
 region = Rect2(64, 320, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(32, 64, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("1_v0iea")
 region = Rect2(0, 0, 32, 32)
@@ -50,6 +58,14 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("1_v0iea")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olqyp"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpjfl"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("1_v0iea")
@@ -117,6 +133,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fs7ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6n3p")
+}],
+"loop": true,
+"name": &"Idle-back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cvnsp")
 }, {
 "duration": 1.0,
@@ -124,6 +151,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle-front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olqyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpjfl")
+}],
+"loop": true,
+"name": &"Idle-horizontal",
 "speed": 5.0
 }, {
 "frames": [{
@@ -216,7 +254,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_7dp3o")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_vgqql")
-animation = &"Idle-front"
+animation = &"Idle-horizontal"
 
 [node name="Shadow Under" type="Sprite2D" parent="."]
 z_index = -3
@@ -258,7 +296,6 @@ width = 1.0
 script = ExtResource("6_f1ek2")
 
 [node name="smol" type="Sprite2D" parent="Aim/Aimer"]
-visible = false
 scale = Vector2(0.43, 0.43)
 texture = ExtResource("4_f1ek2")
 

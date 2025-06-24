@@ -7,6 +7,13 @@ enum PlayerState {
 	Aim #celowanie giwerą :essa:
 }
 
+enum LookDirection {
+	Up,
+	Down,
+	Left,
+	Right
+}
+
 @onready var playerSprite: AnimatedSprite2D = $CharacterAnimSprite
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var aimer: Sprite2D = $Aim/Aimer
@@ -25,6 +32,7 @@ var closest_interaction : Node2D
 
 #PlayerStats
 var playerState := PlayerState.Default
+@export var lookDirection := LookDirection.Down
 var can_interact := true
 var speed := 80
 var dead := false
@@ -41,7 +49,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func _input(event: InputEvent) -> void:
@@ -71,7 +79,7 @@ func _physics_process(delta: float) -> void:
 func Movement():
 	character_direction.x = Input.get_axis("moveLeft", "moveRight")
 	character_direction.y = Input.get_axis("moveUp", "moveDown")
-
+	setLookingDirection()
 	#Flip Sprite
 	if character_direction.y < 0:
 		playerSprite.flip_h = false
@@ -93,10 +101,40 @@ func Movement():
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		#Set all 3 Idles later
-		if playerSprite.animation != "Idle-front":
-			playerSprite.play("Idle-front")
+		match lookDirection:
+			LookDirection.Up:
+				playerSprite.play("Idle-back")
+			LookDirection.Down:
+				playerSprite.play("Idle-front")
+			LookDirection.Left:
+				playerSprite.play("Idle-horizontal")
+				playerSprite.flip_h = true
+			LookDirection.Right:
+				playerSprite.play("Idle-horizontal")
+				playerSprite.flip_h = false
+		
+		
 		
 	move_and_slide()
+
+
+func setLookingDirection():
+	var direction_vector = self.global_position - get_global_mouse_position()
+	var dead_zone_radius = 20
+	if direction_vector.length() < dead_zone_radius:
+		print("In dead zone")
+		return
+	var angle = rad_to_deg(direction_vector.angle())
+	if angle >= -45 and angle < 45:
+		lookDirection = LookDirection.Left
+	elif angle >= 45 and angle < 135:
+		lookDirection = LookDirection.Up
+	elif angle >= 135 or angle < -135:
+		lookDirection = LookDirection.Right
+	elif angle >= -135 and angle < -45:
+		lookDirection = LookDirection.Down
+
+
 
 func set_weapon(weapon_id : int = 0):
 	if weapon_instance:
