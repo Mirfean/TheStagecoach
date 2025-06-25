@@ -7387,9 +7387,10 @@ tile_map_data = PackedByteArray("AAALAP//AAAsAAMAAAALAAAAAAAsAAQAAAALAAEAAAAsAAU
 tile_set = ExtResource("1_n5vn0")
 navigation_enabled = false
 
-[node name="player Z3" parent="Ysort" instance=ExtResource("2_vnw6p")]
+[node name="player Z3" parent="Ysort" node_paths=PackedStringArray("vision") instance=ExtResource("2_vnw6p")]
 position = Vector2(-339, 348)
 weapon_data = ExtResource("10_uh8jm")
+vision = NodePath("PointLight2D")
 
 [node name="Camera2D" type="Camera2D" parent="Ysort/player Z3"]
 zoom = Vector2(8, 8)

@@ -24,6 +24,7 @@ enum LookDirection {
 @export var weapon_index : int
 @export var weapon_data : _Weapon_
 @export var WeaponHolder : Node2D
+@export var vision : player_vision
 
 var character_direction : Vector2
 var weapon_instance : Node2D
@@ -55,6 +56,8 @@ func _process(_delta: float) -> void:
 	pass
 	
 func _input(event: InputEvent) -> void:
+	if dead:
+		return
 	if stateMachine.currentState.name == "Default":
 		if event.is_action_pressed("ChangeWeapon"):
 			set_weapon((weapon_index+1)%weapons.size())
@@ -77,6 +80,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if stateMachine.currentState.name == "Default" or stateMachine.currentState.name == "Aim":
 		Movement()
+		vision.setAngle()
 
 func Movement():
 	character_direction.x = Input.get_axis("moveLeft", "moveRight")
@@ -109,9 +113,10 @@ func Movement():
 				character_direction.y = character_direction.y * sideway_speed
 				if character_direction.x < 0:
 					character_direction.x = character_direction.x * backward_speed
-		
+					
+		if character_direction.x != 0 and character_direction.y != 0:
+			character_direction = character_direction * 0.7
 		velocity = character_direction * speed 
-		
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		#Set all 3 Idles later
@@ -126,9 +131,6 @@ func Movement():
 			LookDirection.Right:
 				playerSprite.play("Idle-horizontal")
 				playerSprite.flip_h = false
-		
-		
-		
 	move_and_slide()
 
 
@@ -164,14 +166,12 @@ func set_weapon(weapon_id : int = 0):
 		print(x.nameW)
 	
 func set_new_closest(object : Interactable_object):
-	print("Siema")
 	if closest_interaction != null:
 		closest_interaction.off_highlight()
 	closest_interaction = object
 	closest_interaction.on_highlight()
 	
 func remove_this_closest(object : Interactable_object):
-	print("Papa")
 	if closest_interaction == object:
 		closest_interaction.off_highlight()
 		closest_interaction = null

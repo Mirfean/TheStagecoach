@@ -201,7 +201,7 @@ func set_weapon_to_hand(hand_id : int, itemSlot : CtrlItemSlot):
 	else:
 		new_weapon = get_weapon_from_bundle(new_invItem.get_ID())
 	if not new_weapon:
-		print_debug("Ale chujnia")
+		print_debug("Weapon not found!")
 		return
 	Player.weapons[hand_id] = new_weapon
 	Player.set_weapon(Player.weapon_index)
@@ -213,7 +213,6 @@ func _on_weapon_right_cleared(item: InventoryItem) -> void:
 	set_weapon_to_hand(1, weapon_right_hand)
 
 func find_item(item : String, amount : int = 1) -> InventoryItem:
-	print("dupa")
 	var found_amount = 0
 	for inv in inv_list:
 		var current_item = inv.get_item_with_title(item)
