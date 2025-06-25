@@ -34,7 +34,9 @@ var closest_interaction : Node2D
 var playerState := PlayerState.Default
 @export var lookDirection := LookDirection.Down
 var can_interact := true
-var speed := 80
+var speed := 50
+var sideway_speed := 0.8
+var backward_speed := 0.6
 var dead := false
 var health := 50
 
@@ -69,7 +71,7 @@ func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("TestButton") and stateMachine.currentState.name == "Default":
 		#DialogueManager.show_dialogue_balloon(load("res://Scenes/balloon.tscn"), "start")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if dead:
 		return
 	
@@ -80,24 +82,36 @@ func Movement():
 	character_direction.x = Input.get_axis("moveLeft", "moveRight")
 	character_direction.y = Input.get_axis("moveUp", "moveDown")
 	setLookingDirection()
-	#Flip Sprite
-	if character_direction.y < 0:
-		playerSprite.flip_h = false
-		playerSprite.play("MoveUp")
-	elif character_direction.y > 0: 
-		playerSprite.flip_h = false
-		playerSprite.play("MoveDown")
-	elif character_direction.x > 0: 
-		playerSprite.flip_h = false
-		playerSprite.play("MoveHorizontal")
-	elif character_direction.x < 0:
-		playerSprite.flip_h = true
-		playerSprite.play("MoveHorizontal")
-	
+
 	if character_direction:
-		if character_direction.x != 0 and character_direction.y != 0:
-			character_direction = character_direction * 0.7
+		match lookDirection:
+			LookDirection.Up:
+				playerSprite.flip_h = false
+				playerSprite.play("MoveUp")
+				character_direction.x = character_direction.x * sideway_speed
+				if character_direction.y > 0:
+					character_direction.y = character_direction.y * backward_speed
+			LookDirection.Down:
+				playerSprite.flip_h = false
+				playerSprite.play("MoveDown")
+				character_direction.x = character_direction.x * sideway_speed
+				if character_direction.y < 0:
+					character_direction.y = character_direction.y * backward_speed
+			LookDirection.Left:
+				playerSprite.flip_h = true
+				playerSprite.play("MoveHorizontal")
+				character_direction.y = character_direction.y * sideway_speed
+				if character_direction.x > 0:
+					character_direction.x = character_direction.x * backward_speed
+			LookDirection.Right:
+				playerSprite.flip_h = false
+				playerSprite.play("MoveHorizontal")
+				character_direction.y = character_direction.y * sideway_speed
+				if character_direction.x < 0:
+					character_direction.x = character_direction.x * backward_speed
+		
 		velocity = character_direction * speed 
+		
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		#Set all 3 Idles later
