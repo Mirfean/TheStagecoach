@@ -3,6 +3,11 @@ class_name weapon_range
 
 @export var shoot_point : Node2D
 @export var bullet : PackedScene
+@export var sound_reload : AudioStreamPlayer2D
+@export var sound_empty : AudioStreamPlayer2D
+@export var clip_size : int
+
+
 var bullet_speed = 500
 var shot_available = true
 
@@ -12,6 +17,8 @@ func _ready() -> void:
 
 func attack_range(angle : float) -> Node2D:
 	print("Siema")
+	if clip_size <= 0:
+		return null
 	var bullet_instance = bullet.instantiate()
 	if bullet_instance is Bullet:
 		bullet_instance.damage = damage

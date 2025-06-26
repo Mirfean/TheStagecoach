@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjespasntba54"]
+[gd_scene load_steps=10 format=3 uid="uid://cjespasntba54"]
 
 [ext_resource type="Script" uid="uid://bkrpu25bvldyr" path="res://Code/weapon_melee.gd" id="1_ye0n0"]
 [ext_resource type="Resource" uid="uid://b0ifbx8b2s8ur" path="res://Resources/Weapons/dzida.tres" id="2_lismn"]
 [ext_resource type="Texture2D" uid="uid://brtp8ltiplnh6" path="res://Assets/Sprites/Weapons/dzida.png" id="3_pab3k"]
+[ext_resource type="AudioStream" uid="uid://cacbmb2v27av7" path="res://Audio/melee-weapon-swings.mp3" id="4_lismn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcoia"]
 size = Vector2(7.00001, 6.49999)
@@ -86,5 +87,8 @@ libraries = {
 }
 
 [node name="Firerate" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lismn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -270,7 +270,6 @@ path_desired_distance = 10.0
 target_desired_distance = 20.0
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 
 [connection signal="timeout" from="StateMachine/Idle/Timer" to="StateMachine/Idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Follow/Timer" to="StateMachine/Follow" method="_on_timer_timeout"]

@@ -6,6 +6,7 @@ class_name weapon_stats
 @export var data : _Weapon_
 @export var sprite : Node2D
 @export var animation : AnimationPlayer
+@export var sound_attack : AudioStreamPlayer2D
 
 var ID : int
 var weapon_type : String

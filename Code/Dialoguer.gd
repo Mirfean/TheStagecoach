@@ -5,8 +5,14 @@ const Balloon = preload("res://Scenes/balloon.tscn")
 
 @export var dialogue_resource : DialogueResource
 @export var dialogue_start : String = "start"
+@export var actor : Texture2D
 
 var balloon : Node
+
+func _ready() -> void:
+	active_sprite.texture = actor
+	super._ready()
+	
 
 func Interact():
 	if not balloon:
