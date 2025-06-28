@@ -35,9 +35,9 @@ var closest_interaction : Node2D
 var playerState := PlayerState.Default
 @export var lookDirection := LookDirection.Down
 var can_interact := true
-var speed := 50
-var sideway_speed := 0.8
-var backward_speed := 0.6
+var speed := 30
+var sideway_speed := 0.7
+var backward_speed := 0.5
 var dead := false
 var health := 50
 
@@ -49,7 +49,6 @@ func _ready() -> void:
 	inventory = get_tree().get_first_node_in_group("Inventory")
 	aimer.visible = false
 	set_weapon()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -149,8 +148,6 @@ func setLookingDirection():
 		lookDirection = LookDirection.Right
 	elif angle >= -135 and angle < -45:
 		lookDirection = LookDirection.Down
-
-
 
 func set_weapon(weapon_id : int = 0):
 	if weapon_instance:

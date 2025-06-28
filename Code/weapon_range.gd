@@ -18,6 +18,7 @@ func _ready() -> void:
 func attack_range(angle : float) -> Node2D:
 	print("Siema")
 	if clip_size <= 0:
+		sound_empty.play()
 		return null
 	var bullet_instance = bullet.instantiate()
 	if bullet_instance is Bullet:
@@ -28,9 +29,9 @@ func attack_range(angle : float) -> Node2D:
 	bullet_instance.apply_impulse(Vector2(cos(angle), sin(angle)).normalized() * bullet_speed, Vector2.ZERO)
 	shot_available = false
 	firerate_timer.start()
-	
+	clip_size -= 1
+	sound_attack.play()
 	return bullet_instance
-	
 	
 
 func _on_firerate_timeout() -> void:

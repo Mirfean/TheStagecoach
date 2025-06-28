@@ -76,9 +76,8 @@ func spawn_item_on_ground(item_name : String, amount : int) -> bool:
 	new_item.item_amount = amount
 	return true
 
-func get_sprite_from_protoset(object_ID: String) -> String:
-	return user_inv.main_kieszen.get_prototree().get_prototype(object_ID).get_property("image")
-	#return user_inv.main_kieszen.get_property_from_prototree(object_name, "image")
+func get_property_from_protoset(object_ID: String, property : String):
+	return user_inv.main_kieszen.get_prototree().get_prototype(object_ID).get_property(property)
 
 func check_eq_for(item : String, remove : bool = false, amount : int = 1) -> bool:
 	var inv_item = user_inv.find_item_amount(item, amount)

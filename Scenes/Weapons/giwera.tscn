@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdso68oxgp3jg"]
+[gd_scene load_steps=9 format=3 uid="uid://bdso68oxgp3jg"]
 
 [ext_resource type="Script" uid="uid://d14bu245fs0rm" path="res://Code/weapon_range.gd" id="1_dc1tx"]
 [ext_resource type="PackedScene" uid="uid://3onltamw2gfl" path="res://Scenes/Weapons/bullet.tscn" id="2_0xmjj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c2yevcixs8ack" path="res://Assets/Sprites/aim.png" id="5_0xmjj"]
 [ext_resource type="AudioStream" uid="uid://kk3sstps3btn" path="res://Audio/weapons_handun_shot.mp3" id="6_ux73q"]
 [ext_resource type="AudioStream" uid="uid://b6jpk00e3k18p" path="res://Audio/raw/654374__njjjjjjjjjjjjjjjjjjjjjjjj__loading-gun.wav" id="7_eopvo"]
+[ext_resource type="AudioStream" uid="uid://b6c4md2lwnohg" path="res://Audio/528708__rolly-sfx__empty-ruger-rifle.mp3" id="7_jk1lq"]
 
 [node name="giwera" type="Area2D" node_paths=PackedStringArray("shoot_point", "sound_reload", "sound_empty", "sprite", "sound_attack")]
 scale = Vector2(0.33, 0.33)
@@ -36,10 +37,14 @@ texture = ExtResource("5_0xmjj")
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ux73q")
+bus = &"Effects"
 
 [node name="Empty" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_jk1lq")
+bus = &"Effects"
 
 [node name="Reload" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_eopvo")
+bus = &"Effects"
 
 [connection signal="timeout" from="Firerate" to="." method="_on_firerate_timeout"]

@@ -13,6 +13,8 @@ func attack(): #now only for melee
 	if collider:
 		active_collider(true)
 		animation.play("attack")
+		sound_attack.play()
+		
 	
 func reset(anim_name: String):
 	if anim_name == "attack":

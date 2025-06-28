@@ -62,7 +62,7 @@ _data = {
 &"return": SubResource("Animation_lwvwe")
 }
 
-[node name="Dzida" type="Area2D" node_paths=PackedStringArray("collider", "sprite", "animation") groups=["melee"]]
+[node name="Dzida" type="Area2D" node_paths=PackedStringArray("collider", "sprite", "animation", "sound_attack") groups=["melee"]]
 collision_layer = 4
 collision_mask = 32
 script = ExtResource("1_ye0n0")
@@ -70,6 +70,7 @@ collider = NodePath("CollisionShape2D")
 data = ExtResource("2_lismn")
 sprite = NodePath("Sprite2D")
 animation = NodePath("AnimationPlayer")
+sound_attack = NodePath("AudioStreamPlayer2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -90,5 +91,6 @@ libraries = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_lismn")
+bus = &"Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

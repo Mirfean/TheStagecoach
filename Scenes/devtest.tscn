@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bblo7i4i8oqiw" path="res://Assets/Asset_Pack_Chryst/Wall_01/CharacterScale_export_dir1.png" id="3_rvgqc"]
 [ext_resource type="PackedScene" uid="uid://bjn2hakow4wkb" path="res://Scenes/slime.tscn" id="4_vgerr"]
 [ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="5_qfkbf"]
-[ext_resource type="Texture2D" uid="uid://cdsmtyegnm0j3" path="res://Assets/Sprites/Light2D.png" id="6_8rn85"]
 [ext_resource type="AudioStream" uid="uid://d3m2hxtkdbixy" path="res://Audio/175447__zuluonedrop__zulu_140_fmin_skank_dub.mp3" id="9_v3aah"]
 [ext_resource type="Script" uid="uid://d0a4infiqw3ck" path="res://Code/player_view.gd" id="10_lek8k"]
 [ext_resource type="Resource" uid="uid://ddbs081nggh0k" path="res://Resources/Weapons/Fists.tres" id="10_uh8jm"]
+[ext_resource type="Texture2D" uid="uid://ug15ward7ke2" path="res://Assets/Sprites/Light2D3.png" id="10_v3aah"]
 [ext_resource type="PackedScene" uid="uid://bmwokj6fqlsm" path="res://Scenes/door.tscn" id="13_2iyog"]
 [ext_resource type="PackedScene" uid="uid://dw3yavdu3xykm" path="res://Scenes/dialoguer.tscn" id="14_ev6ro"]
 [ext_resource type="Resource" uid="uid://tquyr1n8iaqe" path="res://Dialogues/Pan_Staszek.dialogue" id="15_uh8jm"]
@@ -7321,6 +7321,7 @@ sources/9 = SubResource("TileSetAtlasSource_rvgqc")
 [node name="Lights" type="Node" parent="."]
 
 [node name="Debug" type="DirectionalLight2D" parent="Lights"]
+visible = false
 editor_only = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -7386,7 +7387,7 @@ tile_set = ExtResource("1_n5vn0")
 navigation_enabled = false
 
 [node name="player Z3" parent="Ysort" node_paths=PackedStringArray("vision") instance=ExtResource("2_vnw6p")]
-position = Vector2(-339, 348)
+position = Vector2(-167, 529)
 weapon_data = ExtResource("10_uh8jm")
 vision = NodePath("PointLight2D")
 
@@ -7395,17 +7396,18 @@ zoom = Vector2(8, 8)
 process_callback = 0
 position_smoothing_enabled = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Ysort/player Z3/Camera2D"]
+[node name="Muzyczka" type="AudioStreamPlayer2D" parent="Ysort/player Z3/Camera2D"]
 stream = ExtResource("9_v3aah")
 autoplay = true
+bus = &"Music"
 
 [node name="PointLight2D" type="PointLight2D" parent="Ysort/player Z3"]
-position = Vector2(0, -5)
+position = Vector2(0, -4)
 color = Color(0.211789, 0.69161, 0.699535, 1)
 energy = 0.9
 blend_mode = 2
-texture = ExtResource("6_8rn85")
-offset = Vector2(27.515, 0)
+texture = ExtResource("10_v3aah")
+offset = Vector2(36.93, 0)
 texture_scale = 1.2
 script = ExtResource("10_lek8k")
 
@@ -7417,18 +7419,18 @@ script = ExtResource("1_d2752")
 [node name="BackgroundItems" type="Node" parent="."]
 
 [node name="pickable_item" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
-position = Vector2(-780, 645)
+position = Vector2(-206, 504)
 item_id_name = "default_giwera"
 item_name = "default_giwera"
 
 [node name="pickable_item2" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
-position = Vector2(-751, 574)
+position = Vector2(-142, 564)
 item_id_name = "BIG_DUCK"
 item_name = "Big Duck"
 item_amount = 23
 
 [node name="pickable_item3" parent="BackgroundItems" instance=ExtResource("16_xou3p")]
-position = Vector2(-510, 617)
+position = Vector2(-205, 560)
 item_id_name = "Kamyczek"
 item_name = "Kamyczek"
 
@@ -7547,7 +7549,7 @@ position = Vector2(-465, 585)
 position = Vector2(-519, 192)
 
 [node name="Slime4" parent="Enemies" instance=ExtResource("4_vgerr")]
-position = Vector2(-228, 11)
+position = Vector2(-282, -82)
 
 [node name="Dialoguer2" parent="." instance=ExtResource("14_ev6ro")]
 position = Vector2(-729, 653)
@@ -7561,4 +7563,9 @@ color = Color(0.0475577, 0.0475576, 0.0475576, 1)
 [node name="Crafting_table" parent="." instance=ExtResource("16_8rn85")]
 z_index = 3
 position = Vector2(-922, -387)
+scale = Vector2(0.485, 0.485)
+
+[node name="Crafting_table2" parent="." instance=ExtResource("16_8rn85")]
+z_index = 3
+position = Vector2(170, 256)
 scale = Vector2(0.485, 0.485)
