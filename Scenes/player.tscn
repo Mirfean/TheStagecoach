@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://157h3ftf0pbo"]
+[gd_scene load_steps=44 format=3 uid="uid://157h3ftf0pbo"]
 
 [ext_resource type="Script" uid="uid://cplueg4pmwhpg" path="res://Code/player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dq44a5ir83w4g" path="res://Assets/Snoblin/Assets/Prototype_Character/Prototype_Character_Blue.png" id="1_v0iea"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://3oy8gkpj2f5o" path="res://Code/States/PlayerAim.gd" id="8_8erm5"]
 [ext_resource type="Script" uid="uid://dyc6mg0ar5dp5" path="res://Code/States/PlayerDialogue.gd" id="14_7dp3o"]
 [ext_resource type="Script" uid="uid://bly2ia073lag6" path="res://Code/PlayerInventory.gd" id="15_h4iuc"]
+[ext_resource type="AudioStream" uid="uid://dn306opldifve" path="res://Audio/raw/615044__junvi__walking-footstep.wav" id="16_fd4e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ukyrk"]
 radius = 12.0416
@@ -129,7 +130,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Dying",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -140,7 +141,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle-back",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,7 +152,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle-front",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -162,7 +163,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle-horizontal",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -179,7 +180,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"MoveDown",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -196,7 +197,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"MoveHorizontal",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -213,7 +214,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"MoveUp",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
@@ -226,7 +227,7 @@ _data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(0.1, 13), 0.0, 0.0, 0, 0, Vecto
 point_count = 7
 metadata/_snap_enabled = true
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "WeaponHolder") groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "WeaponHolder", "sound_walking") groups=["player"]]
 z_index = 3
 position = Vector2(-1, 0)
 collision_layer = 8
@@ -236,6 +237,7 @@ script = ExtResource("1_cvnsp")
 stateMachine = NodePath("StateMachine")
 weapons = Array[ExtResource("2_pu2lt")]([ExtResource("3_ukyrk"), ExtResource("3_ukyrk")])
 WeaponHolder = NodePath("WeaponHolder")
+sound_walking = NodePath("Walking")
 
 [node name="Interaction" type="Area2D" parent="."]
 collision_layer = 1024
@@ -254,7 +256,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_7dp3o")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_vgqql")
-animation = &"Idle-horizontal"
+animation = &"Dying"
 
 [node name="Shadow Under" type="Sprite2D" parent="."]
 z_index = -3
@@ -339,3 +341,7 @@ metadata/_custom_type_script = "uid://bduin25p5hfdx"
 
 [node name="WeaponHolder" type="Node2D" parent="."]
 position = Vector2(0, -7)
+
+[node name="Walking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_fd4e3")
+bus = &"Effects"

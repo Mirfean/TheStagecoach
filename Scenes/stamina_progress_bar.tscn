@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqb2d32vt40y3"]
+
+[ext_resource type="Texture2D" uid="uid://dclxrj5ad5vb7" path="res://Assets/Sprites/Stamina outline.png" id="1_lbx4p"]
+[ext_resource type="Texture2D" uid="uid://b8cg24dd6uxvv" path="res://Assets/Sprites/Stamina filling.png" id="2_cjhka"]
+[ext_resource type="Script" uid="uid://sghf3lrb15ku" path="res://Code/stamina_progress_bar.gd" id="3_je35u"]
+
+[node name="Stamina progress bar" type="TextureProgressBar" groups=["StaminaBar"]]
+anchors_preset = -1
+anchor_right = 0.052
+anchor_bottom = 0.037
+offset_right = 0.159996
+offset_bottom = 0.0400009
+value = 100.0
+texture_over = ExtResource("1_lbx4p")
+texture_progress = ExtResource("2_cjhka")
+script = ExtResource("3_je35u")
+regen_per_second = 25.0
+running_exhaust_per_second = 30.0

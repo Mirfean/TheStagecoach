@@ -3,6 +3,7 @@ class_name enemy_basic
 
 @export var vision_distance : float
 @export var attack_cooldown : float
+@export var state_text : Label
 
 var cooldown_timer : float
 
@@ -14,9 +15,13 @@ func _process(delta: float) -> void:
 		cooldown_timer -= delta
 
 func _physics_process(delta: float) -> void:
-	if vision_ray.target_position.length() < vision_distance and not vision_ray.is_colliding() and stateMachine.currentState.name != "Follow":
+	var current_vision = vision_distance
+	state_text.text = stateMachine.currentState.name
+	if stateMachine.currentState.player_char.stealth:
+		current_vision = current_vision / 2
+	if vision_ray.target_position.length() < current_vision and not vision_ray.is_colliding() and stateMachine.currentState.name != "Follow":
 		stateMachine.on_child_transition(stateMachine.currentState, "Follow")
-	elif vision_ray.is_colliding() and stateMachine.currentState.name == "Follow":
+	elif (vision_ray.is_colliding() or vision_ray.target_position.length() > current_vision) and stateMachine.currentState.name == "Follow":
 		stateMachine.on_child_transition(stateMachine.currentState, "Search")
 	move_and_slide()
 

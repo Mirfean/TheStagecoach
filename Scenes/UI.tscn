@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://kqibovcl70w2"]
+[gd_scene load_steps=5 format=3 uid="uid://kqibovcl70w2"]
 
 [ext_resource type="PackedScene" uid="uid://dlboo47k71a4p" path="res://Scenes/inventory_test.tscn" id="1_dewlx"]
+[ext_resource type="PackedScene" uid="uid://cqb2d32vt40y3" path="res://Scenes/stamina_progress_bar.tscn" id="1_hfhsn"]
 [ext_resource type="PackedScene" uid="uid://b8awgl1yjjv1m" path="res://Scenes/Crafting_menu.tscn" id="2_hfhsn"]
 [ext_resource type="PackedScene" uid="uid://bii57cxervek3" path="res://Scenes/chest_storage.tscn" id="3_qwshj"]
 
@@ -12,6 +13,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+
+[node name="Stamina progress bar" parent="." instance=ExtResource("1_hfhsn")]
+layout_mode = 1
+offset_left = 1660.0
+offset_top = 9.0
+offset_right = 1660.16
+offset_bottom = 9.04
+scale = Vector2(2.5, 2.5)
+value = 0.0
+regen_per_second = 20.0
+running_exhaust_per_second = 25.0
 
 [node name="Panels" type="HBoxContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)

@@ -19,16 +19,20 @@ enum LookDirection {
 @onready var aimer: Sprite2D = $Aim/Aimer
 
 @export var inventory : user_inventory
+@export var staminaBar: StaminaBar
 @export var stateMachine : StateMachine
 @export var weapons : Array[_Weapon_]
 @export var weapon_index : int
 @export var weapon_data : _Weapon_
 @export var WeaponHolder : Node2D
 @export var vision : player_vision
+@export var sound_walking : AudioStreamPlayer2D
 
 var character_direction : Vector2
 var weapon_instance : Node2D
-
+var stealth := false
+var exhausted := false
+var running := false
 var closest_interaction : Node2D
 
 #PlayerStats
@@ -47,6 +51,7 @@ var health := 50
 func _ready() -> void:
 	Inventory_manager.player_char = self
 	inventory = get_tree().get_first_node_in_group("Inventory")
+	staminaBar = get_tree().get_first_node_in_group("StaminaBar")
 	aimer.visible = false
 	set_weapon()
 
@@ -58,6 +63,10 @@ func _input(event: InputEvent) -> void:
 	if dead:
 		return
 	if stateMachine.currentState.name == "Default":
+		if event.is_action_pressed("Stealth") and not stealth:
+			make_stealth(true)
+		elif event.is_action_pressed("Run") and not running and not staminaBar.is_exhausted:
+			start_running()
 		if event.is_action_pressed("ChangeWeapon"):
 			set_weapon((weapon_index+1)%weapons.size())
 		if event.is_action_pressed("Interaction"):
@@ -70,9 +79,11 @@ func _input(event: InputEvent) -> void:
 				inventory.activate()
 	if event.is_action_pressed("Close") and stateMachine.currentState.name == "Inventory":
 		Inventory_manager.closeInvUI()
-	#if event.is_action_pressed("TestButton") and stateMachine.currentState.name == "Default":
-		#DialogueManager.show_dialogue_balloon(load("res://Scenes/balloon.tscn"), "start")
-
+	if event.is_action_released("Run"):
+		stop_running()
+	if event.is_action_released("Stealth"):
+		make_stealth(false)
+		
 func _physics_process(_delta: float) -> void:
 	if dead:
 		return
@@ -115,7 +126,13 @@ func Movement():
 					
 		if character_direction.x != 0 and character_direction.y != 0:
 			character_direction = character_direction * 0.7
+		if stealth:
+			character_direction = character_direction * 0.5
+		elif running:
+			character_direction = character_direction * 1.5
 		velocity = character_direction * speed 
+		if not sound_walking.playing:
+			sound_walking.play()
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		#Set all 3 Idles later
@@ -130,6 +147,8 @@ func Movement():
 			LookDirection.Right:
 				playerSprite.play("Idle-horizontal")
 				playerSprite.flip_h = false
+		if sound_walking.playing:
+			sound_walking.stop()
 	move_and_slide()
 
 
@@ -137,7 +156,6 @@ func setLookingDirection():
 	var direction_vector = self.global_position - get_global_mouse_position()
 	var dead_zone_radius = 20
 	if direction_vector.length() < dead_zone_radius:
-		print("In dead zone")
 		return
 	var angle = rad_to_deg(direction_vector.angle())
 	if angle >= -45 and angle < 45:
@@ -191,6 +209,22 @@ func getDamage(damage: int):
 	print("My health is ", health)
 	if health <= 0:
 		die()
+
+func start_running():
+	print("Run start")
+	running = true
+	staminaBar.is_running = true
+	staminaBar.exhausted.connect(stop_running)
+	
+func stop_running():
+	print("Run stop")
+	running = false
+	staminaBar.is_running = false
+	if staminaBar.exhausted.has_connections():
+		staminaBar.exhausted.disconnect(stop_running)
+
+func make_stealth(stance : bool):
+	stealth = stance
 	
 func die():
 	dead = true
