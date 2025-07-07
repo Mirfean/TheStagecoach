@@ -1,19 +1,19 @@
 {
-    "Kaczka_al_dente":{
-        "name": "Kaczka al dente",
-        "description": "Kaczka prawie do zjedzenia xD",
-        "size": "Vector2i(2, 2)",
-        "stack_size": 1.0,
-        "max_stack_size": 10.0,
-        "image": "res://Assets/Sprites/Items/Kaczka_al_dente.png",
-        "craft": {
-            "BIG_DUCK": 1.0,
-            "Kamyczek": 1.0
-        }
+	"Kaczka_al_dente":{
+		"name": "Kaczka al dente",
+		"description": "Kaczka prawie do zjedzenia xD",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"image": "res://Assets/Sprites/Items/Kaczka_al_dente.png",
+		"craft": {
+			"BIG_DUCK": 1.0,
+			"Kamyczek": 1.0
+		}
 
-    },
+	},
 
-    "Kanapka": {
+	"Kanapka": {
 		"name": "Kanapka",
 		"description": "A sandwich for a hungry Staszek",
 		"size": "Vector2i(2, 2)",

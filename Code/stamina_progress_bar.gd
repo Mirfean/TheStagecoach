@@ -13,6 +13,8 @@ signal rested
 signal exhausted
 
 func _process(delta: float) -> void:
+	if Game_Manager.GAME_PAUSED:
+		return
 	if not is_running and value < max_value:
 		var regen = regen_per_second * delta
 		if is_exhausted:
@@ -21,7 +23,6 @@ func _process(delta: float) -> void:
 		if positive_container > 1.0:
 			positive_container -= 1.0
 			value = clamp(value + 1, min_value, max_value)
-		print("value ", value, "regen ", regen)
 		if value == max_value:
 			rested.emit()
 			rested_bar()

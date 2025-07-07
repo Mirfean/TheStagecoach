@@ -65,7 +65,6 @@ func spawn_new_items(items: Dictionary, first_time: bool):
 	if first_time:
 		for item in items:
 			new_item = inventory.create_and_add_item(item)
-			#new_item.set_property(inventory._KEY_STACK_SIZE, items[item])
 			new_item.set_stack_size(items[item])
 	else:
 		inventory.deserialize(items)

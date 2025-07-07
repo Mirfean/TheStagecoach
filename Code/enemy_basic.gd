@@ -8,6 +8,8 @@ class_name enemy_basic
 var cooldown_timer : float
 
 func _process(delta: float) -> void:
+	if Game_Manager.GAME_PAUSED:
+		return
 	#DEBUG
 	queue_redraw()
 	#DEBUG
@@ -15,6 +17,8 @@ func _process(delta: float) -> void:
 		cooldown_timer -= delta
 
 func _physics_process(delta: float) -> void:
+	if Game_Manager.GAME_PAUSED:
+		return
 	var current_vision = vision_distance
 	state_text.text = stateMachine.currentState.name
 	if stateMachine.currentState.player_char.stealth:

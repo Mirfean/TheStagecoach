@@ -36,6 +36,8 @@ func Exit():
 		#Transitioned.emit(self, "Attack")
 
 func PhysicsUpdate(delta: float):
+	if Game_Manager.GAME_PAUSED:
+		return
 	super.PhysicsUpdate(delta)
 	if nav_agent.distance_to_target() > vision_distance:
 		enemy_character.velocity = Vector2.ZERO

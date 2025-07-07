@@ -1,0 +1,54 @@
+~ start
+if not DMM.get_bool("Szefito_first_talk")
+	=>< first_talk
+Merro: What ya need, mate?
+- What if I can't find a wheel?
+	=>< response_wheel_1
+- How is it going with the horses?
+	=>< response_horses
+- I have everthing
+	=>< quest_checking
+- Bye
+=> END
+
+~ first_talk
+Your boss, Merro, looks a bit pissed off.
+He is kicking yours cart, which is without a wheel.
+Splintered, missing part is laying close to him.
+Merro: Fuckin' hell. We're stuck in here.
+Merro: First, the wheel. Now those horses. Wot else gonna broke?
+When he stop complaining, you see his face suprised.
+Merro: Look there, lad!
+In the distance you spot some houses.
+Merro: Go get new wheel, I goona catch those cheeky bastards.
+do DMM.set_bool("Szefito_first_talk", true)
+=> END!
+
+~ response_wheel_1
+Merro: Then go and make one.
+Merro: Get some wood, nails and metal plates.
+Merro: I dunno where to find those materials and tools to craft.
+Merro: But I'm payin' ya so you don't act like such a plonker.
+Merro: Go to work!
+=> start
+
+~ response_horses
+Merro: Those bloody bastards are such a buggers.
+Merro: Give me some time and find this wheeel.
+=> END
+
+~ quest_checking
+Merro: Alright, let's see what ya got.
+if DMM.check_inventory("Sandwich", true)
+	Merro: Oh boy, you're angel! I was so hungry!
+	You feel proud of your additional commitment but you are not sure if Merro will remember that during next pay raise...
+if DMM.check_inventory("Cart Wheel", true)
+	Merro: Lovely! I got those four-legged nuisances.
+	Merro: Let's go from this land.
+	do DMM.end_game()
+else
+	Merro: Are ya some daft blinder?
+	Merro: I asked ya for bloody wheel.
+	Merro: Go get it!
+=> END!
+	

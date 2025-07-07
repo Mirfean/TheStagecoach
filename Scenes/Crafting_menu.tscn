@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8awgl1yjjv1m"]
+[gd_scene load_steps=8 format=3 uid="uid://b8awgl1yjjv1m"]
 
 [ext_resource type="Script" uid="uid://dhl5gxums6bns" path="res://Code/crafting_menu.gd" id="1_3jc74"]
 [ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="1_a5gec"]
 [ext_resource type="Script" uid="uid://c6wangdtwc4m7" path="res://addons/gloot/core/item_slot.gd" id="2_b32eb"]
 [ext_resource type="JSON" path="res://itemki.json" id="3_b32eb"]
 [ext_resource type="StyleBox" uid="uid://bwn282pi02xeg" path="res://Shaders/CtrlItemSlot - temp texture.tres" id="4_p5b66"]
-[ext_resource type="JSON" path="res://craftable_items.json" id="8_i5jpu"]
 [ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="8_m1xk0"]
 [ext_resource type="Texture2D" uid="uid://c0ygaqdyn0tn5" path="res://Assets/Sprites/icon.png" id="8_y0gf8"]
 
@@ -125,7 +124,7 @@ metadata/_custom_type_script = "uid://c6wangdtwc4m7"
 
 [node name="Inventory" type="Node" parent="Container/VBoxContainer/ResultItem"]
 script = ExtResource("8_m1xk0")
-protoset = ExtResource("8_i5jpu")
+protoset = ExtResource("3_b32eb")
 _serialized_format = {}
 metadata/_custom_type_script = "uid://5hfig5q3x8it"
 

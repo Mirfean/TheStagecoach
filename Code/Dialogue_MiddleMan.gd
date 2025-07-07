@@ -13,7 +13,9 @@ func _ready() -> void:
 	Inventory_manager.dialogue_mm = self
 	
 func get_bool(key: String):
-	return var_bool.get_or_add(key)
+	if not var_bool.has(key):
+		var_bool.set(key, false)
+	return var_bool.get(key)
 	
 func set_bool(key: String, value : bool):
 	var_bool[key] = value
@@ -36,3 +38,6 @@ func check_inventory(item_name : String,remove : bool = false, amount : int = 1)
 
 func receive_item(item_name : String, amount : int = 1):
 	Inventory_manager.add_item_to_inventory(item_name, amount)
+
+func end_game():
+	Game_Manager.finish_game()

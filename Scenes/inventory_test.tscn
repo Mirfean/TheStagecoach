@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlboo47k71a4p"]
+[gd_scene load_steps=24 format=3 uid="uid://dlboo47k71a4p"]
 
 [ext_resource type="Texture2D" uid="uid://d257cy0rhthua" path="res://Assets/Sprites/plecak.png" id="1_noe12"]
 [ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="1_p0e2e"]
@@ -23,6 +23,9 @@
 font = ExtResource("9_gqkot")
 font_size = 21
 outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_h74se"]
+font = ExtResource("9_gqkot")
 
 [sub_resource type="Gradient" id="Gradient_m7alf"]
 offsets = PackedFloat32Array(0, 0.4, 1)
@@ -258,7 +261,7 @@ offset_bottom = 22.16
 scale = Vector2(0.8, 0.8)
 
 [node name="TextureRect" type="TextureRect" parent="CharacterEQ"]
-modulate = Color(0, 0, 0, 0.509804)
+material = ExtResource("3_h74se")
 layout_mode = 0
 offset_left = 100.0
 offset_top = 160.0
@@ -266,14 +269,32 @@ offset_right = 178.0
 offset_bottom = 238.0
 texture = ExtResource("13_f87gc")
 
+[node name="Label" type="Label" parent="CharacterEQ/TextureRect"]
+layout_mode = 0
+offset_left = -37.5
+offset_top = 86.25
+offset_right = 130.5
+offset_bottom = 109.25
+text = "Weapon slot 1"
+label_settings = SubResource("LabelSettings_h74se")
+
 [node name="TextureRect4" type="TextureRect" parent="CharacterEQ"]
-modulate = Color(0, 0, 0, 0.509804)
+material = ExtResource("3_h74se")
 layout_mode = 0
 offset_left = 377.0
 offset_top = 160.0
 offset_right = 455.0
 offset_bottom = 238.0
 texture = ExtResource("13_f87gc")
+
+[node name="Label2" type="Label" parent="CharacterEQ/TextureRect4"]
+layout_mode = 0
+offset_left = -44.5
+offset_top = 86.25
+offset_right = 123.5
+offset_bottom = 109.25
+text = "Weapon slot 2"
+label_settings = SubResource("LabelSettings_h74se")
 
 [node name="TextureRect2" type="TextureRect" parent="CharacterEQ"]
 self_modulate = Color(1, 1, 1, 0.0941176)

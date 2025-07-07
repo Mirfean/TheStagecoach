@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bqw0t5l0i5hpa"
+path="res://.godot/imported/Szefito.dialogue-04831334aac7e6a13f2e2506138d7718.tres"
+
+[deps]
+
+source_file="res://Dialogues/Szefito.dialogue"
+dest_files=["res://.godot/imported/Szefito.dialogue-04831334aac7e6a13f2e2506138d7718.tres"]
+
+[params]
+
+defaults=true

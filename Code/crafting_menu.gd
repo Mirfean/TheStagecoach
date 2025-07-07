@@ -16,6 +16,8 @@ func _ready() -> void:
 		slot.item_equipped.connect(check_for_craftable)
 		slot.cleared.connect(check_for_craftable)
 	disactivate()
+	
+	print(refactor_string("Metal Plate"))
 
 func get_items() -> Array[InventoryItem]:
 	var result: Array[InventoryItem] = []
@@ -44,6 +46,8 @@ func can_craft_item(available_ingr: Array[String], required_ingr : Array[String]
 	var req_array2: Array[String] = required_ingr.duplicate()
 	ava_array1.sort()
 	req_array2.sort()
+	print(ava_array1)
+	print(req_array2)
 	if ava_array1 == req_array2:
 		print("I can craft!")
 		return true
@@ -74,7 +78,10 @@ func check_for_craftable(item : InventoryItem = null):
 	for x in items:
 		if not x:
 			continue
-		available_ingr.append(refactor_string(x.get_title()))
+		var iter = 0
+		while iter < x.get_stack_size():
+			available_ingr.append(refactor_string(x.get_title()))
+			iter += 1
 	to_craft(available_ingr)
 
 func remove_after_crafted(item : InventoryItem):

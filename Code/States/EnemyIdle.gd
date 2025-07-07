@@ -18,14 +18,17 @@ func Enter():
 		player_char = get_tree().get_first_node_in_group("player")
 	
 func Update(delta: float):
+	if Game_Manager.GAME_PAUSED:
+		return
 	if wander_time < 0:
 		randomizeWander()
 	else: 
 		wander_time -= delta
 	
 func PhysicsUpdate(delta: float):
+	if Game_Manager.GAME_PAUSED:
+		return
 	super.PhysicsUpdate(delta)
-	
 	var next_position = nav_agent.get_next_path_position()
 	var direction = (next_position - enemy_character.global_position).normalized()
 	enemy_character.velocity = direction * move_speed

@@ -1,9 +1,4 @@
 {
-	"pistol_bullets_10pack": {
-		"stack_size": 10.0,
-		"max_stack_size": 80.0,
-		"type": "ammo"
-	},
 	"BIG_DUCK": {
 		"name": "Big Duck",
 		"size": "Vector2i(4, 4)",
@@ -22,6 +17,7 @@
 		"image": "res://Assets/Sprites/Weapons/dzida.png"
 	},
 	"Kamyczek": {
+		"name": "Kamyczek",
 		"description": "A small pebble",
 		"size": "Vector2i(2, 2)",
 		"stack_size": 1.0,
@@ -29,6 +25,7 @@
 		"image": "res://Assets/Sprites/Items/kamyczek.png"
 	},
 	"default_giwera": {
+		"name": "Default Giwera",
 		"ID": 1.0,
 		"description": "A basic gun",
 		"size": "Vector2i(3, 2)",
@@ -37,24 +34,24 @@
 		"type": "WEAPON",
 		"image": "res://Assets/Sprites/Weapons/giwera.png"
 	},
-	"Ser": {
-		"name": "Ser",
+	"Cheese": {
+		"name": "Cheese",
 		"description": "A piece of cheese",
-		"size": "Vector2i(1, 1)",
+		"size": "Vector2i(2, 2)",
 		"stack_size": 1.0,
 		"max_stack_size": 12.0,
 		"image": "res://Assets/Sprites/Items/Ser.png"
 	},
-	"Pomidorek": {
-		"name": "Pomidorek",
-		"description": "A small tomato, with enough work it can evolve into a ketchup",
-		"size": "Vector2i(2, 2)",
+	"Tomato": {
+		"name": "Tomato",
+		"description": "A small tomato, with enough work can evolve into a ketchup",
+		"size": "Vector2i(1, 1)",
 		"stack_size": 1.0,
 		"max_stack_size": 10.0,
 		"image": "res://Assets/Sprites/Items/Pomidorek.png"
 	},
-	"Chlebek": {
-		"name": "Chlebek",
+	"Bread": {
+		"name": "Bread",
 		"description": "A piece of bread, chrupiący type",
 		"size": "Vector2i(2, 2)",
 		"stack_size": 1.0,
@@ -64,10 +61,10 @@
 
 	"Kaczka_al_dente":{
 		"name": "Kaczka al dente",
-		"description": "Kaczka prawie do zjedzenia xD",
-		"size": "Vector2i(2, 2)",
+		"description": "Duck almost ready to be eaten",
+		"size": "Vector2i(3, 3)",
 		"stack_size": 1.0,
-		"max_stack_size": 10.0,
+		"max_stack_size": 1.0,
 		"image": "res://Assets/Sprites/Items/Kaczka_al_dente.png",
 		"craft": {
 			"BIG_DUCK": 1.0,
@@ -76,7 +73,7 @@
 
 	},
 
-	"Kanapka": {
+	"Sandwich": {
 		"name": "Kanapka",
 		"description": "A sandwich for a hungry Staszek",
 		"size": "Vector2i(2, 2)",
@@ -84,9 +81,50 @@
 		"max_stack_size": 10.0,
 		"image": "res://Assets/Sprites/Items/Kanapka.png",
 		"craft": {
-			"Ser": 1.0,
-			"Pomidorek": 1.0,
-			"Chlebek": 2.0
+			"Cheese": 1.0,
+			"Tomato": 2.0,
+			"Bread": 2.0
+		}
+	},
+
+	"Plank": {
+		"name": "Plank",
+		"description": "Quite woody, perfect for crafting",
+		"size": "Vector2i(5, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"image": "res://Assets/Sprites/Items/plank.png"
+	},
+
+	"Metal Plate": {
+		"name": "Metal Plate",
+		"description": "A piece of metal",
+		"size": "Vector2i(3, 3)",
+		"stack_size": 1.0,
+		"max_stack_size": 4.0,
+		"image": "res://Assets/Sprites/Items/Metal Plate.png"
+	},
+
+	"Nails": {
+		"name": "Nails",
+		"description": "A pack of nails, hammer not included",
+		"size": "Vector2i(1, 1)",
+		"stack_size": 10.0,
+		"max_stack_size": 100.0,
+		"image": "res://Assets/Sprites/Items/nails.png"
+	},
+
+	"Cart Wheel": {
+		"name": "Cart Wheel",
+		"description": "Finally, a wheel for your cart!",
+		"size": "Vector2i(8, 8)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/Items/Cart wheel.png",
+		"craft": {
+			"Plank": 8.0,
+			"Nails": 20.0,
+			"Metal Plate": 2.0
 		}
 	}
 

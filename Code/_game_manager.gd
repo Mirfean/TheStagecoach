@@ -4,6 +4,8 @@ class_name GameManager
 var player_char : player
 var item_prefab : PackedScene = load("res://Scenes/pickable_item.tscn")
 
+var GAME_PAUSED := false
+
 const info_offset: Vector2 = Vector2(50, 0)
 
 func _ready() -> void:
@@ -23,3 +25,6 @@ func attach_item_from_ground():
 	# Przyjąć item 
 	# Stworzyć item i dodać do user_inventory
 	# Usunięcie itemu z podłogi jeśli item się mieści gdzieś
+
+func finish_game():
+	print("YUPI!")
