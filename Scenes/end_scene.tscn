@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy2lidqyx22i8"]
+
+[ext_resource type="Texture2D" uid="uid://broixptwwhtlc" path="res://Assets/Sprites/Door-closed.png" id="1_5rked"]
+[ext_resource type="Script" uid="uid://cubgwwu05ku6n" path="res://Code/end_scene.gd" id="1_fgb5u"]
+[ext_resource type="Texture2D" uid="uid://cqlmh38pffx02" path="res://Assets/Sprites/Door-open.png" id="2_fgb5u"]
+
+[node name="End Scene" type="Node2D"]
+script = ExtResource("1_fgb5u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 181.0
+offset_top = 296.0
+offset_right = 1181.0
+offset_bottom = 796.0
+rotation = -0.244346
+scale = Vector2(1.45, 1.45)
+bbcode_enabled = true
+text = "[wave] CONGRATULATIONS! 
+
+YOU WON!!! [/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 910.0
+offset_top = 628.0
+offset_right = 926.0
+offset_bottom = 646.0
+scale = Vector2(8.14, 8.14)
+texture_normal = ExtResource("1_5rked")
+texture_pressed = ExtResource("2_fgb5u")
+texture_focused = ExtResource("2_fgb5u")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 958.0
+offset_top = 782.0
+offset_right = 998.0
+offset_bottom = 822.0
+text = "Exit"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

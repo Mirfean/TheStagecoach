@@ -4,6 +4,8 @@ class_name GameManager
 var player_char : player
 var item_prefab : PackedScene = load("res://Scenes/pickable_item.tscn")
 
+var end_scene : PackedScene
+
 var GAME_PAUSED := false
 
 const info_offset: Vector2 = Vector2(50, 0)
@@ -27,4 +29,4 @@ func attach_item_from_ground():
 	# Usunięcie itemu z podłogi jeśli item się mieści gdzieś
 
 func finish_game():
-	print("YUPI!")
+	get_tree().change_scene_to_file("res://Scenes/end_scene.tscn")

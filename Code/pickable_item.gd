@@ -46,6 +46,8 @@ func set_new_sprite(path : String, size : Vector2i):
 func set_sprite_size(new_texture: Texture2D, size : Vector2i):
 	var newImageSize = new_texture.get_size()
 	active_sprite.scale = Vector2(item_1_size.x * size.x / newImageSize.x, item_1_size.y * size.y / newImageSize.y)
+	if size.x == 1 and size.y == 1:
+		active_sprite.scale *= 2
 
 func _on_body_entered(body: Node2D):
 	super._on_body_entered(body)

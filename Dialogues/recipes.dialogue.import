@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cfvb0aq8j2au1"
+path="res://.godot/imported/recipes.dialogue-7c6b5e74949109631d8510acd83a840d.tres"
+
+[deps]
+
+source_file="res://Dialogues/recipes.dialogue"
+dest_files=["res://.godot/imported/recipes.dialogue-7c6b5e74949109631d8510acd83a840d.tres"]
+
+[params]
+
+defaults=true
