@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://tnehprw0kwgd" path="res://Code/Dialoguer.gd" id="1_4lggq"]
 [ext_resource type="Resource" uid="uid://budmt2pl1vhnw" path="res://Dialogues/first_dialogue.dialogue" id="2_olakb"]
 [ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="3_iihvf"]
-[ext_resource type="Texture2D" uid="uid://d16rkqlsls63f" path="res://Assets/Sprites/Pan Mietek.png" id="4_olakb"]
+[ext_resource type="Texture2D" uid="uid://c2yevcixs8ack" path="res://Assets/Sprites/old/aim.png" id="4_olakb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olakb"]
-radius = 23.0217
+radius = 8.0
 
 [node name="Dialoguer" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider")]
 collision_layer = 512

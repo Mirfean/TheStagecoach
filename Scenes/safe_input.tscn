@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://muqq8868fkq1"]
+
+[ext_resource type="Script" uid="uid://x3ej2ukf1glc" path="res://Code/safe_input.gd" id="1_368e0"]
+[ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="1_rywc3"]
+[ext_resource type="Texture2D" uid="uid://b23pad334ufm3" path="res://Assets/Sprites/new/safe_background_siema.png" id="2_368e0"]
+
+[sub_resource type="Theme" id="Theme_lnn4h"]
+LineEdit/colors/selection_color = Color(0.501961, 0.501961, 0.501961, 1)
+LineEdit/constants/minimum_character_width = 4
+LineEdit/constants/outline_size = 32
+LineEdit/font_sizes/font_size = 64
+LineEdit/fonts/font = ExtResource("1_rywc3")
+TextEdit/colors/background_color = Color(0.239216, 0.152941, 0.239216, 0)
+TextEdit/colors/current_line_color = Color(0.25098, 0.25098, 0.258824, 0)
+TextEdit/constants/outline_size = 32
+TextEdit/font_sizes/font_size = 64
+TextEdit/fonts/font = ExtResource("1_rywc3")
+
+[node name="SafeInput" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_368e0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_rywc3")
+theme_override_font_sizes/normal_font_size = 32
+text = "Enter safe code"
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(410, 125)
+layout_mode = 2
+texture = ExtResource("2_368e0")
+
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/TextureRect"]
+custom_minimum_size = Vector2(350, 80)
+layout_mode = 2
+offset_left = 30.0
+offset_top = 23.0
+offset_right = 380.0
+offset_bottom = 103.0
+theme = SubResource("Theme_lnn4h")
+alignment = 1
+max_length = 6
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+
+[connection signal="text_changed" from="VBoxContainer/TextureRect/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/TextureRect/TextEdit" to="." method="_on_text_edit_text_submitted"]

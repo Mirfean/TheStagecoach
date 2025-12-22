@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dmavi023kf6bs" path="res://Resources/_Scripts_/_Weapon_.gd" id="2_pu2lt"]
 [ext_resource type="Texture2D" uid="uid://b71uildctb52s" path="res://Assets/Snoblin/Assets/Extra/Shadow.png" id="3_6t5aa"]
 [ext_resource type="Resource" uid="uid://ddbs081nggh0k" path="res://Resources/Weapons/Fists.tres" id="3_ukyrk"]
-[ext_resource type="Texture2D" uid="uid://ctxln85k2p4vt" path="res://Assets/Sprites/aim_smol.png" id="4_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://ctxln85k2p4vt" path="res://Assets/Sprites/old/aim_smol.png" id="4_f1ek2"]
 [ext_resource type="Shader" uid="uid://bdbgnuqakqw6n" path="res://Shaders/outline2.gdshader" id="4_ukyrk"]
 [ext_resource type="Script" uid="uid://cotcxnvni071" path="res://Code/aimer.gd" id="5_fkybt"]
 [ext_resource type="Resource" uid="uid://c3lidxjtnqshw" path="res://Resources/Weapons/default_gun.tres" id="5_tx1dd"]

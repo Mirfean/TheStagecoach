@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://d14bu245fs0rm" path="res://Code/weapon_range.gd" id="1_dc1tx"]
 [ext_resource type="PackedScene" uid="uid://3onltamw2gfl" path="res://Scenes/Weapons/bullet.tscn" id="2_0xmjj"]
 [ext_resource type="Resource" uid="uid://c3lidxjtnqshw" path="res://Resources/Weapons/default_gun.tres" id="3_3r1xi"]
-[ext_resource type="Texture2D" uid="uid://ce1ecl40ovuiw" path="res://Assets/Sprites/Weapons/giwera.png" id="4_ux73q"]
-[ext_resource type="Texture2D" uid="uid://c2yevcixs8ack" path="res://Assets/Sprites/aim.png" id="5_0xmjj"]
+[ext_resource type="Texture2D" uid="uid://ctgsf1myhn6xa" path="res://Assets/Sprites/new/gun01.png" id="4_eopvo"]
+[ext_resource type="Texture2D" uid="uid://c2yevcixs8ack" path="res://Assets/Sprites/old/aim.png" id="5_0xmjj"]
 [ext_resource type="AudioStream" uid="uid://kk3sstps3btn" path="res://Audio/weapons_handun_shot.mp3" id="6_ux73q"]
 [ext_resource type="AudioStream" uid="uid://b6jpk00e3k18p" path="res://Audio/raw/654374__njjjjjjjjjjjjjjjjjjjjjjjj__loading-gun.wav" id="7_eopvo"]
 [ext_resource type="AudioStream" uid="uid://b6c4md2lwnohg" path="res://Audio/528708__rolly-sfx__empty-ruger-rifle.mp3" id="7_jk1lq"]
@@ -24,10 +24,11 @@ sprite = NodePath("Sprite2D")
 sound_attack = NodePath("Shoot")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("4_ux73q")
+position = Vector2(9.09091, 0)
+texture = ExtResource("4_eopvo")
 
 [node name="Shoot_point" type="Node2D" parent="."]
-position = Vector2(6.061, -4.035)
+position = Vector2(12.1212, -3.0303)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Shoot_point"]
 scale = Vector2(0.1, 0.1)

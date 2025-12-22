@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dolh1s66au1q2"
+path="res://.godot/imported/L1_wakeUp.dialogue-3dff0f592168cd9c66dfd5d5504d98e9.tres"
+
+[deps]
+
+source_file="res://Dialogues/L1_wakeUp.dialogue"
+dest_files=["res://.godot/imported/L1_wakeUp.dialogue-3dff0f592168cd9c66dfd5d5504d98e9.tres"]
+
+[params]
+
+defaults=true

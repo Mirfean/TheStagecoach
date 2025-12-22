@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkrjom5t1umoj" path="res://Code/enemy_basic.gd" id="1_f4si1"]
 [ext_resource type="Script" uid="uid://xctp8wkajc87" path="res://Code/States/StateMachine.gd" id="1_jokqx"]
-[ext_resource type="Texture2D" uid="uid://d4hgvsqcwh6d1" path="res://Assets/Sprites/foes.png" id="1_swwnm"]
+[ext_resource type="Texture2D" uid="uid://d4hgvsqcwh6d1" path="res://Assets/Sprites/old/foes.png" id="1_swwnm"]
 [ext_resource type="Script" uid="uid://5c0v82tjv1sy" path="res://Code/States/EnemyIdle.gd" id="2_aiwxb"]
 [ext_resource type="Script" uid="uid://d20eaj5amcli4" path="res://Code/States/EnemyFollow.gd" id="3_paq7w"]
 [ext_resource type="Script" uid="uid://bifajxbpuuhj1" path="res://Code/States/EnemyAttack.gd" id="5_5gljc"]
@@ -276,7 +276,6 @@ path_desired_distance = 10.0
 target_desired_distance = 20.0
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0

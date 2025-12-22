@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uk3opbvho5ap" path="res://crafting_table.gd" id="1_gmvgx"]
 [ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="2_ey48p"]
-[ext_resource type="Texture2D" uid="uid://c4jyjniwf4b3k" path="res://Assets/Sprites/Crafting table.png" id="2_qqxv3"]
+[ext_resource type="Texture2D" uid="uid://c4jyjniwf4b3k" path="res://Assets/Sprites/old/Crafting table.png" id="2_qqxv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey48p"]
 size = Vector2(38, 30)

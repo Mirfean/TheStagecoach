@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bbxyeu4yk171v"
+path="res://.godot/imported/telefon_loop2.dialogue-5b912d18e9e6fb885c0f0f9cd57b34be.tres"
+
+[deps]
+
+source_file="res://Dialogues/telefon_loop2.dialogue"
+dest_files=["res://.godot/imported/telefon_loop2.dialogue-5b912d18e9e6fb885c0f0f9cd57b34be.tres"]
+
+[params]
+
+defaults=true

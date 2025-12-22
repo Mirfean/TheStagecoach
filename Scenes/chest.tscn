@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bwoabfijcswms" path="res://Code/chest.gd" id="1_cjfl1"]
 [ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="2_dq33m"]
 [ext_resource type="AudioStream" uid="uid://bc0ajevxuis8x" path="res://Assets/Audio/523755__lilmati__item-01.wav" id="3_bagqn"]
-[ext_resource type="Texture2D" uid="uid://bgus2p2pujfdm" path="res://Assets/Sprites/chest_closed.png" id="3_dq33m"]
-[ext_resource type="Texture2D" uid="uid://b3evrsel4w8us" path="res://Assets/Sprites/chest_open.png" id="4_j6qf6"]
+[ext_resource type="Texture2D" uid="uid://bgus2p2pujfdm" path="res://Assets/Sprites/old/chest_closed.png" id="3_dq33m"]
+[ext_resource type="Texture2D" uid="uid://b3evrsel4w8us" path="res://Assets/Sprites/old/chest_open.png" id="4_j6qf6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pmguq"]
 

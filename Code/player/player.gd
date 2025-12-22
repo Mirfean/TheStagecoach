@@ -90,7 +90,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if stateMachine.currentState.name == "Default" or stateMachine.currentState.name == "Aim":
 		Movement()
-		vision.setAngle()
+		if vision != null:
+			vision.setAngle()
 
 func Movement():
 	character_direction.x = Input.get_axis("moveLeft", "moveRight")
@@ -112,17 +113,27 @@ func Movement():
 				if character_direction.y < 0:
 					character_direction.y = character_direction.y * backward_speed
 			LookDirection.Left:
-				playerSprite.flip_h = true
-				playerSprite.play("MoveHorizontal")
+				playerSprite.play("MoveLeft")
 				character_direction.y = character_direction.y * sideway_speed
 				if character_direction.x > 0:
 					character_direction.x = character_direction.x * backward_speed
 			LookDirection.Right:
-				playerSprite.flip_h = false
-				playerSprite.play("MoveHorizontal")
+				playerSprite.play("MoveRight")
 				character_direction.y = character_direction.y * sideway_speed
 				if character_direction.x < 0:
 					character_direction.x = character_direction.x * backward_speed
+			#LookDirection.Left:
+				#playerSprite.flip_h = true
+				#playerSprite.play("MoveHorizontal")
+				#character_direction.y = character_direction.y * sideway_speed
+				#if character_direction.x > 0:
+					#character_direction.x = character_direction.x * backward_speed
+			#LookDirection.Right:
+				#playerSprite.flip_h = false
+				#playerSprite.play("MoveHorizontal")
+				#character_direction.y = character_direction.y * sideway_speed
+				#if character_direction.x < 0:
+					#character_direction.x = character_direction.x * backward_speed
 					
 		if character_direction.x != 0 and character_direction.y != 0:
 			character_direction = character_direction * 0.7
@@ -142,11 +153,15 @@ func Movement():
 			LookDirection.Down:
 				playerSprite.play("Idle-front")
 			LookDirection.Left:
-				playerSprite.play("Idle-horizontal")
-				playerSprite.flip_h = true
+				playerSprite.play("Idle-left")
 			LookDirection.Right:
-				playerSprite.play("Idle-horizontal")
-				playerSprite.flip_h = false
+				playerSprite.play("Idle-right")
+			#LookDirection.Left:
+				#playerSprite.play("Idle-horizontal")
+				#playerSprite.flip_h = true
+			#LookDirection.Right:
+				#playerSprite.play("Idle-horizontal")
+				#playerSprite.flip_h = false
 		if sound_walking.playing:
 			sound_walking.stop()
 	move_and_slide()

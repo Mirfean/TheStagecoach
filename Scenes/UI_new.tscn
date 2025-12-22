@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bliaoejqt3l3w"]
+
+[ext_resource type="Script" uid="uid://de4asrt35fgwn" path="res://Code/ui_new_handler.gd" id="1_pk1pq"]
+[ext_resource type="PackedScene" uid="uid://muqq8868fkq1" path="res://Scenes/safe_input.tscn" id="1_rc4p4"]
+[ext_resource type="Texture2D" uid="uid://biikhck3rd722" path="res://Assets/Sprites/new/symbol.png" id="3_3raqe"]
+
+[node name="UI_new" type="Control" groups=["UI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1520.0
+offset_bottom = -680.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pk1pq")
+
+[node name="SafeInput" parent="." instance=ExtResource("1_rc4p4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 411.0
+offset_bottom = 403.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CloseSafeInput" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 328.0
+offset_right = 226.0
+offset_bottom = 368.0
+texture_normal = ExtResource("3_3raqe")
+stretch_mode = 0
+
+[connection signal="pressed" from="CloseSafeInput" to="." method="closing_safe_input"]

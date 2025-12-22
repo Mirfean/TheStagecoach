@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy2lidqyx22i8"]
 
-[ext_resource type="Texture2D" uid="uid://broixptwwhtlc" path="res://Assets/Sprites/Door-closed.png" id="1_5rked"]
+[ext_resource type="Texture2D" uid="uid://broixptwwhtlc" path="res://Assets/Sprites/old/Door-closed.png" id="1_5rked"]
 [ext_resource type="Script" uid="uid://cubgwwu05ku6n" path="res://Code/end_scene.gd" id="1_fgb5u"]
-[ext_resource type="Texture2D" uid="uid://cqlmh38pffx02" path="res://Assets/Sprites/Door-open.png" id="2_fgb5u"]
+[ext_resource type="Texture2D" uid="uid://cqlmh38pffx02" path="res://Assets/Sprites/old/Door-open.png" id="2_fgb5u"]
 
 [node name="End Scene" type="Node2D"]
 script = ExtResource("1_fgb5u")

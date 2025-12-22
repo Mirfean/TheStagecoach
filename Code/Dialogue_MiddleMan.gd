@@ -32,7 +32,7 @@ func get_string(key: String):
 func set_string(key: String, value : String):
 	var_string[key] = value
 
-func check_inventory(item_name : String,remove : bool = false, amount : int = 1) -> bool:
+func check_inventory(item_name : String, remove : bool = false, amount : int = 1) -> bool:
 	print("siema")
 	return Inventory_manager.check_eq_for(item_name, remove, amount)
 

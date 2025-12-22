@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqi5vlwdihu0f"]
+
+[ext_resource type="Script" uid="uid://bq0y3yx8nnak1" path="res://Code/safe.gd" id="1_k8se0"]
+[ext_resource type="Texture2D" uid="uid://cpp6g5c0jy5qt" path="res://Assets/Sprites/new/safe_closed.png" id="1_xrekv"]
+[ext_resource type="Material" uid="uid://c0iudfy4bk62y" path="res://Shaders/outline.tres" id="2_23s64"]
+[ext_resource type="Texture2D" uid="uid://ciug3iwl18hta" path="res://Assets/Sprites/new/safe_open.png" id="3_342nx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8se0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23s64"]
+size = Vector2(10, 12)
+
+[node name="Safe" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider")]
+collision_mask = 8
+script = ExtResource("1_k8se0")
+closed_sprite = ExtResource("1_xrekv")
+opened_sprite = ExtResource("3_342nx")
+outline_shader = ExtResource("2_23s64")
+active_sprite = NodePath("Sprite2D")
+collider = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_k8se0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("1_xrekv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 3)
+shape = SubResource("RectangleShape2D_23s64")
+
+[node name="Spot1" type="Node2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="Spot2" type="Node2D" parent="."]
+position = Vector2(-1, 5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

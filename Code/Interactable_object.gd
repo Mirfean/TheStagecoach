@@ -31,6 +31,9 @@ func off_highlight():
 
 func Interact():
 	print("Interact xD")
+	if disabled:
+		return true
+	return false
 	
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("player") and not disabled:

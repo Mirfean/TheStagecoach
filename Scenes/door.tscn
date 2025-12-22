@@ -1,38 +1,43 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmwokj6fqlsm"]
+[gd_scene load_steps=11 format=3 uid="uid://bmwokj6fqlsm"]
 
 [ext_resource type="Script" uid="uid://cmhsrhpc7wu2f" path="res://Code/Door.gd" id="1_fahql"]
-[ext_resource type="Texture2D" uid="uid://broixptwwhtlc" path="res://Assets/Sprites/Door-closed.png" id="3_a43ba"]
+[ext_resource type="Texture2D" uid="uid://dp5x8k2tnoxfd" path="res://Assets/Sprites/new/door.png" id="2_a43ba"]
 [ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="3_ab4ky"]
-[ext_resource type="Texture2D" uid="uid://cqlmh38pffx02" path="res://Assets/Sprites/Door-open.png" id="3_burcv"]
+[ext_resource type="Texture2D" uid="uid://df1wjneofrgwi" path="res://Assets/Sprites/new/door_opened.png" id="3_burcv"]
 [ext_resource type="Script" uid="uid://3vo7ktjwp7rd" path="res://Code/interact_door.gd" id="4_ab4ky"]
+[ext_resource type="Texture2D" uid="uid://blld6stkd7n2y" path="res://Assets/Sprites/new/door_horizontal.png" id="6_burcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab4ky"]
-size = Vector2(14, 16)
+size = Vector2(6, 32)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_burcv"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, -9, -8, -9)
+polygon = PackedVector2Array(-8, -17, 8, -17, 8, -18, -8, -18)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a43ba"]
-polygon = PackedVector2Array(7, -9, 7, 9, 8, 9, 8, -9, 8, -9)
+polygon = PackedVector2Array(3, -3, 3, 9, 8, 9, 8, -3)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ab4ky"]
-radius = 13.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a43ba"]
+height = 40.0
 
 [node name="Door" type="StaticBody2D"]
-collision_layer = 8
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("1_fahql")
-sprite_close = ExtResource("3_a43ba")
+sprite_close = ExtResource("2_a43ba")
 sprite_open = ExtResource("3_burcv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="VertivalCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ab4ky")
+
+[node name="HorizontalCollision" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_ab4ky")
 
 [node name="VerticalOccluder" type="LightOccluder2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 occluder = SubResource("OccluderPolygon2D_burcv")
 
 [node name="HorizontalOccluder" type="LightOccluder2D" parent="."]
+position = Vector2(-1, -13)
 occluder = SubResource("OccluderPolygon2D_a43ba")
 
 [node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("active_sprite", "collider")]
@@ -44,10 +49,10 @@ active_sprite = NodePath("DoorVisual")
 collider = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource("CircleShape2D_ab4ky")
+shape = SubResource("CapsuleShape2D_a43ba")
 
 [node name="DoorVisual" type="Sprite2D" parent="InteractionArea"]
-texture = ExtResource("3_a43ba")
+texture = ExtResource("6_burcv")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxf3pmmvgprno"]
+
+[ext_resource type="Script" uid="uid://baqt7fmp3ueq6" path="res://backround_items.gd" id="1_quki1"]
+[ext_resource type="Texture2D" uid="uid://bj7nof5tx1hlr" path="res://Assets/Sprites/new/magazine_ammo.png" id="2_1ce67"]
+[ext_resource type="Texture2D" uid="uid://dafdbs50rsuac" path="res://Assets/Sprites/new/bullet.png" id="3_42rf5"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_quki1")
+
+[node name="MagazineAmmo" type="Sprite2D" parent="."]
+position = Vector2(-7, 12)
+texture = ExtResource("2_1ce67")
+
+[node name="MagazineAmmo2" type="Sprite2D" parent="."]
+position = Vector2(25, -23)
+texture = ExtResource("2_1ce67")
+
+[node name="MagazineAmmo3" type="Sprite2D" parent="."]
+position = Vector2(44, 8)
+texture = ExtResource("2_1ce67")
+
+[node name="MagazineAmmo4" type="Sprite2D" parent="."]
+position = Vector2(1, -8)
+texture = ExtResource("2_1ce67")
+
+[node name="Bullet" type="Sprite2D" parent="."]
+position = Vector2(-14, -2)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet2" type="Sprite2D" parent="."]
+position = Vector2(2, 18)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet3" type="Sprite2D" parent="."]
+position = Vector2(13, 3)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet4" type="Sprite2D" parent="."]
+position = Vector2(-15, 13)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet5" type="Sprite2D" parent="."]
+position = Vector2(35, 3)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet6" type="Sprite2D" parent="."]
+position = Vector2(40, 20)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet7" type="Sprite2D" parent="."]
+position = Vector2(9, -17)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet8" type="Sprite2D" parent="."]
+position = Vector2(20, -10)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet9" type="Sprite2D" parent="."]
+position = Vector2(-9, -13)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet10" type="Sprite2D" parent="."]
+position = Vector2(39, -9)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet11" type="Sprite2D" parent="."]
+position = Vector2(31, -17)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet12" type="Sprite2D" parent="."]
+position = Vector2(25, 13)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet13" type="Sprite2D" parent="."]
+position = Vector2(13, 14)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet14" type="Sprite2D" parent="."]
+position = Vector2(18, -29)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet15" type="Sprite2D" parent="."]
+position = Vector2(31, -29)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet16" type="Sprite2D" parent="."]
+position = Vector2(61, 21)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet17" type="Sprite2D" parent="."]
+position = Vector2(55, 0)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet18" type="Sprite2D" parent="."]
+position = Vector2(-31, 14)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet19" type="Sprite2D" parent="."]
+position = Vector2(-8, 25)
+texture = ExtResource("3_42rf5")
+
+[node name="Bullet20" type="Sprite2D" parent="."]
+position = Vector2(22, 27)
+texture = ExtResource("3_42rf5")

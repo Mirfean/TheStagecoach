@@ -123,9 +123,29 @@
 		"image": "res://Assets/Sprites/Items/Cart wheel.png",
 		"craft": {
 			"Plank": 8.0,
-			"Nails": 20.0,
+			"Nails": 10.0,
 			"Metal Plate": 2.0
 		}
+	},
+
+	"Service gun":{
+		"name": "Service gun",
+		"description": "Feels like an extension of your hand. /n Used too many times.",
+		"size": "Vector2i(4, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/new/gun01.png"
+	},
+
+	"Dissapointment as a weapon":{
+		"name": "Dissapointment as a weapon",
+		"description": "Urge to look into loaded barrel is heavy and tempting",
+		"size": "Vector2i(4, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/new/gun02.png"       
 	}
 
 }
