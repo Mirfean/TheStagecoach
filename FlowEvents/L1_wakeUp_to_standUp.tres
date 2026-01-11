@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://cq76473aj5368"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_t002j"]
+
+[resource]
+script = ExtResource("1_t002j")
+trigger_type = 4
+trigger_id = "L1_wakeUp"
+actions = Array[String](["BlackScreen:StartLoop", "Interact:L1_standUp"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

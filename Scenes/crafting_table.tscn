@@ -10,7 +10,7 @@ size = Vector2(38, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fdv1"]
 size = Vector2(34, 17)
 
-[node name="Crafting_table" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider")]
+[node name="Crafting_table" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider") groups=["crafting_table"]]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_gmvgx")

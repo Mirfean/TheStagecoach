@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23s64"]
 size = Vector2(10, 12)
 
-[node name="Safe" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider")]
+[node name="Safe" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider") groups=["chest"]]
 collision_mask = 8
 script = ExtResource("1_k8se0")
 closed_sprite = ExtResource("1_xrekv")

@@ -7930,6 +7930,7 @@ position = Vector2(-1858, 186)
 position = Vector2(-903, 240)
 dialogue_resource = ExtResource("19_3ks5u")
 actor = ExtResource("20_ulq6a")
+id = null
 
 [node name="ItemHolder" type="Node2D" parent="." groups=["SpawnItemHolder"]]
 
@@ -7952,3 +7953,4 @@ z_index = 1
 position = Vector2(-878, -397)
 dialogue_resource = ExtResource("22_oisf6")
 actor = ExtResource("22_q7swn")
+id = null

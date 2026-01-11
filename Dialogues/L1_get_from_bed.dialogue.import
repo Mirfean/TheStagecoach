@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bqguskeh51m4i"
+path="res://.godot/imported/L1_get_from_bed.dialogue-218caf10a146e3b1f8b90b7f54f31038.tres"
+
+[deps]
+
+source_file="res://Dialogues/L1_get_from_bed.dialogue"
+dest_files=["res://.godot/imported/L1_get_from_bed.dialogue-218caf10a146e3b1f8b90b7f54f31038.tres"]
+
+[params]
+
+defaults=true

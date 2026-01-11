@@ -1,6 +1,8 @@
 extends Area2D
 class_name Interactable_object
 
+@export var id: String
+
 @export var default_material : Material
 @export var outline_shader : ShaderMaterial
 
@@ -15,7 +17,9 @@ func _ready() -> void:
 			if child is Sprite2D:
 				active_sprite = child
 				break
-	default_material = active_sprite.material
+	if active_sprite:
+		default_material = active_sprite.material
+	Game_Manager.add_to_registry(self)
 	
 func pick_up():
 	print("pick up")

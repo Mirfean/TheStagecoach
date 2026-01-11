@@ -1,0 +1,15 @@
+~ start
+if DMM.get_bool("languange_unlocked")
+	=> accurate
+else
+	=> nonsense 
+=> END
+
+~ nonsense
+Just some gibberish set up in columns and rows
+=> END
+
+~ accurate
+March 1998
+Date slider must have snapped but few first days are crossed out.
+=> END

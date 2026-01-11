@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://c2j11wd2kr5wr"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_pev4i"]
+
+[resource]
+script = ExtResource("1_pev4i")
+trigger_type = 5
+trigger_id = "corridor_1p_darkness"
+actions = Array[String](["play_sound:test_sound", "Interact:killer_outdoor"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

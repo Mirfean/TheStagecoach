@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://rf7va2q5nih8"
+path="res://.godot/imported/L1_doors.dialogue-104d510cabe91282e7678354615a7557.tres"
+
+[deps]
+
+source_file="res://L1_doors.dialogue"
+dest_files=["res://.godot/imported/L1_doors.dialogue-104d510cabe91282e7678354615a7557.tres"]
+
+[params]
+
+defaults=true

@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name Door
 
+@export var id: String
+
 @export var sprite_close : Texture2D
 @export var sprite_open : Texture2D
 @export var horizontal : bool
@@ -15,6 +17,8 @@ class_name Door
 
 var opened : bool
 
+var locked : bool
+
 func _ready() -> void:
 	door_visual.texture = sprite_close
 	if horizontal:
@@ -27,9 +31,17 @@ func _ready() -> void:
 		current_shape2D = vertival_collision
 	if reversed:
 		scale.x = -scale.x
+	
+	Game_Manager.add_to_registry(self)
 
 func open_door():
+	if locked:
+		print_debug("Add door locked sounds")
+		return
+	
 	if not opened:
+		EventBus.emit_signal("door_opened", id)
+		
 		opened = true
 		current_shape2D.disabled = true
 		door_visual.texture = sprite_open

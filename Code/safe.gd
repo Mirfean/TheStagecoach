@@ -44,9 +44,10 @@ func verify_code(code: String) -> bool:
 			items_inside[0].visible = true
 			items_inside[0].global_position = spot_1.global_position
 			return true
-		1:
+		5364:
 			print_debug("1")
 			return true
+		
 	return false
 	
 	

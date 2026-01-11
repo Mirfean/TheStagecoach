@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b10dff3s4int5"
+path="res://.godot/imported/bathroom_mirror.dialogue-6bb981a951a85f9237c24adbfda79a70.tres"
+
+[deps]
+
+source_file="res://bathroom_mirror.dialogue"
+dest_files=["res://.godot/imported/bathroom_mirror.dialogue-6bb981a951a85f9237c24adbfda79a70.tres"]
+
+[params]
+
+defaults=true

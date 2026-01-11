@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0sdqo3kr8wxb"
-path="res://.godot/imported/gun02.png-a3497cbeb80cbde8216d12a3d8ddf230.ctex"
+uid="uid://h6t8f53sik03"
+path="res://.godot/imported/szafka_kuchnia_kat.png-5b8268d8702607bf856f8af49d65ba21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/new/gun02.png"
-dest_files=["res://.godot/imported/gun02.png-a3497cbeb80cbde8216d12a3d8ddf230.ctex"]
+source_file="res://Assets/Sprites/new/szafka_kuchnia_kat.png"
+dest_files=["res://.godot/imported/szafka_kuchnia_kat.png-5b8268d8702607bf856f8af49d65ba21.ctex"]
 
 [params]
 

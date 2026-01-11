@@ -1,18 +1,52 @@
 ~ start
+if DMM.get_bool("languange_unlocked")
+	=> ostrzezenie2
+else
+	=> belkot
+=> END
+
+
+~ belkot
+The speaker hits with aggressive interference, masking a faint, distant voice of a woman.
+???: al...jfl...asd...joai...boa...jh....foa...ho...
+Me: Hello? Is anyone there? I can’t make out a word you’re saying!
+???: fkd...rpoo...fji...bo...goo...
+Me: Can you hear me? Hello...
+After a while, the voice cuts out, leaving you with a frozen line and the hollow loop of a dial tone.
+
+~ ostrzezenie
 Me: Hello?
-You hear unnatural, feminine voice - like automative messenger.
+You hear low quality, crunchy feminine voice, impossible to distinguish between a human and an answering machine.
 ??: Hello. My name is Avie. My mission is to help you.
 Me: Yes, please help me. I feel like stuck in some kind of a bad dream.
 Avie: That is natural for your current situation. Please follow these guidelines:
-Avie: First, do not panic.
-Avie: Second, take a closer look to your surrondings. I will help you to understand what must be done.
+Avie: First, do not panic. Second, take a closer look to your surrondings. Any source of a guide can be useful.
 Avie: Third..
-Me: Wait! Just take me out of here!
+Me: Can't you just send someone to take me out of here?!
 Avie: ...you will encounter danger from outside of a *house*.
 Me: What kind of danger? How can I even escape this pla...
-Avie: Forth and last, main door will open in less than 2 minutes.
 Avie: Good luck.
 Me: Please, what should I...
-You have been left only with beeping from a closed connection.
-Me: That's bullshit. At least I know that I can escape from there soon.
-=> END
+You have been left with beeping from a closed connection.
+Me: That's bullshit. At least I know that I can escape from there.
+=> END!
+
+~ ostrzezenie2
+
+Me: Hello? Anyone there? 
+The speaker crackles. A feminine voice. The connection must be weak, her voice is low-bitrate and grainy.
+Avie: Hello. My name is Avie. My primary directive is to assist you. 
+Me: Please, help me. I... I don't know where I am. It feels like stuck in some kind of a bad dream. 
+Avie: Your reaction is natural with your current situation. Please adhere to the following protocols: 
+Avie: One: Stay calm and do not panic. Two: Observe your surroundings. Any source of guide can be useful.
+Avie: Three... 
+Me: I don't need protocols! Can't you just send a rescue team?! Get me out of here! 
+Avie: ...Three: You will encounter external threats originating from outside the house. 
+Me: Threats? What are you talking about? How do I even escape this pla— 
+Avie: Four.
+Crackling starts to increase. It is impossible to recognize her voice from it.
+Avie: ...nd good luck. 
+Me: Wait! Don't hang up! What should I— 
+The connection cuts out. Only looped beeping remains.
+Me: ...Fuck. At least she said "escape" is an option.
+=> END!

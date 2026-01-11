@@ -24,18 +24,19 @@ ResultSlot = NodePath("Container/VBoxContainer/ResultItem/ItemSlot")
 ResultInv = NodePath("Container/VBoxContainer/ResultItem/Inventory")
 craft = NodePath("Container/VBoxContainer/Craft")
 
-[node name="Container" type="HBoxContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.398
 anchor_top = 0.252
 anchor_right = 0.602
 anchor_bottom = 1.0
-offset_left = 0.839966
-offset_top = 0.108002
-offset_right = -0.840088
+offset_left = 4.83997
+offset_top = -225.892
+offset_right = 3.16003
+offset_bottom = -30.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
 

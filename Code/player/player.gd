@@ -27,6 +27,7 @@ enum LookDirection {
 @export var WeaponHolder : Node2D
 @export var vision : player_vision
 @export var sound_walking : AudioStreamPlayer2D
+@export var EndLoopTimer: Timer
 
 var character_direction : Vector2
 var weapon_instance : Node2D
@@ -54,10 +55,6 @@ func _ready() -> void:
 	staminaBar = get_tree().get_first_node_in_group("StaminaBar")
 	aimer.visible = false
 	set_weapon()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 	
 func _input(event: InputEvent) -> void:
 	if dead:
@@ -85,6 +82,7 @@ func _input(event: InputEvent) -> void:
 		make_stealth(false)
 		
 func _physics_process(_delta: float) -> void:
+	#print(stateMachine.currentState.name)
 	if dead:
 		return
 	
@@ -94,6 +92,8 @@ func _physics_process(_delta: float) -> void:
 			vision.setAngle()
 
 func Movement():
+	if playerSprite.animation == "lying":
+		return
 	character_direction.x = Input.get_axis("moveLeft", "moveRight")
 	character_direction.y = Input.get_axis("moveUp", "moveDown")
 	setLookingDirection()
@@ -122,19 +122,6 @@ func Movement():
 				character_direction.y = character_direction.y * sideway_speed
 				if character_direction.x < 0:
 					character_direction.x = character_direction.x * backward_speed
-			#LookDirection.Left:
-				#playerSprite.flip_h = true
-				#playerSprite.play("MoveHorizontal")
-				#character_direction.y = character_direction.y * sideway_speed
-				#if character_direction.x > 0:
-					#character_direction.x = character_direction.x * backward_speed
-			#LookDirection.Right:
-				#playerSprite.flip_h = false
-				#playerSprite.play("MoveHorizontal")
-				#character_direction.y = character_direction.y * sideway_speed
-				#if character_direction.x < 0:
-					#character_direction.x = character_direction.x * backward_speed
-					
 		if character_direction.x != 0 and character_direction.y != 0:
 			character_direction = character_direction * 0.7
 		if stealth:
@@ -146,8 +133,14 @@ func Movement():
 			sound_walking.play()
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
-		#Set all 3 Idles later
-		match lookDirection:
+		setIdleDirection()
+		
+		if sound_walking.playing:
+			sound_walking.stop()
+	move_and_slide()
+
+func setIdleDirection():
+	match lookDirection:
 			LookDirection.Up:
 				playerSprite.play("Idle-back")
 			LookDirection.Down:
@@ -156,16 +149,6 @@ func Movement():
 				playerSprite.play("Idle-left")
 			LookDirection.Right:
 				playerSprite.play("Idle-right")
-			#LookDirection.Left:
-				#playerSprite.play("Idle-horizontal")
-				#playerSprite.flip_h = true
-			#LookDirection.Right:
-				#playerSprite.play("Idle-horizontal")
-				#playerSprite.flip_h = false
-		if sound_walking.playing:
-			sound_walking.stop()
-	move_and_slide()
-
 
 func setLookingDirection():
 	var direction_vector = self.global_position - get_global_mouse_position()
@@ -238,6 +221,10 @@ func stop_running():
 	if staminaBar.exhausted.has_connections():
 		staminaBar.exhausted.disconnect(stop_running)
 
+func move_me(x: float, y: float):
+	self.position.x += x
+	self.position.y += y
+
 func make_stealth(stance : bool):
 	stealth = stance
 	
@@ -245,4 +232,14 @@ func die():
 	dead = true
 	playerSprite.play("Dying")
 	
-	
+func make_player(order: String):
+	match order:
+		"stand_up":
+			playerSprite.play("Idle-front")
+		"idle":
+			setIdleDirection()
+
+func _on_end_of_loop_timer_timeout() -> void:
+	print("KONIEC LOOPA!")
+	playerSprite.play("lying")
+	Game_Manager.endLoop(true)

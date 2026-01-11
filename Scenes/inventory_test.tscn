@@ -255,6 +255,7 @@ offset_bottom = 576.0
 autowrap_mode = 3
 
 [node name="CharacterEQ" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.017

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://dvsr8jgxcfemb"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_3i2dd"]
+
+[resource]
+script = ExtResource("1_3i2dd")
+trigger_type = 7
+trigger_id = "sypialnia"
+actions = Array[String](["Interact:killer_outdoor"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

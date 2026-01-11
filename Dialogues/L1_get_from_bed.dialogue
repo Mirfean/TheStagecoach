@@ -1,0 +1,5 @@
+~ start
+Protagonist: *I feel horribly. Lying in this bed any longer will make it only worse. I hope it is just a really bad hangover.
+Protagonist: Where am I? This place, looks familiar...
+do DMM.to_player("stand_up")
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://njuopo21a4oc"
+path="res://.godot/imported/calendar..dialogue-d7e6d0dcf2f529684457d3b1c34d9fb9.tres"
+
+[deps]
+
+source_file="res://Dialogues/calendar..dialogue"
+dest_files=["res://.godot/imported/calendar..dialogue-d7e6d0dcf2f529684457d3b1c34d9fb9.tres"]
+
+[params]
+
+defaults=true

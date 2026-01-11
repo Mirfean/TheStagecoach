@@ -130,12 +130,12 @@
 
 	"Service gun":{
 		"name": "Service gun",
-		"description": "Feels like an extension of your hand. /n Used too many times.",
+		"description": "",
 		"size": "Vector2i(4, 2)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
 		"type": "WEAPON",
-		"image": "res://Assets/Sprites/new/gun01.png"
+		"image": "res://Assets/Sprites/Items/gun01.png"
 	},
 
 	"Dissapointment as a weapon":{
@@ -145,7 +145,75 @@
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
 		"type": "WEAPON",
-		"image": "res://Assets/Sprites/new/gun02.png"       
-	}
+		"image": "res://Assets/Sprites/Items/gun02.png"       
+	},
 
+	"Vinegar":{
+		"name": "Vinegar",
+		"description": "Sour and strong",
+		"size": "Vector2i(2, 4)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/Items/butelka_octu.png"
+	},
+
+	"Bleach":{
+		"name": "Bleach",
+		"description": "A bottle of bleach, strong chemical for cleaning",
+		"size": "Vector2i(2, 4)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/Items/bleach.png"
+	},
+
+	"Small glass bottle":{
+		"name": "Small glass bottle",
+		"description": "The smaller the bottle, the heavier the shame of hiding it.",
+		"size": "Vector2i(1, 1)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/Items/butelka_small.png"
+	},
+
+	"Chlorine granade":{
+		"name": "Chlorine grenade",
+		"description": "A makeshift grenade filled with chlorine gas. Let's fuck up this guy.",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"craft": {
+			"Vinegar": 1.0,
+			"Bleach": 1.0,
+			"Small glass bottle": 1.0
+		},
+		"image": "res://Assets/Sprites/Items/chlorine_grenade.png"
+	},
+
+	"Kitchen knife":{
+		"name": "Kitchen knife",
+		"description": "Still quite sharp. Smell of chopped garlic merged permanently into the blade.",
+		"size": "Vector2i(1, 3)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/Weapons/kitchen_knife.png"
+	},
+
+	"Bourbon":{
+		"name": "Bourbon",
+		"description": "A freshly opened bottle feels like a full ocean of something better. Sadly, it's a sea full of wrecked hopes.",
+		"size": "Vector2i(2, 4)",
+		"stack_size": 2.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/Items/bourbon.png"
+	},
+
+	"Bottle of regret":{
+		"name": "Bottle of regret",
+		"description": "Burns just as much as the naked, ring finger. A toast to the future that never happened.",
+		"size": "Vector2i(2, 4)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/Items/bottle_of_regret.png"
+	}
 }

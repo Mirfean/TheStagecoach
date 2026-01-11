@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctgsf1myhn6xa"
-path="res://.godot/imported/gun01.png-2b49ef0f535b8f64453abfba97184907.ctex"
+uid="uid://g3h4bg7cb8vr"
+path="res://.godot/imported/polka_lazienka.png-7007a9d96ad2ef9520c9b536c97f8e3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/new/gun01.png"
-dest_files=["res://.godot/imported/gun01.png-2b49ef0f535b8f64453abfba97184907.ctex"]
+source_file="res://Assets/Sprites/new/polka_lazienka.png"
+dest_files=["res://.godot/imported/polka_lazienka.png-7007a9d96ad2ef9520c9b536c97f8e3c.ctex"]
 
 [params]
 

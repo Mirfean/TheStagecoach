@@ -7,26 +7,22 @@ var currentState : State
 var states : Dictionary = {}
 
 func _ready() -> void:
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
+	setup_initial_state()
 	
-	if initialState:
-		print(get_parent().name, " going ", initialState)
-		initialState.Enter()
-		currentState = initialState
+	if states.size() == 0:
+		for child in get_children():
+			if child is State:
+				states[child.name.to_lower()] = child
+				child.Transitioned.connect(on_child_transition)
 	else:
 		print("There is no initial state, trying to go Idle ", get_parent().name)
 		initialState = states.get("idle")
 		if initialState:
 			print("oof, saved ", get_parent().name)
-			initialState.Enter()
-			currentState = initialState
+			setup_initial_state()
 		else:
 			print("Sorry, I failed you ", get_parent().name)
 			
-	
 func _process(delta: float) -> void:
 	if currentState:
 		currentState.Update(delta)
@@ -39,8 +35,15 @@ func _physics_process(delta: float) -> void:
 	if currentState:
 		currentState.PhysicsUpdate(delta)
 
+func setup_initial_state():
+	if initialState:
+		print(get_parent().name, " going ", initialState)
+		initialState.Enter()
+		currentState = initialState
+
 func on_child_transition(state, newStateName):
-	#print("Trying change", currentState, " to ", states.get(newStateName.to_lower()), " for ", get_parent().name)
+	if state == null:
+		setup_initial_state()
 	
 	if state != currentState:
 		return

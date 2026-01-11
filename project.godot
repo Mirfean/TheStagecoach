@@ -22,6 +22,7 @@ Game_Manager="*res://Code/_game_manager.gd"
 Inventory_manager="*res://Code/_inventory_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DMM="*res://Code/Dialogue_MiddleMan.gd"
+EventBus="*res://Code/Flow/EventBus.gd"
 
 [dialogue_manager]
 
@@ -60,6 +61,12 @@ SpawnItemHolder=""
 DialogueMM=""
 StaminaBar=""
 UI=""
+chest=""
+crafting_table=""
+door=""
+interact_item=""
+dialogue_actor=""
+StarterLoop=""
 
 [input]
 
@@ -141,7 +148,7 @@ Run={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/first_dialogue.dialogue", "res://Dialogues/Pan_Staszek.dialogue", "res://Dialogues/Szefito.dialogue", "res://Dialogues/recipes.dialogue", "res://Dialogues/telefon_loop2.dialogue", "res://Dialogues/L1_wakeUp.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/first_dialogue.dialogue", "res://Dialogues/Pan_Staszek.dialogue", "res://Dialogues/Szefito.dialogue", "res://Dialogues/recipes.dialogue", "res://Dialogues/telefon_loop2.dialogue", "res://Dialogues/L1_wakeUp.dialogue", "res://Dialogues/L1_get_from_bed.dialogue", "res://Dialogues/calendar..dialogue", "res://bathroom_mirror.dialogue", "res://L1_doors.dialogue", "res://Dialogues/television.dialogue")
 
 [layer_names]
 

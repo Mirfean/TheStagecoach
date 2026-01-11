@@ -7,19 +7,22 @@ const Balloon = preload("res://Scenes/balloon.tscn")
 @export var dialogue_start : String = "start"
 @export var actor : Texture2D
 @export var actor_size: Vector2 = Vector2.ONE
+@export var no_collider: bool 
 
 var balloon : Node
 
 func _ready() -> void:
-	active_sprite.texture = actor
+	if active_sprite:
+		active_sprite.texture = actor
+		active_sprite.scale = actor_size
+	if not no_collider:
+		collider = find_children("*", "CollisionShape2D", false).front()
 	super._ready()
-	active_sprite.scale = actor_size
-
+	
 func Interact():
 	if not balloon:
 		balloon = Balloon.instantiate()
-	#get_tree().current_scene.add_child(balloon)
-	#balloon.start(dialogue_resource, dialogue_start)
+	Game_Manager.start_dialogue()
 	DialogueManager._start_balloon(balloon, dialogue_resource, dialogue_start, [])
 
 func _on_body_entered(body: Node2D) -> void:

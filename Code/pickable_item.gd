@@ -26,6 +26,8 @@ func _ready() -> void:
 		set_new_sprite(imagePath, Inventory_manager.get_property_from_protoset(item_id_name, "size"))
 	else:
 		print_debug("NIE DZIALA")
+	if id == "":
+		id = item_name
 
 func Interact():
 	if Inventory_manager.add_item_from_ground(self):

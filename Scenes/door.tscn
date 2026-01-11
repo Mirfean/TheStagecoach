@@ -19,7 +19,7 @@ polygon = PackedVector2Array(3, -3, 3, 9, 8, 9, 8, -3)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a43ba"]
 height = 40.0
 
-[node name="Door" type="StaticBody2D"]
+[node name="Door" type="StaticBody2D" groups=["door"]]
 collision_mask = 8
 script = ExtResource("1_fahql")
 sprite_close = ExtResource("2_a43ba")

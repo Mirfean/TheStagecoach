@@ -16,7 +16,7 @@ size = Vector2(21, 19.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bagqn"]
 size = Vector2(18, 11.5)
 
-[node name="Chest" type="Area2D"]
+[node name="Chest" type="Area2D" groups=["chest"]]
 z_index = 2
 collision_layer = 2
 collision_mask = 9
@@ -32,7 +32,6 @@ region_rect = Rect2(56, 133, 16, 11)
 [node name="opened" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
-position = Vector2(0, -2.5)
 texture = ExtResource("4_j6qf6")
 region_rect = Rect2(72, 128, 16, 16)
 

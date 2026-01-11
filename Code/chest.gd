@@ -2,6 +2,8 @@ extends Interactable_object
 class_name chest
 
 @export var Items : Dictionary
+@export var new_closed: Texture2D
+@export var new_opened: Texture2D
 
 @onready var closed: Sprite2D = $closed
 @onready var opened: Sprite2D = $opened
@@ -15,6 +17,11 @@ var isPlayerClose := false
 
 func _ready() -> void:
 	super._ready()
+	if new_closed:
+		closed.texture = new_closed
+	if new_opened:
+		opened.texture = new_opened
+	
 	if not isOpen:
 		active_sprite = closed
 		closed.visible = true
@@ -25,7 +32,17 @@ func _ready() -> void:
 		opened.visible = true
 	
 
-
+func on_highlight():
+	if not first_time:
+		opened.material = outline_shader
+	else:
+		super.on_highlight()
+		
+func off_highlight():
+	if not first_time:
+		opened.material = default_material
+	else:
+		super.off_highlight()
 #func _input(event: InputEvent) -> void:
 	#if not isPlayerClose:
 		#return

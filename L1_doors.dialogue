@@ -1,0 +1,8 @@
+~ start
+if DMM.check_inventory("house_key", true)
+	>? Dodać opis jak pojawia się dziurka do klucza jak trzymamy go.
+else
+	It won’t budge. Locked or jammed, it's hard to tell.
+	There isn't even a keyhole. That’s not right, not for a front door.
+
+=> END
