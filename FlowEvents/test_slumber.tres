@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://sr70tmjxeern"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_51dgo"]
+
+[resource]
+script = ExtResource("1_51dgo")
+trigger_type = 5
+trigger_id = "L1_wakeUp+slumber"
+actions = Array[String](["print_debug:SiemaZWyboru", "change_next_loop:old_test"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

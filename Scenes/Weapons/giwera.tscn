@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdso68oxgp3jg"]
 
-[ext_resource type="Script" uid="uid://d14bu245fs0rm" path="res://Code/weapon_range.gd" id="1_dc1tx"]
+[ext_resource type="Script" uid="uid://d14bu245fs0rm" path="res://Code/Combat/weapon_range.gd" id="1_dc1tx"]
 [ext_resource type="PackedScene" uid="uid://3onltamw2gfl" path="res://Scenes/Weapons/bullet.tscn" id="2_0xmjj"]
 [ext_resource type="Resource" uid="uid://c3lidxjtnqshw" path="res://Resources/Weapons/default_gun.tres" id="3_3r1xi"]
 [ext_resource type="Texture2D" uid="uid://ctgsf1myhn6xa" path="res://Assets/Sprites/Items/gun01.png" id="4_eopvo"]

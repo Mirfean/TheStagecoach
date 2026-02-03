@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cjespasntba54"]
 
-[ext_resource type="Script" uid="uid://bkrpu25bvldyr" path="res://Code/weapon_melee.gd" id="1_ye0n0"]
+[ext_resource type="Script" uid="uid://bkrpu25bvldyr" path="res://Code/Combat/weapon_melee.gd" id="1_ye0n0"]
 [ext_resource type="Resource" uid="uid://b0ifbx8b2s8ur" path="res://Resources/Weapons/dzida.tres" id="2_lismn"]
 [ext_resource type="Texture2D" uid="uid://brtp8ltiplnh6" path="res://Assets/Sprites/Weapons/dzida.png" id="3_pab3k"]
 [ext_resource type="AudioStream" uid="uid://cacbmb2v27av7" path="res://Audio/melee-weapon-swings.mp3" id="4_lismn"]

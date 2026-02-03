@@ -1,0 +1,67 @@
+~ start
+if DMM.get_int("L2_killer_timer") == 5:
+	Niepokój i dreszcz na skórze to naturalna odpowiedź na absolutną ciszę za drzwiami...
+	=> END
+Tępy stukot roznosił się po całym domu. Nawet z piętra było słychać uporczywe pukanie. 
+Z bliska dźwięk bardziej przypomina jednak drapanie. 
+W drzwiach nie ma wizjera, a co dziwniejsze, nie ma klamki ani dziurki na klucz.
+???: Proszę, otwórz mi. Nie mam już siły...
+=> questions
+
+~ questions
+if DMM.get_int("L2_killer_timer") >= 5
+	=> time_end
+- Protagonist: Kim jesteś?
+	do DMM.increase_int("L2_killer_timer", 1)
+	???: Nie wiem, obudziłem się tu niedawno i czuję, że coś się do mnie zbliża.
+	???: Potrzebuję pomocy, jeśli mnie nie wpuścisz to będzie ze mną źle.
+	=> questions
+- Protagonist: Nie wiem czy mogę ci ufać.
+	do DMM.increase_int("L2_killer_timer", 1)
+	???: Mogę to samo powiedzieć tobie, ale jestem zbyt zdesperowany by nie spróbować.
+	???: Proszę, nie zostało mi wiele czasu.
+	=> questions
+- Protagonist: Nie mogę, po mojej stronie nie mam nawet klamki.
+	do DMM.increase_int("L2_killer_timer", 1)
+	???: Na pewno jakoś możesz je otworzyć!
+	=> questions
+- Spróbuj je jakoś otworzyć
+- Odejdź od drzwi
+	=> END
+	
+	
+~ fight_with_doors
+if DMM.get_int("L2_killer_timer") >= 5
+	=> time_end
+- Pchnij drzwi
+	Po chwili zdajesz sobie sprawę, że równie dobrze mógłbyś pchać ścianę obok.
+	do DMM.increase_int("L2_killer_timer", 1)
+	=> fight_with_doors
+- Kopnij drzwi
+	Drastyczne zderzenie podeszwy twoje buta z drzwiami nie pozostawiło na nich nawet śladu.
+	do DMM.increase_int("L2_killer_timer", 1)
+	=> fight_with_doors
+- Spróbuj złapać blisko szczeliny i pociągnąć
+	Siłujesz się kilka minut próbując wsadzić palce, albo chociaż paznokcie, w szczelinę drzwi.
+	Niestety bezkutecznie.
+	do DMM.increase_int("L2_killer_timer", 1)
+	=> fight_with_doors
+
+- Strzel w okolice zamka [if DMM.check_inventory("Service gun") or DMM.check_inventory("Dissapointment as a weapon")]
+	Protagonist: Odsuń się od drzwi.
+	Chwilę celujesz, instyktownie uspokajasz oddech przed strzałem.
+	*BAM
+	Pocisk precyzyjnie trafia w zamek, zostawiając jedynie dziurę.
+	Drzwi uchylają się lekko od naporu powietrza z zewnątrz.
+	=> Door_opened_gun
+
+- Poddaj się
+	=> questions
+
+~ Door_opened_gun
+	do DMM.open_main_door()
+
+~ time_end
+Zza drzwi słychać dźwięki walki, huk silnego uderzenia czegoś o drzwi oraz przeraźliwe krzyki osoby z którą rozmawiałeś
+Po kilku sekundach pozostajesz w ciszy...
+=> END

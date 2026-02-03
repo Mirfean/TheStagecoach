@@ -66,6 +66,12 @@ func execute_actions(actions):
 				Interact(target_name)
 			"BlackScreen":
 				BlackScreen()
+			"print_debug":
+				print_debug(target_name)
+			"change_next_loop":
+				change_next_loop(target_name)
+			"next_loop":
+				next_loop_with_change(target_name)
 
 func get_from_registry(target_id: String):
 	var item = Game_Manager.registry.get(target_id)
@@ -88,3 +94,26 @@ func BlackScreen():
 	var target = get_from_registry("StartLoop")
 	if target:
 		target.BlackScreenOnOff()
+
+func print_debug(message: String):
+	if OS.is_debug_build():
+		print("[GameFlowController]: " + message)
+
+func change_next_loop(loop: String):
+	Game_Manager.next_loop = loop
+
+func next_loop():
+	Game_Manager.move_to_next_loop()
+	
+func next_loop_with_change(loop: String):
+	Game_Manager.move_to_next_loop(loop)
+
+func _exit_tree():
+	EventBus.door_opened.disconnect(_on_door_opened)
+	EventBus.item_picked.disconnect(_on_item_picked)
+	EventBus.item_inserted.disconnect(_on_item_inserted)
+	EventBus.dialogue_started.disconnect(_on_dialogue_started)
+	EventBus.dialogue_choice.disconnect(_on_dialogue_choice)
+	EventBus.dialogue_finished.disconnect(_on_dialogue_finished)
+	EventBus.chest_opened.disconnect(_on_chest_opened)
+	EventBus.area_entered.disconnect(_on_area_entered)

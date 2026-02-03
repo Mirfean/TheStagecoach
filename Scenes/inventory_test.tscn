@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dlboo47k71a4p"]
 
 [ext_resource type="Script" uid="uid://5hfig5q3x8it" path="res://addons/gloot/core/inventory.gd" id="1_p0e2e"]
-[ext_resource type="Script" uid="uid://g46ar027d5u" path="res://Code/user_inventory.gd" id="1_sp5yn"]
+[ext_resource type="Script" uid="uid://g46ar027d5u" path="res://Code/UI/user_inventory.gd" id="1_sp5yn"]
 [ext_resource type="JSON" path="res://itemki.json" id="2_7o7xd"]
 [ext_resource type="Script" uid="uid://d0pfc3q6sof8y" path="res://addons/gloot/ui/ctrl_inventory_grid.gd" id="2_eqq7b"]
 [ext_resource type="Resource" uid="uid://ceh8etk6ifpr1" path="res://Resources/weapons_bundle.tres" id="2_k5wjf"]
@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="11_m7alf"]
 [ext_resource type="Script" uid="uid://c6wangdtwc4m7" path="res://addons/gloot/core/item_slot.gd" id="12_k5wjf"]
 [ext_resource type="Texture2D" uid="uid://ctxln85k2p4vt" path="res://Assets/Sprites/old/aim_smol.png" id="13_f87gc"]
-[ext_resource type="Script" uid="uid://qyly6uslhhrs" path="res://Code/drop_area.gd" id="15_jon5c"]
+[ext_resource type="Script" uid="uid://qyly6uslhhrs" path="res://Code/Environment/drop_area.gd" id="15_jon5c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jon5c"]
 font = ExtResource("9_gqkot")

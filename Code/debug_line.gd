@@ -1,1 +1,2 @@
 extends Line2D
+#NIE USUWAĆ BO SIĘ ROZPIERDOLI!!!

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://muqq8868fkq1"]
 
-[ext_resource type="Script" uid="uid://x3ej2ukf1glc" path="res://Code/safe_input.gd" id="1_368e0"]
+[ext_resource type="Script" uid="uid://x3ej2ukf1glc" path="res://Code/UI/safe_input.gd" id="1_368e0"]
 [ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="1_rywc3"]
 [ext_resource type="Texture2D" uid="uid://b23pad334ufm3" path="res://Assets/Sprites/new/safe_background_siema.png" id="2_368e0"]
 

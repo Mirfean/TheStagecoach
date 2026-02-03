@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform vec4 color_tint : source_color = vec4(1.0, 1.0, 1.0, 1.0); // Kolor nakładki
-uniform float brightness : hint_range(0.0, 1.0) = 1.0;            // Jasność (1.0 = normalna)
+uniform vec4 color_tint : source_color = vec4(1.0, 1.0, 1.0, 1.0); // Kolor
+uniform float brightness : hint_range(0.0, 1.0) = 1.0;            // Jasność
 uniform float tint_strength : hint_range(0.0, 1.0) = 0.0;        // Intensywność koloru
 
 void fragment() {

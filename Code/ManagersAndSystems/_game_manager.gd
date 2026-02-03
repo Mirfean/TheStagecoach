@@ -11,14 +11,17 @@ var end_scene : PackedScene
 var GAME_PAUSED := false
 
 var current_loop : String
+var next_loop: String
 
 const info_offset: Vector2 = Vector2(50, 0)
 
+@export var levels: Levels = load("res://Resources/LEVELS.tres")
+
 func _ready() -> void:
+	self.add_to_group("GameManager")
 	prep_start()
 
 func prep_start():
-	self.add_to_group("GameManager")
 	player_char = get_tree().get_first_node_in_group("player")
 
 func spawn_item_on_ground(place : Vector2):
@@ -75,8 +78,18 @@ func endLoop(restart: bool = false):
 	await loopStarter.reset_loop_audio.finished
 
 	reset_current_scene()
+
+func move_to_next_loop(new_next_loop: String = ""):
+	if new_next_loop != "":
+		next_loop = new_next_loop
 	
-	
+	registry.clear()
+	if current_loop == next_loop:
+		reset_current_scene()
+		return
+
+	get_tree().change_scene_to_packed(levels.levels[next_loop])
+
 func reset_current_scene():
 	registry.clear()
 	get_tree().reload_current_scene()

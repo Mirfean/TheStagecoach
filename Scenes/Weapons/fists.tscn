@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://clx0dsn5yh28m"]
 
-[ext_resource type="Script" uid="uid://bkrpu25bvldyr" path="res://Code/weapon_melee.gd" id="1_auyhl"]
+[ext_resource type="Script" uid="uid://bkrpu25bvldyr" path="res://Code/Combat/weapon_melee.gd" id="1_auyhl"]
 [ext_resource type="Resource" uid="uid://ddbs081nggh0k" path="res://Resources/Weapons/Fists.tres" id="2_2ppyg"]
 [ext_resource type="Texture2D" uid="uid://0gxr6ucq3nmh" path="res://Assets/Sprites/Weapons/fists.png" id="2_auyhl"]
 [ext_resource type="AudioStream" uid="uid://cacbmb2v27av7" path="res://Audio/melee-weapon-swings.mp3" id="4_2ppyg"]

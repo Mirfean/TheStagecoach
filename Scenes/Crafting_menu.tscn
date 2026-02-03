@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b8awgl1yjjv1m"]
 
-[ext_resource type="Script" uid="uid://dhl5gxums6bns" path="res://Code/crafting_menu.gd" id="1_3jc74"]
+[ext_resource type="Script" uid="uid://dhl5gxums6bns" path="res://Code/UI/crafting_menu.gd" id="1_3jc74"]
 [ext_resource type="Script" uid="uid://trghhrgo3fax" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="1_a5gec"]
 [ext_resource type="Script" uid="uid://c6wangdtwc4m7" path="res://addons/gloot/core/item_slot.gd" id="2_b32eb"]
 [ext_resource type="JSON" path="res://itemki.json" id="3_b32eb"]

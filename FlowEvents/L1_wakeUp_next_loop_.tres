@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://bswljlcw7xfru"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_cpvdr"]
+
+[resource]
+script = ExtResource("1_cpvdr")
+trigger_type = 5
+trigger_id = "L1_wakeUp+next_loop"
+actions = Array[String](["next_loop:old_test"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm4eawfdrbllc"]
 
-[ext_resource type="Script" uid="uid://c5x8w4wnhwrrb" path="res://Code/pickable_item.gd" id="1_mvb1n"]
+[ext_resource type="Script" uid="uid://c5x8w4wnhwrrb" path="res://Code/Environment/pickable_item.gd" id="1_mvb1n"]
 [ext_resource type="Material" uid="uid://bb5a5krai0jpw" path="res://Shaders/outline2.tres" id="1_osgsb"]
 [ext_resource type="Texture2D" uid="uid://ce1ecl40ovuiw" path="res://Assets/Sprites/Weapons/giwera.png" id="2_osgsb"]
 

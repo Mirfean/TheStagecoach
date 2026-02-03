@@ -1,18 +1,19 @@
 ~ start
+Dirty sink and mirror gives public toilet vibe.
 - Look into the mirror
 	if DMM.get_int("endings_completed") >= 3
-		This is you. Your struggles, fears and pain accumulated into soul bound to a tired body.
-		Even now, beneath eye bags, shines spark of hope. A distant lights at the end of very dark tunnel.
+		This is you. Your struggles, fears and pain accumulated into the soul bound with a tired body.
+		Even now, beneath eye bags, spark of hope shines brightly. A distant light at the end of very dark tunnel.
 		=> END
 	if DMM.get_bool("ending_4")
 		Face of tired, late twenties guy is staring directly into your eyes.
-		You want to see yourself there, but something's feel off.
+		You want to see yourself there, but something feels off.
 		COŚ TU DODAĆ
 		=> END
 	else
 		Fogged surface refuses to give back a clear reflection, showing only faint, hazy contours.
 		=> END 
 - Wash your face
-	Water from sink is warm, room temperature even.
-	Feels almost the same as your skin. There is no refreshment to be found here.
+	Water from a sink is warm, room temperature even.
+	Feels almost the same as your skin. You are not finding refreshment in this.
 => END

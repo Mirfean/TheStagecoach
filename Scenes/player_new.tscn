@@ -7,15 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bsx4jdqmo17wy" path="res://Assets/Sprites/new/movement.png" id="5_rf6aj"]
 [ext_resource type="Texture2D" uid="uid://b71uildctb52s" path="res://Assets/Snoblin/Assets/Extra/Shadow.png" id="6_537yu"]
 [ext_resource type="Texture2D" uid="uid://crld8sgvhkbyp" path="res://Assets/Sprites/new/Interact_animations.png" id="6_gaai3"]
-[ext_resource type="Script" uid="uid://cotcxnvni071" path="res://Code/aimer.gd" id="7_vxbkp"]
+[ext_resource type="Script" uid="uid://cotcxnvni071" path="res://Code/Combat/aimer.gd" id="7_vxbkp"]
 [ext_resource type="Resource" uid="uid://c3lidxjtnqshw" path="res://Resources/Weapons/default_gun.tres" id="8_07mxn"]
-[ext_resource type="Script" uid="uid://dlldqaltywfva" path="res://Code/debug_line.gd" id="9_vcj0b"]
 [ext_resource type="Texture2D" uid="uid://ctxln85k2p4vt" path="res://Assets/Sprites/old/aim_smol.png" id="10_br54h"]
 [ext_resource type="Script" uid="uid://xctp8wkajc87" path="res://Code/States/StateMachine.gd" id="11_3qxxe"]
 [ext_resource type="Script" uid="uid://b1j48q08b8k42" path="res://Code/States/PlayerDefault.gd" id="12_qbxq4"]
 [ext_resource type="Script" uid="uid://3oy8gkpj2f5o" path="res://Code/States/PlayerAim.gd" id="13_2stm8"]
 [ext_resource type="Script" uid="uid://dyc6mg0ar5dp5" path="res://Code/States/PlayerDialogue.gd" id="14_1hcly"]
-[ext_resource type="Script" uid="uid://bly2ia073lag6" path="res://Code/PlayerInventory.gd" id="15_cxmac"]
+[ext_resource type="Script" uid="uid://bly2ia073lag6" path="res://Code/player/PlayerInventory.gd" id="15_cxmac"]
 [ext_resource type="AudioStream" uid="uid://dn306opldifve" path="res://Audio/raw/615044__junvi__walking-footstep.wav" id="16_25q6l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ukyrk"]
@@ -245,6 +244,10 @@ _data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(0.1, 13), 0.0, 0.0, 0, 0, Vecto
 point_count = 7
 metadata/_snap_enabled = true
 
+[sub_resource type="GDScript" id="GDScript_rf6aj"]
+script/source = "extends Line2D
+"
+
 [node name="player_new" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "WeaponHolder", "sound_walking") groups=["player"]]
 z_index = 3
 collision_layer = 8
@@ -314,7 +317,7 @@ collision_mask = 35
 
 [node name="DebugLine" type="Line2D" parent="Aim/Aimer/RayCast2D"]
 width = 1.0
-script = ExtResource("9_vcj0b")
+script = SubResource("GDScript_rf6aj")
 
 [node name="smol" type="Sprite2D" parent="Aim/Aimer"]
 scale = Vector2(0.43, 0.43)

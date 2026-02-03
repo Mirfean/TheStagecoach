@@ -43,13 +43,14 @@ func verify_code(code: String) -> bool:
 		7359:
 			items_inside[0].visible = true
 			items_inside[0].global_position = spot_1.global_position
-			return true
 		5364:
 			print_debug("1")
-			return true
-		
-	return false
-	
+		4335:
+			print_debug("Siema")
+		_:
+			print_debug("Unknown item ID")
+			return false
+	return true
 	
 func open_door():
 	active_sprite.texture = opened_sprite

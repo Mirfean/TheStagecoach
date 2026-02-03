@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2qg772cgf10b"]
 
-[ext_resource type="Script" uid="uid://xmoogc1yg76g" path="res://Code/sound_effect.gd" id="1_0sduf"]
+[ext_resource type="Script" uid="uid://xmoogc1yg76g" path="res://Code/Environment/sound_effect.gd" id="1_0sduf"]
 
 [node name="SoundEffect" type="AudioStreamPlayer2D"]
 bus = &"Effects"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dclxrj5ad5vb7" path="res://Assets/Sprites/old/Stamina outline.png" id="1_lbx4p"]
 [ext_resource type="Texture2D" uid="uid://b8cg24dd6uxvv" path="res://Assets/Sprites/old/Stamina filling.png" id="2_cjhka"]
-[ext_resource type="Script" uid="uid://sghf3lrb15ku" path="res://Code/stamina_progress_bar.gd" id="3_je35u"]
+[ext_resource type="Script" uid="uid://sghf3lrb15ku" path="res://Code/UI/stamina_progress_bar.gd" id="3_je35u"]
 
 [node name="Stamina progress bar" type="TextureProgressBar" groups=["StaminaBar"]]
 anchors_preset = -1

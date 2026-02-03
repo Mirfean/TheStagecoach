@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=4 uid="uid://beani83f2qc6m"]
 
-[ext_resource type="Script" uid="uid://6a1krboy2ci3" path="res://Code/_game_manager.gd" id="1_d2752"]
+[ext_resource type="Script" uid="uid://6a1krboy2ci3" path="res://Code/ManagersAndSystems/_game_manager.gd" id="1_d2752"]
 [ext_resource type="Texture2D" uid="uid://dbk84xlc05tmy" path="res://Assets/TileMaps/tilemap_V2.png" id="1_n4yxp"]
 [ext_resource type="TileSet" uid="uid://dyq0un67wtd88" path="res://Tilemaps/Ground.tres" id="1_n5vn0"]
 [ext_resource type="PackedScene" uid="uid://157h3ftf0pbo" path="res://Scenes/player.tscn" id="2_vnw6p"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bjn2hakow4wkb" path="res://Scenes/slime.tscn" id="4_vgerr"]
 [ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="5_qfkbf"]
 [ext_resource type="AudioStream" uid="uid://d3m2hxtkdbixy" path="res://Audio/175447__zuluonedrop__zulu_140_fmin_skank_dub.mp3" id="9_v3aah"]
-[ext_resource type="Script" uid="uid://d0a4infiqw3ck" path="res://Code/player_view.gd" id="10_lek8k"]
+[ext_resource type="Script" uid="uid://d0a4infiqw3ck" path="res://Code/player/player_view.gd" id="10_lek8k"]
 [ext_resource type="Resource" uid="uid://ddbs081nggh0k" path="res://Resources/Weapons/Fists.tres" id="10_uh8jm"]
 [ext_resource type="Texture2D" uid="uid://ug15ward7ke2" path="res://Assets/Sprites/old/Light2D3.png" id="10_v3aah"]
 [ext_resource type="Texture2D" uid="uid://b7a3g6r7ficdt" path="res://Assets/Sprites/old/FREE Textures Of Light/32x32/32x32 textures (2).png" id="12_3ks5u"]

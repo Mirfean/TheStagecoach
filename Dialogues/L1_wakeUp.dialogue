@@ -3,9 +3,13 @@ Darkness surrounds you...
 Your mind feels numb.
 => wakeup_choice
 
+~ test_to_next_loop
+do DMM.send_event_choice("L1_wakeUp", "next_loop")
+=> END!
 
 ~ slumber
 TODO Przypominajka/urywki wspomnień ze zrobionych już loopów
+do DMM.send_event_choice("L1_wakeUp", "slumber")
 => wakeup_choice
 
 ~ wakeup_choice
@@ -14,5 +18,7 @@ TODO Przypominajka/urywki wspomnień ze zrobionych już loopów
 	After a while you finally win this fight.
 	do DMM.send_event_finished("L1_wakeUp")
 	=> END
-- Stay in a slumber
- => slumber
+- Stay in a slumber zzz
+	=> slumber
+- test_next_loop
+	=> test_to_next_loop

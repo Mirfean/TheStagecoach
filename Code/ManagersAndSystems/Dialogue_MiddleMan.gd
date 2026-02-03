@@ -18,10 +18,16 @@ func set_bool(key: String, value : bool):
 	var_bool[key] = value
 
 func get_int(key: String):
-	return var_int.get_or_add(key)
+	if not var_int.has(key):
+		var_int.get_or_add(key, 0)
+	return var_int.get(key)
 	
 func set_int(key: String, value : int):
 	var_int[key] = value
+
+func increase_int(key: String, amount : int = 1):
+	get_int(key)
+	var_int[key] = var_int.get_or_add(key) + amount
 	
 func get_string(key: String):
 	return var_string.get_or_add(key)

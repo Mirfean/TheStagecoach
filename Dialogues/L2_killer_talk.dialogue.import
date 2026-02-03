@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://obv02muxua1f"
+path="res://.godot/imported/L2_killer_talk.dialogue-c532bc8df5197c5d598bf74bd6e6dd4b.tres"
+
+[deps]
+
+source_file="res://Dialogues/L2_killer_talk.dialogue"
+dest_files=["res://.godot/imported/L2_killer_talk.dialogue-c532bc8df5197c5d598bf74bd6e6dd4b.tres"]
+
+[params]
+
+defaults=true
