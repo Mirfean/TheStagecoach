@@ -67,6 +67,10 @@ door=""
 interact_item=""
 dialogue_actor=""
 StarterLoop=""
+ExitLeft=""
+ExitDown=""
+ExitRight=""
+ExitUp=""
 
 [input]
 

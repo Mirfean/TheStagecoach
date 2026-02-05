@@ -10,13 +10,15 @@
 
 [node name="Crafting" type="Control" node_paths=PackedStringArray("Ingredients", "ResultSlot", "ResultInv", "craft")]
 layout_mode = 3
-anchor_top = 0.704
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.320068
-offset_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -0.660004
+offset_bottom = 0.660004
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_3jc74")
 Ingredients = [NodePath("Container/GridContainer/CtrlItemSlot/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot2/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot3/ItemSlot"), NodePath("Container/GridContainer/CtrlItemSlot4/ItemSlot")]
@@ -29,7 +31,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.398
 anchor_top = 0.252
-anchor_right = 0.602
+anchor_right = 0.62
 anchor_bottom = 1.0
 offset_left = 4.83997
 offset_top = -225.892
@@ -43,6 +45,7 @@ alignment = 1
 [node name="GridContainer" type="GridContainer" parent="Container"]
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 40
 columns = 2

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://defphoduro2ry"]
+
+[ext_resource type="Script" uid="uid://cx5xj3pwtxni2" path="res://Code/Environment/checkpointTile.gd" id="1_lbcco"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cwi7"]
+radius = 8.0
+
+[node name="Checkpoint" type="Area2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_lbcco")
+metadata/_custom_type_script = "uid://cx5xj3pwtxni2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2cwi7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

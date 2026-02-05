@@ -16,8 +16,6 @@ func _ready() -> void:
 		slot.item_equipped.connect(check_for_craftable)
 		slot.cleared.connect(check_for_craftable)
 	disactivate()
-	
-	print(refactor_string("Metal Plate"))
 
 func get_items() -> Array[InventoryItem]:
 	var result: Array[InventoryItem] = []
@@ -110,12 +108,12 @@ func craft_item():
 func activate():
 	self.visible = true
 	process_mode = PROCESS_MODE_INHERIT
-	get_parent().visible = true
+	#get_parent().visible = true
 	
 func disactivate():
 	self.visible = false
 	process_mode = PROCESS_MODE_DISABLED
-	get_parent().visible = false
+	#get_parent().visible = false
 
 
 func _on_craft_pressed() -> void:

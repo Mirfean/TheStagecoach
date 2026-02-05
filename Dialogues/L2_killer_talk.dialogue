@@ -49,10 +49,9 @@ if DMM.get_int("L2_killer_timer") >= 5
 
 - Strzel w okolice zamka [if DMM.check_inventory("Service gun") or DMM.check_inventory("Dissapointment as a weapon")]
 	Protagonist: Odsuń się od drzwi.
-	Chwilę celujesz, instyktownie uspokajasz oddech przed strzałem.
+	Celujesz przez chwilę, uspokajasz oddech przed strzałem.
 	*BAM
-	Pocisk precyzyjnie trafia w zamek, zostawiając jedynie dziurę.
-	Drzwi uchylają się lekko od naporu powietrza z zewnątrz.
+	Pocisk precyzyjnie trafia w miejsce zamka, zostawiając jedynie dziurę.
 	=> Door_opened_gun
 
 - Poddaj się
@@ -60,6 +59,7 @@ if DMM.get_int("L2_killer_timer") >= 5
 
 ~ Door_opened_gun
 	do DMM.open_main_door()
+	TODO
 
 ~ time_end
 Zza drzwi słychać dźwięki walki, huk silnego uderzenia czegoś o drzwi oraz przeraźliwe krzyki osoby z którą rozmawiałeś

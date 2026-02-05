@@ -1,3 +1,4 @@
+@tool
 extends Interactable_object
 class_name Dialoguer
 
@@ -15,9 +16,13 @@ func _ready() -> void:
 	if active_sprite:
 		active_sprite.texture = actor
 		active_sprite.scale = actor_size
-	if not no_collider:
-		collider = find_children("*", "CollisionShape2D", false).front()
-	super._ready()
+	if Engine.is_editor_hint():
+		print("Change sprite")
+	else:
+	# Kod tylko dla gry
+		if not no_collider:
+			collider = find_children("*", "CollisionShape2D", false).front()
+		super._ready()
 	
 func Interact():
 	if not balloon:

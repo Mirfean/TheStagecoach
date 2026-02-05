@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ka36okq1fr1"
-path="res://.godot/imported/butelka_small.png-340274b8cbbc81812d67e0b0a34bee13.ctex"
+uid="uid://dcjdn3ecp5jr5"
+path="res://.godot/imported/chlorine_grenade.png-b2b832c3e69474a9b54084a13503d4f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/new/butelka_small.png"
-dest_files=["res://.godot/imported/butelka_small.png-340274b8cbbc81812d67e0b0a34bee13.ctex"]
+source_file="res://Assets/Sprites/Items/chlorine_grenade.png"
+dest_files=["res://.godot/imported/chlorine_grenade.png-b2b832c3e69474a9b54084a13503d4f7.ctex"]
 
 [params]
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=4 uid="uid://c1hf3hrn17a20"]
+
+[ext_resource type="TileSet" uid="uid://b61ruga1pfpm3" path="res://tilemap01.tres" id="1_4wtrd"]
+[ext_resource type="Script" uid="uid://3p5fa7psxar3" path="res://Code/TilePart.gd" id="2_pjgby"]
+[ext_resource type="PackedScene" uid="uid://defphoduro2ry" path="res://Scenes/checkpoint.tscn" id="3_ykguu"]
+[ext_resource type="Texture2D" uid="uid://ct4f5itmlbier" path="res://Assets/Sprites/Items/Ser.png" id="4_4wtrd"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAMAAAABAAAAAAAFAAMAAAACAAAAAAAFAAMAAAD//wAAAAAFAAMAAAD+/wAAAAAFAAMAAAACAAEAAAAFAAMAAAACAAIAAAAFAAMAAAACAAMAAAAFAAMAAAACAAQAAAAFAAMAAAD+/wEAAAAFAAMAAAD+/wIAAAAFAAMAAAD+/wMAAAAFAAMAAAD+/wQAAAAFAAMAAAD//wQAAAAFAAMAAAAAAAQAAAAFAAMAAAABAAQAAAAFAAMAAAD//wMAAAAFAAMAAAD//wIAAAAFAAMAAAD//wEAAAAFAAMAAAAAAAEAAAAFAAMAAAABAAEAAAAFAAMAAAABAAIAAAAFAAMAAAAAAAIAAAAFAAMAAAAAAAMAAAAFAAMAAAABAAMAAAAFAAMAAAD+/wYAAAAFAAEAAAD+/wcAAAAFAAIAAAD//wYAAAAFAAEAAAD//wcAAAAFAAIAAAAAAAYAAAAFAAEAAAAAAAcAAAAFAAIAAAABAAYAAAAFAAEAAAABAAcAAAAFAAIAAAACAAYAAAAFAAEAAAACAAcAAAAFAAIAAAD+//7/AAAFAAEAAAD+////AAAFAAIAAAD///7/AAAFAAEAAAD/////AAAFAAIAAAABAP7/AAAFAAEAAAABAP//AAAFAAIAAAACAP7/AAAFAAEAAAACAP//AAAFAAIAAAABAP3/AAACAAAAAAACAP3/AAACAAAAAAADAP3/AAACAAAAAAADAP7/AAACAAAAAAADAP//AAACAAAAAAADAAAAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAADAAQAAAACAAAAAAADAAUAAAACAAAAAAACAAUAAAACAAAAAAABAAUAAAACAAAAAAAAAAUAAAACAAAAAAD//wUAAAACAAAAAAD+/wUAAAACAAAAAAD9/wUAAAACAAAAAAD9/wQAAAACAAAAAAD9/wMAAAACAAAAAAD9/wIAAAACAAAAAAD9/wEAAAACAAAAAAD9/wAAAAACAAAAAAD9////AAACAAAAAAD9//7/AAACAAAAAAD9//3/AAACAAAAAAD+//3/AAACAAAAAAD///3/AAACAAAAAAD9/wYAAAAFAAEAAAD9/wcAAAAFAAIAAAADAAYAAAAFAAEAAAADAAcAAAAFAAIAAAA=")
+tile_set = ExtResource("1_4wtrd")
+script = ExtResource("2_pjgby")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(144, -64)
+
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("3_ykguu")]
+position = Vector2(72, -9)
+add_or_remove = false
+marker = NodePath("../Marker2D")
+
+[node name="Checkpoint2" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("3_ykguu")]
+position = Vector2(175, -5)
+marker = NodePath("../Marker2D2")
+
+[node name="Ser" type="Sprite2D" parent="."]
+position = Vector2(7, 39)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("4_4wtrd")

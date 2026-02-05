@@ -14,7 +14,7 @@ size = Vector2(21, 19.5)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cjfl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bagqn"]
-size = Vector2(18, 11.5)
+size = Vector2(18, 13)
 
 [node name="Chest" type="Area2D" groups=["chest"]]
 z_index = 2
@@ -45,8 +45,8 @@ stream = ExtResource("3_bagqn")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_cjfl1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -1.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_bagqn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

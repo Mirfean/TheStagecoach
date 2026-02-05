@@ -46,15 +46,20 @@ layout_mode = 2
 [node name="user_inventory" parent="Panels/Character/HBoxContainer" instance=ExtResource("1_dewlx")]
 layout_mode = 2
 
+[node name="Crafting2" parent="Panels" instance=ExtResource("2_hfhsn")]
+z_index = 1
+custom_minimum_size = Vector2(401.355, 0)
+layout_mode = 2
+
 [node name="Crafting" type="PanelContainer" parent="Panels"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
 custom_minimum_size = Vector2(400, 570.21)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_filter = 1
-
-[node name="Crafting" parent="Panels/Crafting" instance=ExtResource("2_hfhsn")]
-layout_mode = 2
+mouse_filter = 2
 
 [node name="Chest" type="PanelContainer" parent="Panels"]
 self_modulate = Color(1, 1, 1, 0.0470588)

@@ -160,7 +160,7 @@
 	"Bleach":{
 		"name": "Bleach",
 		"description": "A bottle of bleach, strong chemical for cleaning",
-		"size": "Vector2i(2, 4)",
+		"size": "Vector2i(3, 5)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
 		"image": "res://Assets/Sprites/Items/bleach.png"
@@ -169,16 +169,16 @@
 	"Small glass bottle":{
 		"name": "Small glass bottle",
 		"description": "The smaller the bottle, the heavier the shame of hiding it.",
-		"size": "Vector2i(1, 1)",
+		"size": "Vector2i(2, 3)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
 		"image": "res://Assets/Sprites/Items/butelka_small.png"
 	},
 
-	"Chlorine granade":{
+	"Chlorine grenade":{
 		"name": "Chlorine grenade",
 		"description": "A makeshift grenade filled with chlorine gas. Let's fuck up this guy.",
-		"size": "Vector2i(2, 2)",
+		"size": "Vector2i(2, 3)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
 		"craft": {
@@ -192,7 +192,7 @@
 	"Kitchen knife":{
 		"name": "Kitchen knife",
 		"description": "Still quite sharp. Smell of chopped garlic merged permanently into the blade.",
-		"size": "Vector2i(1, 3)",
+		"size": "Vector2i(2, 5)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
 		"type": "WEAPON",

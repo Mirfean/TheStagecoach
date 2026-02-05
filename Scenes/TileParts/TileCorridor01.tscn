@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=4 uid="uid://cf1vky5gdsj5m"]
+
+[ext_resource type="TileSet" uid="uid://b61ruga1pfpm3" path="res://tilemap01.tres" id="1_hrr5n"]
+[ext_resource type="PackedScene" uid="uid://defphoduro2ry" path="res://Scenes/checkpoint.tscn" id="2_na5hg"]
+[ext_resource type="Script" uid="uid://3p5fa7psxar3" path="res://Code/TilePart.gd" id="2_v3xww"]
+[ext_resource type="PackedScene" uid="uid://ngugnqyso2du" path="res://Scenes/TileParts/TileCorridor03.tscn" id="3_d5iqw"]
+[ext_resource type="PackedScene" uid="uid://bwsxselv7fnvy" path="res://Scenes/TileParts/TileCorridor02.tscn" id="4_kix0w"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAD//wAAAAAJAAEAAAD+/wAAAAAJAAEAAAD9/wAAAAAJAAEAAAD8/wAAAAAJAAEAAAD7/wAAAAAJAAEAAAD6/wAAAAAJAAEAAAD6/wEAAAAJAAEAAAD6/wIAAAAJAAEAAAD6/wMAAAAJAAEAAAD6/wQAAAAJAAEAAAD6////AAAJAAEAAAD6//7/AAAJAAEAAAD6//3/AAAJAAEAAAD6//z/AAAJAAEAAAD5//z/AAAJAAEAAAD4//z/AAAJAAEAAAD3//z/AAAJAAEAAAD2//z/AAAJAAEAAAD2//r/AAAAAAEAAAD2//v/AAAAAAIAAAD3//r/AAABAAEAAAD3//v/AAABAAIAAAD4//r/AAACAAEAAAD4//v/AAACAAIAAAD7//7/AAAAAAEAAAD7////AAAAAAIAAAD8//7/AAABAAEAAAD8////AAABAAIAAAD9//7/AAACAAEAAAD9////AAACAAIAAAD5//r/AAAAAAEAAAD5//v/AAAAAAIAAAD6//r/AAABAAEAAAD6//v/AAABAAIAAAD+//7/AAAAAAEAAAD+////AAAAAAIAAAD///7/AAABAAEAAAD/////AAABAAIAAAD7/wQAAAACAAAAAAD7/wMAAAACAAAAAAD7/wIAAAACAAAAAAD7/wEAAAACAAAAAAD8/wEAAAACAAAAAAD9/wEAAAACAAAAAAD+/wEAAAACAAAAAAD//wEAAAACAAAAAAD7//3/AAACAAAAAAD8//3/AAACAAAAAAD9//3/AAACAAAAAAD+//3/AAACAAAAAAD///3/AAACAAAAAAD7//z/AAACAAAAAAD7//v/AAACAAAAAAD7//r/AAACAAAAAAD7//n/AAACAAAAAAD6//n/AAACAAAAAAD5//n/AAACAAAAAAD4//n/AAACAAAAAAD3//n/AAACAAAAAAD2//n/AAACAAAAAAD2//3/AAACAAAAAAD3//3/AAACAAAAAAD4//3/AAACAAAAAAD5//3/AAACAAAAAAD5//7/AAACAAAAAAD5////AAACAAAAAAD5/wAAAAACAAAAAAD5/wEAAAACAAAAAAD5/wIAAAACAAAAAAD5/wMAAAACAAAAAAD5/wQAAAACAAAAAAD2//7/AAAAAAEAAAD2////AAAAAAIAAAD3//7/AAABAAEAAAD3////AAABAAIAAAD4//7/AAACAAEAAAD4////AAACAAIAAAD8/wIAAAAAAAEAAAD8/wMAAAAAAAIAAAD9/wIAAAABAAEAAAD9/wMAAAABAAIAAAD+/wIAAAACAAEAAAD+/wMAAAACAAIAAAD//wIAAAAAAAEAAAD//wMAAAAAAAIAAAA=")
+tile_set = ExtResource("1_hrr5n")
+script = ExtResource("2_v3xww")
+
+[node name="MarkerLeft" type="Marker2D" parent="." groups=["ExitLeft"]]
+position = Vector2(-160, -64)
+
+[node name="Marker" type="Marker2D" parent="." groups=["ExitRight"]]
+
+[node name="Marker2D2" type="Marker2D" parent="." groups=["ExitDown"]]
+position = Vector2(-96, 80)
+
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("2_na5hg")]
+position = Vector2(-88, -39)
+add_or_remove = false
+marker = NodePath("../MarkerLeft")
+
+[node name="Checkpoint2" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("2_na5hg")]
+position = Vector2(-88, 8)
+tileParts = Array[PackedScene]([ExtResource("4_kix0w")])
+marker = NodePath("../Marker2D2")
+
+[node name="Checkpoint3" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("2_na5hg")]
+position = Vector2(-88, -17)
+tileParts = Array[PackedScene]([ExtResource("3_d5iqw")])
+marker = NodePath("../Marker")
