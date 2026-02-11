@@ -1,7 +1,7 @@
 # Godot default generated files
 .godot/
 export.cfg
-export_presets.cfg
+#export_presets.cfg
 
 # Executables
 *.exe

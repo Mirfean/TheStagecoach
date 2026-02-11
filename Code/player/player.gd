@@ -40,7 +40,7 @@ var closest_interaction : Node2D
 var playerState := PlayerState.Default
 @export var lookDirection := LookDirection.Down
 var can_interact := true
-var speed := 30
+var speed := 20
 var sideway_speed := 0.7
 var backward_speed := 0.5
 var dead := false

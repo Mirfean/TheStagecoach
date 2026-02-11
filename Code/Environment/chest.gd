@@ -1,3 +1,4 @@
+@tool
 extends Interactable_object
 class_name chest
 
@@ -16,7 +17,8 @@ var isOpen := false
 var isPlayerClose := false
 
 func _ready() -> void:
-	super._ready()
+	if not Engine.is_editor_hint():
+		super._ready()
 	if new_closed:
 		closed.texture = new_closed
 	if new_opened:
