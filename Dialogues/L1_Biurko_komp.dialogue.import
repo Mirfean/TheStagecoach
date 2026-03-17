@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ceb71l3natxdq"
+path="res://.godot/imported/L1_Biurko_komp.dialogue-9e0aa529e8b4b2887996007cdd875a4b.tres"
+
+[deps]
+
+source_file="res://Dialogues/L1_Biurko_komp.dialogue"
+dest_files=["res://.godot/imported/L1_Biurko_komp.dialogue-9e0aa529e8b4b2887996007cdd875a4b.tres"]
+
+[params]
+
+defaults=true

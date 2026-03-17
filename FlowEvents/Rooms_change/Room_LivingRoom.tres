@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://dbu33vyhxd0ki"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_mnblg"]
+
+[resource]
+script = ExtResource("1_mnblg")
+trigger_type = 7
+trigger_id = "LivingRoom"
+actions = Array[String](["set_current_room:LivingRoom"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

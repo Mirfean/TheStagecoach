@@ -15,6 +15,7 @@ var id = "StartLoop"
 func _ready() -> void:
 	call_deferred("setup_loop")
 	Game_Manager.add_to_registry(self)
+	Game_Manager.current_loop = loop
 	
 func BlackScreenOnOff():
 	black_screen.visible = not black_screen.visible
@@ -26,6 +27,11 @@ func BlackingOff():
 	# Zmienia alpha (modulate:a) do 1.0 w czasie 2 sekund
 	tween.tween_property(black_screen, "color:a", 1.0, 3.0)
 	
+func BlackForMoment(time: float = 1.5):
+	black_screen.visible = true
+	black_screen.color.a = 255
+	var tween = create_tween()
+	tween.tween_property(black_screen, "visible", false, time)
 	
 func setup_loop():
 	if off:
@@ -37,3 +43,6 @@ func setup_loop():
 			player_char.playerSprite.play("lying")
 			starting_dialogue.Interact()
 			Game_Manager.get_from_registry("door_biuro0p").locked = true
+		"loop2_test":
+			player_char.EndLoopTimer.start(30)
+			

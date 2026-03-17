@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bucy4rsvkgm6c"
+path="res://.godot/imported/walka_z_zabojca.dialogue-ae641707bcd7f28e0613cddae6e0f36f.tres"
+
+[deps]
+
+source_file="res://Dialogues/walka_z_zabojca.dialogue"
+dest_files=["res://.godot/imported/walka_z_zabojca.dialogue-ae641707bcd7f28e0613cddae6e0f36f.tres"]
+
+[params]
+
+defaults=true

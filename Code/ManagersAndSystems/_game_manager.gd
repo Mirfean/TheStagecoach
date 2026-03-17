@@ -19,6 +19,7 @@ const info_offset: Vector2 = Vector2(50, 0)
 
 func _ready() -> void:
 	self.add_to_group("GameManager")
+	registry.set("GameManager", self)
 	prep_start()
 
 func prep_start():
@@ -94,3 +95,20 @@ func reset_current_scene():
 	registry.clear()
 	get_tree().reload_current_scene()
 	self.call_deferred("prep_start")
+
+func get_current_room() -> String:
+	return player_char.current_room
+
+func change_current_room(room: String):
+	if player_char:
+		player_char.current_room = room
+		print("Changed room to " + room)
+	else:
+		print_debug("There is no player!!!")
+		
+func killer_is_coming():
+	#Open door with sound
+	#Black screen
+	#fight dialogue starts.
+	print("Time to die")
+	

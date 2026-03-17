@@ -1,0 +1,118 @@
+~ start
+A desk cluttered with a computer, piles of paperwork, and some random things.
+=> choice
+
+~ choice
+- Check computer
+	After clicking big, plastic button, monitor is on.
+	=> Computer
+
+- Check papers
+	=> Papers
+
+- Check other things
+	=> other_items
+
+- Leave
+	=> END
+
+~ Computer
+if DMM.get_bool("TODO") == false:
+	Desktop with dark background is full of randomly named document files.
+	- File "new file_18"
+		=> new_file_18
+	- Turn off monitor
+		=> choice
+else
+	Even the smallest move of the cursor is lagging.
+	Every file you see, looks corrupted. 
+	In this state it is unusable.
+	=> choice 
+
+=> END
+
+~ Papers
+All those papers have the same, green logo as the cup - A snake wrapping around a white pillar with the rising sun in the background
+if DMM.get_bool("Reading") == true	
+	Every time you look at it, you feel irritating itch in memory, like it was something important.
+	Same signature placed in right bottom of each paper.
+	[i] Stepane Pokrzywa [/i]
+	- File "Wieloryb Neptuna"
+		=> Wieloryb
+	- File "Pasożyt samobójcy"
+		=> suicide_parasite
+	- File "Niezabijalny bezdomny"
+		=> unkillable_homeless	
+	- File "Mother of many":
+		=> Mother
+else
+	You feel dizzy just from looking on them. They are blurry and you can't read anything from them.
+	=> choice
+
+~ other_items
+- Photoframe
+	A blurry photo of two people among snow-covered trees. They are standing close together, throwing snowballs at each other. 
+	=> other_items
+- Cup with liquid
+	Ice cold coffee reflects much more than you want to see.
+	Green logo on cup is unrecognizable.
+	=> other_items
+- Behind monitor
+	Many layers of thick dust hides nothing important
+	if not DMM.get_bool("bullet_behind_monitor") and DMM.get_bool("Ending_One_Can_Live"):
+		Wait! There is a single bullet, calliber 9mm.
+		When you touched it, strange feeling of compassion went through your mind. 
+		According to scratched inscription, its name is [b]Plan C[/b].
+		do DMM.set_bool("bullet_behind_monitor", true)
+		do DMM.receive_item("Bullet 9mm")
+	=> other_items
+	
+- Enough of this
+	=> choice
+
+~ Wieloryb
+28 maja 2005
+Zespół otrzymał wytyczne o możliwej anomalii znajdującej się w morzu Liguryjskim.
+Zgłoszenie zostało przyjęte od tamtejszych rybaków. Świadkowie mieli widzieć wieloryba który zamrażał morze.
+Zespół udał sie na miejsce i przeprowadził śledztwo. Zastawiono przynętę w celach badawczych.
+Obiekt złapał przynętę z nadajnikiem. Przy pierwszych dwóch próbach traciliśmy z nim kontakt zaraz po zjedzeniu.
+Następna próba przeprowadzona była z pomocą wysokiej jakości czujnika dalekiego zasięgu.
+Nadajnik ten dawał sygnał przez kilka sekund po czym ten utraciliśmy z nim kontakt.
+Gdyby nie nadgorliwość stażysty na uniwersytecie w Hamburgu, nie dowiedzielibyśmy się, że 2 dni później odpowiedź z nadajnika przyszła.
+Ciekawym był jednak fakt, że sygnał dobiegał z Neptuna.
+Późniejsze testy potwierdziły tezę, jakoby obiekty pochłonięte przez obiekt badawczy pojawiały się na planecie oddalonej o 4,5 miliarda kilometrów.
+Obiekt znajduje się na wolności mimo wielu prób przechwycenia.
+Obecnie operacja została przejęta przez zespół badawczy [s]HJ5[/s].
+=> Papers
+
+~ suicide_parasite
+Notatka wyciągnięta od działu medycznego
+[i]Po zainfekowaniu, zaczyna przejmować kontrolę nad funkcjami życiowymi ofiary. Wpierw wydziela duże ilości agonist receptorów opioidowych. Powoduje to problemy z oddychaniem, lecz ofiara nie czuje duszności.[/i]
+[i]Następnie drażni pole Tsaia. Efektem jest wyrzucenie całego zapasu dopaminy znajdującego się w organiźnie. Ofiara jest zupełnie nieświadoma zagrożenia i zaczyna odczuwać zupełny brak lęku. [/i]
+[i]Ostatnią fazą jest odcięcie percepcji ofiary. Uwalniane są związki dysocjacyjne i blokowane receptory NMDA. Jest to moment w którym ofiara zaczyna odczuwać halucynacje i tracić zupełnie kontakt ze światem zewnętrznym. [/i]
+[i]Kilka chwil później następuje zgon przez niedotlenienie i zatrzymanie akcji serca.[/i]
+if DMM.get_bool("ending_one_can_live") == true:
+	Spomiędzy części skoruptowanych danych udaje ci się odczytać kawałek z sekcji "Zalecenia"
+	[i]...profilaktyczna instal...ipu czwart..cji "Stagecoach"...[/i]
+	Niestety reszta jest zbitkiej skoruptowanych danych.
+else 
+	Dalsza część dokumentu zdaje się być skoruptowana.
+=> Papers
+
+~ unkillable_homeless
+3 listopada 2004 - Zespół otrzymał priorytetowe zadanie przejęcia obiektu AG1-DF2-8TT.
+Obiekt identyfikujący się jako Fotis Rubeas, Venkata Lata, Otávio Rodrigues oraz John Death (przedstawione chronologicznie, potwierdzone tożsamości), posiada umiejętność odradzania się.
+W momencie zgonu wraca do życia w ciele innej osoby, udokumentowane przypadki to mężczyźni w wieku od 19 do 37 lat.
+Ciało przejętej ofiary zaczyna transformować się w przypominające obiekt AG1-DF2-8TT. Pełna przemiana następuje w okolicy od 3 do 5 miesięcy.
+Efektem ubocznym takiego przejęcia ciała jest niestabilność umysłu obiektu. Podczas wywiadu z zespołem medycznym stwierdzono psychozę, nerwicę nastręctw, silną depresję oraz postępujące upośledzenie umysłowe.
+Procedura przejęcia odbyła się bez problemu. Obiekt spał na ławce w Birmingham.
+Postnote - Poszukać w archiwach innych potencjalnych tożsamości obiektu z przeszłości.
+=> Papers
+
+~ Mother
+
+=> Papers
+
+~ new_file_18
+
+=> Computer

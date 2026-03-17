@@ -1,3 +1,4 @@
+@tool
 extends StaticBody2D
 class_name Door
 
@@ -7,7 +8,10 @@ class_name Door
 @export var sprite_open : Texture2D
 @export var horizontal : bool
 @export var reversed: bool
+@export var openingSound: AudioStream
+@export var closingSound: AudioStream
 
+@onready var AudioStreamer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var door_visual: Sprite2D = $InteractionArea/DoorVisual
 @onready var current_shape2D: CollisionShape2D
 @onready var vertival_collision: CollisionShape2D = $VertivalCollision
@@ -15,9 +19,8 @@ class_name Door
 @onready var vertical_occluder: LightOccluder2D = $VerticalOccluder
 @onready var horizontal_occluder: LightOccluder2D = $HorizontalOccluder
 
-var opened : bool
-
-var locked : bool
+@export var opened : bool
+@export var locked : bool
 
 func _ready() -> void:
 	door_visual.texture = sprite_close
@@ -32,7 +35,19 @@ func _ready() -> void:
 	if reversed:
 		scale.x = -scale.x
 	
-	Game_Manager.add_to_registry(self)
+	
+	if not Engine.is_editor_hint():
+		Game_Manager.add_to_registry(self)
+	
+	
+func Interact():
+	if not locked:
+		if opened:
+			close_door()
+		else:
+			open_door()
+	else:
+		print_debug("You are trying to open locked door!")
 
 func open_door():
 	if locked:
@@ -41,7 +56,12 @@ func open_door():
 	
 	if not opened:
 		EventBus.emit_signal("door_opened", id)
-		
+		if AudioStreamer:
+			if not openingSound:
+				print_debug("Add sound!")
+			else:
+				AudioStreamer.stream = openingSound
+				AudioStreamer.play()
 		opened = true
 		current_shape2D.disabled = true
 		door_visual.texture = sprite_open
@@ -50,6 +70,12 @@ func open_door():
 
 func close_door():
 	if opened:
+		if AudioStreamer:
+			if not closingSound:
+				print_debug("Add sound!")
+			else:
+				AudioStreamer.stream = closingSound
+				AudioStreamer.play()
 		opened = false
 		current_shape2D.disabled = false
 		door_visual.texture = sprite_close

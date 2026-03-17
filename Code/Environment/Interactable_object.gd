@@ -26,11 +26,9 @@ func pick_up():
 	queue_free()
 
 func on_highlight():
-	print("Change to outline")
 	active_sprite.material = outline_shader
 	
 func off_highlight():
-	print("Change to without outline")
 	active_sprite.material = default_material
 
 func Interact():

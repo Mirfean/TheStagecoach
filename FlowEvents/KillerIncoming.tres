@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://1qbkl6r8ifyg"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_uomtw"]
+
+[resource]
+script = ExtResource("1_uomtw")
+trigger_type = 10
+trigger_id = "KillerIncoming"
+actions = Array[String](["Interact:MAINDOOR", "BlackScreen", "Interact:fight_killer"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

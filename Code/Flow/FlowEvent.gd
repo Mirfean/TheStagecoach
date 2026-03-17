@@ -9,7 +9,12 @@ enum triggers {
 	dialogue_finished,
 	dialogue_choice,
 	chest_open,
-	area_entered
+	area_entered,
+	area_exited,
+	teleport,
+	timeout,
+	flag_changed,
+	
 }
 
 @export var trigger_type: triggers

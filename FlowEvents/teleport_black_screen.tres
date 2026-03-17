@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://g1h6viwfdi10"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_o4lfp"]
+
+[resource]
+script = ExtResource("1_o4lfp")
+trigger_type = 9
+trigger_id = "teleport"
+actions = Array[String](["BlackScreenForTeleport:StartLoop"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

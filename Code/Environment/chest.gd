@@ -5,10 +5,10 @@ class_name chest
 @export var Items : Dictionary
 @export var new_closed: Texture2D
 @export var new_opened: Texture2D
+@export var collision_shape_2d: CollisionShape2D
 
 @onready var closed: Sprite2D = $closed
 @onready var opened: Sprite2D = $opened
-@onready var collision_shape_2d: CollisionShape2D = $InteractionZone
 @onready var openingSound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
@@ -17,6 +17,11 @@ var isOpen := false
 var isPlayerClose := false
 
 func _ready() -> void:
+	if collision_shape_2d == null:
+		collision_shape_2d = find_child("CollisionShape2D")
+	else:
+		print_debug("There is no collision to interact!")
+	
 	if not Engine.is_editor_hint():
 		super._ready()
 	if new_closed:
@@ -32,6 +37,8 @@ func _ready() -> void:
 		active_sprite = opened
 		closed.visible = false
 		opened.visible = true
+		
+	
 	
 
 func on_highlight():

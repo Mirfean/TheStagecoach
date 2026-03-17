@@ -11,6 +11,8 @@ func _ready():
 	EventBus.dialogue_finished.connect(_on_dialogue_finished)
 	EventBus.chest_opened.connect(_on_chest_opened)
 	EventBus.area_entered.connect(_on_area_entered)
+	EventBus.teleport.connect(_teleport)
+	EventBus.timeout.connect(_timeout)
 
 
 func _on_door_opened(door_id):
@@ -44,6 +46,14 @@ func _on_dialogue_choice(dialogue_id, choice_id):
 func _on_chest_opened(chest_id):
 	print("Chest opened " + chest_id)
 	_process_event(FlowEvent.triggers.chest_open, chest_id)
+	
+func _teleport(teleport_id):
+	print("Teleport from " + teleport_id)
+	_process_event(FlowEvent.triggers.teleport, teleport_id)
+
+func _timeout(timeout_id):
+	print("Timeout from " + timeout_id)
+	_process_event(FlowEvent.triggers.timeout, timeout_id)
 
 func _process_event(type, id):
 	for event in flow_events:
@@ -66,12 +76,18 @@ func execute_actions(actions):
 				Interact(target_name)
 			"BlackScreen":
 				BlackScreen()
+			"BlackScreenForTeleport":
+				BlackScreenForTeleport()
 			"print_debug":
 				print_debug(target_name)
 			"change_next_loop":
 				change_next_loop(target_name)
 			"next_loop":
 				next_loop_with_change(target_name)
+			"set_current_room":
+				set_current_room(target_name)
+			"timeout":
+				timeout(target_name)
 
 func get_from_registry(target_id: String):
 	var item = Game_Manager.registry.get(target_id)
@@ -95,6 +111,11 @@ func BlackScreen():
 	if target:
 		target.BlackScreenOnOff()
 
+func BlackScreenForTeleport():
+	var target = get_from_registry("StartLoop")
+	if target:
+		target.BlackForMoment()
+
 func print_debug(message: String):
 	if OS.is_debug_build():
 		print("[GameFlowController]: " + message)
@@ -107,6 +128,12 @@ func next_loop():
 	
 func next_loop_with_change(loop: String):
 	Game_Manager.move_to_next_loop(loop)
+
+func set_current_room(target_room: String):
+	Game_Manager.change_current_room(target_room)
+	
+func timeout(name):
+	print_debug("timeout " + name)
 
 func _exit_tree():
 	EventBus.door_opened.disconnect(_on_door_opened)

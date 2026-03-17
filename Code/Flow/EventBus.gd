@@ -9,6 +9,8 @@ signal dialogue_choice(dialogue_id, choice_id)
 signal chest_opened(chest_id)
 signal area_entered(area_id)
 
+signal teleport(teleport_id)
 
+signal timeout(timeout_id)
 signal trigger_fired(trigger_id)
 signal flag_changed(flag_name, value)

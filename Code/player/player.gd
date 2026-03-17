@@ -35,6 +35,7 @@ var stealth := false
 var exhausted := false
 var running := false
 var closest_interaction : Node2D
+var current_room : String
 
 #PlayerStats
 var playerState := PlayerState.Default
@@ -240,6 +241,11 @@ func make_player(order: String):
 			setIdleDirection()
 
 func _on_end_of_loop_timer_timeout() -> void:
-	print("KONIEC LOOPA!")
-	playerSprite.play("lying")
-	Game_Manager.endLoop(true)
+	match Game_Manager.current_loop:
+		"Loop1":
+			print("KONIEC LOOPA!")
+			playerSprite.play("lying")
+			Game_Manager.endLoop(true)
+		"loop2_test":
+			print("KILLER IS COMING!")
+			EventBus.emit_signal("timeout", "KillerIncoming")

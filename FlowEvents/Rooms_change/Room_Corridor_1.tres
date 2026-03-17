@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://bk63i8wi324g2"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_e6yvx"]
+
+[resource]
+script = ExtResource("1_e6yvx")
+trigger_type = 7
+trigger_id = "Corridor_0"
+actions = Array[String]([":GameManager"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

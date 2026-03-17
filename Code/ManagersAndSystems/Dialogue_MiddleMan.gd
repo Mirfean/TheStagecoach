@@ -53,5 +53,8 @@ func send_event_finished(dialogue_id: String):
 func send_event_choice(dialogue_id: String, choice_id: String):
 	EventBus.emit_signal("dialogue_choice", dialogue_id, choice_id)
 
+func getPlayerRoom():
+	return Game_Manager.player_char.get_current_room()
+
 func end_game():
 	Game_Manager.finish_game()

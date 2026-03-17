@@ -16,8 +16,10 @@ func Interact():
 	if PointToTeleport == null and OtherTeleport == null:
 		print_debug("I have no place to teleport!")
 	elif PointToTeleport != null:
+		EventBus.emit_signal("teleport", id)
 		teleportMeHere(PointToTeleport)
 	else:
+		EventBus.emit_signal("teleport", id)
 		teleportMeHere(OtherTeleport.PointToSpawn)
 	
 

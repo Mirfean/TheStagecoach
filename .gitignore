@@ -24,8 +24,9 @@ export.cfg
 # assets/large_video.mp4
 
 # Editor specific files
-# .vscode/  # Uncomment if you don't want to share VS Code settings
+.vscode/
 # .idea/    # Uncomment if you use IntelliJ/PyCharm/etc.
+addons/gut
 
 # Temporary files
 *~
