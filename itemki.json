@@ -388,8 +388,8 @@
 		},
 		"image": "res://Assets/Sprites/new/makeshift_spear.png"
 	},
-	"Socks flail":{
-		"name": "Socks flail",
+	"Sock flail":{
+		"name": "Sock flail",
 		"description": "A flail made from socks and a broom. Not the most effective one, but it can do some damage.",
 		"size": "Vector2i(2, 6)",
 		"stack_size": 1.0,

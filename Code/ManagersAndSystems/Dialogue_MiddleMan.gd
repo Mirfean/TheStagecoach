@@ -9,6 +9,13 @@ func _ready() -> void:
 	self.add_to_group("DialogueMM")
 	Inventory_manager.dialogue_mm = self
 	
+func getRandom() -> int:
+	return randi_range(0, 100)
+
+func getRandomResult(value: int) -> bool:
+	var random = randi_range(0, 100)
+	return random <= value
+	
 func get_bool(key: String):
 	if not var_bool.has(key):
 		var_bool.set(key, false)

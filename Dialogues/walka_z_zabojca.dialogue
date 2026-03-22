@@ -9,6 +9,7 @@ set locals.Player_HP = 3
 set locals.Killer_Stun = false
 set locals.WIN = false
 
+set locals.Player_SecondWind = true
 set locals.Player_Knife_Miss = 0
 
 set locals.Melee_jabs = false
@@ -45,23 +46,41 @@ What you want to do?
 - Try him in hand-to-hand fight
 	=> Melee_fight
 
-- Use a knife [if DMM.check_inventory("Kitchen knife", false, 1)]
+- Use a knife [if DMM.check_inventory("Kitchen knife")]
 	=> Knife_attack
 
 - Escape while he's stunned! [if locals.Killer_Stun]
 	=> Run_from_house
 
-- Shoot him with this [i] pathetic gun [/i] [if DMM.check_inventory("Dissapointment as a weapon", false, 1)]
+- Shoot him with this [i] pathetic gun [/i] [if DMM.check_inventory("Dissapointment as a weapon")]
 	=> Bad_gun
 
-- Shoot him with [i] a gun [/i] [if DMM.check_inventory("Service gun", false, 1)]
+- Shoot him with [i] a gun [/i] [if DMM.check_inventory("Service gun")]
 	=> Your_gun
 
 - Shoot him with the truth [if DMM.get_bool("Ending_One_Step_Closer")]
 	=> Truth
 
-- Throw Chlorine gas bomb [if DMM.check_inventory("Chlorine grenade", true, 1)]
+- Throw Chlorine gas bomb [if DMM.check_inventory("Chlorine grenade")]
 	=> Chlorine_attack
+
+- Car Battery [if DMM.check_inventory("Car Battery")]
+	=> Car_battery_attack
+
+- Homemade flamethrower [if DMM.check_inventory("Homemade flamethrower")]
+	=> Flamethrower
+
+- Molotov cocktail [if DMM.check_inventory("Molotov cocktail") or DMM.check_inventory("Molotov cocktail (sock version)")]
+	=> Molotov
+
+- Broom [if DMM.check_inventory("Broom")]
+	=> Broom_attack
+
+- Makeshift spear [if DMM.check_inventory("Makeshift spear")]
+	=> Spear_attack
+
+- Sock flail [if DMM.check_inventory("Sock flail")]
+	=> Flail_attack
 
 - Run for your life
 	=> Run_away
@@ -134,21 +153,18 @@ Old fashioned brawl. What's your tactic?
 => END
 
 ~ Knife_attack
-if locals.Player_Knife_Miss == 2
-	=> Lose_Knife
 if locals.Killer_Stun:
 	The impact leaves him reeling, his movements uncoordinated.
 	Your quick, and impactful thrust was stronger than you though. Only a handle was sticking out from his chest.
 	Agonizing scream and strengh pushed you away.
-	The remains of the blade look molten, dripping with a dark goo until only the hilt clatters to the floor.
+	The remains of the blade looks molten, dripping with a dark goo until only the hilt clatters to the floor.
 	As the ruined metal hits the ground, rage and determination flare in your enemy’s eyes.
-	locals.Killer_HP = locals.Killer_HP - 3
-	locals.Killer_Stun = false
+	do locals.Killer_HP = locals.Killer_HP - 3
+	do locals.Killer_Stun = false
 	do DMM.check_inventory("Kitchen knife", true, 1)
 else
-	- Charge - don't give him a moment to think next move 
+	- Charge - don't let him to think next move 
 		You are pumped up of adrenaline. Your grip is steady and mind focused. 
-		Quick dash towards enemy's...
 		if DMM.get_bool("Memory_FightTraining")
 			Muscle memory kicks in. Hand reversed grip on blade.
 			Smooth jump to shorten the distance.
@@ -159,42 +175,60 @@ else
 			You cast the blade aside before this spreads to your hand. The knife is useless nonetheless.
 			do locals.Killer_HP -= 2
 			do DMM.check_inventory("Kitchen knife", true, 1)
-			=> END
+
 		else
-			Przygotowujesz się do ataku, szarżujesz w przeciwnika licząc, że długość ostrza wystarczy jako przewaga.
-			
-			- Manewr
-				...
-				...
+			You prepare your attack and lunge at him, hoping the length of your blade will give you enough advantage.
+			He dodges and try to punish you quickly, aiming into your guts.
+			- Make some manouvers
+				You dodged before the blow could reach you. A swift counter follows, but he evades it.
+				% After the exchange of blows, you see thick blood dripping from his hand onto the floor.
+				% Before he could jump back, the tip of your blade caught his side. 
+				% Not fast enough, though. A gash on his chest bleeds, forming a dark stain on his clothes.
+				You managed to land a hit.
 				do locals.Killer_HP -= 1
-				=>< Resolve_HP
-				=> END
+				do locals.Player_Knife_Miss += 1
+
 			- Push to the limit
-				...
+				You don't give a fuck about his attack. You just want to make sure your strike hits home.
+				He hits you hard - you feel his fist sink deep into your guts, knocking the wind out of you.
+				But not deep as the blade in his lung.
+				Both of you makes a distance to shake off, after simultanious blows.
+				He pulls out knife from a chest. Strangly, you see only a handle. The rest of the steel must be lodged deep inside him.
 				do locals.Player_HP -= 2
-				do locals.Killer_HP -= 2
-				=>< Resolve_HP
-				=> END
+				do locals.Killer_HP -= 3
+				do DMM.check_inventory("Kitchen knife", true, 1)
+
 			- Jump back
-			...
-			do locals.Player_HP -= 1
-			do locals.Player_Knife_Miss += 1
-			=>< Resolve_HP
-			=> END
+				You retreat, but his relentless attacks are beginning to overwhelm you.
+				Finally, one of his strikes connects squarely with your face.
+				Stars explode before your eyes, blurring the next incoming blow; fortunately for you, it only grazes your skin.
+				do locals.Player_HP -= 1
+				do locals.Player_Knife_Miss += 1
 	
 	- Wait for his move - be more reactive.
-		After a short moment he takes initiative. Starts rushing to you like a desperate animal.
-		You dodged fist aimed into your gut. Then duck before he hits your face. Another hit and miss.
-		There is almost no space between his attacks. 
-		
+		After a short moment, he takes initiative, rushing at you like a desperate animal.
+		You dodge a fist aimed at your chest. Then duck before he hits your face. Another attack, another miss.
+		There is almost no breathing room between his attacks.
 		- Risk getting hurt but create an opportunity to hit
-			
+			He’s not going to stop; you have to force your own chance. You get closer, making less space to dodge on both sides.
+			Finally, chance arrives. Almost simultaneously, your blade and his fist find their marks.
+			The steel sinks deep into his shoulder, but in exchange, a brutal uppercut makes you regret that decision instantly.
+			The force of the blow nearly sends you to the ground, but you manage to quickly regain your balance.
+			He, in turn, violently rips your knife out of his flesh. But he’s left holding nothing but the hilt, coated in practically black sludge.
+			Looks like the blade is still lodged deep inside his body?
 			set locals.Player_HP = locals.Player_HP - 1
 			set locals.Killer_HP = locals.Killer_HP - 2
-		- Wait for a better moment while trying to avoid his attacks
-			set locals.Player_HP = locals.Player_HP - 1
-			set locals.Player_Miss = locals.Player_Knife_Miss + 1
-
+			do DMM.check_inventory("Kitchen knife", true, 1)
+		- Wait a little longer for a better moment to strike
+			He’ll tire himself out, or make a sloppy move; you just need to hold on. 
+			He has to [i]leave[/i] an opening eventually, right?
+			But in the end, it's your luck that [i]leaves[/i] you first. One of his strikes finds your gut, doubling you over. 
+			One of his strikes finds your gut, doubling you over. Instantly, another blow lands squarely on your face.
+			Despite the haze of pain, you manage to back away just far enough to catch your breath.
+			do locals.Player_HP = locals.Player_HP - 1
+			do locals.Player_Knife_Miss += 1
+if locals.Player_Knife_Miss >= 2
+	=>< Lose_Knife
 =>< Resolve_HP
 => END
 
@@ -202,7 +236,6 @@ else
 Quick strike hits your ankle strong enough to lost feeling of it for a moment.
 The knife dropped somewhere in the dark corner and surely, you have no time to look for it now...
 do DMM.check_inventory("Kitchen knife", true, 1)
-=>< Resolve_HP
 => END
 
 ~ Bad_gun
@@ -250,6 +283,81 @@ else
 =>< Resolve_HP
 => END
 
+~ Car_battery_attack
+if locals.Killer_true
+	While he’s stunned, you swing the car battery overhead, slamming it down onto his skull.
+	A blow that strong to the head would snap a normal man's neck instantly.
+	You’re almost certain you heard breaking bones.
+	do locals.Killer_HP -= 2
+	if locals.Killer_HP > 0
+		And yet, he’s somehow still standing, even with a shattered spine.
+	do locals.Killer_Stun = false
+else
+	Battery swings wide as he dodges, but the momentum still catches him anyway.
+	The blow wasn't perfect, but at least you left him dazed.
+	do locals.Killer_Stun = true
+do DMM.check_inventory("Car Battery", true)
+=>< Resolve_HP
+=> END
+
+~ Flamethrower
+You close the distance aggressively and trigger deodorant in his way. 
+He catches fire at full of its power, burns on his skin and clothes smolder.
+Blast was not powerful but it was more than enough to leave him wounded.
+do locals.Killer_HP -= 1
+do DMM.check_inventory("Homemade flamethrower", true)
+=>< Resolve_HP
+=> END
+
+~ Molotov
+The alcohol in your hand fuels your confidence as the burning flame.
+You throw it straight at him. A small eruption of fire spreads the lethal element across the room.
+He starts thrashing on the floor, desperate to douse the flames. 
+But a moment later, as if in a trance, he rises despite the fire still clinging to him.
+The flames consuming his body begin to die out on their own. Large, black patches cover his entire charcoal skin and scorched muscle.
+do locals.Killer_HP -= 2
+if locals.Killer_HP > 0
+	And yet, he continues to move those mangled limbs.
+do DMM.check_inventory("Molotov cocktail", true)
+do DMM.check_inventory("Molotov cocktail (sock version)", true)
+=>< Resolve_HP
+=> END
+
+~ Broom_attack
+A broken broom is like a quarterstaff in the hands of the desperate like you. 
+He’s fast, swaying out of the way of most of your strikes.
+He dodges most of your attacks.
+Keeping your distance isn't enough - you pour every ounce of your strength into one final, crushing swing.
+Unfortunately, he’s quick enough to catch the impact with his forearms.
+The thin wood snaps upon contact.
+Looks like this was not enough to make a difference... 
+do DMM.check_inventory("Broom", true)
+=>< Resolve_HP
+=> END
+
+~ Spear_attack
+You pray this idea works.
+With a ___ scream, you take a running start and charge at him.
+He had no time to react. Blade sinks deep into his flesh, and your momentum drives him backward.
+Pinned to the wall, impaled by your makeshift spear, he lets out an unearthly howl.
+As you hold him in this deadly stalemate, you notice the weapon’s blade sinking even deeper.
+No—not sinking. Melting. You watch as the handle, now in contact with his blood, begins to dissolve.
+No longer pinned, he tears himself free.
+do locals.Killer_HP -= 2
+if locals.Killer_HP > 0
+	Fight does not end.
+do DMM.check_inventory("Makeshift spear", true)
+=>< Resolve_HP
+=> END
+
+~ Flail_attack
+{opis}
+do locals.Killer_HP -= 2
+do DMM.check_inventory("Sock flail", true)
+=>< Resolve_HP
+=> END
+
+
 ~ Run_away
 You are type of guy that always take the first thing that comes to hand, even in "flee or fight" response. 
 %6 => Run_scratch
@@ -294,18 +402,30 @@ Maybe it's just a luck, or something greater aids you in this moment, but...
 => Run_from_house
 
 ~ Resolve_HP
+=>< Fake_death
+=>< Resolve_stun
 if locals.Player_HP <= 0:
 	=> Death
 if locals.Killer_HP <= 0:
 	=> WIN_fight
 => END
 
+~ Resolve_stun
+if locals.Killer_Stun
+	if locals.Killer_Still_Stun
+		do locals.Killer_Stun = false
+		do locals.Killer_Still_Stun =false
+		He's back on a track. Be careful.
+	else
+		do locals.Killer_Still_Stun = true
+else
+	do locals.Killer_Still_Stun = false
+=> END
+
 ~ Fake_death
-
-Przypomina ci się fragment dzieciństwa.
-
-do locals.Player_HP +=2
-=>< Resolve_HP
+if DMM.get_bool("Childhood_memory") and locals.Player_SecondWind
+	Przypomina ci się fragment dzieciństwa.
+	do locals.Player_HP +=1
 => END
 
 ~ Death
@@ -349,21 +469,45 @@ do DMM.send_event_choice("killer_fight", "StartLoop4B")
 
 ~ restart
 RESTART LOOPA
+do DMM.end_game()
 
 ~ Trigger_Next
 if locals.WIN
-	Wygranko
+	His body drops to the floor. Even that beast could not sustain such wounds.
+	Adrenaline pumps through every inch of your body. You still haven't fully processed the victory.
+	if locals.Player_HP == 3
+		He never stood a chance against you. It surely wasn't your first time facing a monster like him.
+		Time to move on.
+	if locals.Player_HP == 2
+		That fight wasn't clean; your body is feeling the consequences, but you can handle it.
+		Wounds will heal, your journey does not end here. 
+		Let's move on.
+	if locals.Player_HP == 1
+		You can barely move. Your legs are shaking, and something deep inside hurts so much you want to puke.
+		This is a painful victory, but a victory nontheless and you should be proud of yourself.
+	{dodać wygraną wersję co się dzieje, ciało przeciwnika i otwarte drzwi}
 else
-	Przegranko
+	You were not prepared for this of monster. 
+	% {Podpowiedź}
+	% {Podpowiedź}
+	% {Podpowiedź}
+	% {Podpowiedź}
+	Surely, if you could have a another chance...
+	{Reset levelu}
 	
 #Enemy attacks
 ~ fight_response
-%5 => Enemy_Charge 
-%4 => Enemy_Suffocate
-%4 => Enemy_Attack_Wall
-%3 => Enemy_Grab_Ground
-%3 => Enemy_Throw
-%1 => Enemy_Steal
+if locals.Killer_Stun
+	% He is stunned. Kick his ass.
+	% Your opponent is dazed. Make your move.
+	% That last hit left him reeling. Press the advantage!
+	=> END
+% => Enemy_Charge 
+% => Enemy_Suffocate
+% => Enemy_Attack_Wall
+% => Enemy_Grab_Ground
+% => Enemy_Throw
+% => Enemy_Steal
 
 =>< Resolve_HP
 => END
@@ -371,22 +515,37 @@ else
 ~ Enemy_Charge 
 Charge and tackle
 
+- Try to dodge on side
+
+- 
+
+- 
 => END
 
 ~ Enemy_Suffocate
 Enemy Trying to suffocate you
+
+noz (counter -1 obrazen)
+dlugopis (counter)
 => END
 
 ~ Enemy_Attack_Wall
 Enemy try to push to to the wall and beat you
+- attack back (-2 w gracza jeśli nie ma fight knowledge, else -1 w przeciwnika)
+- Blok hits (-1)
+- granat (-1 + stun i gracz -1)
 => END
 
 ~ Enemy_Grab_Ground
 Enemy Grab and 
+flamethrower
 => END
 
 ~ Enemy_Throw
 Enemy Throw a chair
+Unik (średnia szansa) + Jeśli przeciwnik ranny, - jeśli gracz ranny
+Złapanie i odrzucenie (mała szansa)
+Rzut akumulatorem (counter)
 => END
 
 ~ Enemy_Steal
