@@ -1,5 +1,5 @@
 ~ start
-if DMM.get_bool("languange_unlocked")
+if DMM.getValue("languange_unlocked")
 	=> ostrzezenie2
 else
 	=> belkot

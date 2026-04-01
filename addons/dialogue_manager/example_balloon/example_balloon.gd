@@ -139,7 +139,7 @@ func apply_dialogue_line() -> void:
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses
 
-	# Show our balloon
+	# Show our balloonlo
 	balloon.show()
 	will_hide_balloon = false
 

@@ -291,7 +291,7 @@
 	},
 	"Hair spray":{
 		"name": "Hair spray",
-		"description": "A can of hair spray, ",
+		"description": "A can of hair spray, you used it many times in last decade",
 		"size": "Vector2i(2, 4)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
@@ -305,6 +305,7 @@
 		"max_stack_size": 1.0,
 		"image": "res://Assets/Sprites/new/zapalniczka.png"
 	},
+
 	"Homemade flamethrower":{
 		"name": "Homemade flamethrower",
 		"description": "Ah, the classic one.",
@@ -321,7 +322,7 @@
 
 	"Molotov cocktail":{
 		"name": "Molotov cocktail",
-		"description": "Drink for a very unwelcome guest",
+		"description": "Drink for a very unwelcome guests",
 		"size": "Vector2i(2, 4)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
@@ -347,7 +348,7 @@
 	},
 	"Scraps of cloth":{
 		"name": "Scraps of cloth",
-		"description": "You should have just washed them",
+		"description": "Strips of material, waiting for a purpose",
 		"size": "Vector2i(2, 2)",
 		"stack_size": 1.0,
 		"max_stack_size": 10.0,
@@ -367,7 +368,7 @@
 	},
 	"Broom":{
 		"name": "Broom",
-		"description": "Clean your house, or use it as a weapon. Just don't forget to wash it after",
+		"description": "Used to clean your house, in any way possible",
 		"size": "Vector2i(2, 8)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
@@ -376,7 +377,7 @@
 	},
 	"Makeshift spear":{
 		"name": "Makeshift spear",
-		"description": "A spear made from a broom and a kitchen knife. Not the most effective one, but it can do some damage.",
+		"description": "A spear made from a broom and a kitchen knife. Ancient ancestors would be proud.",
 		"size": "Vector2i(2, 6)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
@@ -390,7 +391,7 @@
 	},
 	"Sock flail":{
 		"name": "Sock flail",
-		"description": "A flail made from socks and a broom. Not the most effective one, but it can do some damage.",
+		"description": "A flail made from a socks and a can. Looks bad, and it hurt as much",
 		"size": "Vector2i(2, 6)",
 		"stack_size": 1.0,
 		"max_stack_size": 1.0,
@@ -400,5 +401,14 @@
 			"Socks": 1.0
 		},
 		"image": "res://Assets/Sprites/new/socks_flail.png"
+	},
+	"Pen":{
+		"name": "Pen",
+		"description": "As they say, it is mightier than a sword. Though, you'd trade it for a real blade in a heartbeat.",
+		"size": "Vector2i(1, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 10.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/new/pen.png"
 	}
 }

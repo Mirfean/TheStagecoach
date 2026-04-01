@@ -1,6 +1,9 @@
 extends Node
 class_name GameManager
 
+var save: SaveData
+var save_loaded: Dictionary
+
 var player_char : player
 var item_prefab : PackedScene = load("res://Scenes/pickable_item.tscn")
 
@@ -112,3 +115,17 @@ func killer_is_coming():
 	#fight dialogue starts.
 	print("Time to die")
 	
+
+func load_save_data():
+	save_loaded = save.VALUES
+
+func read_save_data(value: String):
+	return save_loaded.get(value, null)
+	
+func add_to_save_data(key: String, value):
+	print_debug("Saving " + key + "->" + value)
+	save_loaded[key] = value
+
+func save_game():
+	save.VALUES = save_loaded
+	# DODAĆ WARUNKI CZEGO NIE ZAPISYWAĆ?

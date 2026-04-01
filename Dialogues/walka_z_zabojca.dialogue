@@ -1,5 +1,7 @@
 ~ start
-...
+{opis}
+
+do DMM.clear_temp()
 
 set locals.Timer = 8
 set locals.Player_TURN = true
@@ -11,17 +13,24 @@ set locals.WIN = false
 
 set locals.Player_SecondWind = true
 set locals.Player_Knife_Miss = 0
+set locals.Player_talk_count = 0
 
-set locals.Melee_jabs = false
-set locals.Melee_kick = false
-set locals.Melee_down = false
-
-set locals.Melee_knife_slash = false
+set locals.Melee_jabs = true
+set locals.Melee_kick = true
+set locals.Melee_down = true
+set locals.Melee_haymaker = true
 
 => fight_loop
 
+~ Stun_off
+% He regains his focus. Stay sharp.
+% He shakes off the daze, and he is absolutely livid.
+% His movements are fluid once again. Be careful.
+do locals.Killer_Stun = false
+=> END
 
 ~ fight_loop
+=> Between_turns
 while locals.Timer > 0
 	if locals.Player_TURN
 		=>< fight_options
@@ -35,8 +44,57 @@ while locals.Timer > 0
 		Czas: {{locals.Timer}}
 => restart
 
+~ Between_turns
+That is your status?
+match locals.Player_HP
+	when 3
+		%
+			You feel fine.
+			As fine as one can feel during a fight for their life.
+		%	
+			Not a scratch.
+			You got this!
+		%
+			Mind and body is ready.
+			Do what is necessary.
+	when 2
+		% 
+			The taste of blood and an ache in your chest.
+			It’s not the first time you’ve felt this way, and it won't be the last.
+		%
+			Between fine and this situation - you are in the middle.
+			Far from fall, close enough to feel the possibility.
+		%
+			You took a hit, but it wasn't enough to stop you.
+			You still have a buffer for a minor mistake.
+	when 1
+		%
+			Pain and exhaustion are taking their toll.
+			But you’re still standing, and that’s what counts.
+		%
+			With every second, giving up feels more tempting.
+			But the body is just a coward, guided by the strongest of them all - willpower.
+		%
+			Your vision is blurred, your ears are ringing.
+			But you didn't hear no bell!
+		% 
+			If you focus hard enough, you can almost forget the pain!
+			Almost...
 
-
+and about your enemy.
+match locals.Killer_HP
+	when 1
+		You’ve almost got him. One last push!
+	when <4
+		% He looks like he can still take a hit or two. Don't let up.
+		% He's hurt, but not enough to stay down.
+		% If it bleeds, it can be killed. Don't stop.
+	when 4 or 5
+		% He’s ready to kill you. Disappoint him.
+		% He looks too good. Time to change this.
+	when >5
+		% This dark energy protects him. Hit harder!
+	
 #Player attacks
 ~ fight_options
 What you want to do?
@@ -58,7 +116,7 @@ What you want to do?
 - Shoot him with [i] a gun [/i] [if DMM.check_inventory("Service gun")]
 	=> Your_gun
 
-- Shoot him with the truth [if DMM.get_bool("Ending_One_Step_Closer")]
+- Shoot him with the truth [if DMM.getValue("Ending_OneStepCloser")]
 	=> Truth
 
 - Throw Chlorine gas bomb [if DMM.check_inventory("Chlorine grenade")]
@@ -89,66 +147,78 @@ What you want to do?
 	=> Death
 
 ~ Talk
-Bla bla bla
+- "Who are you?"
+	=> Talk_response
+- "What do you want from me?"
+	=> Talk_response
+- "We don't need to fight!"
+	=> Talk_response
+- "I don't want to hurt you"
+	=> Talk_response
+- "Please, stop this"
+	=> Talk_response
+- "Why you want to hurt me?"
+	=> Talk_response
+- "Fuck off you psycho!" [if locals.Player_HP <= 2]
+	=> Talk_response
+- "I won't fight with you..."
+	=> Talk_response
 =>< Resolve_HP
+=> END
+
+~ Talk_response
+do locals.Player_talk_count += 1
+match locals.Player_talk_count
+	when 1
+		The only answer you get is a faint, indistinct grumble. 
+		You can’t tell if he’s responding to you or just muttering to himself.
+	when 2
+		Still nothing that could be called a sentence - not even a recognizable word. 
+		It seems he’s unable to talk, at least on understandable level.
+	when 3
+		He's still mumbling, giving you no real response. You aren't getting much out of him. 
+		The "conversation" is clearly going nowhere.
+	when 4
+		You are quite persistent.
+		Unfortunately, so is your opponent.
+		I hope you’re satisfied with this "fruitful" dialogue.
+		{achievement - monologue charmer}
 => END
 
 ~ Melee_fight
 Old fashioned brawl. What's your tactic?
-- Front kick to keep distance
+- Keep distance - kicks and far blows [if locals.Melee_kick]
+	do locals.Melee_kick = false
 	As he getting closer, you thrust your boot forward, aiming for sternum to halt his momentum.
-- Few jabs and dodges
-	{opis}
+- Few jabs and dodges on close range [if locals.Melee_jabs]
+	do locals.Melee_jabs = false
 	- Ciosy w korpus
-		He's coming for you.
-		Do you duck left or right?
-		- Left
-			%7 => Good_duck
-			%3 => Wrong_duck
-		- Right
-			%3 => Good_duck
-			%7 => Wrong_duck
-	- Risk for a powerful haymaker
-		You put every ounce of your weight into a desperate overhand right.
-		It’s a clumsy, brutal act that carries the hope of ending this in one go.
 		
+- Risk for a powerful haymaker [if locals.Melee_haymaker]
+	do locals.Melee_haymaker = false
+	You put every ounce of your weight into a desperate overhand right.
+	It’s a clumsy, brutal act that carries the hope of ending this in one go.
+	if locals.Killer_HP <= 3
+		He's wounded and slower. In this state, it was inevitable.
+		Blow contact his face with squashy sound. Your fist hurts, but you know it's only a fraction of his damage.
+		do locals.Killer_HP -= 2
+	else
+		He's too fast. Block and grample of your attacking arm positioned you in really uncomfortable situation.
 		
-	- Clinch and Knee Strike
-		if locals.Killer_Stun
-			{opis}
-			do locals.Killer_HP -= 1
-			do locals.Killer_Stun = false
-		else
-			{opis}
-			do locals.Killer_HP -= 1
-			do locals.Player_HP -= 1
-	
-	- Sneak attack with a knife [if DMM.check_inventory("Kitchen knife", false, 1)]
-		- Stab
-			{opis}
-			do locals.Killer_HP -= 2
-			do DMM.check_inventory("Kitchen knife", true, 1)
-		- Slash [if locals.Melee_knife_slash == false]
-			{opis}
-			do locals.Killer_HP -= 1
-			do locals.Player_Knife_Miss += 1
-		- Aim to throat when he's stunned. [if locals.Killer_Stun]
-			{opis}
-			do locals.Killer_Stun = false
-			do locals.Killer_HP -= 2
-			do DMM.check_inventory("Kitchen knife", true, 1)
-	set locals.Melee_jabs = true
-	=>< Resolve_HP
-	=> END
-- Takedown him
+		Punch hits your liver and next hits gut. In desperation, you try to free yourself. When he's preparing something to finish you off, you finally break free.
+		Fortunately dodging his devastating blow.
+		do locals.Player_HP -= 1
+- Clinch and takedown
+	do locals.Melee_down = false
 	You lunged forward, ignoring every survival instinct to close the gap. You drove your shoulder into his midsection, hoping your momentum was enough to topple that unnatural mass and drag the fight to the floor.
 	- {Grapple?}
 		{Opis}
 	- {Spróbuj być na górze i uderzać}
 		{Opis}
 		
-	- {Something cool} [if DMM.get_bool("Memory_FightTraining")]
+	- {Something cool} [if DMM.getValue("Memory_FightTraining")]
 		{Opis}
+- Change your mind
 =>< Resolve_HP
 => END
 
@@ -160,12 +230,12 @@ if locals.Killer_Stun:
 	The remains of the blade looks molten, dripping with a dark goo until only the hilt clatters to the floor.
 	As the ruined metal hits the ground, rage and determination flare in your enemy’s eyes.
 	do locals.Killer_HP = locals.Killer_HP - 3
-	do locals.Killer_Stun = false
+	=>< Stun_off
 	do DMM.check_inventory("Kitchen knife", true, 1)
 else
 	- Charge - don't let him to think next move 
 		You are pumped up of adrenaline. Your grip is steady and mind focused. 
-		if DMM.get_bool("Memory_FightTraining")
+		if DMM.geValue("Memory_FightTraining")
 			Muscle memory kicks in. Hand reversed grip on blade.
 			Smooth jump to shorten the distance.
 			Fake attack in stomach by empty hand, then quick slash into face.
@@ -234,8 +304,12 @@ if locals.Player_Knife_Miss >= 2
 
 ~ Lose_Knife
 Quick strike hits your ankle strong enough to lost feeling of it for a moment.
-The knife dropped somewhere in the dark corner and surely, you have no time to look for it now...
+Knife dropped somewhere in the dark corner and you have no time to look for it now...
 do DMM.check_inventory("Kitchen knife", true, 1)
+=> END
+
+~ Confetti
+{opis}
 => END
 
 ~ Bad_gun
@@ -257,8 +331,8 @@ This time you are prepared.
 Grip on this gun feels comforting, like a good, old tool from your shed.
 His sudden, darting movements no longer faze you. You wait with cold patience, letting him draw near until there is no room for escape. 
 Then - a shot.
-Then another.
-A third. A fourth. A fifth.
+Impact of bullet pushed him into the wall.
+It looked like it was stronger than standard bullet.
 He is no longer your oppressor, but your victim. His body collapses, bleeding into the encroaching shadows. 
 Good work. Now, time to move on.
 set locals.Killer_HP = locals.Killer_HP - 5
@@ -291,7 +365,7 @@ if locals.Killer_true
 	do locals.Killer_HP -= 2
 	if locals.Killer_HP > 0
 		And yet, he’s somehow still standing, even with a shattered spine.
-	do locals.Killer_Stun = false
+	=>< Stun_off
 else
 	Battery swings wide as he dodges, but the momentum still catches him anyway.
 	The blow wasn't perfect, but at least you left him dazed.
@@ -337,11 +411,13 @@ do DMM.check_inventory("Broom", true)
 
 ~ Spear_attack
 You pray this idea works.
-With a ___ scream, you take a running start and charge at him.
+With a desperate scream, you charge at him.
 He had no time to react. Blade sinks deep into his flesh, and your momentum drives him backward.
 Pinned to the wall, impaled by your makeshift spear, he lets out an unearthly howl.
 As you hold him in this deadly stalemate, you notice the weapon’s blade sinking even deeper.
-No—not sinking. Melting. You watch as the handle, now in contact with his blood, begins to dissolve.
+No - not sinking. 
+Melting. 
+You watch as the handle, now in contact with his blood, begins to dissolve.
 No longer pinned, he tears himself free.
 do locals.Killer_HP -= 2
 if locals.Killer_HP > 0
@@ -351,7 +427,14 @@ do DMM.check_inventory("Makeshift spear", true)
 => END
 
 ~ Flail_attack
-{opis}
+You start to swing your incredible invention—the bastard child of your closest date: Necessity.
+Somewhere deep down, you feel a surge of pride. 
+Feeling almost as deep as the impact he just felt in his jaw.
+His next attempt to tackle you ends with a bone-jarring blow to his shoulder.
+He hits a wall with significant pain.
+Unfortunately, unconventional weapons tend to break in unconventional speed.
+As you prepare for the next strike, you feel the sock tear apart.The can flyes out with a heavy splash, landing a meter away from you.
+Besides the stench of rotting meat, your weapon left some serious damage on your enemy.
 do locals.Killer_HP -= 2
 do DMM.check_inventory("Sock flail", true)
 =>< Resolve_HP
@@ -413,9 +496,8 @@ if locals.Killer_HP <= 0:
 ~ Resolve_stun
 if locals.Killer_Stun
 	if locals.Killer_Still_Stun
-		do locals.Killer_Stun = false
-		do locals.Killer_Still_Stun =false
-		He's back on a track. Be careful.
+		=>< Stun_off
+		do locals.Killer_Still_Stun = false
 	else
 		do locals.Killer_Still_Stun = true
 else
@@ -423,9 +505,18 @@ else
 => END
 
 ~ Fake_death
-if DMM.get_bool("Childhood_memory") and locals.Player_SecondWind
-	Przypomina ci się fragment dzieciństwa.
-	do locals.Player_HP +=1
+Pain. There is always more pain.
+Your knees buckle. Thoughts are stifled. Body starts to malfunction, and soon, mind follows. 
+Presence of your oppressor is getting stronger. You try to resist, but it’s useless.
+if DMM.getValue("Memory_Childhood") and locals.Player_SecondWind and DMM.getValue("KillerLevel") == 3
+	{opis}
+	You
+	must
+	[wave][color=red]fight[/color][/wave] 
+	back!
+	GET UP!
+	do locals.Player_HP = 1
+	do locals.Player_SecondWind = false
 => END
 
 ~ Death
@@ -441,19 +532,21 @@ The opponent begins to stagger, his final attempts at an attack falling flat. Hi
 Suddenly, a total silence descends...
 It takes a moment before you feel the adrenaline draining from your system. Your heart rate slows. You find your calm. 
 Great work - you've defeated him.
-if DMM.get_int("Completed_loops") > 0:
+if DMM.getValue("Completed_loops") > 0:
 	You feel déjà vu - like something from an another life.
-	if DMM.get_int("Completed_loops") > 2:
+	if DMM.getValue("Completed_loops") > 2:
 		It's not the first time when you encouter him. And not the first when you win this fight.
 		So, why are you still here?
 set locals.WIN = true
 => Trigger_Next
 
 ~ Truth
-TODO
+{opis}
+do locals.WIN = true
+{Dodać}
 
 ~ Run_when_stun
-You take your chance, give yourself enough time to run from the house.
+You take your chance and gave yourself enough time to run from the house.
 => Run_from_house
 
 ~ Run_from_house
@@ -468,7 +561,7 @@ do DMM.send_event_choice("killer_fight", "StartLoop4B")
 => END!
 
 ~ restart
-RESTART LOOPA
+So, it starts anew
 do DMM.end_game()
 
 ~ Trigger_Next
@@ -492,7 +585,7 @@ else
 	% {Podpowiedź}
 	% {Podpowiedź}
 	% {Podpowiedź}
-	Surely, if you could have a another chance...
+	I'm sure next time would be different...
 	{Reset levelu}
 	
 #Enemy attacks
@@ -502,13 +595,20 @@ if locals.Killer_Stun
 	% Your opponent is dazed. Make your move.
 	% That last hit left him reeling. Press the advantage!
 	=> END
-% => Enemy_Charge 
-% => Enemy_Suffocate
-% => Enemy_Attack_Wall
-% => Enemy_Grab_Ground
-% => Enemy_Throw
-% => Enemy_Steal
-
+do locals.Enemy_Response = DMM.getEnemyResponse()
+match locals.Enemy_Response
+	when "Charge"
+		=> Enemy_Charge 
+	when "Suffocate"
+		=> Enemy_Suffocate
+	when "Wall"
+		=> Enemy_Attack_Wall
+	when "Ground"
+		=> Enemy_Grab_Ground
+	when "Throw"
+		=> Enemy_Throw
+	when "Steal"
+		=> Enemy_Steal
 =>< Resolve_HP
 => END
 
@@ -516,38 +616,178 @@ if locals.Killer_Stun
 Charge and tackle
 
 - Try to dodge on side
-
+	{opis}
 - 
-
+	{opis}
 - 
+	{opis}
+do DMM.add_temp("Enemy_Charge")
 => END
 
 ~ Enemy_Suffocate
-Enemy Trying to suffocate you
+{opis close combat}
+He slips behind you and wrap arm around your throat. Before you can responde, he locks grab and starts choking you.
+His grab is strong as mule. Fighting for air is getting harder with every second.
+Slowly losing conciousness, you must act! 
+- {opis}
+	{opis}
+- Push him to the wall
+	if locals.Player_HP > 1
+		With a final, desperate burst of adrenaline, you throw your entire weight backward. 
+		You slam hism againt wall with enough force to loosen his grip. Few quick elbow hits into his guts later and you are free.
+	else
+		With a final, desperate burst of adrenaline, you throw your entire weight backward. 
+		But you have not enough strengh to win this...
+		do locals.player_HP -= 1
+- Use knife [if DMM.check_inventory("Kitchen knife")]
+	You stop fight the choke, you change rules of it. With a blind, backward thrust, you bury the cold steel into his thigh. As his grip getting stronger with a pain, same your attack going upward in his leg. 
+	Finally, he pushed you back. Your knife is no more. Sticking in black goo, you see how blade is melted from his blood? Anyway, you free yourself.
+	do locals.Killer_HP -= 1
+	do DMM.check_inventory("Kitchen knife", true)
+- Pen stab [if DMM.check_inventory("Kitchen knife")]
+	You fumble for the plastic pen in your pocket and stab it backward with everything you’ve got. You feel the tip sink into the flesh of his forearm. It’s a small wound, but the sharp, sudden sting is enough to break his grip for a moment - moment that you need to escape.
+	do DMM.check_inventory("Pen", true)
 
-noz (counter -1 obrazen)
-dlugopis (counter)
+do DMM.add_temp("Enemy_Suffocate")
 => END
 
 ~ Enemy_Attack_Wall
 Enemy try to push to to the wall and beat you
-- attack back (-2 w gracza jeśli nie ma fight knowledge, else -1 w przeciwnika)
-- Blok hits (-1)
-- granat (-1 + stun i gracz -1)
+- Attack back
+	if DMM.getValue("Memory_FightTraining")
+		{opis}
+		do locals.Killer_HP -= 1
+	else
+		{opis}
+		do locals.Player_HP -= 2
+- Blok hits
+	{opis}
+	do locals.Player_HP -= 1
+- Upuść chlorine grenade [if DMM.check_inventory("Chlorine grenade")]
+	{opis}
+	do locals.Player_HP -= 1
+	do locals.Killer_HP -= 1
+	do locals.Killer_Stun = true
+
+do DMM.add_temp("Enemy_Wall")
 => END
 
 ~ Enemy_Grab_Ground
-Enemy Grab and 
-flamethrower
+Enemy Grab and
+- something
+	{opis}
+- something
+	{opis}
+- flamethrower
+	{opis}
+
+do DMM.add_temp("Enemy_Grab_Ground")
 => END
 
 ~ Enemy_Throw
-Enemy Throw a chair
-Unik (średnia szansa) + Jeśli przeciwnik ranny, - jeśli gracz ranny
-Złapanie i odrzucenie (mała szansa)
-Rzut akumulatorem (counter)
+Suddenly, he has a stool in his hands and he's preparing to throw it at you.
+This black corridor is not wide, dodging this will be hard.
+- Dodge it
+	if locals.Killer_HP <= 3
+		The stool crashes into the wall, nowhere near you. He’s weakened by the toll of this fight.
+		His aim is weakened as his body. 
+		This is your moment. Take advantage of it.
+	elif locals.Player_HP <= 2
+		if not DMM.var_temp("Died_throw")
+			You try to dodge but previous wounds make a difference in mobility.
+			The stool strikes you like a hammer, and the floor feels like a cold anvil as you slam into it.
+			do locals.Player_HP -= 1
+		else
+			You feel, in the back of your head, that you to know, where the stool will hit.
+			Like a déjà vu. Even your wounds will not be a issue.
+			Just in blink of the eye, before hit, small sidestep.
+			Ah, perfect dodge, like in a movie. Keep going.
+- Catch it and throw back (It's risky, you know?)
+	set locals.chance_to_dodge = 2
+	if DMM.get_temp("Died_throw")
+		do locals.chance_to_dodge += 3
+	if Game_Manager.read_save_data("Killer_deaths") != null
+		do locals.chance_to_dodge += Game_Manager.read_save_data("Killer_deaths")
+	set locals.chance_to_hit_by_stool = 10 - locals.chance_to_dodge
+	if locals.chance_to_hit_by_stool < 0
+		=>< Success_catch
+	else
+		%locals.chance_to_dodge =>< Success_catch
+		%locals.chance_to_hit_by_stool =>< Failure_catch
+		
+- Throw car battery to counter this [if DMM.check_inventory("Car battery")]
+	You heave the heavy battery forward just as he releases the stool. It's a desperate, mid-air collision.
+	Counter missile landed perfectly. Both of them crushed somewhere in between. Parts of wood and electronic sprays across the room.
+	do DMM.check_inventory("Car battery", true)
+do DMM.add_temp("Enemy_Throw")
+=> END
+
+~ Success_catch
+	You just wait for best moment. Then, it comes.
+	Smooth catch and immediate reposte of the same manner. Let him taste of his own stool.
+	He does not expect that. Hit in the chest by heavy stool has to brake some bones. 
+	do locals.Killer_HP -= 1
+=> END
+
+~ Failure_catch
+	Flying, heavy wood object is hard to catch. It is even harder to not get hurt in progress.
+	This time, it was not your time. You missed by few inches, impact of hit gets into your palms.
+	Then, wave of pain goes through ankles and all your body.
+	Due pain, you lost control in your arms for a few moments.
+	do locals.Player_HP -= 1
 => END
 
 ~ Enemy_Steal
-Enemy Steal
+He grapples you and pins you against the wall. One of his hands darts to your side.
+He is taking your...
+- Molotov [if DMM.check_inventory("Molotov cocktail") or DMM.check_inventory("Molotov cocktail (sock version)")]
+	In the struggle, the bottle slips from his grasp and shatters at your feet.
+	Suddenly, both of you are in flames as the broken cocktail erupts into a small hell.
+	You both scramble back in pain, desperately trying to douse the fire.
+	After a moment, you are both burned, but extinguished.
+	do DMM.check_inventory("Molotov cocktail", true)
+	do DMM.check_inventory("Molotov cocktail (sock version)", true)
+	do locals.Killer_HP -= 2
+	do locals.Player_HP -= 2
+- Spear [if DMM.check_inventory("Makeshift Spear")]
+	He leaps back and thrusts the spear with a huge force. 
+	A searing pain sends your consciousness on a long, dark walk.
+	Only raw willpower keeps you conscious and alive.
+	A sudden burst of panicked strength helps you fight back.
+	You grab the shaft, trying to pull the blade from your flesh.
+	He pushes harder; white and black dots scatter across your vision.
+	It's a painful stalemate, and you are losing - just slower.
+	Then...
+	SNAP!
+	The staff finally breaks, freeing you from the impalement.
+	Moving is an agony, your chest is bledding heavely.
+	do locals.Player_HP -= 2
+- Knife [if DMM.check_inventory("Knife")]
+	Suddenly, you catch the glint of steel in his hand. Before you can react, he lunges.
+	The blade slashes across your chest and shoulder; fortunately, it misses your throat.
+	You shove his arm with a weapon away with everything you've got, hearing the knife clatter onto the floor somewhere far.
+	do DMM.check_inventory("Knife")
+	do locals.Player_HP -= 1
+- Your service gun [if DMM.check_inventory("Service gun")]
+	He takes a step back, and you find yourself staring at the barrel of your own gun.
+	Instinctively, you squeeze your eyes shut the moment you hear the trigger click.
+	...
+	But there is no bang, no draining pain of a bullet.
+	Thinking you might already be dead and just haven't realized it yet, you open your eyes.
+	Gun just not shoot.
+	You were sure there was a bullet meant for him in the chamber.
+	It seems your old friend will not betray you, even now.
+	He throws it away in anger, like a garbage.
+- Filthy gun [if DMM.check_inventory("Dissapointment as a weapon") and DMM.getValue("Died_BadGun")]
+	Before you can even blink, the pistol is in his hands.
+	if DMM.getValue("Died_BadGun")
+		You have a very good feeling about what’s about to happen.
+	He pulls the creaking trigger...
+	BOOM!
+	The gun simply explodes in his grip, leaving him wounded and stunned.
+	do locals.Killer_HP -= 2
+	do locals.Killer_Stun = true
+	do DMM.check_inventory("Dissapointment as a weapon", true)
+
+do DMM.add_temp("Enemy_Steal")
 => END

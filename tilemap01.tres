@@ -142,6 +142,12 @@ texture = ExtResource("1_h5xx7")
 7:8/0 = 0
 15:6/0 = 0
 15:7/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+16:4/0 = 0
+18:3/0 = 0
 
 [resource]
 occlusion_layer_0/light_mask = 1

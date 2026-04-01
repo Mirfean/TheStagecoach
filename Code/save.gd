@@ -1,0 +1,27 @@
+extends Resource
+class_name SaveData
+
+@export var VALUES : Dictionary
+
+
+"""
+All importart names for values etc.
+
+ENDING:
+	ENDING_XX_DONE
+
+ITEMS FROM SAFE:
+	SAFE_ITEMNAME
+
+DEATHS:
+	DEATH_COUNT
+	DEATH_COUNT_CRUN
+	DEATH_TYPE
+	DEATH_COUNT_CRUN
+	
+ROOMS:
+	ROOM_XX_UNLOCKED
+	
+WON WITH CERTAIN WEAPON:
+	WEAPON_XXX_WON
+"""

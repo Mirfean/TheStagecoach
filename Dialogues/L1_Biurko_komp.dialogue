@@ -17,7 +17,7 @@ A desk cluttered with a computer, piles of paperwork, and some random things.
 	=> END
 
 ~ Computer
-if DMM.get_bool("TODO") == false:
+if DMM.getValue("TODO") == false:
 	Desktop with dark background is full of randomly named document files.
 	- File "new file_18"
 		=> new_file_18
@@ -33,7 +33,7 @@ else
 
 ~ Papers
 All those papers have the same, green logo as the cup - A snake wrapping around a white pillar with the rising sun in the background
-if DMM.get_bool("Reading") == true	
+if DMM.getValue("Reading") == true	
 	Every time you look at it, you feel irritating itch in memory, like it was something important.
 	Same signature placed in right bottom of each paper.
 	[i] Stepane Pokrzywa [/i]
@@ -59,11 +59,11 @@ else
 	=> other_items
 - Behind monitor
 	Many layers of thick dust hides nothing important
-	if not DMM.get_bool("bullet_behind_monitor") and DMM.get_bool("Ending_One_Can_Live"):
+	if not DMM.getValue("bullet_behind_monitor") and DMM.getValue("ENDING_OneCanLive"):
 		Wait! There is a single bullet, calliber 9mm.
 		When you touched it, strange feeling of compassion went through your mind. 
 		According to scratched inscription, its name is [b]Plan C[/b].
-		do DMM.set_bool("bullet_behind_monitor", true)
+		do DMM.setValue("bullet_behind_monitor", true)
 		do DMM.receive_item("Bullet 9mm")
 	=> other_items
 	
@@ -91,7 +91,7 @@ Notatka wyciągnięta od działu medycznego
 [i]Następnie drażni pole Tsaia. Efektem jest wyrzucenie całego zapasu dopaminy znajdującego się w organiźnie. Ofiara jest zupełnie nieświadoma zagrożenia i zaczyna odczuwać zupełny brak lęku. [/i]
 [i]Ostatnią fazą jest odcięcie percepcji ofiary. Uwalniane są związki dysocjacyjne i blokowane receptory NMDA. Jest to moment w którym ofiara zaczyna odczuwać halucynacje i tracić zupełnie kontakt ze światem zewnętrznym. [/i]
 [i]Kilka chwil później następuje zgon przez niedotlenienie i zatrzymanie akcji serca.[/i]
-if DMM.get_bool("ending_one_can_live") == true:
+if DMM.getValue("ending_one_can_live") == true:
 	Spomiędzy części skoruptowanych danych udaje ci się odczytać kawałek z sekcji "Zalecenia"
 	[i]...profilaktyczna instal...ipu czwart..cji "Stagecoach"...[/i]
 	Niestety reszta jest zbitkiej skoruptowanych danych.

@@ -1,5 +1,5 @@
 ~ start
-if DMM.get_int("L2_killer_timer") == 5:
+if DMM.getValue("L2_killer_timer") == 5:
 	Niepokój i dreszcz na skórze to naturalna odpowiedź na absolutną ciszę za drzwiami...
 	=> END
 Tępy stukot roznosił się po całym domu. Nawet z piętra było słychać uporczywe pukanie. 
@@ -9,7 +9,7 @@ W drzwiach nie ma wizjera, a co dziwniejsze, nie ma klamki ani dziurki na klucz.
 => questions
 
 ~ questions
-if DMM.get_int("L2_killer_timer") >= 5
+if DMM.getValue("L2_killer_timer") >= 5
 	=> time_end
 - Protagonist: Kim jesteś?
 	do DMM.increase_int("L2_killer_timer", 1)
@@ -31,7 +31,7 @@ if DMM.get_int("L2_killer_timer") >= 5
 	
 	
 ~ fight_with_doors
-if DMM.get_int("L2_killer_timer") >= 5
+if DMM.getValue("L2_killer_timer") >= 5
 	=> time_end
 - Pchnij drzwi
 	Po chwili zdajesz sobie sprawę, że równie dobrze mógłbyś pchać ścianę obok.

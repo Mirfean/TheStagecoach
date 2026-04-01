@@ -28,6 +28,19 @@ EventBus="*res://Code/Flow/EventBus.gd"
 
 runtime/balloon_path="res://Scenes/balloon.tscn"
 runtime/advanced/uses_dotnet=true
+editor/wrap_long_lines=true
+editor/new_file_template="~ start
+do DMM.clear_temp()
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END"
 
 [display]
 
