@@ -6,21 +6,13 @@ class_name Safe_interact
 @export var closed_sprite: Texture2D
 @export var opened_sprite: Texture2D
 
-@export var items_inside: Array[Interactable_object]
+@export var items_inside: Dictionary[int, Interactable_object]
 
 @onready var spot_1: Node2D = $Spot1
 @onready var spot_2: Node2D = $Spot2
 
-
 func _ready() -> void:
 	super._ready()
-	for item in get_children().filter(is_interactable):
-		items_inside.append(item)
-
-func is_interactable(element: Node) -> bool:
-	if element is Interactable_object:
-		return true
-	return false
 
 func Interact():
 	if super.Interact():
@@ -38,20 +30,17 @@ func _on_body_exited(body: Node2D) -> void:
 		body.remove_this_closest(self)
 
 func verify_code(code: String) -> bool:
-	var itemID = code.to_int()
-	match itemID:
-		7359:
-			items_inside[0].visible = true
-			items_inside[0].global_position = spot_1.global_position
-		5364:
-			print_debug("1")
-		4335:
-			print_debug("Siema")
-		_:
-			print_debug("Unknown item ID")
-			return false
+	var item = items_inside[code.to_int()]
+	if item == null:
+		return false
+	
+	setup_item(item)
 	return true
 	
+func setup_item(item: Interactable_object):
+	item.global_position = spot_2.global_position
+	item.visible = true
+
 func open_door():
 	active_sprite.texture = opened_sprite
 	off_highlight()

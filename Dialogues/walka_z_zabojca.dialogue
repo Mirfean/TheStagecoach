@@ -30,7 +30,8 @@ do locals.Killer_Stun = false
 => END
 
 ~ fight_loop
-=> Between_turns
+if locals.Timer < 8
+	=> Between_turns
 while locals.Timer > 0
 	if locals.Player_TURN
 		=>< fight_options
@@ -85,14 +86,14 @@ and about your enemy.
 match locals.Killer_HP
 	when 1
 		You’ve almost got him. One last push!
-	when <4
+	when 2 or 3
 		% He looks like he can still take a hit or two. Don't let up.
 		% He's hurt, but not enough to stay down.
 		% If it bleeds, it can be killed. Don't stop.
 	when 4 or 5
 		% He’s ready to kill you. Disappoint him.
 		% He looks too good. Time to change this.
-	when >5
+	when 6 or 7 or 8 or 9 or 10
 		% This dark energy protects him. Hit harder!
 	
 #Player attacks
@@ -194,7 +195,7 @@ Old fashioned brawl. What's your tactic?
 	do locals.Melee_jabs = false
 	- Ciosy w korpus
 		
-- Risk for a powerful haymaker [if locals.Melee_haymaker]
+- Risk a powerful haymaker [if locals.Melee_haymaker]
 	do locals.Melee_haymaker = false
 	You put every ounce of your weight into a desperate overhand right.
 	It’s a clumsy, brutal act that carries the hope of ending this in one go.

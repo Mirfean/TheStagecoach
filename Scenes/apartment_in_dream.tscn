@@ -566,7 +566,7 @@ position = Vector2(-324, 1291)
 
 [node name="player_new" parent="." node_paths=PackedStringArray("vision", "EndLoopTimer") instance=ExtResource("1_y22mn")]
 light_mask = 4
-position = Vector2(-1304, -103)
+position = Vector2(-1355, -289)
 scale = Vector2(1.75, 1.75)
 vision = NodePath("PointLight2D2")
 EndLoopTimer = NodePath("EndOfLoopTimer")
@@ -666,19 +666,29 @@ texture = ExtResource("46_nmo0n")
 
 [node name="Biuro_gora" type="Node" parent="."]
 
-[node name="Safe" parent="Biuro_gora" instance=ExtResource("26_yd783")]
+[node name="Safe" parent="Biuro_gora" node_paths=PackedStringArray("items_inside") instance=ExtResource("26_yd783")]
 position = Vector2(-1346, -132)
 scale = Vector2(1.535, 1.535)
+items_inside = {
+4335: null,
+5364: null,
+6494: NodePath("../ItemkiSafe/Bad gun"),
+7359: null
+}
 outline_shader = ExtResource("27_ab1d1")
 
-[node name="pickable_item" parent="Biuro_gora/Safe" instance=ExtResource("28_3p0xj")]
+[node name="ItemkiSafe" type="Node2D" parent="Biuro_gora"]
+position = Vector2(-1470, 51)
+
+[node name="Bad gun" parent="Biuro_gora/ItemkiSafe" instance=ExtResource("28_3p0xj")]
+item_id_name = "Dissapointment as a weapon"
+item_name = "Dissapointment as a weapon"
+
+[node name="Good gun" parent="Biuro_gora/ItemkiSafe" instance=ExtResource("28_3p0xj")]
 visible = false
-position = Vector2(-2.60586, 5.21173)
-scale = Vector2(0.33, 0.33)
-item_id_name = "Service gun"
-item_description = "sigma"
-item_name = "Service gun"
-id = "Service_gun"
+
+[node name="pickable_item3" parent="Biuro_gora/ItemkiSafe" instance=ExtResource("28_3p0xj")]
+visible = false
 
 [node name="Door2" parent="Biuro_gora" instance=ExtResource("9_p05ml")]
 visible = false
@@ -793,7 +803,7 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("47_0qgfa")
 
 [node name="Sprite2D" type="Sprite2D" parent="Biuro_gora/Biurko3"]
-position = Vector2(-12.8, -2.4)
+position = Vector2(-12, -4)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("91_pki5k")
 region_enabled = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsx4jdqmo17wy"
-path="res://.godot/imported/movement.png-6d3e77ca2571b986443a28751c3124ed.ctex"
+uid="uid://crld8sgvhkbyp"
+path="res://.godot/imported/Interact_animations.png-98bd4ae47c19da3ecc9d1e2d8a7b6f95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/new/movement.png"
-dest_files=["res://.godot/imported/movement.png-6d3e77ca2571b986443a28751c3124ed.ctex"]
+source_file="res://Assets/Sprites/character_animation/Interact_animations.png"
+dest_files=["res://.godot/imported/Interact_animations.png-98bd4ae47c19da3ecc9d1e2d8a7b6f95.ctex"]
 
 [params]
 

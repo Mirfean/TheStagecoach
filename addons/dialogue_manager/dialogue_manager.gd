@@ -755,6 +755,8 @@ func _check_condition(data: Dictionary, extra_game_states: Array) -> bool:
 	if result is Node or result is Resource:
 		return is_instance_valid(result)
 
+	if result == null:
+		result = false
 	return bool(result)
 
 
