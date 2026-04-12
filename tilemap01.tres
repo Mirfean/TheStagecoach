@@ -148,6 +148,10 @@ texture = ExtResource("1_h5xx7")
 18:4/0 = 0
 16:4/0 = 0
 18:3/0 = 0
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.148643, -8, 0.0839062)
 
 [resource]
 occlusion_layer_0/light_mask = 1

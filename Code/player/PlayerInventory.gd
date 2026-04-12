@@ -2,7 +2,6 @@ extends State
 class_name PlayerInventory
 
 @export var my_player : player
-
 var interact : bool = false
 
 func Enter():

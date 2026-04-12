@@ -3,11 +3,11 @@ class_name PlayerDefault
 
 @export var my_player : player
 
-var speed := 80
+var speed
 var interact := true
 
 func Enter():
-	my_player.speed = speed
+	my_player.speed = my_player.default_speed
 	my_player.can_interact = interact
 	if not DialogueManager.dialogue_started.is_connected(start_dialogue):
 		DialogueManager.dialogue_started.connect(start_dialogue)

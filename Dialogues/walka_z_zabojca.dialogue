@@ -42,7 +42,7 @@ while locals.Timer > 0
 		=>< fight_response
 		do locals.Player_TURN = true
 		do locals.Timer -= 1
-		Czas: {{locals.Timer}}
+		DEBUG Czas: {{locals.Timer}}
 => restart
 
 ~ Between_turns
@@ -100,52 +100,54 @@ match locals.Killer_HP
 ~ fight_options
 What you want to do?
 - Try to convince him to stop this slaughter
-	=> Talk
+	=>< Talk
 
 - Try him in hand-to-hand fight
-	=> Melee_fight
+	=>< Melee_fight
 
 - Use a knife [if DMM.check_inventory("Kitchen knife")]
-	=> Knife_attack
+	=>< Knife_attack
 
 - Escape while he's stunned! [if locals.Killer_Stun]
-	=> Run_from_house
+	=>< Run_from_house
 
 - Shoot him with this [i] pathetic gun [/i] [if DMM.check_inventory("Dissapointment as a weapon")]
-	=> Bad_gun
+	=>< Bad_gun
 
 - Shoot him with [i] a gun [/i] [if DMM.check_inventory("Service gun")]
-	=> Your_gun
+	=>< Your_gun
 
 - Shoot him with the truth [if DMM.getValue("Ending_OneStepCloser")]
-	=> Truth
+	=>< Truth
 
 - Throw Chlorine gas bomb [if DMM.check_inventory("Chlorine grenade")]
-	=> Chlorine_attack
+	=>< Chlorine_attack
 
 - Car Battery [if DMM.check_inventory("Car Battery")]
-	=> Car_battery_attack
+	=>< Car_battery_attack
 
 - Homemade flamethrower [if DMM.check_inventory("Homemade flamethrower")]
-	=> Flamethrower
+	=>< Flamethrower
 
 - Molotov cocktail [if DMM.check_inventory("Molotov cocktail") or DMM.check_inventory("Molotov cocktail (sock version)")]
-	=> Molotov
+	=>< Molotov
 
 - Broom [if DMM.check_inventory("Broom")]
-	=> Broom_attack
+	=>< Broom_attack
 
 - Makeshift spear [if DMM.check_inventory("Makeshift spear")]
-	=> Spear_attack
+	=>< Spear_attack
 
 - Sock flail [if DMM.check_inventory("Sock flail")]
-	=> Flail_attack
+	=>< Flail_attack
 
 - Run for your life
-	=> Run_away
+	=>< Run_away
 
 - Do not resist [if locals.Player_HP == 1]
 	=> Death
+	
+=> END
 
 ~ Talk
 - "Who are you?"
@@ -211,14 +213,21 @@ Old fashioned brawl. What's your tactic?
 		do locals.Player_HP -= 1
 - Clinch and takedown
 	do locals.Melee_down = false
-	You lunged forward, ignoring every survival instinct to close the gap. You drove your shoulder into his midsection, hoping your momentum was enough to topple that unnatural mass and drag the fight to the floor.
-	- {Grapple?}
+	You lunged forward, ignoring every survival instinct, to close the gap. You drove your shoulder into his midsection, hoping your momentum was enough to topple that unnatural mass and drag the fight to the floor.
+	- Grapple and choke him
 		{Opis}
-	- {Spróbuj być na górze i uderzać}
-		{Opis}
+		He pushed you away and not even cough after this.
+	- Stay on top and hit with everything you got
 		
-	- {Something cool} [if DMM.getValue("Memory_FightTraining")]
-		{Opis}
+		do locals.Killer_HP -= 1
+	- Do the armbar [if DMM.getValue("Memory_FightTraining")]
+		Something clicked in fogged mind, body respons on its own.
+		You catch him with increbible reflex. In less than 3 seconds, both of you lays on the floor.
+		You are prepared to break his arm and he does not even resist.
+		He doesn't even flinch when your pressure intensified and broke his arm. Using this moment, he frees himself from your grab.
+		His hand moves strangely, even with the broken bones...
+		do locals.Killer_HP -= 2
+	- Change your mind
 - Change your mind
 =>< Resolve_HP
 => END
@@ -444,9 +453,12 @@ do DMM.check_inventory("Sock flail", true)
 
 ~ Run_away
 You are type of guy that always take the first thing that comes to hand, even in "flee or fight" response. 
-%6 => Run_scratch
-%3 => Run_hit_hard
-%1 => Run_success
+%6 
+	=>< Run_scratch
+%3 
+	=>< Run_hit_hard
+%1 
+	=>< Run_success
 
 =>< Resolve_HP
 => END
@@ -457,7 +469,6 @@ In the halfway, you feel his presence behind you. Momentum while running does no
 Hit in back almost take you off balance. For a few seconds your lungs were not cooperative as usual. Burning inside make it hard to run...
 Turn around and face your enemy, you can't escape so easily.
 set locals.Killer_HP = locals.Killer_HP - 1
-=>< Resolve_HP
 => END
 
 ~ Run_hit_hard
@@ -465,20 +476,19 @@ Rush to the front door - that is your only chance. Fighting with this guy is a p
 In the halfway, you feel his presence behind you. Momentum while running does not give you time to react.
 You feel strong blow in the back of your head. For just a second you lost contact with a world and now catching breath on knees.
 Moving your body is harder than 10 seconds ago, like someone fills your muscles with a cement.
-set locals.Killer_HP = locals.Killer_HP - 2
-=>< Resolve_HP
+do locals.Killer_HP = locals.Killer_HP - 2
 => END
 
 ~ Good_duck
 You duck too close to a wild swing and bury your knuckles into his ribs. 
 The sound of cracking bone is muffled by thick material on his body.
-set locals.Killer_HP = locals.Killer_HP - 1
+do locals.Killer_HP = locals.Killer_HP - 1
 => END
 
 ~ Wrong_duck
 That swing came out of nowhere. It almost takes you to the ground. 
 Few seconds of white spots but you are still alive, right?
-set locals.Player_Hp = locals.Player_HP - 1
+do locals.Player_Hp = locals.Player_HP - 1
 => END
 
 ~ Run_success
@@ -488,6 +498,7 @@ Maybe it's just a luck, or something greater aids you in this moment, but...
 ~ Resolve_HP
 =>< Fake_death
 =>< Resolve_stun
+DEBUG HP {{locals.Player_HP}} : {{locals.Killer_HP}}
 if locals.Player_HP <= 0:
 	=> Death
 if locals.Killer_HP <= 0:
@@ -536,7 +547,7 @@ Great work - you've defeated him.
 if DMM.getValue("Completed_loops") > 0:
 	You feel déjà vu - like something from an another life.
 	if DMM.getValue("Completed_loops") > 2:
-		It's not the first time when you encouter him. And not the first when you win this fight.
+		It's not the first time when you encouter him. And not the first when you won this fight.
 		So, why are you still here?
 set locals.WIN = true
 => Trigger_Next
@@ -562,7 +573,7 @@ do DMM.send_event_choice("killer_fight", "StartLoop4B")
 => END!
 
 ~ restart
-So, it starts anew
+So, it starts all anew
 do DMM.end_game()
 
 ~ Trigger_Next
@@ -587,7 +598,8 @@ else
 	% {Podpowiedź}
 	% {Podpowiedź}
 	I'm sure next time would be different...
-	{Reset levelu}
+	=> restart
+	
 	
 #Enemy attacks
 ~ fight_response
@@ -614,16 +626,76 @@ match locals.Enemy_Response
 => END
 
 ~ Enemy_Charge 
-Charge and tackle
+Mimo, że nie dostrzegasz jego twarzy, czujesz narastający w nim gniew.
+Zaciśnięte pięści, sposób poruszania się i fakt, że zaczyna szarżować w ciebie...
 
-- Try to dodge on side
-	{opis}
-- 
-	{opis}
-- 
-	{opis}
+- Duck left
+	Uniknąłeś impaktu pierwszego uderzenia, ale mijając cię, złapał twoje ramię i pchnął w ścianę.
+	Nim zareagowałeś, doskoczył zaczynająć serię ciosów.
+	
+	- Garda i szukaj luki do odpowiedzi
+		- Aim to the face
+			Czy drugim ciosie, złapał twoją rękę. Nagle *CHRUP*, nim ból dotarł do twojej świadomości, myśl przelotnie doleciała jako pierwsza "mam nadzieję, że to tylko zwichnięcie". 
+			W przypływie bólu i adrenaliny, odpychasz go na tyle by móc spojrzeć na stan swojej ręki.
+			Jest źle...
+			do locals.Player_HP -= 1
+		- Skup się na korpusie
+			Broniąc się, wymierzasz co chwilę jakiś cios w jego ciało.
+			Krótki dystans pozwala ci szybko wracać do obrony między nimi, choć żaden z nich nie ma natychmiastowego efektu.
+			Dopiero skumulowane zaczęły impaktować na niego. Widzisz jak jego ruchy zaczęły być bardziej ślamazarne i mniej precyzyjne. 
+			W końcu udaje ci się wyjść z tej pozycji.
+			if locals.Killer_HP < 5
+				Na dłoniach masz tą czarną maź, która wydaje się jego krwią.
+				Czujesz, że jest żrąca. Ból jest okropny, szybko wycierasz ręce w cokolwiek obok, ale silne oparzenia, niczym po kwasie, pozostają.
+				do locals.Player_HP -= 1
+			do locals.Killer_HP -= 1 
+		- Kick him in the balls
+			Klasyk. Skuteczny klasyk.
+			Uderzenie skutkuje jego odsunięciem się w bólu.
+			Zyskujesz na tyle przestrzeni by wyjść spod ściany, ale za mało czasu by od razu mu odpowiedzieć.
+			Szybko wraca do pełni sprawności, zbyt szybko.
+	- Knee kick into guts 
+		
+	- Try to escape
+		Sytuacja podbramkowa. Nie dostrzegasz przestrzeni by uciec. Mimo to, próbujesz.
+		Przyjęcie kilku ciosów jest wliczone w cenę, miej nadzieję, że nie będzie zbyt wysoka.
+		Po szamotaninie, w końcu, udaje ci się wydostać.
+		Ledwie widzisz na jedno oko, czujesz jakby coś pękło ci w środku i oddychanie zdaje się jakieś takie trudniejsze.
+		do locals.Player_HP -= 2
+		if locals.Player_HP < 1
+			Oj, jednak była za wysoka...
+			
+- Duck right
+	Good choice, he even try to grab you, but his right hand is too far.
+	Zamachuje się ponownie do ataku, tym razem prawy haymaker
+	
+	- Unik w dół
+		Tym razem, nie taki dobry. Ten atak miał markować jego prawdziwy zamiar - podbródkowy z lewej.
+		Uderzenie zatrząsło twoim ciałem, czujesz ból zębów kiedy uderzyły o siebie a żuchwa nie daje o sobie zapomnieć. Na szczęście, przynajmniej nie odgryzłeś sobie języka.
+		do locals.Player_HP -= 1
+		
+	- Szybka kontra główką
+		Twoja błyskawiczna reakcja jest efektowna. Poczułeś to uderzenie w całym ciele, od góry do dołu.
+		On się chwieje i próbuje odzyskać rezon, nieskutecznie.
+		if not DMM.getValue("Memory_FightTraining")
+			Czujesz zawroty głowy, chce ci się wymiotować. Jeszcze trzymasz się na nogach, ale w każdym momencie możesz stracić siłę w nogach.
+			do locals.Player_HP -= 1
+		do locals.Killer_Stun = true
+		
+	- Wpadnij w niego z bara
+		Kontrszarża w twoim wykonaniu spełniła zadanie. Impakt uderzenia z barku wytrąca go z równowagi i pozwala ci przejąć inicjatywę.
+		
+- Jump back
+	To jak uciekanie przez toczącą się kulą wzdłuż jej trasy. Uderzenie odrzuca cię i lądujesz na ziemi.
+	Próbując wstać, doskoczył do ciebie i zaczął dalej okładać. Mimo przyjęcia paru uderzeń, wydostajesz się z nierównej sytuacji.
+	Mroczki przed oczami robią się coraz to mocniejsze.
+	do locals.Player_HP -= 1
+
 do DMM.add_temp("Enemy_Charge")
+=>< Resolve_HP
 => END
+
+
 
 ~ Enemy_Suffocate
 {opis close combat}

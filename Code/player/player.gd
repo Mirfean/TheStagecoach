@@ -28,6 +28,7 @@ enum LookDirection {
 @export var vision : player_vision
 @export var sound_walking : AudioStreamPlayer2D
 @export var EndLoopTimer: Timer
+@export var default_speed: float = 40.0
 
 var character_direction : Vector2
 var weapon_instance : Node2D
@@ -41,7 +42,7 @@ var current_room : String
 var playerState := PlayerState.Default
 @export var lookDirection := LookDirection.Down
 var can_interact := true
-var speed := 20
+var speed
 var sideway_speed := 0.7
 var backward_speed := 0.5
 var dead := false
@@ -55,9 +56,11 @@ func _ready() -> void:
 	inventory = get_tree().get_first_node_in_group("Inventory")
 	staminaBar = get_tree().get_first_node_in_group("StaminaBar")
 	aimer.visible = false
+	speed = default_speed
 	set_weapon()
 	
 func _input(event: InputEvent) -> void:
+	print("state " + stateMachine.currentState.name)
 	if dead:
 		return
 	if stateMachine.currentState.name == "Default":
