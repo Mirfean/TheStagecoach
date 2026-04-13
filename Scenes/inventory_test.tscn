@@ -55,8 +55,8 @@ material = ExtResource("3_h74se")
 layout_mode = 0
 offset_left = 124.0
 offset_top = 466.0
-offset_right = 477.505
-offset_bottom = 791.8
+offset_right = 546.0
+offset_bottom = 845.0
 texture = ExtResource("4_h74se")
 
 [node name="Main panel" type="PanelContainer" parent="Backpack"]
@@ -64,13 +64,15 @@ z_index = 1
 layout_mode = 0
 offset_left = 49.0
 offset_top = 80.0
-offset_right = 305.0
-offset_bottom = 272.0
+offset_right = 369.0
+offset_bottom = 336.0
 
 [node name="mainBackpackGrid" type="Control" parent="Backpack/Main panel" node_paths=PackedStringArray("inventory")]
+custom_minimum_size = Vector2(338, 270)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../../Inventories/Main kieszen")
+item_spacing = 2
 metadata/_custom_type_script = "uid://d0pfc3q6sof8y"
 
 [node name="SplitMain" type="Button" parent="Backpack"]
@@ -94,6 +96,7 @@ offset_right = 88.0
 offset_bottom = 494.0
 
 [node name="leftBackpackGrid" type="Control" parent="Backpack/Lewy panel" node_paths=PackedStringArray("inventory")]
+custom_minimum_size = Vector2(64, 160)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../../Inventories/Lewa kieszonka")
@@ -120,6 +123,7 @@ offset_right = 442.0
 offset_bottom = 497.0
 
 [node name="rightBackpackGrid" type="Control" parent="Backpack/Prawy panel" node_paths=PackedStringArray("inventory")]
+custom_minimum_size = Vector2(64, 160)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../../Inventories/Prawa kieszonka")
@@ -172,7 +176,7 @@ _serialized_format = {
 "data": {
 "insertion_priority": 0,
 "item_positions": {},
-"size": "Vector2i(8, 6)"
+"size": "Vector2i(10, 8)"
 },
 "name": &"GridConstraintMiddle"
 },
@@ -190,7 +194,7 @@ metadata/_custom_type_script = "uid://5hfig5q3x8it"
 
 [node name="GridConstraintMiddle" type="Node" parent="Inventories/Main kieszen"]
 script = ExtResource("5_eqq7b")
-size = Vector2i(8, 6)
+size = Vector2i(10, 8)
 insertion_priority = 0
 
 [node name="WeightConstraint" type="Node" parent="Inventories/Main kieszen"]

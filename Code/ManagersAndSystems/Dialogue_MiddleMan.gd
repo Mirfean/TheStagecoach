@@ -5,7 +5,7 @@ var var_bool : Dictionary
 var var_int : Dictionary
 var var_string : Dictionary
 
-# FOR ALL GAME
+# FOR ALL THE GAME
 var Dvalues : Dictionary 
 
 # TEMP FOR LOOP
@@ -21,7 +21,7 @@ func _ready() -> void:
 func getRandom() -> int:
 	return randi_range(0, 100)
 
-func getRandomResult(value: int) -> bool:
+func getRandomResult(value: int, range: int) -> bool:
 	var random = randi_range(0, 100)
 	return random <= value
 
@@ -101,21 +101,29 @@ func getPlayerRoom():
 func end_game():
 	Game_Manager.finish_game()
 	
+func reset_loop():
+	Game_Manager.reset_current_scene()
+	
+func black_screen(status: bool):
+	print_debug("TO DO")
 	
 func getEnemyResponse(enemy_hp: int, player_hp: int, timer: int) -> String:
-	## Wall pierwszy, później ground
+	## Jeśli 3 lub mniej ma hp to Charge
 	## Throw jeśli wyszedł właśnie ze stuna?
 	## Suffocate jeśli gracz 2 lub mniej
 	## Steal jeśli timer < 4
-	## Jeśli 2 lub mniej to Charge
-	if enemy_hp <= 2 and not get_temp("Enemy_Charge"):
+	## 
+	if enemy_hp <= 3 and not get_temp("Enemy_Charge"):
 		return "Charge"
 	if get_temp("Enemy_Stunned") and not get_temp("Enemy_Throw"):
 		return "Throw"
-	if timer <= 4 and not get_temp("Enemy_Steal"):
+	if timer <= 4 and not get_temp("Enemy_Steal") and (check_inventory("Molotov cocktail") or check_inventory("Molotov cocktail (sock version)") or check_inventory("Makeshift Spear") or check_inventory("Knife") or (check_inventory("Dissapointment as a weapon") and getValue("Died_BadGun")) or check_inventory("Service gun")):
 		return "Steal"
-	if player_hp <= 2 and not get_temp("Enemy_Suffocate"):
+	if not get_temp("Enemy_Suffocate"):
 		return "Suffocate"
-	if not get_temp("Enemy_Wall"):
-		return "Wall"
-	return "Ground"
+	if not get_temp("Enemy_Weapon"):
+		return "Weapon"
+	if not get_temp("Enemy_Throw"): 
+		return "Throw"
+	return "Charge" 
+	

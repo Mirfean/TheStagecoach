@@ -607,6 +607,7 @@ position = Vector2(-1179, -92)
 scale = Vector2(1.75, 1.75)
 vision = NodePath("PointLight2D2")
 EndLoopTimer = NodePath("EndOfLoopTimer")
+default_speed = 60.0
 
 [node name="Camera2D" type="Camera2D" parent="player_new"]
 zoom = Vector2(10, 10)
@@ -957,7 +958,6 @@ position = Vector2(-1243, -62)
 [node name="Door3" parent="Lazienka" instance=ExtResource("9_p05ml")]
 visible = false
 position = Vector2(-1166, -146)
-scale = Vector2(-1, 1)
 id = "lazienka"
 sprite_close = ExtResource("21_wd510")
 sprite_open = ExtResource("22_xbd1e")
