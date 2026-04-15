@@ -30,12 +30,12 @@ func _on_body_exited(body: Node2D) -> void:
 		body.remove_this_closest(self)
 
 func verify_code(code: String) -> bool:
-	var item = items_inside[code.to_int()]
-	if item == null:
+	if items_inside.has(code.to_int()):
+		var item = items_inside[code.to_int()]
+		setup_item(item)
+		return true
+	else:
 		return false
-	
-	setup_item(item)
-	return true
 	
 func setup_item(item: Interactable_object):
 	item.global_position = spot_2.global_position

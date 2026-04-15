@@ -250,7 +250,7 @@ Old fashioned brawl. What's your tactic?
 			You try to remove it as soon as possible, but damage is already done.
 			The pain will stay with you for a long time.
 			locals.Player_HP -= 1
-	- Do the armbar [if DMM.getValue("Memory_FightTraining")]
+	- Do the armbar [if DMM.get_dvalue("Memory_FightTraining")]
 		Something clicked in fogged mind, body respons on its own.
 		You catch him with increbible reflex. In less than 3 seconds, both of you lays on the floor.
 		You are prepared to break his arm and he does not even resist.
@@ -626,14 +626,16 @@ if locals.WIN
 		Let's move on.
 	if locals.Player_HP == 1
 		You can barely move. Your legs are shaking, and something deep inside hurts so much you want to puke.
-		This is a painful victory, but a victory nontheless and you should be proud of yourself.
-	do DMM.Dvalues["Killer_dead"] = true
+		This is a painful victory, but a victory nontheless.
+	do DMM.add_temp("Killer_dead")
+	do DMM.increase_dvalue("Killer_fight_died") 
 else
-	You were not prepared for this of monster. 
-	% {Podpowiedź}
-	% {Podpowiedź}
-	% {Podpowiedź}
-	% {Podpowiedź}
+	do DMM.increase_dvalue("Player_fight_dead")
+	You were not prepared for this monster...
+	% With every wound, you get weaker, but so does your opponent.
+	% Try out different, interesting combinations at the crafting table. You never know what tool might come in handy in a crisis. Somewhere is the house are recipes for those.
+	% Even the strongest can be beaten with enough prep time.
+	% I believe in you, try again.
 	I'm sure next time would be different...
 	=> restart
 => END
@@ -758,11 +760,100 @@ do DMM.add_temp("Enemy_Suffocate")
 => END
 
 ~ Enemy_Weapon
-- 
-- dodge
-- knife fight!
-- flamethrower
-- chlorine grenade
+A glint of the blade intimades you.
+- Dodge and try to take his knife
+	You rarely can outsmart a guy with knife in a fight.
+	Sometimes, won battle is that you don't is one you do not participate.
+	if locals.Player_HP == 1
+		But you are too weak to run. Wounds do not forget.
+		It's like running in the tar, he catches you almost immediately. 
+		Coldness of the blade meets your senses before agonizing pain pierces through your body.
+		Slowly, you go into the darkness...
+	else
+		You feel exhausted but he must too.
+- Shoot him good with your gun [if DMM.check_inventory("Service gun")]
+	Don't come with a knife to a gunfight.
+	As distance between you shortens, you pull out the gun. No one is fast enough to dodge a bullet from 4 meters.
+	As his body catches all the projectiles, he fall on the ground.
+	do locals.Killer_HP -= 5
+	if locals.Killer_HP > 0
+		Your ears had no time to stop ringing, and he began to stand up.
+		Whatever is still keeping him alive is persistent to still fight.
+	do DMM.check_inventory("Service gun", true)
+	do DMM.receive_item("Empty service gun")
+- Knife fight [if DMM.check_inventory("Kitchen knife")]
+	do DMM.check_inventory("Kitchen knife",true)
+	You pull out your own knife and wait for him.
+	He jumps towards you, thrust aimed into your chest.
+	- Dodge
+		Smooth step side and temporary danger is gone. Now he is really close to you.
+		- Aim to the armed hand
+			do locals.Killer_HP -= 1
+			He immediately drops holded weapon and moves few steps from you.
+			Your blade melts by a dark sludge dripping from his wounds.
+		- Hit between ribs
+			do locals.Killer_HP -= 1
+			if DMM.get_dvalue("Memory_FightTraining")
+				Your reflex kicks in and dodge incoming attack. Body moved before you even think about this.
+			else
+				Half second later, you feel something is wrong and pain going through your body. He hits you in the side.
+				Fortunalety, it is not deep wound, right?
+				do locals.Player_HP -= 1
+			He takes your blade out of him. It is completely melted and unusable.
+		- Swing into eyes
+			No one said you should fight clean.
+			Your attack hits, not as deep as you hoped but enough to make him scream.
+			He looks weak, at least now. Make your next move.
+			do locals.Killer_HP -= 1
+			do locals.Killer_Stun = true
+	- Parry this
+		if DMM.get_dvalue("Memory_FightTraining")
+			Muscle memory takes control of your body. Quick hit, duck and clean hit.
+			Like in a trainings that you don't even remember.
+			do locals.Killer_HP -= 2
+			if locals.Killer_HP <= 0
+				And that is enough for him.
+		else
+			You sure are ready for him. Equal chances, am I right?
+			Predicting blade trajectory is something what cames to you after your ribs just meet with cold steel.
+			Idea was great, execution worse. In movies this looked easier.
+			do locals.Player_HP -= 2
+	- Let him stab you to really get into him [if DMM.get_dvalue("Player_fight_dead") > 2]
+		This hurts like hell, but gives you space for a devastating attack.
+		do locals.Player_HP -= 2
+		if locals.Player_HP <= 0
+			Or it should if your body not stops moving from that wound.
+		else
+			Your blade hits under his jaw. Impact makes a hole through and makes knife goes even further upward. It is deep enough to make a damage in to a brain.
+			do locals.Killer_HP -= 3
+			if locals.Killer_HP > 0
+				Or at least it should, because he throws you away with agonyzing pain scream. And still stands in front of you.
+				Handle of your blade drops off almost melted completely.
+- Create distance using a spear [if DMM.check_inventory("Makeshift spear")]
+	As he launches at you, your hands goes for a spear. So that is how spearmans felt like when cavaliery was charging into them.
+	He was not quick enough, precise thrust into lung is a forceful way to stop someone.  
+	You hit him enough to drop weapon, but your weapon is useless too as blade starts to melt in contact with his body fluids.
+	do locals.Killer_HP -= 1
+	do DMM.check_inventory("Makeshift spear", true)
+- Make him crispy using the flamethrower [if DMM.check_inventory("Homemade flamethrower")]
+	As he get closer, you are prepared with a hot suprise.
+	Quick thrust in your way timed almost perfectly with flame burst.
+	His next attack strikes the can. Explosion hits you, same as him.
+	do locals.Player_HP -= 1
+	do locals.Killer_HP -= 2
+	if locals.Player_HP > 0
+		Counting previous burns, you hope that makes you ahead.
+- Chlorine grenade [if DMM.check_inventory("Chlorine grenade")]
+	Distance of toxic cloud should be enough to feel safer.
+	As he approaches, you throw the glass bootle between you and him.
+	Not fast enough to dodge it completely. His coughting is a sign of it.
+	He jumps out to your direction still being affected by burning throat and lungs. 
+	- Hit him hard
+		Pressing the advantage, you short distance and make him pay. Strong hit from your right, then uppercut and as transaction finalization kick in the gut.
+		do locals.Killer_HP -= 1
+	- Push him into it again.
+		do locals.Killer_Stun = true
+His weapon is lost somewhere in this darkness...
 => END 
 
 ~ Enemy_Throw

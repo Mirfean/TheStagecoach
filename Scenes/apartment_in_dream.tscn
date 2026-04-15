@@ -703,6 +703,27 @@ shape = SubResource("CircleShape2D_jumh6")
 position = Vector2(0, -0.666672)
 shape = SubResource("RectangleShape2D_jumh6")
 
+[node name="Chest2" parent="Sypialnia" node_paths=PackedStringArray("collision_shape_2d") instance=ExtResource("27_owefy")]
+position = Vector2(-1266, -211)
+scale = Vector2(1.5, 1.5)
+Items = {
+"Duck tape": 2,
+"Lighter": 1
+}
+new_closed = ExtResource("33_pvopb")
+new_opened = ExtResource("29_2jvi0")
+collision_shape_2d = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sypialnia/Chest2"]
+position = Vector2(0, 3.33333)
+shape = SubResource("CircleShape2D_jumh6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sypialnia/Chest2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sypialnia/Chest2/StaticBody2D"]
+position = Vector2(0, -0.666672)
+shape = SubResource("RectangleShape2D_jumh6")
+
 [node name="Obraz" type="Sprite2D" parent="Sypialnia"]
 use_parent_material = true
 position = Vector2(-1288, -343)
@@ -958,6 +979,7 @@ position = Vector2(-1243, -62)
 [node name="Door3" parent="Lazienka" instance=ExtResource("9_p05ml")]
 visible = false
 position = Vector2(-1166, -146)
+scale = Vector2(-1, 1)
 id = "lazienka"
 sprite_close = ExtResource("21_wd510")
 sprite_open = ExtResource("22_xbd1e")
@@ -982,7 +1004,8 @@ shape = SubResource("RectangleShape2D_mbhwl")
 [node name="SzafkaLazienkowa" parent="Lazienka" node_paths=PackedStringArray("collision_shape_2d") instance=ExtResource("27_owefy")]
 position = Vector2(-1144, -179)
 Items = {
-"Bleach": 1.0
+"Bleach": 1.0,
+"Broom": 1
 }
 new_closed = ExtResource("81_apmjw")
 new_opened = ExtResource("81_apmjw")
@@ -1220,7 +1243,7 @@ shape = SubResource("CircleShape2D_djm75")
 position = Vector2(-353, 720.5)
 scale = Vector2(1.25, 1.25)
 Items = {
-"Vinegar": 1
+"Kitchen knife": 1
 }
 new_closed = ExtResource("12_wabnc")
 new_opened = ExtResource("84_lnyix")
@@ -1264,7 +1287,7 @@ position = Vector2(-3.59998, -0.600037)
 shape = SubResource("RectangleShape2D_ftl66")
 
 [node name="Trashcan" type="Sprite2D" parent="Kuchnia"]
-position = Vector2(-408, 718)
+position = Vector2(-409, 718)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("59_ca4fy")
 
@@ -1277,6 +1300,10 @@ shape = SubResource("RectangleShape2D_kr7b3")
 [node name="Chest2" parent="Kuchnia" node_paths=PackedStringArray("collision_shape_2d") instance=ExtResource("27_owefy")]
 position = Vector2(-395, 709)
 scale = Vector2(1.25, 1.25)
+Items = {
+"Banana": 2,
+"Vinegar": 1
+}
 new_closed = ExtResource("33_7w8xg")
 new_opened = ExtResource("103_kr7b3")
 collision_shape_2d = NodePath("CollisionShape2D")

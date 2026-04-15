@@ -44,5 +44,5 @@ func setup_loop():
 			starting_dialogue.Interact()
 			Game_Manager.get_from_registry("door_biuro0p").locked = true
 		"loop2_test":
-			player_char.EndLoopTimer.start(5)
+			player_char.EndLoopTimer.start(120)
 			

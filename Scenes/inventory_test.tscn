@@ -68,7 +68,6 @@ offset_right = 369.0
 offset_bottom = 336.0
 
 [node name="mainBackpackGrid" type="Control" parent="Backpack/Main panel" node_paths=PackedStringArray("inventory")]
-custom_minimum_size = Vector2(338, 270)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../../Inventories/Main kieszen")
@@ -96,7 +95,6 @@ offset_right = 88.0
 offset_bottom = 494.0
 
 [node name="leftBackpackGrid" type="Control" parent="Backpack/Lewy panel" node_paths=PackedStringArray("inventory")]
-custom_minimum_size = Vector2(64, 160)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../../Inventories/Lewa kieszonka")
@@ -123,7 +121,6 @@ offset_right = 442.0
 offset_bottom = 497.0
 
 [node name="rightBackpackGrid" type="Control" parent="Backpack/Prawy panel" node_paths=PackedStringArray("inventory")]
-custom_minimum_size = Vector2(64, 160)
 layout_mode = 2
 script = ExtResource("2_eqq7b")
 inventory = NodePath("../../../Inventories/Prawa kieszonka")

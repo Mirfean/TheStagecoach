@@ -1,10 +1,6 @@
 extends Node
 class_name Dialogue_MiddleMan
 
-var var_bool : Dictionary
-var var_int : Dictionary
-var var_string : Dictionary
-
 # FOR ALL THE GAME
 var Dvalues : Dictionary 
 
@@ -17,14 +13,17 @@ var var_temp : Array
 func _ready() -> void:
 	self.add_to_group("DialogueMM")
 	Inventory_manager.dialogue_mm = self
-	
+
+#region Random
 func getRandom() -> int:
 	return randi_range(0, 100)
 
 func getRandomResult(value: int, range: int) -> bool:
 	var random = randi_range(0, 100)
 	return random <= value
+#endregion
 
+#region DVALUE
 func getValue(key: String):
 	return Dvalues.get(key, null)
 
@@ -33,33 +32,20 @@ func setValue(key: String, value, send_to_save: bool = false):
 	if send_to_save:
 		Game_Manager.save.VALUES[key] = value
 	
-func get_bool(key: String):
-	if not var_bool.has(key):
-		var_bool.set(key, false)
-	return var_bool.get(key)
+func get_dvalue(key: String):
+	if not Dvalues.has(key):
+		Dvalues.get_or_add(key, 0)
+	return Dvalues.get(key)
 	
-func set_bool(key: String, value : bool):
-	var_bool[key] = value
+func set_dvalue(key: String, value):
+	Dvalues[key] = value
 
-func get_int(key: String):
-	if not var_int.has(key):
-		var_int.get_or_add(key, 0)
-	return var_int.get(key)
-	
-func set_int(key: String, value : int):
-	var_int[key] = value
+func increase_dvalue(key: String, amount : int = 1):
+	get_dvalue(key)
+	Dvalues[key] = Dvalues.get_or_add(key) + amount
+#endregion
 
-#OBSOLETE?
-func increase_int(key: String, amount : int = 1):
-	get_int(key)
-	var_int[key] = var_int.get_or_add(key) + amount
-	
-func get_string(key: String):
-	return var_string.get_or_add(key)
-	
-func set_string(key: String, value : String):
-	var_string[key] = value
-	
+#region VAR_TEMP
 func add_temp(new: String):
 	var_temp.append(new)
 	
@@ -76,6 +62,7 @@ func get_temp(item: String, remove: bool = false) -> bool:
 			remove_temp(item)
 		return true
 	return false
+#endregion
 
 func check_inventory(item_name : String, remove : bool = false, amount : int = 1) -> bool:
 	return Inventory_manager.check_eq_for(item_name, remove, amount)
@@ -85,7 +72,8 @@ func receive_item(item_name : String, amount : int = 1):
 
 func to_player(order: String):
 	Game_Manager.player_char.make_player(order)
-	
+
+#region events
 func send_event_started(dialogue_id: String):
 	EventBus.emit_signal("dialogue_started", dialogue_id)
 
@@ -94,10 +82,13 @@ func send_event_finished(dialogue_id: String):
 	
 func send_event_choice(dialogue_id: String, choice_id: String):
 	EventBus.emit_signal("dialogue_choice", dialogue_id, choice_id)
+#endregion
 
+#OBSOLETE?
 func getPlayerRoom():
 	return Game_Manager.player_char.get_current_room()
 
+#region GAME_CHANGES
 func end_game():
 	Game_Manager.finish_game()
 	
@@ -106,7 +97,9 @@ func reset_loop():
 	
 func black_screen(status: bool):
 	print_debug("TO DO")
-	
+#endregion
+
+#region DIALOGUE_SPECIFIC
 func getEnemyResponse(enemy_hp: int, player_hp: int, timer: int) -> String:
 	## Jeśli 3 lub mniej ma hp to Charge
 	## Throw jeśli wyszedł właśnie ze stuna?
@@ -125,5 +118,6 @@ func getEnemyResponse(enemy_hp: int, player_hp: int, timer: int) -> String:
 		return "Weapon"
 	if not get_temp("Enemy_Throw"): 
 		return "Throw"
-	return "Charge" 
+	return "Charge"
+#endregion
 	
