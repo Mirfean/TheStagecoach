@@ -20,7 +20,8 @@ jobs:
           mkdir -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/export_templates/4.6.2.stable ~/.local/share/godot/export_templates/4.6.2.stable
           cd /project
-          godot --headless --export-debug '${{ matrix.platform }}' ./build/${{ matrix.platform }}
+          mkdir -p './build/${{ matrix.platform }}'
+          godot --headless --export-debug '${{ matrix.platform }}' './build/${{ matrix.platform }}/output'
           "
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
