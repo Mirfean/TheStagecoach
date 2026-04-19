@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb257wc72sj20"]
+
+[ext_resource type="PackedScene" uid="uid://bqua4f1vi4mur" path="res://Scenes/achievement.tscn" id="1_2uvvn"]
+
+[node name="Achiev_board" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Achievement" parent="." instance=ExtResource("1_2uvvn")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 880.0
+offset_top = 494.0
+offset_right = 880.0
+offset_bottom = 494.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Achievement2" parent="." instance=ExtResource("1_2uvvn")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 409.0
+offset_top = 710.0
+offset_right = 409.0
+offset_bottom = 710.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Achievement3" parent="." instance=ExtResource("1_2uvvn")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1398.0
+offset_top = 792.0
+offset_right = 1398.0
+offset_bottom = 792.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Achievement4" parent="." instance=ExtResource("1_2uvvn")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1323.0
+offset_top = 255.0
+offset_right = 1323.0
+offset_bottom = 255.0
+grow_horizontal = 1
+grow_vertical = 1

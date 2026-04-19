@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqua4f1vi4mur"]
+
+[ext_resource type="Script" uid="uid://cqs5sgkxbo176" path="res://Code/UI/achievement.gd" id="1_mn5ub"]
+[ext_resource type="Texture2D" uid="uid://dhp1oib4ktrah" path="res://Assets/Sprites/UI/achievemnty/CatFace.png" id="1_umqle"]
+[ext_resource type="Texture2D" uid="uid://boacrlaeurf26" path="res://Assets/Sprites/UI/achievement_frame.png" id="2_mn5ub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umqle"]
+size = Vector2(39.5, 39.5)
+
+[node name="Achievement" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_mn5ub")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_umqle")
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mn5ub")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20.25, 20.25)
+shape = SubResource("RectangleShape2D_umqle")
+
+[node name="ContactPoint" type="Node2D" parent="."]
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

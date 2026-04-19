@@ -979,7 +979,6 @@ position = Vector2(-1243, -62)
 [node name="Door3" parent="Lazienka" instance=ExtResource("9_p05ml")]
 visible = false
 position = Vector2(-1166, -146)
-scale = Vector2(-1, 1)
 id = "lazienka"
 sprite_close = ExtResource("21_wd510")
 sprite_open = ExtResource("22_xbd1e")
