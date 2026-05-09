@@ -1,63 +1,154 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb257wc72sj20"]
+[gd_scene load_steps=5 format=3 uid="uid://cb257wc72sj20"]
 
 [ext_resource type="PackedScene" uid="uid://bqua4f1vi4mur" path="res://Scenes/achievement.tscn" id="1_2uvvn"]
+[ext_resource type="Script" uid="uid://crewd4tyhgvua" path="res://Code/Achievements.gd" id="1_cfhkk"]
+[ext_resource type="Texture2D" uid="uid://cnu253tqwefwp" path="res://Assets/Sprites/new/brain.png" id="3_hc0n7"]
+[ext_resource type="Texture2D" uid="uid://o41age7qwbm8" path="res://Assets/Sprites/new/achiev_text_UI.png" id="4_ay3ny"]
 
-[node name="Achiev_board" type="Control"]
+[node name="Achiev_board" type="Control" node_paths=PackedStringArray("title_text", "descr_text")]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 181.0
+offset_top = 97.0
+offset_right = 181.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_cfhkk")
+title_text = NodePath("Text/Title")
+descr_text = NodePath("Text/Description")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -16.0
+offset_right = -217.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(33.42, 33.42)
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("3_hc0n7")
+
+[node name="Text" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(432.035, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -432.025
+offset_right = 0.0100098
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_ay3ny")
+
+[node name="Title" type="RichTextLabel" parent="Text"]
+layout_mode = 0
+offset_left = 16.025
+offset_top = 139.0
+offset_right = 416.025
+offset_bottom = 249.0
+text = "Start text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Text"]
+layout_mode = 0
+offset_left = 17.025
+offset_top = 326.0
+offset_right = 417.025
+offset_bottom = 676.0
+text = "Start text"
+
+[node name="AchievList" type="Control" parent="."]
+z_index = 1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Achievement" parent="." instance=ExtResource("1_2uvvn")]
+[node name="Achievement" parent="AchievList" instance=ExtResource("1_2uvvn")]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 880.0
-offset_top = 494.0
-offset_right = 880.0
-offset_bottom = 494.0
+offset_left = 566.0
+offset_top = 529.0
+offset_right = 566.0
+offset_bottom = 529.0
 grow_horizontal = 1
 grow_vertical = 1
+Title = "First time?"
+Description = "Die"
+unlocked = true
 
-[node name="Achievement2" parent="." instance=ExtResource("1_2uvvn")]
+[node name="Achievement2" parent="AchievList" instance=ExtResource("1_2uvvn")]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 409.0
-offset_top = 710.0
-offset_right = 409.0
-offset_bottom = 710.0
+offset_left = 926.0
+offset_top = 262.0
+offset_right = 926.0
+offset_bottom = 262.0
 grow_horizontal = 1
 grow_vertical = 1
+Title = "Chest with extra steps"
+Description = "Open safe for the first time"
 
-[node name="Achievement3" parent="." instance=ExtResource("1_2uvvn")]
+[node name="Achievement3" parent="AchievList" instance=ExtResource("1_2uvvn")]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1398.0
-offset_top = 792.0
-offset_right = 1398.0
-offset_bottom = 792.0
+offset_left = 1134.0
+offset_top = 816.0
+offset_right = 1134.0
+offset_bottom = 816.0
 grow_horizontal = 1
 grow_vertical = 1
+Description = "Survive fight with dark figure"
 
-[node name="Achievement4" parent="." instance=ExtResource("1_2uvvn")]
+[node name="Achievement4" parent="AchievList" instance=ExtResource("1_2uvvn")]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1323.0
-offset_top = 255.0
-offset_right = 1323.0
-offset_bottom = 255.0
+offset_left = 1302.0
+offset_top = 461.0
+offset_right = 1302.0
+offset_bottom = 461.0
 grow_horizontal = 1
 grow_vertical = 1
+Title = "TADA"
+Description = "Use confetti during a fight"
+
+[node name="Achievement5" parent="AchievList" instance=ExtResource("1_2uvvn")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 882.0
+offset_top = 595.0
+offset_right = 882.0
+offset_bottom = 595.0
+grow_horizontal = 1
+grow_vertical = 1
+Title = "I didn't hear no bell!"
+Description = "Survive fatal hit"

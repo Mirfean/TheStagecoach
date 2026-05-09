@@ -6,8 +6,9 @@ if DMM.get_temp("fighted_killer")
 	Feeling that he's gonna attack in a seconds.
 	You will be first.
 else
-	He lunges toward you with his fists. 
-	Your reflexes reacted fast enough. You avoided his punch by centimeters.
+	He lunges toward you.
+	Fist misses your face by a few centimeters.
+	You need to do something, he will attack again soon.
 do DMM.clear_temp()
 
 set locals.Timer = 8
@@ -228,19 +229,21 @@ Old fashioned brawl. What's your tactic?
 	It’s a clumsy, brutal act that carries the hope of ending this in one go.
 	if locals.Killer_HP <= 3
 		He's wounded and slower. In this state, it was inevitable.
-		Blow contact his face with squashy sound. Your fist hurts, but you know it's only a fraction of his damage.
-		do locals.Killer_HP -= 2
+		Blow contact his face with squashy sound. Your fist hurts, but you know it's only a fraction of damage he received.
+		do locals.Killer_HP -= 1
 	else
-		He's too fast. Block and grample of your attacking arm positioned you in really uncomfortable situation.
-		Punch hits your liver and next hits gut. In desperation, you try to free yourself. When he's preparing something to finish you off, you finally break free.
-		Fortunately dodging his devastating blow.
+		He's too fast. Block and graple of your attacking arm, positions you in dangerous situation.
+		Punch hits your liver, second strikes gut. In desperation, you try to free yourself. When he's preparing something to finish you off, you finally break free.
+		Fortunately dodging his devastating blow. Nevertheless, you took some damage.
 		do locals.Player_HP -= 1
 - Clinch and takedown
 	do locals.Melee_down = false
-	You lunged forward, ignoring every survival instinct, to close the gap. You drove your shoulder into his midsection, hoping your momentum was enough to topple that unnatural mass and drag the fight to the floor.
+	Lunge forward, ignoring every survival instinct, to close the gap. 
+	You drove your shoulder into his midsection, hoping that momentum is enough to topple that fucker and drag the fight to the floor.
+	Suprisingly, it works. His body drops on dark floor, with you on top.
 	- Grapple and choke him
-		Instantly, you catch him from behind and use your body weight to pull him to the floor.
-		You put him in a hold and choke him, using your other hand to prevent breaking free.
+		Instantly, you catch him from behind and use body weight to pull enemy to the floor.
+		You put him in a hold and choke, using your other hand to prevent breaking free.
 		Either you are doing something wrong, or the lack of oxygen doesn't bother him. You don't feel him weakening, nor fighting for breath.
 		Finally, he pushed you away and not even cough after this.
 	- Stay on top and hit with everything you got
@@ -248,17 +251,20 @@ Old fashioned brawl. What's your tactic?
 		if locals.Killer_HP < 3
 			His acidic blood on your hands feels like putting them into a firepit.
 			You try to remove it as soon as possible, but damage is already done.
-			The pain will stay with you for a long time.
+			Pain stays with you.
 			locals.Player_HP -= 1
 	- Do the armbar [if DMM.get_dvalue("Memory_FightTraining")]
 		Something clicked in fogged mind, body respons on its own.
-		You catch him with increbible reflex. In less than 3 seconds, both of you lays on the floor.
-		You are prepared to break his arm and he does not even resist.
-		He doesn't even flinch when your pressure intensified and broke his arm. Using this moment, he frees himself from your grab.
-		His hand moves strangely, even with the broken bones...
+		You catch him with increbible reflex. In just a moment, both of you lays on the floor.
+		You are ready to break his hand.
+		He doesn't even flinch, when pressure intensified and crash his arm. 
+		Using this moment, he frees himself from your grab.
+		When both of you are already standing, you see that his broken hand moves stragely, more like tentacle than disabled limb.
 		do locals.Killer_HP -= 2
 	- Change your mind
+		=> fight_options
 - Change your mind
+	=> fight_options
 =>< Resolve_HP
 => END
 
@@ -499,7 +505,7 @@ You are type of guy that always take the first thing that comes to hand, even in
 ~ Run_scratch
 Rush to the front door - that is your only chance. Fighting with this guy is a propably fatal mistake.
 In the halfway, you feel his presence behind you. Momentum while running does not give you time to react.
-Hit in back almost take you off balance. For a few seconds your lungs were not cooperative as usual. Burning inside make it hard to run...
+Hit in back almost take you off balance. For a few seconds your lungs are not cooperative as usual. Burning inside make it hard to run...
 Turn around and face your enemy, you can't escape so easily.
 set locals.Killer_HP = locals.Killer_HP - 1
 => END
@@ -508,19 +514,19 @@ set locals.Killer_HP = locals.Killer_HP - 1
 Rush to the front door - that is your only chance. Fighting with this guy is a propably fatal mistake.
 In the halfway, you feel his presence behind you. Momentum while running does not give you time to react.
 You feel strong blow in the back of your head. For just a second you lost contact with a world and now catching breath on knees.
-Moving your body is harder than 10 seconds ago, like someone fills your muscles with a cement.
+Moving your body is harder than few moments ago, like someone fills your muscles with a cement.
 do locals.Killer_HP = locals.Killer_HP - 2
 => END
 
 ~ Good_duck
-You duck too close to a wild swing and bury your knuckles into his ribs. 
+You duck, too close to a wild swing, and bury your knuckles into his ribs. 
 The sound of cracking bone is muffled by thick material on his body.
 do locals.Killer_HP = locals.Killer_HP - 1
 => END
 
 ~ Wrong_duck
 That swing came out of nowhere. It almost takes you to the ground. 
-Few seconds of white spots but you are still alive, right?
+Few seconds of white spots, but you are still alive, right?
 do locals.Player_Hp = locals.Player_HP - 1
 => END
 
@@ -555,7 +561,7 @@ if locals.Player_HP > 1
 Pain. There is always more pain.
 Your knees buckle. Thoughts are stifled. Body starts to malfunction, and soon, mind follows. 
 Presence of your oppressor is getting stronger. You try to resist, but it’s useless.
-if DMM.getValue("Memory_Childhood") and locals.Player_SecondWind and DMM.getValue("KillerLevel") == 3
+if DMM.getValue("Memory_Childhood") and locals.Player_SecondWind
 	You
 	must
 	[wave][color=red]FIGHT[/color][/wave] 
@@ -574,9 +580,9 @@ Cold hands tighten around your throat, choking out the last pieces of your consc
 => Trigger_Next
 
 ~ WIN_fight
-The opponent begins to stagger, his final attempts at an attack falling flat. His body collapses, broken by the losing battle. 
+The opponent begins to stagger, his final attempts at an attack falls flat. His body collapses, broken by the lost battle. 
 Suddenly, a total silence descends...
-It takes a moment before you feel the adrenaline draining from your system. Your heart rate slows. You find your calm. 
+It takes a moment, until you feel the adrenaline draining from your system. Heart rate slows. You find your calm. 
 Great work - you've defeated him.
 if DMM.getValue("Completed_loops") > 0:
 	You feel déjà vu - like something from an another life.
@@ -597,12 +603,12 @@ You take your chance and gave yourself enough time to run from the house.
 
 ~ Run_from_house
 Bolt down the corridor, your cables flow with adrenaline. Even after you turned your back on him, his dreadful presence is still with you.
-Even at the final moment, as you burst through the threshold of the front door, you feel cold breath on your neck. 
+At the final moment, as you burst through the threshold of the front door, you feel cold breath on your neck. 
 Finally, you manage to leave that cursed house behind...
 Gasping for air, you scan your surroundings, finding nothing.
 You spin around in panic, but even the house you just fled has vanished from sight. 
-The surrounding darkness begins to feel oppressive. Sensation tha he is still right behind you refuses to fade.
-Finally, the absolute darkness swallows you whole...
+The surrounding darkness begins to feel oppressive. Sensation that he is still right behind you refuses to fade.
+Absolute darkness starts to swallows you whole...
 do DMM.send_event_choice("killer_fight", "StartLoop4B")
 => END!
 

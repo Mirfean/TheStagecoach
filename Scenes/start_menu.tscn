@@ -1,0 +1,170 @@
+[gd_scene load_steps=7 format=3 uid="uid://crw3yl40y0uab"]
+
+[ext_resource type="Script" uid="uid://d1rdp6x2h1sew" path="res://Code/start_menu.gd" id="1_8u0lp"]
+[ext_resource type="Texture2D" uid="uid://80bvy033qk45" path="res://Assets/Sprites/UI/MenuButton_Normal.png" id="1_a43kq"]
+[ext_resource type="Texture2D" uid="uid://c5h8th0sp6bip" path="res://Assets/Sprites/UI/MenuButton_clicked.png" id="2_626he"]
+[ext_resource type="Texture2D" uid="uid://dgd73ao1v0in5" path="res://Assets/Sprites/UI/MenuButton_Hover.png" id="3_8u0lp"]
+[ext_resource type="Texture2D" uid="uid://u6pwr4lq687y" path="res://Assets/Sprites/UI/MenuButton_Disabled.png" id="4_i2i62"]
+[ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="5_626he"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8u0lp")
+
+[node name="TITLE" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 68.0
+offset_right = 253.555
+offset_bottom = 76.37
+scale = Vector2(18.725, 18.725)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_626he")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Stagecoach"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 996.0
+offset_right = 146.0
+offset_bottom = 1019.0
+scale = Vector2(1.305, 1.305)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_626he")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "v0.2.3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartGame" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 323.0
+offset_right = 776.0
+offset_bottom = 344.0
+scale = Vector2(6.525, 6.525)
+texture_normal = ExtResource("1_a43kq")
+texture_pressed = ExtResource("2_626he")
+texture_hover = ExtResource("3_8u0lp")
+texture_disabled = ExtResource("4_i2i62")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StartGame"]
+layout_mode = 0
+offset_left = 2.1456
+offset_top = 6.43678
+offset_right = 61.7206
+offset_bottom = 14.8068
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_626he")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Wake up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 514.0
+offset_right = 776.0
+offset_bottom = 535.0
+scale = Vector2(6.525, 6.525)
+texture_normal = ExtResource("1_a43kq")
+texture_pressed = ExtResource("2_626he")
+texture_hover = ExtResource("3_8u0lp")
+texture_disabled = ExtResource("4_i2i62")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options"]
+layout_mode = 0
+offset_left = 2.14559
+offset_top = 6.43678
+offset_right = 61.7206
+offset_bottom = 14.8068
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_626he")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Link" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 1750.0
+offset_top = 1007.0
+offset_right = 1814.0
+offset_bottom = 1028.0
+scale = Vector2(2.15, 2.15)
+text = "Me :>"
+underline = 1
+uri = "https://www.youtube.com/shorts/D5afW6hVa1k"
+structured_text_bidi_override = 1
+
+[node name="ExitGame" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 701.0
+offset_right = 779.0
+offset_bottom = 722.0
+scale = Vector2(6.525, 6.525)
+texture_normal = ExtResource("1_a43kq")
+texture_pressed = ExtResource("2_626he")
+texture_hover = ExtResource("3_8u0lp")
+texture_disabled = ExtResource("4_i2i62")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExitGame"]
+layout_mode = 0
+offset_left = 2.14559
+offset_top = 6.7433
+offset_right = 61.7206
+offset_bottom = 15.1133
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_626he")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Leave it"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1419.0
+offset_top = 594.0
+offset_right = 1483.0
+offset_bottom = 615.0
+scale = Vector2(6.525, 6.525)
+disabled = true
+texture_normal = ExtResource("1_a43kq")
+texture_pressed = ExtResource("2_626he")
+texture_hover = ExtResource("3_8u0lp")
+texture_disabled = ExtResource("4_i2i62")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Achievement"]
+visible = false
+layout_mode = 0
+offset_left = 2.14559
+offset_top = 6.7433
+offset_right = 61.7206
+offset_bottom = 15.1133
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_626he")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Good job"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed_Start"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed_options"]
+[connection signal="pressed" from="ExitGame" to="." method="_on_exit_game_pressed_exit"]
+[connection signal="pressed" from="Achievement" to="." method="_on_achievement_pressed_achiev"]

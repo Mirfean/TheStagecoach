@@ -42,7 +42,20 @@ func setup_loop():
 			black_screen.visible = true
 			player_char.playerSprite.play("lying")
 			starting_dialogue.Interact()
-			Game_Manager.get_from_registry("door_biuro0p").locked = true
-		"loop2_test":
-			player_char.EndLoopTimer.start(120)
+			DoorsAndRoomsPrep("loop1")
+		"loop2":
+			black_screen.visible = true
+			player_char.playerSprite.play("lying")
+			# loop2_dialogue
+			# Stand up
 			
+		"loop3_test":
+			player_char.EndLoopTimer.start(180)
+			
+	
+func DoorsAndRoomsPrep(loop: String):
+	Game_Manager.get_from_registry("door_biuro_0p").locked = Game_Manager.save_loaded["door_biuro_0p"]
+	#Piwnica
+	#ReverseRoom
+	#Strych
+	

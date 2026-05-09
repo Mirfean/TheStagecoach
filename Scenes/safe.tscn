@@ -10,11 +10,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23s64"]
 size = Vector2(10, 12)
 
-[node name="Safe" type="Area2D" node_paths=PackedStringArray("active_sprite", "collider") groups=["chest"]]
+[node name="Safe" type="Area2D" node_paths=PackedStringArray("spot_1", "spot_2", "active_sprite", "collider") groups=["chest"]]
 collision_mask = 8
 script = ExtResource("1_k8se0")
 closed_sprite = ExtResource("1_xrekv")
 opened_sprite = ExtResource("3_342nx")
+spot_1 = NodePath("Spot1")
+spot_2 = NodePath("Spot2")
 outline_shader = ExtResource("2_23s64")
 active_sprite = NodePath("Sprite2D")
 collider = NodePath("CollisionShape2D")

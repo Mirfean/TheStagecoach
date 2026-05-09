@@ -8,8 +8,8 @@ class_name Safe_interact
 
 @export var items_inside: Dictionary[int, Interactable_object]
 
-@onready var spot_1: Node2D = $Spot1
-@onready var spot_2: Node2D = $Spot2
+@export var spot_1: Node2D
+@export var spot_2: Node2D
 
 func _ready() -> void:
 	super._ready()

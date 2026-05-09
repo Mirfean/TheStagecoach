@@ -2,7 +2,7 @@
 extends Interactable_object
 class_name Dialoguer
 
-const Balloon = preload("res://Scenes/balloon.tscn")
+const Balloon = preload("res://Scenes/myBaloon.tscn")
 
 @export var dialogue_resource : DialogueResource
 @export var dialogue_start : String = "start"

@@ -22,8 +22,10 @@ func _on_text_edit_text_changed(new_text: String) -> void:
 		text_edit.caret_column = text_edit.text.length()
 		text_edit.grab_focus()
 
+
+
 func _on_text_edit_text_submitted(new_text: String) -> void:
-	if new_text.length() == 0:
+	if new_text.length() < 4:
 		return
 	sent_code.emit(new_text)
 			
@@ -31,3 +33,6 @@ func close_input():
 	text_edit.text = ""
 	close.emit()
 	
+
+func _on_texture_button_pressed() -> void:
+	_on_text_edit_text_submitted(text_edit.text)

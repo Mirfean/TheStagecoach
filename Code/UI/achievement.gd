@@ -26,12 +26,13 @@ func locking():
 		frame.modulate = Color(1, 1, 1)
 		icon.modulate = Color(1, 1, 1)
 		
-func _on_area_2d_mouse_entered() -> void:
+func _on_mouse_entered() -> void:
+	print_debug("Siema")
 	if not unlocked:
 		return
-	ShowInfo.emit(self)
-	
-func _on_area_2d_mouse_exited() -> void:
+	ShowInfo.emit(Title, Description)
+
+func _on_mouse_exited() -> void:
 	if not unlocked:
 		return
 	HideInfo.emit()

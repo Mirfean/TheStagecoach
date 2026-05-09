@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://muqq8868fkq1"]
+[gd_scene load_steps=7 format=3 uid="uid://muqq8868fkq1"]
 
 [ext_resource type="Script" uid="uid://x3ej2ukf1glc" path="res://Code/UI/safe_input.gd" id="1_368e0"]
 [ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="1_rywc3"]
-[ext_resource type="Texture2D" uid="uid://b23pad334ufm3" path="res://Assets/Sprites/new/safe_background_siema.png" id="2_368e0"]
+[ext_resource type="Texture2D" uid="uid://dwpjhccfjptfn" path="res://Assets/Sprites/UI/sejf_base.png" id="3_368e0"]
+[ext_resource type="Texture2D" uid="uid://8omv85n1x2gn" path="res://Assets/Sprites/UI/sejf_szkielko.png" id="4_lnn4h"]
+[ext_resource type="Texture2D" uid="uid://kd7h2b31213b" path="res://Assets/Sprites/UI/sejf_guzik.png" id="5_dcwu1"]
 
 [sub_resource type="Theme" id="Theme_lnn4h"]
 LineEdit/colors/selection_color = Color(0.501961, 0.501961, 0.501961, 1)
 LineEdit/constants/minimum_character_width = 4
-LineEdit/constants/outline_size = 32
+LineEdit/constants/outline_size = 24
 LineEdit/font_sizes/font_size = 64
 LineEdit/fonts/font = ExtResource("1_rywc3")
 TextEdit/colors/background_color = Color(0.239216, 0.152941, 0.239216, 0)
@@ -22,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
+offset_left = -208.0
 offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 200.0
+offset_right = 292.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_368e0")
@@ -44,20 +46,23 @@ vertical_alignment = 1
 deselect_on_focus_loss_enabled = false
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(410, 125)
+custom_minimum_size = Vector2(540, 180)
 layout_mode = 2
-texture = ExtResource("2_368e0")
+texture = ExtResource("3_368e0")
 
 [node name="TextEdit" type="LineEdit" parent="VBoxContainer/TextureRect"]
 custom_minimum_size = Vector2(350, 80)
 layout_mode = 2
-offset_left = 30.0
-offset_top = 23.0
-offset_right = 380.0
-offset_bottom = 103.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 15.0
+offset_right = -27.0
+offset_bottom = -12.0
 theme = SubResource("Theme_lnn4h")
-alignment = 1
-max_length = 6
+theme_override_font_sizes/font_size = 80
+placeholder_text = "0000"
+max_length = 4
 emoji_menu_enabled = false
 virtual_keyboard_type = 2
 middle_mouse_paste_enabled = false
@@ -66,8 +71,27 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 28.0
+offset_right = 324.0
+offset_bottom = 152.0
+mouse_filter = 2
+texture = ExtResource("4_lnn4h")
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 49.0
+offset_right = 461.0
+offset_bottom = 129.0
+texture_normal = ExtResource("5_dcwu1")
+stretch_mode = 0
+
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
 
 [connection signal="text_changed" from="VBoxContainer/TextureRect/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="text_submitted" from="VBoxContainer/TextureRect/TextEdit" to="." method="_on_text_edit_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/TextureRect/TextureButton" to="." method="_on_texture_button_pressed"]
