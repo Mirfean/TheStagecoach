@@ -1,8 +1,8 @@
 ~ start
-The sound of heavy doors opening, and with it, a feeling of snap in the very foundations of the building. Trembling of the entire house nearly knock you over.
-When you raise your head, an impenetrable darkness surrounds you. Like through a mist, you see walls that you aren't even sure were there a moment ago.
+The sound of heavy doors opening, and with it, a feeling of cracking in the very foundations of the building. Trembling of the entire house nearly knocks you over.
+When you raise your head, an impenetrable darkness surrounds you. As through a mist, you see walls that you aren't even sure were there a moment ago.
 The only thing you see clearly is the person standing in front of you. He is wearing a dark hoodie with the hood up, completely hiding his face.
-if DMM.get_temp("fighted_killer") 
+if DMM.get_temp("Fight_Counter") > 0 
 	Feeling that he's gonna attack in a seconds.
 	You will be first.
 else
@@ -54,7 +54,6 @@ while locals.Timer > 0
 => restart
 
 ~ Between_turns
-That is your status?
 match locals.Player_HP
 	when 3
 		%
@@ -64,7 +63,7 @@ match locals.Player_HP
 			Not a scratch.
 			You got this!
 		%
-			Mind and body is ready.
+			Mind and body are ready.
 			Do what is necessary.
 	when 2
 		% 
@@ -72,7 +71,7 @@ match locals.Player_HP
 			It’s not the first time you’ve felt this way, and it won't be the last.
 		%
 			Between fine and this situation - you are in the middle.
-			Far from fall, close enough to feel the possibility.
+			Far from falling, close enough to feel the possibility.
 		%
 			You took a hit, but it wasn't enough to stop you.
 			You still have a buffer for a minor mistake.
@@ -82,18 +81,17 @@ match locals.Player_HP
 			But you’re still standing, and that’s what counts.
 		%
 			With every second, giving up feels more tempting.
-			But the body is just a coward, guided by the strongest of them all - willpower.
+			The body is just a coward, guided by the strongest — willpower.
 		%
 			Your vision is blurred, your ears are ringing.
 			But you didn't hear no bell!
 		%
-			If you focus hard enough, you can almost forget the pain!
-			Almost...
-
-And about your enemy.
+			If you focus hard enough, you can almost forget the pain! Almost...
+Now about your enemy.
 match locals.Killer_HP
 	when 1
-		You’ve almost got him. One last push!
+		% You’ve almost got him. One last push!
+		% He can barely stand on his own feets.
 	when 2
 		% He looks like he can still take a hit or two. Don't let up.
 		% He's hurt, but not enough to stay down.
@@ -122,7 +120,7 @@ match locals.Killer_HP
 	
 #Player attacks
 ~ fight_options
-What you want to do?
+What you do want to do?
 - Try to convince him to stop this slaughter
 	=>< Talk
 
@@ -188,7 +186,7 @@ What you want to do?
 	=> Talk_response
 - "Why you want to hurt me?"
 	=> Talk_response
-- "Fuck off you psycho!" [if locals.Player_HP <= 2]
+- "Fuck off, you psycho!" [if locals.Player_HP <= 2]
 	=> Talk_response
 - "I won't fight with you..."
 	=> Talk_response
@@ -210,19 +208,56 @@ match locals.Player_talk_count
 	when 4
 		You are quite persistent.
 		Unfortunately, so is your opponent.
-		I hope you’re satisfied with this "fruitful" dialogue.
-		{achievement - monologue charmer}
+		I hope you’re satisfied with this fruitful dialogue.
+		do DMM.set_dvalue("Achiev_WeNeedToTalk", true)
 => END
 
 ~ Melee_fight
-Old fashioned brawl. What's your tactic?
+Old-fashioned brawl. What's your tactic?
 - Keep distance - kicks and far blows [if locals.Melee_kick]
 	do locals.Melee_kick = false
 	As he getting closer, you thrust your boot forward, aiming for sternum to halt his momentum.
 - Few jabs and dodges on close range [if locals.Melee_jabs]
 	do locals.Melee_jabs = false
-	- Ciosy w korpus
-		{opis}
+	Quick attack, dodge, step back, again hit, step side, repeat.
+	As you land many hits and dodges even more, you feel like it is not making any major difference. You need something more.
+	What is your strategy?
+	- Aim to weaken his body
+		TODO
+	- Hit and run 
+		Calm, well-aimed strikes followed by a step back. It’s better not to give your opponent a chance to counterattack.
+		You keep this situation on your advantage for a while. Finally, he is pissed off and rushes ruthlessly to you.
+		- Go for a counter
+			He is charging, same as you charge your attack.
+			When you get close enought to attack, you start your prepared bomb.
+			if DMM.get_dvalue("Memory_FightTraining")
+				Something in the back of your mind steers your body in unexpected angle. Your fist lands on jaw, when his misses you for a just few inches.
+				do locals.Killer_HP -= 1
+			else
+				The simultaneous sound of two fists striking faces, rang in your ears.
+				Both of you lost stability for a moment. You are sure he got the same as you.
+				do locals.Player_HP -= 1
+				do locals.Killer_HP -= 1
+		- Keep strategy as before
+			When you jump back to make a next quick attack he does not stop and your fist strikes his elbow.
+			He was ready get this minor hit, when in exchange, his knee makes close meeting with your guts.
+			You lost control of breathing for a moment. This is enough for him to land few additional hits to you before you are able to step back.
+			do locals.Player_HP -= 1
+		- Do not risk, just dodge this.
+			Make few meter distance between you all the time he tries to attack. Some would say foolish strategy.
+			You missed your chance to tip the scales in your favor, but at least you didn't let him do it either.
+	- Finish with uppercut
+		if locals.Killer_HP > 2
+			After some quick moves and feints, you prepare this move to hit him hard.
+			Blow is flying, fueled by movement of your all body. Then...
+			dodge. He is too fast, and you too slow to dodge counter - powerful strike into side ribs.
+			Feeling of crushed bones turns fast into hundreds of needles piercing the closest muscles.
+			do locals.Player_HP -= 1
+		else
+			After some quick moves and feints, you prepare this move to hit him hard.
+			Blow is flying, fueled by movement of your all body. Then...
+			fist lands on his jaw with a powerful force.
+			do locals.Killer_HP -= 1
 - Risk a powerful haymaker [if locals.Melee_haymaker]
 	do locals.Melee_haymaker = false
 	You put every ounce of your weight into a desperate overhand right.
@@ -636,7 +671,7 @@ if locals.WIN
 	do DMM.add_temp("Killer_dead")
 	do DMM.increase_dvalue("Killer_fight_died") 
 else
-	do DMM.increase_dvalue("Player_fight_dead")
+	do DMM.increase_dvalue("Player_fight_died")
 	You were not prepared for this monster...
 	% With every wound, you get weaker, but so does your opponent.
 	% Try out different, interesting combinations at the crafting table. You never know what tool might come in handy in a crisis. Somewhere is the house are recipes for those.

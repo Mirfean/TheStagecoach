@@ -36,9 +36,8 @@ func spawn_item_on_ground(place : Vector2):
 	# Sprawn pod nogami postaci
 
 func attach_item_from_ground():
-
 	print("attach item to inventory")
-	# Przyjąć item 
+	# Przyjąć item
 	# Stworzyć item i dodać do user_inventory
 	# Usunięcie itemu z podłogi jeśli item się mieści gdzieś
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=4 uid="uid://bwjqvq74ga5vy"]
+[gd_scene load_steps=196 format=4 uid="uid://bwjqvq74ga5vy"]
 
 [ext_resource type="Script" uid="uid://crakk8uloeha7" path="res://Scenes/StartLoop.gd" id="1_kedq2"]
 [ext_resource type="PackedScene" uid="uid://cvimjfh22fyxh" path="res://Scenes/player_new.tscn" id="1_y22mn"]
@@ -127,6 +127,7 @@
 [ext_resource type="Script" uid="uid://cm0ib7ni6oo7v" path="res://Code/table_items_on_loop.gd" id="119_djm75"]
 [ext_resource type="Texture2D" uid="uid://drr10omv0ymnh" path="res://Assets/Sprites/new/biurko2_pion.png" id="119_utt3q"]
 [ext_resource type="Script" uid="uid://hmh73ofjueno" path="res://Code/item_req.gd" id="120_qk6ef"]
+[ext_resource type="PackedScene" uid="uid://ijyab2t6wymi" path="res://Scenes/TileParts/TileCorridorLoop1_01.tscn" id="128_r8fkv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1wm1k"]
 shader = ExtResource("2_1wm1k")
@@ -591,6 +592,7 @@ tile_map_data = PackedByteArray("AADs/ywAAAACAAAAAADs/y0AAAACAAAAAADs/y4AAAACAAA
 tile_set = SubResource("TileSet_lygq1")
 
 [node name="SecretWallToBasement" type="TileMapLayer" parent="Tilemaps"]
+visible = false
 material = ExtResource("17_4a4my")
 tile_map_data = PackedByteArray("AADo/zAAAAACAAAAAADo/zEAAAAEAAkAAADo/zIAAAAEAAkAAAA=")
 tile_set = ExtResource("18_4a4my")
@@ -602,7 +604,6 @@ tile_map_data = PackedByteArray("AADe/ykAAAAEAAcAAADf/ykAAAAFAAcAAADf/ygAAAAFAAY
 tile_set = ExtResource("18_4a4my")
 
 [node name="RoadToBasement" type="TileMapLayer" parent="Tilemaps"]
-visible = false
 material = ExtResource("17_4a4my")
 tile_map_data = PackedByteArray("AADo/zIAAAAJAAEAAADo/zMAAAAIAAAAAADo/zQAAAAIAAAAAADo/zUAAAAIAAAAAADo/zYAAAAJAAEAAADp/zUAAAAFAAMAAADp/zYAAAAFAAMAAAA=")
 tile_set = ExtResource("18_4a4my")
@@ -612,14 +613,14 @@ position = Vector2(-324, 1291)
 
 [node name="player_new" parent="." node_paths=PackedStringArray("vision", "EndLoopTimer") instance=ExtResource("1_y22mn")]
 light_mask = 4
-position = Vector2(-1179, -92)
+position = Vector2(5317, -3134)
 scale = Vector2(1.75, 1.75)
 vision = NodePath("PointLight2D2")
 EndLoopTimer = NodePath("EndOfLoopTimer")
 default_speed = 60.0
 
 [node name="Camera2D" type="Camera2D" parent="player_new"]
-zoom = Vector2(10, 10)
+zoom = Vector2(2.52, 2.52)
 position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
@@ -1228,7 +1229,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("32_0gu0k")
 
 [node name="Door" parent="Biuro_dol" instance=ExtResource("9_p05ml")]
-position = Vector2(-584, 704)
+position = Vector2(-584, 703)
 scale = Vector2(1.05, 1)
 id = "door_biuro0p"
 locked = true
@@ -1845,6 +1846,9 @@ metadata/_custom_type_script = "uid://tnehprw0kwgd"
 [node name="TemplateItem" parent="." instance=ExtResource("106_x6vap")]
 position = Vector2(-583, 580)
 text = "Pistolet"
+
+[node name="Loop1" parent="." instance=ExtResource("128_r8fkv")]
+position = Vector2(5330, -3168)
 
 [connection signal="timeout" from="player_new/EndOfLoopTimer" to="player_new" method="_on_end_of_loop_timer_timeout"]
 [connection signal="body_entered" from="RoomsPoints/Corridor0" to="RoomsPoints/Corridor0" method="_on_body_entered"]

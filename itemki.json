@@ -421,5 +421,14 @@
 		"max_stack_size": 10.0,
 		"type": "WEAPON",
 		"image": "res://Assets/Sprites/new/pen.png"
+	},
+	"Crowbar":{
+		"name": "Crowbar",
+		"description": "Break into places where you're not wanted",
+		"size": "Vector2i(6, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/new/Łom.png"
 	}
 }

@@ -88,6 +88,8 @@ func execute_actions(actions):
 				set_current_room(target_name)
 			"timeout":
 				timeout(target_name)
+			"open_door":
+				Open_Door()
 
 func get_from_registry(target_id: String):
 	var item = Game_Manager.registry.get(target_id)
@@ -115,6 +117,10 @@ func BlackScreenForTeleport():
 	var target = get_from_registry("StartLoop")
 	if target:
 		target.BlackForMoment()
+		
+		
+func Open_Door():
+	print_debug("Otwieranie drzwi zaimplementować")
 
 func print_debug(message: String):
 	if OS.is_debug_build():
