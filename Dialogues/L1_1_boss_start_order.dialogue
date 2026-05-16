@@ -1,0 +1,11 @@
+~ start
+if not DMM.get_temp("Boss_talk_L1")
+	*Cough cough
+	Good to see you alive, soldier!
+	We need you to quick reconenance. One of our fallen brothers has card to open this doors.
+	Take one of the repellents; I don't have many left, so I'll stay here and cover the exit.
+	do DMM.receive_item("Repellent", 1)
+	do DMM.add_temp("Boss_talk_L1")
+else
+	Move your ass and bring that card, quickly!
+=> END

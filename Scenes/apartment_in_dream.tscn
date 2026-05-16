@@ -1,4 +1,4 @@
-[gd_scene load_steps=196 format=4 uid="uid://bwjqvq74ga5vy"]
+[gd_scene load_steps=194 format=4 uid="uid://bwjqvq74ga5vy"]
 
 [ext_resource type="Script" uid="uid://crakk8uloeha7" path="res://Scenes/StartLoop.gd" id="1_kedq2"]
 [ext_resource type="PackedScene" uid="uid://cvimjfh22fyxh" path="res://Scenes/player_new.tscn" id="1_y22mn"]
@@ -36,17 +36,17 @@
 [ext_resource type="TileSet" uid="uid://b61ruga1pfpm3" path="res://tilemap01.tres" id="18_4a4my"]
 [ext_resource type="Resource" uid="uid://1qbkl6r8ifyg" path="res://FlowEvents/KillerIncoming.tres" id="18_7u2nd"]
 [ext_resource type="Texture2D" uid="uid://bdh0qesjxalen" path="res://Assets/Sprites/new/schody_gora.png" id="18_uqi22"]
-[ext_resource type="Texture2D" uid="uid://fs042pwssbjr" path="res://Assets/Sprites/new/behind_wall.png" id="18_vq1mt"]
 [ext_resource type="Script" uid="uid://tnehprw0kwgd" path="res://Code/Environment/Dialoguer.gd" id="19_xgn3y"]
 [ext_resource type="Texture2D" uid="uid://cdsmtyegnm0j3" path="res://Assets/Sprites/old/Light2D.png" id="20_qf67m"]
-[ext_resource type="Resource" uid="uid://dolh1s66au1q2" path="res://Dialogues/L1_wakeUp.dialogue" id="20_rbv16"]
+[ext_resource type="Resource" uid="uid://dolh1s66au1q2" path="res://Dialogues/L2_wakeUp.dialogue" id="20_rbv16"]
 [ext_resource type="PackedScene" uid="uid://cf1vky5gdsj5m" path="res://Scenes/TileParts/TileCorridor01.tscn" id="21_0ftni"]
-[ext_resource type="Resource" uid="uid://bqguskeh51m4i" path="res://Dialogues/L1_get_from_bed.dialogue" id="21_rbv16"]
+[ext_resource type="Resource" uid="uid://bqguskeh51m4i" path="res://Dialogues/L2_get_from_bed.dialogue" id="21_rbv16"]
 [ext_resource type="Texture2D" uid="uid://blld6stkd7n2y" path="res://Assets/Sprites/new/door_horizontal.png" id="21_wd510"]
 [ext_resource type="Texture2D" uid="uid://h5hgthn2rlud" path="res://Assets/Sprites/new/outside_killer.png" id="21_xbd1e"]
 [ext_resource type="Resource" uid="uid://obv02muxua1f" path="res://Dialogues/L2_killer_talk.dialogue" id="22_pigrx"]
 [ext_resource type="Texture2D" uid="uid://cvh1g6fnguqtt" path="res://Assets/Sprites/new/door_horizonta_openedl.png" id="22_xbd1e"]
 [ext_resource type="Texture2D" uid="uid://c1qddvjnwiuej" path="res://Assets/Sprites/new/zlew.png" id="23_ypex6"]
+[ext_resource type="TileSet" uid="uid://dj7jl8f5c62j0" path="res://Tilemaps/CoverTiles.tres" id="24_r8fkv"]
 [ext_resource type="Texture2D" uid="uid://ch5jqx3ehoa64" path="res://Assets/Sprites/new/bed.png" id="24_tmb8n"]
 [ext_resource type="PackedScene" uid="uid://2qg772cgf10b" path="res://Scenes/sound_effect.tscn" id="26_8jicw"]
 [ext_resource type="PackedScene" uid="uid://dqi5vlwdihu0f" path="res://Scenes/safe.tscn" id="26_yd783"]
@@ -76,7 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://bkqb2lfq0se2i" path="res://Assets/Sprites/new/orb.png" id="45_sp268"]
 [ext_resource type="Texture2D" uid="uid://cy1vaxi4jechd" path="res://Assets/Sprites/new/obraz.png" id="46_nmo0n"]
 [ext_resource type="Texture2D" uid="uid://c4d05u55nom3h" path="res://Assets/Sprites/new/krzeslo_odwrocone.png" id="47_0qgfa"]
-[ext_resource type="Resource" uid="uid://ceb71l3natxdq" path="res://Dialogues/L1_Biurko_komp.dialogue" id="47_jumh6"]
+[ext_resource type="Resource" uid="uid://ceb71l3natxdq" path="res://Dialogues/L2_Biurko_komp.dialogue" id="47_jumh6"]
 [ext_resource type="Texture2D" uid="uid://de7m7aic4shut" path="res://Assets/Sprites/new/obraz_2.png" id="48_2ds1d"]
 [ext_resource type="Texture2D" uid="uid://byo8h0eb736ol" path="res://Assets/Sprites/new/obrazek.png" id="48_vq1mt"]
 [ext_resource type="Texture2D" uid="uid://dm1t26ikaqkwc" path="res://Assets/Sprites/new/dywan_2.png" id="49_nwviu"]
@@ -148,73 +148,6 @@ shader_parameter/enable_color_quantization = true
 shader_parameter/color_quant_steps = 32.0
 shader_parameter/warble_amount = 0.0
 shader_parameter/warble_speed = 0.644
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mflqi"]
-texture = ExtResource("18_vq1mt")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-14:1/0 = 0
-15:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-8:3/0 = 0
-9:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-8:4/0 = 0
-9:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-6:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-0:8/0 = 0
-2:8/0 = 0
-2:9/0 = 0
-4:9/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_lygq1"]
-sources/0 = SubResource("TileSetAtlasSource_mflqi")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rjjwf"]
 radius = 4.05517
@@ -589,10 +522,9 @@ tile_set = ExtResource("18_4a4my")
 [node name="Do przykrywania" type="TileMapLayer" parent="Tilemaps"]
 z_index = 7
 tile_map_data = PackedByteArray("AADs/ywAAAACAAAAAADs/y0AAAACAAAAAADs/y4AAAACAAAAAADs/y8AAAACAAAAAADr/y8AAAACAAAAAADb/yoAAAACAAAAAACu//D/AAACAAAAAAC0/+//AAACAAAAAACw//z/AAACAAAAAACx//z/AAACAAAAAACy//z/AAACAAAAAACz//z/AAACAAAAAADk/yoAAAACAAAAAADk/ykAAAACAAAAAADk/ysAAAACAAAAAADk/zAAAAACAAAAAADl/zAAAAACAAAAAADm/zAAAAACAAAAAAC4//j/AAACAAAAAAC5//j/AAACAAAAAAC6//j/AAACAAAAAAC7//j/AAACAAAAAAC7//f/AAACAAAAAAC7//b/AAACAAAAAAC7//X/AAACAAAAAAC7//T/AAACAAAAAAC7//P/AAACAAAAAADS/zMAAAACAAAAAADT/zMAAAACAAAAAADU/zMAAAACAAAAAADV/zMAAAACAAAAAADd/zUAAAACAAAAAADe/zUAAAACAAAAAAA=")
-tile_set = SubResource("TileSet_lygq1")
+tile_set = ExtResource("24_r8fkv")
 
 [node name="SecretWallToBasement" type="TileMapLayer" parent="Tilemaps"]
-visible = false
 material = ExtResource("17_4a4my")
 tile_map_data = PackedByteArray("AADo/zAAAAACAAAAAADo/zEAAAAEAAkAAADo/zIAAAAEAAkAAAA=")
 tile_set = ExtResource("18_4a4my")
@@ -604,6 +536,7 @@ tile_map_data = PackedByteArray("AADe/ykAAAAEAAcAAADf/ykAAAAFAAcAAADf/ygAAAAFAAY
 tile_set = ExtResource("18_4a4my")
 
 [node name="RoadToBasement" type="TileMapLayer" parent="Tilemaps"]
+visible = false
 material = ExtResource("17_4a4my")
 tile_map_data = PackedByteArray("AADo/zIAAAAJAAEAAADo/zMAAAAIAAAAAADo/zQAAAAIAAAAAADo/zUAAAAIAAAAAADo/zYAAAAJAAEAAADp/zUAAAAFAAMAAADp/zYAAAAFAAMAAAA=")
 tile_set = ExtResource("18_4a4my")
@@ -613,7 +546,7 @@ position = Vector2(-324, 1291)
 
 [node name="player_new" parent="." node_paths=PackedStringArray("vision", "EndLoopTimer") instance=ExtResource("1_y22mn")]
 light_mask = 4
-position = Vector2(5317, -3134)
+position = Vector2(7308, -5176)
 scale = Vector2(1.75, 1.75)
 vision = NodePath("PointLight2D2")
 EndLoopTimer = NodePath("EndOfLoopTimer")
@@ -994,6 +927,7 @@ position = Vector2(-1243, -62)
 [node name="Door3" parent="Lazienka" instance=ExtResource("9_p05ml")]
 visible = false
 position = Vector2(-1166, -146)
+scale = Vector2(-1, 1)
 id = "lazienka"
 sprite_close = ExtResource("21_wd510")
 sprite_open = ExtResource("22_xbd1e")
@@ -1843,12 +1777,14 @@ no_collider = true
 id = "fight_killer"
 metadata/_custom_type_script = "uid://tnehprw0kwgd"
 
-[node name="TemplateItem" parent="." instance=ExtResource("106_x6vap")]
-position = Vector2(-583, 580)
-text = "Pistolet"
+[node name="TileMapLayer" parent="." instance=ExtResource("128_r8fkv")]
+position = Vector2(7300, -5219)
 
-[node name="Loop1" parent="." instance=ExtResource("128_r8fkv")]
-position = Vector2(5330, -3168)
+[node name="pickable_item" parent="." instance=ExtResource("28_3p0xj")]
+position = Vector2(-584, 639)
+item_id_name = "Flashlight"
+item_name = "Flashlight"
+id = "Flashlight"
 
 [connection signal="timeout" from="player_new/EndOfLoopTimer" to="player_new" method="_on_end_of_loop_timer_timeout"]
 [connection signal="body_entered" from="RoomsPoints/Corridor0" to="RoomsPoints/Corridor0" method="_on_body_entered"]

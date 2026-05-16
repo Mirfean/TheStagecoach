@@ -3,7 +3,7 @@ class_name checkpointTile
 
 @export var add_or_remove: bool = true
 @export var myTilePart: TilePart 
-@export var tileParts: Array[PackedScene]
+@export var tileParts: Array[String]
 @export var marker: Marker2D
 
 signal addTilePart

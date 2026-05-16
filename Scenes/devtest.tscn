@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6a1krboy2ci3" path="res://Code/ManagersAndSystems/_game_manager.gd" id="1_d2752"]
 [ext_resource type="Texture2D" uid="uid://dbk84xlc05tmy" path="res://Assets/TileMaps/tilemap_V2.png" id="1_n4yxp"]
-[ext_resource type="TileSet" uid="uid://dyq0un67wtd88" path="res://Tilemaps/Ground.tres" id="1_n5vn0"]
+[ext_resource type="TileSet" uid="uid://dyq0un67wtd88" path="res://Scenes/Ground.tres" id="1_n5vn0"]
 [ext_resource type="PackedScene" uid="uid://157h3ftf0pbo" path="res://Scenes/player.tscn" id="2_vnw6p"]
 [ext_resource type="PackedScene" uid="uid://7afng5y6tlyw" path="res://Scenes/chest.tscn" id="3_2lock"]
 [ext_resource type="LabelSettings" uid="uid://bm0e0yauhm63n" path="res://Shaders/LabelSettings/stack_size_theme.tres" id="3_8rn85"]

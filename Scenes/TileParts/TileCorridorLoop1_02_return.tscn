@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://dlx32x33lamqk"]
+[gd_scene load_steps=5 format=4 uid="uid://dlx32x33lamqk"]
 
 [ext_resource type="TileSet" uid="uid://b61ruga1pfpm3" path="res://tilemap01.tres" id="1_sgk4s"]
 [ext_resource type="Script" uid="uid://3p5fa7psxar3" path="res://Code/TilePart.gd" id="2_h4hnm"]
 [ext_resource type="PackedScene" uid="uid://defphoduro2ry" path="res://Scenes/checkpoint.tscn" id="3_s68h1"]
-[ext_resource type="PackedScene" uid="uid://c1hf3hrn17a20" path="res://Scenes/TileParts/TileCorridor05.tscn" id="4_5326k"]
 [ext_resource type="Texture2D" uid="uid://cb0ueq5vhpd3d" path="res://Assets/Sprites/character_animation/soldiers_dead.png" id="5_h4hnm"]
 
 [node name="TileMapLayer" type="TileMapLayer"]
@@ -15,21 +14,19 @@ script = ExtResource("2_h4hnm")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-16, -256)
+position = Vector2(-16, -176)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
 position = Vector2(155, -129.4)
 
 [node name="Checkpoint" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("3_s68h1")]
 position = Vector2(8, -9.39999)
-add_or_remove = false
-tileParts = Array[PackedScene]([null])
+tileParts = Array[String](["res://Scenes/TileParts/TileCorridorLoop1_01_return.tscn"])
 marker = NodePath("../Marker2D2")
 
 [node name="Checkpoint2" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("3_s68h1")]
 position = Vector2(-144, -73.4)
 scale = Vector2(2, 2)
-tileParts = Array[PackedScene]([ExtResource("4_5326k")])
 marker = NodePath("../Marker2D3")
 
 [node name="bodies2" type="Node2D" parent="."]

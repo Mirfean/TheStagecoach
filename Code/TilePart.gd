@@ -23,7 +23,7 @@ func _ready() -> void:
 		else:
 			check.removeFromMarker.connect(RemoveTilePart)
 	
-func AddTilePart(marker: Marker2D, scene: PackedScene):
+func AddTilePart(marker: Marker2D, scene: String):
 	var newTilePart: TilePart = await spawn_tile_part(scene, marker.global_position)
 	activeConnections.set(marker, newTilePart)
 	newTilePart.activeConnections.set(newTilePart.marker0, self)
@@ -35,8 +35,9 @@ func RemoveTilePart(marker: Marker2D):
 			activeConnections.erase(marker)
 			remove_tile_part(tilePart)
 
-func spawn_tile_part(scene: PackedScene, pos: Vector2) -> TilePart:
-	var tile_part_instance: TilePart = scene.instantiate()
+func spawn_tile_part(scene: String, pos: Vector2) -> TilePart:
+	var new_scene = load(scene)
+	var tile_part_instance: TilePart = new_scene.instantiate()
 	get_parent().call_deferred("add_child", tile_part_instance)
 	await tile_part_instance.ready
 	tile_part_instance.global_position = pos

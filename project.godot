@@ -165,7 +165,7 @@ Run={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/first_dialogue.dialogue", "res://Dialogues/Pan_Staszek.dialogue", "res://Dialogues/Szefito.dialogue", "res://Dialogues/recipes.dialogue", "res://Dialogues/telefon_loop2.dialogue", "res://Dialogues/L1_wakeUp.dialogue", "res://Dialogues/L1_get_from_bed.dialogue", "res://Dialogues/calendar..dialogue", "res://bathroom_mirror.dialogue", "res://L1_doors.dialogue", "res://Dialogues/television.dialogue", "res://Dialogues/L2_killer_talk.dialogue", "res://Dialogues/L1_Biurko_komp.dialogue", "res://Dialogues/walka_z_zabojca.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/first_dialogue.dialogue", "res://Dialogues/Pan_Staszek.dialogue", "res://Dialogues/Szefito.dialogue", "res://Dialogues/recipes.dialogue", "res://Dialogues/telefon_loop2.dialogue", "res://Dialogues/calendar..dialogue", "res://bathroom_mirror.dialogue", "res://L1_doors.dialogue", "res://Dialogues/television.dialogue", "res://Dialogues/L2_killer_talk.dialogue", "res://Dialogues/walka_z_zabojca.dialogue", "res://Dialogues/L2_Biurko_komp.dialogue", "res://Dialogues/L2_get_from_bed.dialogue", "res://Dialogues/L2_wakeUp.dialogue", "res://Dialogues/L1_1_boss_start_order.dialogue", "res://Dialogues/L1_1_phone.dialogue", "res://Dialogues/L1_1_single_dialogues.dialogue")
 
 [layer_names]
 

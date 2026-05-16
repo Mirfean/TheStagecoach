@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://brmgkyccl64ab"
+path="res://.godot/imported/L1_1_boss_start_order.dialogue-d595e1731b27b9a4b06aa8d21db8c979.tres"
+
+[deps]
+
+source_file="res://Dialogues/L1_1_boss_start_order.dialogue"
+dest_files=["res://.godot/imported/L1_1_boss_start_order.dialogue-d595e1731b27b9a4b06aa8d21db8c979.tres"]
+
+[params]
+
+defaults=true

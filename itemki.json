@@ -430,5 +430,40 @@
 		"max_stack_size": 1.0,
 		"type": "WEAPON",
 		"image": "res://Assets/Sprites/new/Łom.png"
+	},
+	"Repellent":{
+		"name": "Repellent",
+		"description": "Strange smell that keeps SOMETHING away",
+		"size": "Vector2i(2, 2)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/new/Repellent.png"
+	},
+	"Access card":
+	{
+		"name": "Access card",
+		"description": "A card to leave this hell",
+		"size": "Vector2i(2, 1)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/new/card.png"
+	},
+	"Carabin":
+	{
+		"name": "Carabin",
+		"description": "A carabin, with a few bullets left.",
+		"size": "Vector2i(6, 3)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"type": "WEAPON",
+		"image": "res://Assets/Sprites/new/carabin.png"
+	},
+	"Flashlight":{
+		"name": "Flashlight",
+		"description": "A flashlight with a strange light color. Not very bright.",
+		"size": "Vector2i(2, 4)",
+		"stack_size": 1.0,
+		"max_stack_size": 1.0,
+		"image": "res://Assets/Sprites/new/flashlight.png"
 	}
 }

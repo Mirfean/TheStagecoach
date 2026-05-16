@@ -1,0 +1,9 @@
+~ start
+if not DMM.get_temp("L1_phone")
+	do DMM.add_temp("L1_phone")
+	Me: Hello?
+	???: 
+	???: 
+else
+	...
+=> END
