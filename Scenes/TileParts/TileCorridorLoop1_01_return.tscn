@@ -1,13 +1,19 @@
-[gd_scene load_steps=11 format=4 uid="uid://cyxb2rvkspqwh"]
+[gd_scene load_steps=23 format=4 uid="uid://cyxb2rvkspqwh"]
 
 [ext_resource type="TileSet" uid="uid://b61ruga1pfpm3" path="res://tilemap01.tres" id="1_6f03y"]
 [ext_resource type="Script" uid="uid://3p5fa7psxar3" path="res://Code/TilePart.gd" id="2_clpnr"]
 [ext_resource type="PackedScene" uid="uid://defphoduro2ry" path="res://Scenes/checkpoint.tscn" id="3_2rpow"]
 [ext_resource type="PackedScene" uid="uid://dw3yavdu3xykm" path="res://Scenes/dialoguer.tscn" id="4_b6rma"]
+[ext_resource type="Resource" uid="uid://dl0cqvxpexh5h" path="res://Dialogues/L1_1_single_dialogues.dialogue" id="5_2rpow"]
 [ext_resource type="Texture2D" uid="uid://bvrnp7kigdpcc" path="res://Assets/Sprites/character_animation/soldier_gun_dead.png" id="5_clpnr"]
 [ext_resource type="TileSet" uid="uid://dj7jl8f5c62j0" path="res://Tilemaps/CoverTiles.tres" id="6_178ru"]
 [ext_resource type="Texture2D" uid="uid://blr37y81bh7x5" path="res://Assets/Sprites/new/drzwi_double.png" id="7_lcmfv"]
 [ext_resource type="PackedScene" uid="uid://dm4eawfdrbllc" path="res://Scenes/pickable_item.tscn" id="8_clpnr"]
+[ext_resource type="FontFile" uid="uid://m1yy3x60mypp" path="res://Assets/font/PixelOperator8.ttf" id="10_b6rma"]
+[ext_resource type="Script" uid="uid://btuogr22l0ivv" path="res://Code/Environment/Interactable_object.gd" id="11_30pit"]
+[ext_resource type="Texture2D" uid="uid://c2xpm3ubneg4b" path="res://Assets/Sprites/new/dziury.png" id="12_178ru"]
+[ext_resource type="Texture2D" uid="uid://mcyqe8whchwo" path="res://Assets/Sprites/new/blood_L1.png" id="13_lcmfv"]
+[ext_resource type="Script" uid="uid://dcvajcf18yuq7" path="res://Code/animation_flow.gd" id="14_618bj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4p8ga"]
 
@@ -15,33 +21,210 @@
 radius = 3.42857
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_30pit"]
+radius = 16.0312
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30pit"]
+size = Vector2(34, 6)
+
+[sub_resource type="Animation" id="Animation_618bj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Checkpoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-134, -350)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drzwi:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [512]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drzwi:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drzwi:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Drzwi/StaticBody2D:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Drzwi/StaticBody2D:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_lcmfv"]
+resource_name = "open_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Checkpoint:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-134, -350), Vector2(-3.05176e-05, -351)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Drzwi:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [512, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Drzwi:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drzwi:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Drzwi/StaticBody2D:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Drzwi/StaticBody2D:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2u6vg"]
+_data = {
+&"RESET": SubResource("Animation_618bj"),
+&"open_door": SubResource("Animation_lcmfv")
+}
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_618bj"]
+vertices = PackedVector2Array(16, -295.273, -37.1406, -299.281, -37.8281, -341, -6.20312, -341, 5, -339.867, 34.5391, -296.633, 84, -340.867, 84, -298.602, 27.6797, -173.289, 36.9609, -168.133, 36.0625, -13, 11, -13, 11, -169.852, 18.1797, -174.977, 31.0234, -235.562, 16, -238, 5, -390, -5.20312, -390)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(4, 6, 7, 5), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(14, 8, 13, 15), PackedInt32Array(5, 14, 15, 0), PackedInt32Array(16, 4, 3, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-48, -351, -16, -351, -15, -400, 15, -400, 15, -350, 94, -351, 94, -289, 44, -287, 41, -235, 38, -179, 47, -174, 46, -3, 1, -3, 1, -175, 8, -180, 6, -238, 6, -286, -47, -290)])
+
 [node name="TileMapLayer" type="TileMapLayer"]
 self_modulate = Color(0.6, 0.6, 0.6, 1)
-tile_map_data = PackedByteArray("AAD8/+f/AAACAAAAAAD8/+j/AAACAAAAAAD8/+n/AAACAAAAAAD8/+r/AAACAAAAAAD8/+v/AAACAAAAAAD8/+z/AAACAAAAAAD8/+3/AAACAAAAAAD8/+7/AAACAAAAAAD9/+f/AAACAAAAAAD9/+j/AAALAAYAAAD9/+n/AAALAAcAAAD9/+r/AAAGAAAAAAD9/+v/AAAGAAAAAAD9/+z/AAAGAAAAAAD9/+3/AAAHAAAAAAD9/+7/AAACAAAAAAD+/+r/AAAHAAEAAAD+/+v/AAAGAAEAAAD+/+z/AAAHAAEAAAD+/+3/AAAHAAAAAAD+/+7/AAACAAAAAAD//+r/AAAHAAAAAAD//+v/AAAHAAEAAAD//+z/AAAHAAAAAAD//+3/AAAGAAEAAAD//+7/AAACAAAAAAD///L/AAACAAAAAAD///P/AAACAAAAAAD///T/AAACAAAAAAD///X/AAACAAAAAAD///b/AAACAAAAAAD///f/AAACAAAAAAD///j/AAACAAAAAAD///n/AAACAAAAAAD///r/AAACAAAAAAD///v/AAACAAAAAAD///z/AAACAAAAAAD///3/AAACAAAAAAD///7/AAACAAAAAAD/////AAACAAAAAAAAAOr/AAAGAAAAAAAAAOv/AAAHAAAAAAAAAOz/AAAHAAEAAAAAAO3/AAAHAAEAAAAAAO7/AAACAAAAAAAAAO//AAACAAAAAAAAAPD/AAACAAAAAAAAAPH/AAACAAAAAAAAAPL/AAACAAAAAAAAAPP/AAALAAYAAAAAAPT/AAALAAcAAAAAAPX/AAAHAAAAAAAAAPb/AAAGAAEAAAAAAPf/AAAHAAAAAAAAAPj/AAAGAAEAAAAAAPn/AAAHAAEAAAAAAPr/AAAGAAAAAAAAAPv/AAAHAAEAAAAAAPz/AAAGAAEAAAAAAP3/AAAGAAEAAAAAAP7/AAAGAAEAAAAAAP//AAAHAAEAAAABAOf/AAACAAAAAAABAOj/AAALAAYAAAABAOn/AAALAAcAAAABAOr/AAAGAAAAAAABAOv/AAAHAAAAAAABAOz/AAAGAAEAAAABAO3/AAAGAAAAAAABAO7/AAAGAAAAAAABAO//AAAGAAEAAAABAPD/AAAHAAAAAAABAPH/AAAHAAAAAAABAPL/AAAHAAAAAAABAPP/AAAHAAAAAAABAPT/AAAHAAEAAAABAPX/AAAHAAEAAAABAPb/AAAHAAEAAAABAPf/AAAHAAAAAAABAPj/AAAHAAAAAAABAPn/AAAGAAAAAAABAPr/AAAHAAAAAAABAPv/AAAHAAEAAAABAPz/AAAHAAEAAAABAP3/AAAGAAEAAAABAP7/AAAGAAAAAAABAP//AAAGAAAAAAACAOf/AAACAAAAAAACAOj/AAALAAYAAAACAOn/AAALAAcAAAACAOr/AAAHAAAAAAACAOv/AAAHAAEAAAACAOz/AAAHAAEAAAACAO3/AAAGAAEAAAACAO7/AAACAAAAAAACAPL/AAACAAAAAAACAPP/AAALAAYAAAACAPT/AAALAAcAAAACAPX/AAAGAAEAAAACAPb/AAAHAAEAAAACAPf/AAAGAAEAAAACAPj/AAAHAAAAAAACAPn/AAAGAAAAAAACAPr/AAAGAAAAAAACAPv/AAAGAAEAAAACAPz/AAAGAAAAAAACAP3/AAAGAAAAAAACAP7/AAAHAAAAAAACAP//AAAGAAEAAAADAOf/AAACAAAAAAADAOj/AAALAAYAAAADAOn/AAALAAcAAAADAOr/AAAHAAAAAAADAOv/AAAHAAEAAAADAOz/AAAGAAAAAAADAO3/AAAHAAEAAAADAO7/AAACAAAAAAAEAOf/AAACAAAAAAAEAOj/AAALAAYAAAAEAOn/AAALAAcAAAAEAOr/AAAGAAAAAAAEAOv/AAAGAAEAAAAEAOz/AAAGAAEAAAAEAO3/AAAGAAEAAAAEAO7/AAACAAAAAAAFAOf/AAACAAAAAAAFAOj/AAALAAYAAAAFAOn/AAALAAcAAAAFAOr/AAAHAAEAAAAFAOv/AAAHAAEAAAAFAOz/AAAGAAEAAAAFAO3/AAAHAAEAAAAFAO7/AAACAAAAAAD+/+f/AAACAAAAAAD+/+j/AAALAAYAAAD+/+n/AAALAAcAAAACAO//AAACAAAAAAACAPD/AAACAAAAAAACAPH/AAACAAAAAAADAPL/AAACAAAAAAADAPP/AAACAAAAAAADAPT/AAACAAAAAAADAPX/AAACAAAAAAADAPb/AAACAAAAAAADAPf/AAACAAAAAAADAPj/AAACAAAAAAADAPn/AAACAAAAAAADAPr/AAACAAAAAAADAPv/AAACAAAAAAADAPz/AAACAAAAAAADAP3/AAACAAAAAAADAP7/AAACAAAAAAADAP//AAACAAAAAAAGAOf/AAACAAAAAAAGAOj/AAACAAAAAAAGAOn/AAACAAAAAAAGAOr/AAACAAAAAAAGAOv/AAACAAAAAAAGAOz/AAACAAAAAAAGAO3/AAACAAAAAAAGAO7/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8/+f/AAACAAAAAAD8/+j/AAACAAAAAAD8/+n/AAACAAAAAAD8/+r/AAACAAAAAAD8/+v/AAACAAAAAAD8/+z/AAACAAAAAAD8/+3/AAACAAAAAAD8/+7/AAACAAAAAAD9/+f/AAACAAAAAAD9/+j/AAAMAAYAAAD9/+n/AAAMAAcAAAD9/+r/AAAGAAAAAAD9/+v/AAAGAAAAAAD9/+z/AAAGAAAAAAD9/+3/AAAHAAAAAAD9/+7/AAACAAAAAAD+/+r/AAAHAAEAAAD+/+v/AAAGAAEAAAD+/+z/AAAHAAEAAAD+/+3/AAAHAAAAAAD+/+7/AAACAAAAAAD//+r/AAAHAAAAAAD//+v/AAAHAAEAAAD//+z/AAAHAAAAAAD//+3/AAAGAAEAAAD//+7/AAACAAAAAAD///L/AAACAAAAAAD///P/AAACAAAAAAD///T/AAACAAAAAAD///X/AAACAAAAAAD///b/AAACAAAAAAD///f/AAACAAAAAAD///j/AAACAAAAAAD///n/AAACAAAAAAD///r/AAACAAAAAAD///v/AAACAAAAAAD///z/AAACAAAAAAD///3/AAACAAAAAAD///7/AAACAAAAAAD/////AAACAAAAAAAAAOr/AAAGAAAAAAAAAOv/AAAHAAAAAAAAAOz/AAAHAAEAAAAAAO3/AAAHAAEAAAAAAO7/AAACAAAAAAAAAO//AAACAAAAAAAAAPD/AAACAAAAAAAAAPH/AAACAAAAAAAAAPL/AAACAAAAAAAAAPP/AAAMAAYAAAAAAPT/AAAMAAcAAAAAAPX/AAAHAAAAAAAAAPb/AAAGAAEAAAAAAPf/AAAHAAAAAAAAAPj/AAAGAAEAAAAAAPn/AAAHAAEAAAAAAPr/AAAGAAAAAAAAAPv/AAAHAAEAAAAAAPz/AAAGAAEAAAAAAP3/AAAGAAEAAAAAAP7/AAAGAAEAAAAAAP//AAAHAAEAAAABAOf/AAACAAAAAAABAOj/AAAMAAYAAAABAOn/AAAMAAcAAAABAOr/AAAGAAAAAAABAOv/AAAHAAAAAAABAOz/AAAGAAEAAAABAO3/AAAGAAAAAAABAO7/AAAGAAAAAAABAO//AAAGAAEAAAABAPD/AAAHAAAAAAABAPH/AAAHAAAAAAABAPL/AAAHAAAAAAABAPP/AAAHAAAAAAABAPT/AAAHAAEAAAABAPX/AAAHAAEAAAABAPb/AAAHAAEAAAABAPf/AAAHAAAAAAABAPj/AAAHAAAAAAABAPn/AAAGAAAAAAABAPr/AAAHAAAAAAABAPv/AAAHAAEAAAABAPz/AAAHAAEAAAABAP3/AAAGAAEAAAABAP7/AAAGAAAAAAABAP//AAAGAAAAAAACAOf/AAACAAAAAAACAOj/AAAMAAYAAAACAOn/AAAMAAcAAAACAOr/AAAHAAAAAAACAOv/AAAHAAEAAAACAOz/AAAHAAEAAAACAO3/AAAGAAEAAAACAO7/AAACAAAAAAACAPL/AAACAAAAAAACAPP/AAAMAAYAAAACAPT/AAAMAAcAAAACAPX/AAAGAAEAAAACAPb/AAAHAAEAAAACAPf/AAAGAAEAAAACAPj/AAAHAAAAAAACAPn/AAAGAAAAAAACAPr/AAAGAAAAAAACAPv/AAAGAAEAAAACAPz/AAAGAAAAAAACAP3/AAAGAAAAAAACAP7/AAAHAAAAAAACAP//AAAGAAEAAAADAOf/AAACAAAAAAADAOj/AAAMAAYAAAADAOn/AAAMAAcAAAADAOr/AAAHAAAAAAADAOv/AAAHAAEAAAADAOz/AAAGAAAAAAADAO3/AAAHAAEAAAADAO7/AAACAAAAAAAEAOf/AAACAAAAAAAEAOj/AAAMAAYAAAAEAOn/AAAMAAcAAAAEAOr/AAAGAAAAAAAEAOv/AAAGAAEAAAAEAOz/AAAGAAEAAAAEAO3/AAAGAAEAAAAEAO7/AAACAAAAAAAFAOf/AAACAAAAAAAFAOj/AAAMAAYAAAAFAOn/AAAMAAcAAAAFAOr/AAAHAAEAAAAFAOv/AAAHAAEAAAAFAOz/AAAGAAEAAAAFAO3/AAAHAAEAAAAFAO7/AAACAAAAAAD+/+f/AAACAAAAAAD+/+j/AAAMAAYAAAD+/+n/AAAMAAcAAAACAO//AAACAAAAAAACAPD/AAACAAAAAAACAPH/AAACAAAAAAADAPL/AAACAAAAAAADAPP/AAACAAAAAAADAPT/AAACAAAAAAADAPX/AAACAAAAAAADAPb/AAACAAAAAAADAPf/AAACAAAAAAADAPj/AAACAAAAAAADAPn/AAACAAAAAAADAPr/AAACAAAAAAADAPv/AAACAAAAAAADAPz/AAACAAAAAAADAP3/AAACAAAAAAADAP7/AAACAAAAAAADAP//AAACAAAAAAAGAOf/AAACAAAAAAAGAOj/AAACAAAAAAAGAOn/AAACAAAAAAAGAOr/AAACAAAAAAAGAOv/AAACAAAAAAAGAOz/AAACAAAAAAAGAO3/AAACAAAAAAAGAO7/AAACAAAAAAA=")
 tile_set = ExtResource("1_6f03y")
 script = ExtResource("2_clpnr")
+id = "L1_Tile1_return"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-16, 352)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-32, -1)
+position = Vector2(-16, -353)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
 position = Vector2(96, 240)
 
-[node name="Checkpoint" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("3_2rpow")]
-position = Vector2(-171, 98)
-tileParts = Array[String](["res://Scenes/TileParts/TileCorridorLoop1_02_first.tscn"])
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("myTilePart", "marker") instance=ExtResource("3_2rpow")]
+position = Vector2(-134, -350)
+scale = Vector2(2.455, 2.455)
+myTilePart = NodePath("..")
+tileParts = Array[String](["res://Scenes/TileParts/TileCorridorLoop1_04.tscn"])
 marker = NodePath("../Marker2D2")
 
 [node name="Checkpoint2" parent="." node_paths=PackedStringArray("marker") instance=ExtResource("3_2rpow")]
 position = Vector2(-244, 261)
 marker = NodePath("../Marker2D3")
 
+[node name="BloodL1" type="Sprite2D" parent="."]
+position = Vector2(54, -349)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_lcmfv")
+
 [node name="Dialoguer" parent="." instance=ExtResource("4_b6rma")]
-position = Vector2(38, -337)
+position = Vector2(41, -337)
 scale = Vector2(2, 2)
+dialogue_resource = ExtResource("5_2rpow")
+dialogue_start = "dead_general"
 actor = ExtResource("5_clpnr")
 no_collider = true
 
@@ -60,10 +243,64 @@ tile_map_data = PackedByteArray("AAD+//3/AAACAAAAAAD///3/AAACAAAAAAA=")
 tile_set = ExtResource("6_178ru")
 
 [node name="DrzwiDouble" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -369)
 texture = ExtResource("7_lcmfv")
 
-[node name="pickable_item" parent="." instance=ExtResource("8_clpnr")]
+[node name="carabin" parent="." instance=ExtResource("8_clpnr")]
 position = Vector2(63, -317)
 item_id_name = "Carabin"
 item_name = "Carabin"
+id = "Carabin_L1"
+
+[node name="Drzwi" parent="." instance=ExtResource("4_b6rma")]
+position = Vector2(0, -368)
+dialogue_resource = ExtResource("5_2rpow")
+dialogue_start = "door_keycard"
+actor = ExtResource("7_lcmfv")
+id = "door_keycard_L1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drzwi"]
+position = Vector2(0, 16)
+shape = SubResource("CircleShape2D_30pit")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Drzwi"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drzwi/StaticBody2D"]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_30pit")
+
+[node name="Interactable_object" type="Area2D" parent="."]
+visible = false
+position = Vector2(146, -320)
+script = ExtResource("11_30pit")
+id = "Carabin_manual"
+metadata/_custom_type_script = "uid://btuogr22l0ivv"
+
+[node name="Label" type="Label" parent="Interactable_object"]
+offset_left = -30.0
+offset_top = -61.0
+offset_right = 73.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("10_b6rma")
+theme_override_font_sizes/font_size = 8
+text = "RMB to aim
+LMB to shoot"
+
+[node name="Dziury" type="Sprite2D" parent="."]
+position = Vector2(69, -368)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("12_178ru")
+region_enabled = true
+region_rect = Rect2(49, 1, 15, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2u6vg")
+}
+script = ExtResource("14_618bj")
+id = "Anim_open_door_L1"
+default_anim = "open_door"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_618bj")

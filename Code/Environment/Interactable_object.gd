@@ -19,7 +19,11 @@ func _ready() -> void:
 				break
 	if active_sprite:
 		default_material = active_sprite.material
+	print_debug("register " + id)
 	Game_Manager.add_to_registry(self)
+	
+func _exit_tree() -> void:
+	Game_Manager.remove_from_registry(id)
 	
 func pick_up():
 	print("pick up")
@@ -44,3 +48,9 @@ func _on_body_entered(body: Node2D):
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player") and not disabled:
 		body.remove_this_closest(self)
+
+func show_it():
+	self.visible = true
+
+func hide_it():
+	self.visible = false

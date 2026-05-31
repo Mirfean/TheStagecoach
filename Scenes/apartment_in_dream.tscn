@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=4 uid="uid://bwjqvq74ga5vy"]
+[gd_scene load_steps=190 format=4 uid="uid://bwjqvq74ga5vy"]
 
 [ext_resource type="Script" uid="uid://crakk8uloeha7" path="res://Scenes/StartLoop.gd" id="1_kedq2"]
 [ext_resource type="PackedScene" uid="uid://cvimjfh22fyxh" path="res://Scenes/player_new.tscn" id="1_y22mn"]
@@ -14,24 +14,20 @@
 [ext_resource type="Texture2D" uid="uid://cnjydqf22bcet" path="res://Assets/Sprites/new/stolik.png" id="5_gsnc6"]
 [ext_resource type="PackedScene" uid="uid://bliaoejqt3l3w" path="res://Scenes/UI_new.tscn" id="5_h5an8"]
 [ext_resource type="PackedScene" uid="uid://kqibovcl70w2" path="res://Scenes/UI.tscn" id="6_w5amo"]
-[ext_resource type="Resource" uid="uid://cq76473aj5368" path="res://FlowEvents/L1_wakeUp_to_standUp.tres" id="6_xbrdt"]
+[ext_resource type="Resource" uid="uid://cq76473aj5368" path="res://FlowEvents/L2_wakeUp_to_standUp.tres" id="6_xbrdt"]
 [ext_resource type="Texture2D" uid="uid://dlvf3mft4ov8v" path="res://Assets/Sprites/new/phone.png" id="7_1wm1k"]
 [ext_resource type="Resource" uid="uid://sr70tmjxeern" path="res://FlowEvents/test_slumber.tres" id="8_tordh"]
 [ext_resource type="PackedScene" uid="uid://bmwokj6fqlsm" path="res://Scenes/door.tscn" id="9_p05ml"]
-[ext_resource type="Resource" uid="uid://bswljlcw7xfru" path="res://FlowEvents/L1_wakeUp_next_loop_.tres" id="9_pigrx"]
+[ext_resource type="Resource" uid="uid://bswljlcw7xfru" path="res://FlowEvents/L2_wakeUp_next_loop_.tres" id="9_pigrx"]
 [ext_resource type="PackedScene" uid="uid://bthtma2rrwycp" path="res://Scenes/interact_teleport.tscn" id="10_7n0tl"]
 [ext_resource type="Resource" uid="uid://bbxyeu4yk171v" path="res://Dialogues/telefon_loop2.dialogue" id="10_h5an8"]
 [ext_resource type="Resource" uid="uid://g1h6viwfdi10" path="res://FlowEvents/teleport_black_screen.tres" id="10_x6vap"]
-[ext_resource type="Resource" uid="uid://dqtrsfn8lesy3" path="res://FlowEvents/Rooms_change/Room_Bathroom.tres" id="11_fkbwg"]
 [ext_resource type="Shader" uid="uid://bdbgnuqakqw6n" path="res://Shaders/outline2.gdshader" id="11_p05ml"]
-[ext_resource type="Resource" uid="uid://cl7ifhywpdrrv" path="res://FlowEvents/Rooms_change/Room_Bedroom.tres" id="12_mtkqp"]
+[ext_resource type="Resource" uid="uid://buxxee53c4vbs" path="res://FlowEvents/L1_accesscard_pick.tres" id="12_piar7"]
 [ext_resource type="Texture2D" uid="uid://bxujm5oxptdcj" path="res://Assets/Sprites/new/szafka_kuchnia.png" id="12_wabnc"]
-[ext_resource type="Resource" uid="uid://2t6yrnoswsvy" path="res://FlowEvents/Rooms_change/Room_Corridor_0.tres" id="13_s0kil"]
-[ext_resource type="Resource" uid="uid://bk63i8wi324g2" path="res://FlowEvents/Rooms_change/Room_Corridor_1.tres" id="14_w4s5b"]
-[ext_resource type="Resource" uid="uid://d3u4v67q8drm5" path="res://FlowEvents/Rooms_change/Room_Gabinet.tres" id="15_rg50y"]
-[ext_resource type="Resource" uid="uid://bjcxbvc0fumly" path="res://FlowEvents/Rooms_change/Room_Kitchen.tres" id="16_7u2nd"]
+[ext_resource type="Resource" uid="uid://d3x5qmpbblh0b" path="res://FlowEvents/L1_carabin_pick.tres" id="13_utt3q"]
+[ext_resource type="Resource" uid="uid://b1261ikvstcx3" path="res://FlowEvents/L1_door_access_open.tres" id="14_utt3q"]
 [ext_resource type="Material" uid="uid://ct1r3rkf6by67" path="res://tilemap_color_01.tres" id="17_4a4my"]
-[ext_resource type="Resource" uid="uid://dbu33vyhxd0ki" path="res://FlowEvents/Rooms_change/Room_LivingRoom.tres" id="17_piar7"]
 [ext_resource type="Texture2D" uid="uid://b0vhhuwigrcvn" path="res://Assets/Sprites/new/schody_dol.png" id="18_0hi3b"]
 [ext_resource type="TileSet" uid="uid://b61ruga1pfpm3" path="res://tilemap01.tres" id="18_4a4my"]
 [ext_resource type="Resource" uid="uid://1qbkl6r8ifyg" path="res://FlowEvents/KillerIncoming.tres" id="18_7u2nd"]
@@ -462,9 +458,17 @@ reset_loop_audio = NodePath("AudioStreamPlayer2D")
 stream = ExtResource("2_r4cse")
 bus = &"Effects"
 
+[node name="Starting Points" type="Node" parent="StartLoop"]
+
+[node name="Marker2D" type="Marker2D" parent="StartLoop/Starting Points"]
+position = Vector2(7308, -5176)
+
+[node name="Marker2D2" type="Marker2D" parent="StartLoop/Starting Points"]
+position = Vector2(-1370, -298)
+
 [node name="GameFlow" type="Node" parent="."]
 script = ExtResource("38_7rjji")
-flow_events = Array[ExtResource("2_ljukk")]([ExtResource("4_nf85r"), ExtResource("6_xbrdt"), ExtResource("3_lo1fp"), ExtResource("8_tordh"), ExtResource("9_pigrx"), ExtResource("10_x6vap"), ExtResource("11_fkbwg"), ExtResource("12_mtkqp"), ExtResource("13_s0kil"), ExtResource("14_w4s5b"), ExtResource("15_rg50y"), ExtResource("16_7u2nd"), ExtResource("17_piar7"), ExtResource("18_7u2nd")])
+flow_events = Array[ExtResource("2_ljukk")]([ExtResource("4_nf85r"), ExtResource("6_xbrdt"), ExtResource("3_lo1fp"), ExtResource("8_tordh"), ExtResource("9_pigrx"), ExtResource("10_x6vap"), ExtResource("18_7u2nd"), ExtResource("12_piar7"), ExtResource("13_utt3q"), ExtResource("14_utt3q")])
 
 [node name="ItemHolder" type="Node2D" parent="." groups=["SpawnItemHolder"]]
 
@@ -550,10 +554,10 @@ position = Vector2(7308, -5176)
 scale = Vector2(1.75, 1.75)
 vision = NodePath("PointLight2D2")
 EndLoopTimer = NodePath("EndOfLoopTimer")
-default_speed = 60.0
+default_speed = 200.0
 
 [node name="Camera2D" type="Camera2D" parent="player_new"]
-zoom = Vector2(2.52, 2.52)
+zoom = Vector2(8.515, 8.515)
 position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
@@ -927,7 +931,6 @@ position = Vector2(-1243, -62)
 [node name="Door3" parent="Lazienka" instance=ExtResource("9_p05ml")]
 visible = false
 position = Vector2(-1166, -146)
-scale = Vector2(-1, 1)
 id = "lazienka"
 sprite_close = ExtResource("21_wd510")
 sprite_open = ExtResource("22_xbd1e")

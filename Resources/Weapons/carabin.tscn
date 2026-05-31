@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://77okdoeadncn"]
+
+[ext_resource type="Script" uid="uid://d14bu245fs0rm" path="res://Code/Combat/weapon_range.gd" id="1_isa4v"]
+[ext_resource type="PackedScene" uid="uid://3onltamw2gfl" path="res://Scenes/Weapons/bullet.tscn" id="2_3nske"]
+[ext_resource type="Resource" uid="uid://bxy6g4s5m2fcp" path="res://Resources/Weapons/Carabin.tres" id="3_wluo2"]
+[ext_resource type="Texture2D" uid="uid://bt1erglrd3lrd" path="res://Assets/Sprites/new/carabin.png" id="4_isa4v"]
+[ext_resource type="Texture2D" uid="uid://c2yevcixs8ack" path="res://Assets/Sprites/old/aim.png" id="5_7qto1"]
+[ext_resource type="AudioStream" uid="uid://kk3sstps3btn" path="res://Audio/weapons_handun_shot.mp3" id="6_6hki1"]
+[ext_resource type="AudioStream" uid="uid://b6c4md2lwnohg" path="res://Audio/528708__rolly-sfx__empty-ruger-rifle.mp3" id="7_b2jqr"]
+[ext_resource type="AudioStream" uid="uid://b6jpk00e3k18p" path="res://Audio/raw/654374__njjjjjjjjjjjjjjjjjjjjjjjj__loading-gun.wav" id="8_id1xg"]
+
+[node name="giwera" type="Area2D" node_paths=PackedStringArray("shoot_point", "sound_reload", "sound_empty", "sprite", "sound_attack")]
+scale = Vector2(0.33, 0.33)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_isa4v")
+shoot_point = NodePath("Shoot_point")
+bullet = ExtResource("2_3nske")
+sound_reload = NodePath("Reload")
+sound_empty = NodePath("Empty")
+clip_size = 30
+data = ExtResource("3_wluo2")
+sprite = NodePath("Sprite2D")
+sound_attack = NodePath("Shoot")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.09091, 0)
+texture = ExtResource("4_isa4v")
+
+[node name="Shoot_point" type="Node2D" parent="."]
+position = Vector2(12.1212, -3.0303)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Shoot_point"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_7qto1")
+
+[node name="Firerate" type="Timer" parent="."]
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6hki1")
+bus = &"Effects"
+
+[node name="Empty" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_b2jqr")
+bus = &"Effects"
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_id1xg")
+bus = &"Effects"
+
+[connection signal="timeout" from="Firerate" to="." method="_on_firerate_timeout"]

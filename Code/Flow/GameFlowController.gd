@@ -67,8 +67,11 @@ func execute_actions(actions):
 		var parts = action.split(":")
 		var action_name = parts[0]
 		var target_name = ""
+		var additional_info = ""
 		if parts.size() > 1:
 			target_name = parts[1]
+			if parts.size() > 2:
+				additional_info = parts[2]
 		match action_name:
 			"play_sound":
 				play_sound(target_name)
@@ -90,6 +93,16 @@ func execute_actions(actions):
 				timeout(target_name)
 			"open_door":
 				Open_Door()
+			"set_weapon":
+				set_active_weapon(target_name)
+			"play_anim":
+				print("play_anim")
+				play_anim(target_name)
+			_:
+				print_debug(target_name + " " + action_name)
+				var item = get_from_registry(target_name)
+				item.call(action_name)
+			
 
 func get_from_registry(target_id: String):
 	var item = Game_Manager.registry.get(target_id)
@@ -138,8 +151,24 @@ func next_loop_with_change(loop: String):
 func set_current_room(target_room: String):
 	Game_Manager.change_current_room(target_room)
 	
-func timeout(name):
-	print_debug("timeout " + name)
+func timeout(item_name):
+	print_debug("timeout " + item_name)
+
+func set_active_weapon(item_name):
+	Game_Manager.player_char.set_new_weapon(item_name)
+	
+func play_anim(target_name: String):
+	var target = get_from_registry(target_name)
+	target.play_anim()
+
+func play_anim_once(target_name: String):
+	var target = get_from_registry(target_name)
+	target.play_anim_once()
+
+func play_anim_name(target_name: String, anim_name: String):
+	print("anim_name")
+	var target = get_from_registry(target_name)
+	target.play_anim_name(anim_name)
 
 func _exit_tree():
 	EventBus.door_opened.disconnect(_on_door_opened)

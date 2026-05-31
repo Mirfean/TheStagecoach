@@ -55,24 +55,28 @@ func setAngle():
 func drewLines():
 	var aim_lenght = direction_to_mouse.length()
 	line_length = clamp(aim_lenght, min_aim_distance, max_aim_distance)
-	angle_offset_degrees = curve.sample_baked(clamp(aim_lenght, min_spread, max_spread)/max_spread)
-	#print("angle_offset ", angle_offset_degrees)
+	
+	var lenght_ratio = (line_length - min_aim_distance)/(max_aim_distance - min_aim_distance)
+	var total_spread = lerp(min_spread, max_spread, lenght_ratio)
+	angle_offset_degrees = total_spread / 2.0
+	
+	print("angle_offset" + str(angle_offset_degrees) + " lenght+ratio " + str(lenght_ratio) + " line lenght " + str(line_length) + " aim lenght " + str(aim_lenght))
 	
 	angle_offset_radians = deg_to_rad(angle_offset_degrees)
 	var left_angle = base_angle + angle_offset_radians
 	var right_angle = base_angle - angle_offset_radians
 
-	var left_endpoint = Vector2(cos(left_angle), sin(left_angle)) * line_length
-	var right_endpoint = Vector2(cos(right_angle), sin(right_angle)) * line_length
+	var left_endpoint = weapon_holder.global_position + Vector2(cos(left_angle), sin(left_angle)) * line_length
+	var right_endpoint = weapon_holder.global_position + Vector2(cos(right_angle), sin(right_angle)) * line_length
 
 	# Ustaw punkty dla obu linii
-	Lline.position = player_position
-	Lline.points[0] = weapon_holder.position
-	Lline.points[1] = left_endpoint
+	Lline.position = weapon_holder.global_position
+	Lline.points[0] = Vector2.ZERO
+	Lline.points[1] = left_endpoint - weapon_holder.global_position
 
-	Rline.position = player_position
-	Rline.points[0] = weapon_holder.position
-	Rline.points[1] = right_endpoint
+	Rline.position = weapon_holder.global_position
+	Rline.points[0] = Vector2.ZERO
+	Rline.points[1] = right_endpoint - weapon_holder.global_position
 	
 func rotate_weapon(weapon : Node2D):
 	weapon.position = Vector2.ZERO

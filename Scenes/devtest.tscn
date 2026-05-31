@@ -7851,13 +7851,11 @@ position = Vector2(-1384, -23)
 z_index = 2
 position = Vector2(-1747, -303)
 scale = Vector2(0.56, 1)
-horizontal = true
 
 [node name="Door6" parent="BackgroundItems" instance=ExtResource("13_2iyog")]
 z_index = 2
 position = Vector2(-1836, -279)
 scale = Vector2(0.56, 1)
-horizontal = true
 
 [node name="Door2" parent="BackgroundItems" instance=ExtResource("13_2iyog")]
 z_index = 2
@@ -7930,7 +7928,6 @@ position = Vector2(-1858, 186)
 position = Vector2(-903, 240)
 dialogue_resource = ExtResource("19_3ks5u")
 actor = ExtResource("20_ulq6a")
-id = null
 
 [node name="ItemHolder" type="Node2D" parent="." groups=["SpawnItemHolder"]]
 
@@ -7953,4 +7950,3 @@ z_index = 1
 position = Vector2(-878, -397)
 dialogue_resource = ExtResource("22_oisf6")
 actor = ExtResource("22_q7swn")
-id = null

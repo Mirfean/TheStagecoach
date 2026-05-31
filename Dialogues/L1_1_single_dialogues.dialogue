@@ -17,3 +17,24 @@ See you in the better place, Roe.
 ~ Soldier_3
 I hope she died quickly.
 => END
+
+~ dead_general
+I couldn't do much more for him.
+
+~ door_keycard
+if DMM.check_inventory("Access card", true)
+	You slide access card through the control panel on door.
+	Small screen shows spinning hourglass; loading in process.
+	#DODAĆ dźwięk jakiś groźny 
+	Whatever killed your captain, it's getting closer.
+	...
+	...
+	#ZNOWU ÐŹWIĘK
+	...
+	#BEEP sound
+	Finally, doors opened.
+	do DMM.send_event_choice("L1_1_single_dialogues", "open_door")
+	=> END
+Semi-steel doors with electronic lock.
+Small screen on door shows unfamiliar logo. You need access card to open it.
+=> END

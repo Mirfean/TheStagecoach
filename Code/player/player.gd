@@ -60,7 +60,7 @@ func _ready() -> void:
 	set_weapon()
 	
 func _input(event: InputEvent) -> void:
-	print("state " + stateMachine.currentState.name)
+	#print("state " + stateMachine.currentState.name)
 	if dead:
 		return
 	if stateMachine.currentState.name == "Default":
@@ -96,7 +96,7 @@ func _physics_process(_delta: float) -> void:
 			vision.setAngle()
 
 func Movement():
-	if playerSprite.animation == "lying":
+	if playerSprite.animation == "dying" or playerSprite.animation == "lying":
 		return
 	character_direction.x = Input.get_axis("moveLeft", "moveRight")
 	character_direction.y = Input.get_axis("moveUp", "moveDown")
@@ -106,23 +106,35 @@ func Movement():
 		match lookDirection:
 			LookDirection.Up:
 				playerSprite.flip_h = false
-				playerSprite.play("MoveUp")
+				if playerState == PlayerState.Default:
+					playerSprite.play("MoveUp")
+				elif playerState == PlayerState.Aim:
+					playerSprite.play("AimIdleUpCarabin")
 				character_direction.x = character_direction.x * sideway_speed
 				if character_direction.y > 0:
 					character_direction.y = character_direction.y * backward_speed
 			LookDirection.Down:
 				playerSprite.flip_h = false
-				playerSprite.play("MoveDown")
+				if playerState == PlayerState.Default:
+					playerSprite.play("MoveDown")
+				elif playerState == PlayerState.Aim:
+					playerSprite.play("AimIdleDownCarabin")
 				character_direction.x = character_direction.x * sideway_speed
 				if character_direction.y < 0:
 					character_direction.y = character_direction.y * backward_speed
 			LookDirection.Left:
-				playerSprite.play("MoveLeft")
+				if playerState == PlayerState.Default:
+					playerSprite.play("MoveLeft")
+				elif playerState == PlayerState.Aim:
+					playerSprite.play("AimIdleLeftCarabin")
 				character_direction.y = character_direction.y * sideway_speed
 				if character_direction.x > 0:
 					character_direction.x = character_direction.x * backward_speed
 			LookDirection.Right:
-				playerSprite.play("MoveRight")
+				if playerState == PlayerState.Default:
+					playerSprite.play("MoveRight")
+				elif playerState == PlayerState.Aim:
+					playerSprite.play("AimIdleRightCarabin")
 				character_direction.y = character_direction.y * sideway_speed
 				if character_direction.x < 0:
 					character_direction.x = character_direction.x * backward_speed
@@ -181,7 +193,18 @@ func set_weapon(weapon_id : int = 0):
 	weapon_index = weapon_id
 	for x in weapons:
 		print(x.nameW)
-	
+		
+func set_new_weapon(weapon_name: String):
+	match weapon_name:
+		"Fists":
+			set_weapon(0)
+		"Carabin":
+			set_weapon(1)
+		"Pistol":
+			set_weapon(2)
+		_:
+			set_weapon(0)
+		
 func set_new_closest(object : Interactable_object):
 	if closest_interaction != null:
 		closest_interaction.off_highlight()
@@ -247,7 +270,7 @@ func _on_end_of_loop_timer_timeout() -> void:
 	match Game_Manager.current_loop:
 		"Loop1":
 			print("KONIEC LOOPA!")
-			playerSprite.play("lying")
+			playerSprite.play("dying")
 			Game_Manager.endLoop(true)
 		"loop2_test":
 			print("KILLER IS COMING!")

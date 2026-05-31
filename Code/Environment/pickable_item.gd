@@ -37,6 +37,7 @@ func Interact():
 
 func pick_up():
 	print("pick up")
+	EventBus.item_picked.emit(self.id)
 	queue_free()
 	
 func set_new_sprite(path : String, size : Vector2i):

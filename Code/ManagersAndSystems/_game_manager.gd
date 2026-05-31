@@ -74,6 +74,12 @@ func add_to_registry(item :Node):
 func get_from_registry(id: String):
 	return registry.get(id)	
 	
+func remove_from_registry(id: String):
+	if id == "":
+		print_debug("Tried to remove empty id item")
+		return
+	registry.erase(id)
+	
 func endLoop(restart: bool = false):
 	var loopStarter = get_tree().get_first_node_in_group("StarterLoop") as StartLoop
 	loopStarter.reset_loop_audio.play()

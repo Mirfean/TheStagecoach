@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://buxxee53c4vbs"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_cjxk6"]
+
+[resource]
+script = ExtResource("1_cjxk6")
+trigger_type = 1
+trigger_id = "AccessCard_L1"
+actions = Array[String](["remove_self:L1_Tile1", "play_sound:L1_change_accesscard"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

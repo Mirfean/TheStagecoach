@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FlowEvent" load_steps=2 format=3 uid="uid://d3x5qmpbblh0b"]
+
+[ext_resource type="Script" uid="uid://byg2c70wrksyx" path="res://Code/Flow/FlowEvent.gd" id="1_tbifd"]
+
+[resource]
+script = ExtResource("1_tbifd")
+trigger_type = 1
+trigger_id = "Carabin_L1"
+actions = Array[String](["show_it:Carabin_manual", "set_weapon:Carabin"])
+metadata/_custom_type_script = "uid://byg2c70wrksyx"

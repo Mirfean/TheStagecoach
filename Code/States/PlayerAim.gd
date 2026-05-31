@@ -39,7 +39,9 @@ func InputState(event: InputEvent):
 		aimer.rotate_weapon(current_weapon)
 		if Input.is_action_just_pressed("Attack") and current_weapon.shot_available:
 			var angle = aimer.get_random_angle()
-			my_player.add_child(current_weapon.attack_range(angle))
+			var bullet = current_weapon.attack_range(angle)
+			if bullet:
+				my_player.add_child(bullet)
 	elif weaponType == "1": #MELEE
 		aimer.rotate_weapon(current_weapon)
 		if Input.is_action_just_pressed("Attack"):

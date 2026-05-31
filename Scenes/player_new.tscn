@@ -1,9 +1,11 @@
-[gd_scene load_steps=96 format=3 uid="uid://cvimjfh22fyxh"]
+[gd_scene load_steps=126 format=3 uid="uid://cvimjfh22fyxh"]
 
 [ext_resource type="Script" uid="uid://cplueg4pmwhpg" path="res://Code/player/player.gd" id="1_rf6aj"]
 [ext_resource type="Script" uid="uid://dmavi023kf6bs" path="res://Resources/_Scripts_/_Weapon_.gd" id="2_gaai3"]
 [ext_resource type="Resource" uid="uid://ddbs081nggh0k" path="res://Resources/Weapons/Fists.tres" id="3_m1cgu"]
 [ext_resource type="Shader" uid="uid://bdbgnuqakqw6n" path="res://Shaders/outline2.gdshader" id="4_eatd6"]
+[ext_resource type="Resource" uid="uid://bxy6g4s5m2fcp" path="res://Resources/Weapons/Carabin.tres" id="4_x1jfk"]
+[ext_resource type="Texture2D" uid="uid://b5il5anhc0v30" path="res://Assets/Sprites/character_animation/movement_carabin.png" id="5_m1cgu"]
 [ext_resource type="Texture2D" uid="uid://b71uildctb52s" path="res://Assets/Snoblin/Assets/Extra/Shadow.png" id="6_537yu"]
 [ext_resource type="Texture2D" uid="uid://b7myh87d1r84f" path="res://Assets/Sprites/character_animation/idle.png" id="6_eatd6"]
 [ext_resource type="Texture2D" uid="uid://crld8sgvhkbyp" path="res://Assets/Sprites/character_animation/Interact_animations.png" id="6_gaai3"]
@@ -32,6 +34,118 @@ shader_parameter/width = 0.3
 shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rng7"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(0, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3isk"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(18, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaq7r"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(36, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe3w3"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(54, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jyjf"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(72, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctj2k"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(90, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs33u"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kun6"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pof71"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73fev"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lv06"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(90, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kwp5"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(72, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjjw3"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(54, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33w6q"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(36, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpu1p"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(18, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_868sl"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(0, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct34a"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(0, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a52gs"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(18, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiw7s"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(36, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3twv"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(54, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38imd"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(72, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i8fy"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(90, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0if78"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(0, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4uju"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(18, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i87up"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(36, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jos37"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(54, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjhqg"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of0pv"]
+atlas = ExtResource("5_m1cgu")
+region = Rect2(90, 36, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gaai3"]
 atlas = ExtResource("6_eatd6")
@@ -321,6 +435,130 @@ region = Rect2(162, 18, 18, 18)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4rng7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3isk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaq7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe3w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jyjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctj2k")
+}],
+"loop": true,
+"name": &"AimDownCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs33u")
+}],
+"loop": true,
+"name": &"AimIdleDownCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kun6")
+}],
+"loop": true,
+"name": &"AimIdleLeftCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pof71")
+}],
+"loop": true,
+"name": &"AimIdleRightCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73fev")
+}],
+"loop": true,
+"name": &"AimIdleUpCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lv06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kwp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjjw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33w6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpu1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_868sl")
+}],
+"loop": true,
+"name": &"AimLeftCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct34a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a52gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiw7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3twv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38imd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i8fy")
+}],
+"loop": true,
+"name": &"AimRightCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0if78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4uju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i87up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jos37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjhqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of0pv")
+}],
+"loop": true,
+"name": &"AimUpCarabin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gaai3")
 }, {
 "duration": 1.0,
@@ -574,8 +812,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_iwxsn")
 }],
 "loop": false,
-"name": &"lying",
+"name": &"dying",
 "speed": 6.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"lying",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
@@ -599,7 +842,7 @@ collision_mask = 4099
 motion_mode = 1
 script = ExtResource("1_rf6aj")
 stateMachine = NodePath("StateMachine")
-weapons = Array[ExtResource("2_gaai3")]([ExtResource("3_m1cgu"), ExtResource("3_m1cgu")])
+weapons = Array[ExtResource("2_gaai3")]([ExtResource("3_m1cgu"), ExtResource("4_x1jfk")])
 WeaponHolder = NodePath("WeaponHolder")
 sound_walking = NodePath("Walking")
 
@@ -621,7 +864,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_7dp3o")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_qqxlg")
-animation = &"Idle-front"
+animation = &"AimIdleUpCarabin"
 autoplay = "Idle-front"
 
 [node name="Shadow Under" type="Sprite2D" parent="."]

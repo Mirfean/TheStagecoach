@@ -37,6 +37,7 @@ func _ready() -> void:
 	
 	
 	if not Engine.is_editor_hint():
+		print_debug("register " + id)
 		Game_Manager.add_to_registry(self)
 	
 	

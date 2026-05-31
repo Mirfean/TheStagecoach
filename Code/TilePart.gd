@@ -1,7 +1,7 @@
 extends TileMapLayer
 class_name TilePart
 
-@export var ID: int
+@export var id: String
 @export var markers: Array[Marker2D]
 @export var checkpoints: Array[checkpointTile]
 
@@ -10,6 +10,7 @@ var activeConnections: Dictionary [Marker2D, TilePart]
 var tileHandler: TileHandler
 
 func _ready() -> void:
+	Game_Manager.add_to_registry(self)
 	for marker in find_children("Marker*"):
 		markers.append(marker)
 		if marker.position == Vector2.ZERO:
@@ -43,6 +44,9 @@ func spawn_tile_part(scene: String, pos: Vector2) -> TilePart:
 	tile_part_instance.global_position = pos
 	return tile_part_instance
 	
-func remove_tile_part(tilePart: TilePart):
-	#Cleaning
-	tilePart.queue_free()
+func remove_tile_part(tilePart: TilePart = null):
+	tilePart.remove_self()
+
+func remove_self():
+	Game_Manager.remove_from_registry(id)
+	self.queue_free()

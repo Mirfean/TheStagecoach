@@ -7,7 +7,7 @@ var id = "StartLoop"
 @export var player_char: player
 @export var black_screen: ColorRect
 @export var starting_dialogue: Dialoguer
-
+@export var starting_position: Dictionary[String, Node]
 @export var reset_loop_audio: AudioStreamPlayer2D
 
 @export var off : bool
@@ -38,12 +38,15 @@ func setup_loop():
 		return
 	var LOOP = loop.to_lower().replace(" ", "")
 	match LOOP:
-		"loop1": 
+		"loop1":
+			player_char.global_position = starting_position["loop1"].global_position
+		"loop2": 
+			player_char.global_position = starting_position["loop1"].global_position
 			black_screen.visible = true
 			player_char.playerSprite.play("lying")
 			starting_dialogue.Interact()
-			DoorsAndRoomsPrep("loop1")
-		"loop2":
+			DoorsAndRoomsPrep("loop2")
+		"loop3":
 			black_screen.visible = true
 			player_char.playerSprite.play("lying")
 			# loop2_dialogue

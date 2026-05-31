@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="data_WeaponRange" load_steps=2 format=3 uid="uid://bxy6g4s5m2fcp"]
+
+[ext_resource type="Script" uid="uid://dyhri2qy077jc" path="res://Resources/_Scripts_/data_WeaponRange.gd" id="1_ksx5n"]
+
+[resource]
+script = ExtResource("1_ksx5n")
+minSpread = 30.0
+maxSpread = 60.0
+minAim = 10.0
+maxAim = 30.0
+fireRate = 0.1
+bulletPerShot = 1
+ammoPerMagazine = 30.0
+id = 1
+weapon_type = 2
+nameW = "Carabin"
+damage = 1
+weapon = "res://Resources/Weapons/carabin.tscn"
+metadata/_custom_type_script = "uid://dyhri2qy077jc"
